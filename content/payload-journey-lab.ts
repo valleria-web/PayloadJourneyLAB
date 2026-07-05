@@ -27,10 +27,10 @@ export const siteContent = {
     { label: "Início", href: "#inicio" },
     { label: "O LAB", href: "#lab" },
     { label: "Métodos", href: "#metodos" },
-    { label: "USMT", href: "#usmt" },
-    { label: "White Papers", href: "#white-papers" },
     { label: "Case Study", href: "#case-study" },
     { label: "Formação", href: "#formacao" },
+    { label: "White Papers", href: "#white-papers" },
+    { label: "Sobre", href: "#sobre" },
     { label: "Contato", href: "#contato" },
   ] satisfies NavItem[],
   hero: {
@@ -69,7 +69,7 @@ export const siteContent = {
     ] satisfies Pillar[],
   },
   methods: {
-    title: "O que fazemos",
+    title: "Métodos",
     items: [
       {
         title: "Payload Journey",
@@ -79,7 +79,7 @@ export const siteContent = {
       {
         title: "Reverse Payload Journey",
         description:
-          "Reconstrói o caminho percorrido por um payload a partir de uma anomalia observável.",
+          "Reconstrói o caminho percorrido por um payload a partir de uma anomalia observável. O Operational Payload Path funciona como instrumento operacional desse rastreamento.",
       },
       {
         title: "Track to Origin",
@@ -89,7 +89,7 @@ export const siteContent = {
       {
         title: "USMT",
         description:
-          "Universal System Modeling Template para modelagem estrutural de sistemas de forma rigorosa.",
+          "Universal System Modeling Template para modelagem estrutural rigorosa, organizado em 12 elementos que apoiam a leitura de estados, eventos, transições e invariantes.",
       },
     ] satisfies CardItem[],
   },
@@ -107,33 +107,40 @@ export const siteContent = {
           "Estado operacional no qual mudanças são suspensas e a prioridade passa a ser observar, delimitar, registrar e compreender.",
       },
       {
-        title: "Track to Origin",
+        title: "Payload Journey",
         description:
-          "Processo de rastrear uma anomalia até sua origem técnica, semântica ou temporal.",
+          "Mapeamento progressivo do percurso de uma informação através do sistema.",
       },
       {
         title: "Reverse Payload Journey",
         description: "Reconstrução reversa da jornada do payload.",
       },
       {
-        title: "Payload Journey",
+        title: "Track to Origin",
         description:
-          "Mapeamento progressivo do percurso de uma informação através do sistema.",
+          "Processo de rastrear uma anomalia até sua origem técnica, semântica ou temporal.",
       },
       {
-        title: "One Bit Machine",
+        title: "Software System Investigation",
         description:
-          "Organismo observável de propagação semântica.",
+          "Prática de investigação estrutural aplicada a sistemas de software, anomalias observáveis e perda de rastreabilidade.",
       },
     ] satisfies CardItem[],
     flow: ["Track Mode", "Reverse Payload Journey", "Track to Origin", "Evidência", "Restauração"],
+    futureArtifacts: [
+      {
+        title: "One Bit Machine",
+        description:
+          "Conteúdo preservado para uma área futura de formação, experimentos e artefatos pedagógicos.",
+      },
+    ] satisfies CardItem[],
   },
   usmt: {
     title: "USMT",
     subtitle: "Universal System Modeling Template",
     description:
-      "USMT models systems as state, event, transition, and invariant structures. It gives payload movement a disciplined grammar.",
-    action: "Conhecer a USMT",
+      "A USMT modela sistemas como estruturas de estados, eventos, transições e invariantes. Ela oferece uma gramática disciplinada para compreender o movimento de payloads.",
+    action: "Página USMT em preparação",
     elements: [
       "Phenomenon",
       "Delimitation",

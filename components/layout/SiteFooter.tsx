@@ -31,9 +31,15 @@ export function SiteFooter() {
               </p>
               <div className="mt-3 grid gap-2 text-sm text-graphite">
                 {siteContent.contact.links.map((link) => (
-                  <a key={link.label} href={link.href} className="hover:text-ink">
-                    {link.label}
-                  </a>
+                  link.href === "#" ? (
+                    <span key={link.label} aria-disabled="true">
+                      {link.label} em preparação
+                    </span>
+                  ) : (
+                    <a key={link.label} href={link.href} className="hover:text-ink">
+                      {link.label}
+                    </a>
+                  )
                 ))}
               </div>
             </div>
@@ -43,9 +49,9 @@ export function SiteFooter() {
               </p>
               <div className="mt-3 grid gap-2 text-sm text-graphite">
                 {siteContent.footer.policies.map((item) => (
-                  <a key={item} href="#" className="hover:text-ink">
+                  <span key={item} aria-disabled="true">
                     {item}
-                  </a>
+                  </span>
                 ))}
               </div>
             </div>

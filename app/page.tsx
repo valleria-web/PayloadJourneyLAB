@@ -6,7 +6,6 @@ import { EducationSection } from "@/components/sections/EducationSection";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { LabOverviewSection } from "@/components/sections/LabOverviewSection";
 import { MethodsSection } from "@/components/sections/MethodsSection";
-import { UsmtSection } from "@/components/sections/UsmtSection";
 import { WhitePapersSection } from "@/components/sections/WhitePapersSection";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
@@ -20,10 +19,9 @@ export default function Home() {
         <LabOverviewSection />
         <MethodsSection />
         <ConceptEcosystemSection />
-        <UsmtSection />
-        <WhitePapersSection />
         <CaseStudySection />
         <EducationSection />
+        <WhitePapersSection />
         <AboutSection />
         <ContactSection />
       </main>
