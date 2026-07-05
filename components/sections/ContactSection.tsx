@@ -37,6 +37,21 @@ export function ContactSection() {
           <div className="mt-4 grid gap-3">
             {siteContent.contact.links.map((link) => {
               const Icon = socialIcons[link.label as keyof typeof socialIcons];
+              const isFutureLink = link.href === "#";
+
+              if (isFutureLink) {
+                return (
+                  <span
+                    key={link.label}
+                    aria-disabled="true"
+                    className="flex items-center gap-3 border border-line p-4 font-semibold text-graphite"
+                  >
+                    <Icon aria-hidden="true" className="size-4" />
+                    {link.label} em preparação
+                  </span>
+                );
+              }
+
               return (
                 <a
                   key={link.label}

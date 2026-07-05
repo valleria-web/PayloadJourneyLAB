@@ -48,13 +48,13 @@ export function CaseStudySection() {
             description={siteContent.caseStudy.description}
           />
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button href="#">
+            <Button disabled>
               <Search aria-hidden="true" className="mr-2 size-4" />
-              Explorar o Case Study
+              Explorar o Case Study em preparação
             </Button>
-            <Button href="#" variant="secondary">
+            <Button disabled variant="secondary">
               <Play aria-hidden="true" className="mr-2 size-4" />
-              Assistir ao LabLog
+              LabLog em preparação
             </Button>
           </div>
           <div className="mt-10 grid gap-3 sm:grid-cols-4">

@@ -13,8 +13,8 @@ export function WhitePapersSection() {
           title={siteContent.whitePapers.title}
           description={siteContent.whitePapers.description}
         />
-        <Button href="#" variant="secondary" className="w-fit">
-          Ver todos os White Papers
+        <Button disabled variant="secondary" className="w-fit">
+          White Papers em preparação
         </Button>
       </div>
       <div className="mt-10 grid gap-4 lg:grid-cols-3">
@@ -35,10 +35,13 @@ export function WhitePapersSection() {
             <p className="mt-4 flex-1 text-sm leading-6 text-graphite">{paper.summary}</p>
             <div className="mt-8 flex items-center justify-between border-t border-line pt-4 text-sm">
               <span className="text-graphite">{paper.date}</span>
-              <a href="#" className="inline-flex items-center gap-2 font-semibold hover:text-graphite">
-                Ler publicação
+              <span
+                aria-disabled="true"
+                className="inline-flex items-center gap-2 font-semibold text-graphite"
+              >
+                Publicação em preparação
                 <ArrowUpRight aria-hidden="true" className="size-4" />
-              </a>
+              </span>
             </div>
           </Card>
         ))}
