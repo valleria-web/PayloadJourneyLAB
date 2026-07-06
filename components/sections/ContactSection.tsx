@@ -36,7 +36,7 @@ export function ContactSection() {
                 <span
                   key={channel.label}
                   aria-disabled="true"
-                  className="flex items-center gap-3 border border-line p-4 font-semibold text-graphite"
+                  className="flex items-center gap-3 rounded-sm border border-line bg-soft p-4 font-semibold text-muted"
                 >
                   <Icon aria-hidden="true" className="size-4" />
                   {channel.label}

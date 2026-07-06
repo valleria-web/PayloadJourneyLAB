@@ -7,8 +7,8 @@ type ButtonProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
 };
 
 const variants = {
-  primary: "border-ink bg-ink text-white hover:bg-white hover:text-ink",
-  secondary: "border-line bg-white text-ink hover:border-ink",
+  primary: "border-ink bg-ink text-white hover:border-accent hover:bg-accent",
+  secondary: "border-line bg-white text-ink hover:border-accent hover:text-accent",
 };
 
 export function Button({
@@ -18,13 +18,14 @@ export function Button({
   disabled = false,
   ...props
 }: ButtonProps) {
-  const classes = `inline-flex min-h-11 items-center justify-center rounded-none border px-5 py-3 text-sm font-semibold transition-colors ${variants[variant]} ${className}`;
+  const baseClasses =
+    "inline-flex min-h-11 items-center justify-center gap-2 rounded-sm border px-5 py-3 text-center text-sm font-semibold leading-5 transition-colors";
 
   if (disabled) {
     return (
       <span
         aria-disabled="true"
-        className={`${classes} cursor-not-allowed opacity-60 hover:border-line hover:bg-white hover:text-ink`}
+        className={`${baseClasses} cursor-not-allowed border-line bg-soft text-muted opacity-90 ${className}`}
       >
         {children}
       </span>
@@ -33,7 +34,7 @@ export function Button({
 
   return (
     <a
-      className={classes}
+      className={`${baseClasses} ${variants[variant]} ${className}`}
       {...props}
     >
       {children}

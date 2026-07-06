@@ -11,9 +11,14 @@ const config: Config = {
       colors: {
         ink: "#0a0a0a",
         graphite: "#3f3f46",
-        line: "#d4d4d8",
+        muted: "#66666d",
+        line: "#d9d9de",
         paper: "#ffffff",
-        subtle: "#f4f4f5",
+        subtle: "#f7f7f8",
+        soft: "#f2f4f5",
+        accent: "#0f766e",
+        "accent-muted": "#e6f2f0",
+        danger: "#b42318",
       },
       fontFamily: {
         sans: ["Arial", "Helvetica", "sans-serif"],

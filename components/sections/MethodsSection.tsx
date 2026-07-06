@@ -13,7 +13,7 @@ export function MethodsSection() {
           <Card key={method.title} className="flex min-h-64 flex-col justify-between">
             <div>
               {method.category ? (
-                <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-graphite">
+                <p className="mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-accent">
                   {method.category}
                 </p>
               ) : null}
@@ -32,7 +32,7 @@ export function MethodsSection() {
           </Card>
         ))}
       </div>
-      <p className="mt-8 border border-line bg-white p-6 text-sm leading-6 text-graphite">
+      <p className="mt-8 rounded-sm border border-line bg-white p-6 text-sm leading-6 text-graphite">
         {siteContent.methods.relation}
       </p>
     </Section>

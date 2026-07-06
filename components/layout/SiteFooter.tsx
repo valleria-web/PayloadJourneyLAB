@@ -5,7 +5,7 @@ export function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-line bg-subtle py-10">
+    <footer className="border-t border-line bg-subtle py-10 sm:py-12">
       <Container>
         <div className="grid gap-8 md:grid-cols-[1.2fr_2fr]">
           <div>
@@ -19,7 +19,7 @@ export function SiteFooter() {
               </p>
               <div className="mt-3 grid gap-2 text-sm text-graphite">
                 {siteContent.nav.slice(1).map((item) => (
-                  <a key={item.href} href={item.href} className="hover:text-ink">
+                  <a key={item.href} href={item.href} className="w-fit py-1 hover:text-ink">
                     {item.label}
                   </a>
                 ))}
@@ -31,7 +31,7 @@ export function SiteFooter() {
               </p>
               <div className="mt-3 grid gap-2 text-sm text-graphite">
                 {siteContent.contact.channels.map((channel) => (
-                  <span key={channel.label} aria-disabled="true">
+                  <span key={channel.label} aria-disabled="true" className="py-1 text-muted">
                     {channel.label}
                     {channel.status ? ` - ${channel.status}` : null}
                   </span>
@@ -44,7 +44,7 @@ export function SiteFooter() {
               </p>
               <div className="mt-3 grid gap-2 text-sm text-graphite">
                 {siteContent.footer.policies.map((item) => (
-                  <span key={item} aria-disabled="true">
+                  <span key={item} aria-disabled="true" className="py-1 text-muted">
                     {item}
                   </span>
                 ))}

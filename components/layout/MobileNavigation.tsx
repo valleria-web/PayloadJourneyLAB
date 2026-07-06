@@ -10,26 +10,35 @@ type MobileNavigationProps = {
 
 export function MobileNavigation({ items }: MobileNavigationProps) {
   const [open, setOpen] = useState(false);
+  const menuId = "mobile-navigation";
 
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <button
         type="button"
         aria-label={open ? "Fechar navegação" : "Abrir navegação"}
         aria-expanded={open}
-        className="flex size-11 items-center justify-center border border-line bg-white"
+        aria-controls={menuId}
+        className="flex size-11 items-center justify-center rounded-sm border border-line bg-white text-ink transition-colors hover:border-accent hover:text-accent"
         onClick={() => setOpen((current) => !current)}
       >
-        {open ? <X className="size-5" /> : <Menu className="size-5" />}
+        {open ? (
+          <X aria-hidden="true" className="size-5" />
+        ) : (
+          <Menu aria-hidden="true" className="size-5" />
+        )}
       </button>
       {open ? (
-        <div className="absolute left-0 top-full w-full border-b border-line bg-white px-5 py-4">
+        <div
+          id={menuId}
+          className="absolute left-0 top-full w-full border-b border-line bg-white px-5 py-4 shadow-sm"
+        >
           <nav aria-label="Navegação móvel" className="grid gap-2">
             {items.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="border border-transparent px-3 py-3 text-sm font-medium text-graphite hover:border-line hover:text-ink"
+                className="rounded-sm border border-transparent px-3 py-3 text-sm font-medium text-graphite hover:border-line hover:bg-subtle hover:text-ink"
                 onClick={() => setOpen(false)}
               >
                 {item.label}
