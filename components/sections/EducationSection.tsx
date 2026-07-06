@@ -19,7 +19,7 @@ export function EducationSection() {
           </Card>
         ))}
       </div>
-      <div className="mt-10 border border-line bg-white p-6">
+      <div className="mt-10 rounded-sm border border-line bg-white p-6">
         <p className="text-sm font-semibold">Links futuros</p>
         <div className="mt-4 flex flex-wrap gap-2">
           {siteContent.education.links.map((link) => (

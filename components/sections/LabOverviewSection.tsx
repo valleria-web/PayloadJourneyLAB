@@ -16,7 +16,7 @@ export function LabOverviewSection() {
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           {siteContent.lab.pillars.map((pillar) => (
-            <Card key={pillar.title} className="min-h-48">
+            <Card key={pillar.title} className="min-h-48 transition-colors hover:border-accent">
               <IconWrapper icon={pillar.icon} />
               <h3 className="mt-6 text-xl font-semibold">{pillar.title}</h3>
               <p className="mt-3 text-sm leading-6 text-graphite">{pillar.description}</p>

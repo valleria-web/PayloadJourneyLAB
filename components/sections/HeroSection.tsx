@@ -1,14 +1,18 @@
 import { ArrowRight } from "lucide-react";
+import { PayloadJourneyDiagram } from "@/components/diagrams/PayloadJourneyDiagram";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { siteContent } from "@/content/payload-journey-lab";
 
 export function HeroSection() {
   return (
-    <section id="inicio" className="scroll-mt-24 border-b border-line py-16 sm:py-20 lg:py-24">
+    <section
+      id="inicio"
+      className="scroll-mt-24 border-b border-line bg-[linear-gradient(180deg,#ffffff_0%,#f7f7f8_100%)] py-16 sm:py-20 lg:py-24"
+    >
       <Container>
-        <div className="max-w-4xl">
-          <div>
+        <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
+          <div className="max-w-4xl">
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.18em] text-graphite">
               {siteContent.hero.eyebrow}
             </p>
@@ -22,12 +26,15 @@ export function HeroSection() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button href={siteContent.hero.primaryAction.href}>
                 {siteContent.hero.primaryAction.label}
-                <ArrowRight aria-hidden="true" className="ml-2 size-4" />
+                <ArrowRight aria-hidden="true" className="size-4" />
               </Button>
               <Button href={siteContent.hero.secondaryAction.href} variant="secondary">
                 {siteContent.hero.secondaryAction.label}
               </Button>
             </div>
+          </div>
+          <div className="lg:pl-6">
+            <PayloadJourneyDiagram />
           </div>
         </div>
       </Container>

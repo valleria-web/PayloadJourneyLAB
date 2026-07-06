@@ -28,7 +28,7 @@ export function WhitePapersSection() {
                 </p>
                 <p className="mt-2 text-xs text-graphite">{paper.type}</p>
               </div>
-              <span className="border border-line px-2 py-1 text-xs text-graphite">
+              <span className="rounded-sm border border-line bg-accent-muted px-2 py-1 text-xs text-accent">
                 {paper.status}
               </span>
             </div>
@@ -38,7 +38,7 @@ export function WhitePapersSection() {
               <span className="text-graphite">{paper.date}</span>
               <span
                 aria-disabled="true"
-                className="inline-flex items-center gap-2 font-semibold text-graphite"
+                className="inline-flex items-center gap-2 text-right font-semibold text-muted"
               >
                 Publicação em preparação
                 <ArrowUpRight aria-hidden="true" className="size-4" />

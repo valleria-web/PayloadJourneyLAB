@@ -4,14 +4,28 @@
 
 :root {
   color-scheme: light;
+  --paper: #ffffff;
+  --ink: #0a0a0a;
+  --muted: #66666d;
+  --line: #d9d9de;
+  --soft: #f7f7f8;
+  --accent: #0f766e;
+  --accent-muted: #e6f2f0;
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  background: var(--paper);
+  text-rendering: optimizeLegibility;
+}
+
 body {
   margin: 0;
+  min-width: 320px;
+  background: var(--paper);
 }
 
 a {
@@ -20,8 +34,13 @@ a {
 }
 
 :focus-visible {
-  outline: 2px solid #0a0a0a;
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
+}
+
+::selection {
+  background: var(--accent-muted);
+  color: var(--ink);
 }
 
 @media (prefers-reduced-motion: reduce) {
