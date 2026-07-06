@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { siteContent } from "@/content/payload-journey-lab";
 
-const socialIcons = {
+const channelIcons = {
   LinkedIn: Linkedin,
   YouTube: Youtube,
   GitHub: Github,
@@ -18,9 +18,9 @@ export function ContactSection() {
         <div>
           <SectionHeader title={siteContent.contact.title} description={siteContent.contact.text} />
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button href={`mailto:${siteContent.contact.email}`}>
+            <Button disabled>
               <Mail aria-hidden="true" className="mr-2 size-4" />
-              Botão de contato
+              {siteContent.contact.action.label}
             </Button>
           </div>
         </div>
@@ -28,39 +28,20 @@ export function ContactSection() {
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-graphite">
             Canais
           </p>
-          <a
-            href={`mailto:${siteContent.contact.email}`}
-            className="mt-6 block border border-line p-4 font-semibold hover:border-ink"
-          >
-            {siteContent.contact.email}
-          </a>
-          <div className="mt-4 grid gap-3">
-            {siteContent.contact.links.map((link) => {
-              const Icon = socialIcons[link.label as keyof typeof socialIcons];
-              const isFutureLink = link.href === "#";
-
-              if (isFutureLink) {
-                return (
-                  <span
-                    key={link.label}
-                    aria-disabled="true"
-                    className="flex items-center gap-3 border border-line p-4 font-semibold text-graphite"
-                  >
-                    <Icon aria-hidden="true" className="size-4" />
-                    {link.label} em preparação
-                  </span>
-                );
-              }
+          <div className="mt-6 grid gap-3">
+            {siteContent.contact.channels.map((channel) => {
+              const Icon = channelIcons[channel.label as keyof typeof channelIcons];
 
               return (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="flex items-center gap-3 border border-line p-4 font-semibold hover:border-ink"
+                <span
+                  key={channel.label}
+                  aria-disabled="true"
+                  className="flex items-center gap-3 border border-line p-4 font-semibold text-graphite"
                 >
                   <Icon aria-hidden="true" className="size-4" />
-                  {link.label}
-                </a>
+                  {channel.label}
+                  {channel.status ? ` - ${channel.status}` : null}
+                </span>
               );
             })}
           </div>

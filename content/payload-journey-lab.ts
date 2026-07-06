@@ -16,7 +16,13 @@ import {
   ShieldCheck,
   Workflow,
 } from "lucide-react";
-import type { CardItem, CaseFact, NavItem, Pillar, WhitePaper } from "@/types/content";
+import type { CardItem, CaseFact, CtaItem, NavItem, Pillar, WhitePaper } from "@/types/content";
+
+const futureCta = (label: string, status = "Em preparação"): CtaItem => ({
+  label,
+  state: "future",
+  status,
+});
 
 export const siteContent = {
   brand: {
@@ -34,67 +40,98 @@ export const siteContent = {
     { label: "Contato", href: "#contato" },
   ] satisfies NavItem[],
   hero: {
+    eyebrow: "Software System Investigation",
     title: "PAYLOAD\nJOURNEY LAB",
     subtitle: "Siga o flow. Entenda o sistema.",
     intro:
       "Laboratório de formação, pesquisa e investigação aplicada dedicado a compreender como payloads, estados, eventos e decisões atravessam sistemas complexos.",
-    primaryAction: "Explorar o LAB",
-    secondaryAction: "Conhecer o Case Study",
+    primaryAction: { label: "Explorar o LAB", href: "#lab", state: "anchor" } satisfies CtaItem,
+    secondaryAction: {
+      label: "Conhecer o Case Study",
+      href: "#case-study",
+      state: "anchor",
+    } satisfies CtaItem,
   },
   lab: {
     title: "O LAB",
     intro:
-      "O Payload Journey LAB é um laboratório de formação e pesquisa aplicada dedicado ao desenvolvimento de métodos para observar, modelar, rastrear e investigar sistemas de software.",
+      "O Payload Journey LAB desenvolve métodos, artefatos pedagógicos e investigações aplicadas para observar, modelar, rastrear e compreender sistemas de software.",
+    complement:
+      "O trabalho do LAB combina formação, pesquisa metodológica e aplicação em codebases reais, especialmente em sistemas cuja expansão tornou a compreensão estrutural mais difícil.",
     pillars: [
       {
         title: "Formação",
-        description: "Desenvolvimento de visão estrutural e capacidade de tracing.",
+        description:
+          "Desenvolvimento de visão estrutural, capacidade de tracing e compreensão de sistemas através de experiências educacionais.",
         icon: GraduationCap,
       },
       {
         title: "Pesquisa",
-        description: "Criação e documentação de métodos para compreensão de sistemas.",
+        description:
+          "Criação, documentação e refinamento de métodos para observar, modelar e investigar sistemas de software.",
         icon: BookOpen,
       },
       {
         title: "Investigação aplicada",
-        description: "Aplicação dos métodos em codebases e problemas reais.",
+        description: "Aplicação dos métodos do LAB em anomalias, fluxos e codebases reais.",
         icon: Search,
       },
       {
         title: "Colaboração",
-        description: "Construção de pilotos, estudos e parcerias acadêmicas.",
+        description:
+          "Construção de pilotos, estudos e parcerias com estudantes, pesquisadores, instituições e organizações.",
         icon: Share2,
       },
     ] satisfies Pillar[],
   },
   methods: {
-    title: "Métodos",
+    title: "Métodos para compreender sistemas",
+    intro:
+      "O LAB organiza observação, modelagem e investigação em métodos complementares. Cada método responde a uma necessidade específica, desde seguir uma informação através das camadas até reconstruir a origem de uma anomalia.",
+    relation:
+      "Payload Journey observa o percurso. A USMT modela a estrutura. Reverse Payload Journey reconstrói a anomalia. Operational Payload Path organiza o Mapping. Track to Origin conduz a investigação até a origem.",
     items: [
       {
         title: "Payload Journey",
+        category: "Observação",
         description:
-          "Estuda como uma informação nasce, atravessa camadas, sofre transformações e produz efeitos no sistema.",
-      },
-      {
-        title: "Reverse Payload Journey",
-        description:
-          "Reconstrói o caminho percorrido por um payload a partir de uma anomalia observável. O Operational Payload Path funciona como instrumento operacional desse rastreamento.",
-      },
-      {
-        title: "Track to Origin",
-        description:
-          "Método investigativo que conduz o rastreamento de volta à origem, à autoridade e ao primeiro ponto de decisão relevante.",
+          "Método de observação progressiva que acompanha como uma informação nasce, atravessa camadas, assume diferentes representações e produz efeitos no sistema.",
       },
       {
         title: "USMT",
+        category: "Modelagem",
         description:
-          "Universal System Modeling Template para modelagem estrutural rigorosa, organizado em 12 elementos que apoiam a leitura de estados, eventos, transições e invariantes.",
+          "Universal System Modeling Template é um template de modelagem estrutural que organiza fenômenos, estados, eventos, transições permitidas e proibidas, invariantes, camadas, métricas e condições de término.",
+        status: "A USMT é composta por 12 elementos metodológicos.",
+        action: futureCta("Conhecer a USMT", "Página em desenvolvimento"),
+      },
+      {
+        title: "Reverse Payload Journey",
+        category: "Investigação",
+        description:
+          "Método de investigação que parte de uma anomalia observável e reconstrói, em sentido reverso, o caminho percorrido pelo payload.",
+      },
+      {
+        title: "Operational Payload Path",
+        category: "Mapping",
+        description:
+          "Instrumento operacional de Mapping que organiza zonas, fronteiras, componentes, representações, responsabilidades, autoridades e checkpoints ao longo de uma operação. Ele transforma a arquitetura abstrata em uma rota investigável.",
+      },
+      {
+        title: "Track to Origin",
+        category: "Origem e autoridade",
+        description:
+          "Processo investigativo que conduz o rastreamento até a origem técnica, semântica ou temporal e até o primeiro ponto de decisão relevante.",
       },
     ] satisfies CardItem[],
   },
   ecosystem: {
     title: "Um ecossistema para compreender sistemas",
+    intro:
+      "Os métodos do LAB não funcionam de forma isolada. Eles fazem parte de uma prática de investigação estrutural orientada por evidências.",
+    flow: ["Track Mode", "Reverse Payload Journey", "Track to Origin", "Evidência", "Restauração"],
+    flowDescription:
+      "O Track Mode suspende mudanças e prioriza observação. O Reverse Payload Journey reconstrói o caminho. Track to Origin conduz a investigação até a origem. A evidência permite restaurar autoridade e compreensão.",
     items: [
       {
         title: "Trace Engineer",
@@ -107,26 +144,11 @@ export const siteContent = {
           "Estado operacional no qual mudanças são suspensas e a prioridade passa a ser observar, delimitar, registrar e compreender.",
       },
       {
-        title: "Payload Journey",
-        description:
-          "Mapeamento progressivo do percurso de uma informação através do sistema.",
-      },
-      {
-        title: "Reverse Payload Journey",
-        description: "Reconstrução reversa da jornada do payload.",
-      },
-      {
-        title: "Track to Origin",
-        description:
-          "Processo de rastrear uma anomalia até sua origem técnica, semântica ou temporal.",
-      },
-      {
         title: "Software System Investigation",
         description:
-          "Prática de investigação estrutural aplicada a sistemas de software, anomalias observáveis e perda de rastreabilidade.",
+          "Prática de investigação estrutural de sistemas baseada em tracing, modelagem, evidências e reconstrução de decisões.",
       },
     ] satisfies CardItem[],
-    flow: ["Track Mode", "Reverse Payload Journey", "Track to Origin", "Evidência", "Restauração"],
     futureArtifacts: [
       {
         title: "One Bit Machine",
@@ -139,7 +161,7 @@ export const siteContent = {
     title: "USMT",
     subtitle: "Universal System Modeling Template",
     description:
-      "A USMT modela sistemas como estruturas de estados, eventos, transições e invariantes. Ela oferece uma gramática disciplinada para compreender o movimento de payloads.",
+      "Conteúdo completo preservado para uma rota específica futura. Na homepage, a USMT aparece apenas como resumo dentro da seção Métodos.",
     action: "Página USMT em preparação",
     elements: [
       "Phenomenon",
@@ -174,22 +196,19 @@ export const siteContent = {
         number: "03",
         icon: "⏳",
         title: "State Enumeration",
-        description:
-          "List every possible system state explicitly. No implicit state should exist.",
+        description: "List every possible system state explicitly. No implicit state should exist.",
       },
       {
         number: "04",
         icon: "⚡",
         title: "Event Enumeration",
-        description:
-          "Identify every event that can cause transitions between states.",
+        description: "Identify every event that can cause transitions between states.",
       },
       {
         number: "05",
         icon: "🟢",
         title: "Allowed transitions",
-        description:
-          "Define every valid transition between states. What the system is allowed to do.",
+        description: "Define every valid transition between states. What the system is allowed to do.",
       },
       {
         number: "06",
@@ -242,51 +261,24 @@ export const siteContent = {
       },
     ],
   },
-  whitePapers: {
-    title: "White Papers",
-    description:
-      "Publicações que documentam os conceitos, métodos, experimentos e descobertas desenvolvidos no Payload Journey LAB.",
-    items: [
-      {
-        id: "White Paper 01",
-        type: "Placeholder editorial",
-        title: "Payload Journey: seguindo a informação através das camadas",
-        summary:
-          "Estrutura inicial para documentar o método de observação progressiva do payload.",
-        date: "Data a definir",
-        status: "Em preparação",
-      },
-      {
-        id: "White Paper 02",
-        type: "Placeholder editorial",
-        title: "Reverse Payload Journey e investigação estrutural de sistemas",
-        summary:
-          "Base para organizar o método reverso aplicado a anomalias observáveis.",
-        date: "Data a definir",
-        status: "Em preparação",
-      },
-      {
-        id: "White Paper 03",
-        type: "Placeholder editorial",
-        title: "Trace Engineer na era dos agentes de IA",
-        summary:
-          "Ponto de partida para discutir autoria, observabilidade e velocidade de expansão.",
-        date: "Data a definir",
-        status: "Em preparação",
-      },
-    ] satisfies WhitePaper[],
-  },
   caseStudy: {
     title: "Case Study",
     subtitle: "Saving HORA.city",
     description:
-      "Um sistema geolocalizado expandido rapidamente com agentes de IA perdeu parte de sua observabilidade estrutural. O Payload Journey LAB iniciou uma investigação real para rastrear uma anomalia temporal, reconstruir a jornada do payload e restaurar a autoridade dos dados.",
-    stages: ["Contexto", "Anomalia", "Investigação", "Aprendizados"],
+      "O HORA.city é um sistema geolocalizado utilizado pelo Payload Journey LAB como caso real de investigação aplicada. Após uma expansão acelerada com agentes de IA, o sistema passou de aproximadamente 6 mil para 40 mil linhas de código e perdeu parte de sua observabilidade estrutural.",
+    secondaryDescription:
+      "A investigação atual acompanha uma anomalia temporal em createdAt, associada ao payload HeartCreated. O objetivo é reconstruir o caminho operacional, identificar a autoridade temporal e rastrear o primeiro ponto relevante de decisão.",
+    stages: [
+      { label: "Contexto", status: "Em documentação" },
+      { label: "Anomalia", status: "Em investigação" },
+      { label: "Investigação", status: "Em andamento" },
+      { label: "Aprendizados", status: "Etapa futura" },
+    ],
     facts: [
-      { label: "Sistema inicial", value: "aprox. 6 mil linhas" },
-      { label: "Expansão", value: "aprox. 40 mil linhas" },
-      { label: "Anomalia observada", value: "createdAt" },
-      { label: "Payload investigado", value: "HeartCreated" },
+      { label: "Sistema inicial", value: "Aproximadamente 6 mil linhas" },
+      { label: "Expansão", value: "Aproximadamente 40 mil linhas" },
+      { label: "Anomalia observada", value: "createdAt incorreto" },
+      { label: "Payload associado", value: "HeartCreated" },
       { label: "Método aplicado", value: "Reverse Payload Journey" },
       { label: "Missão", value: "Track to Origin" },
     ] satisfies CaseFact[],
@@ -296,47 +288,111 @@ export const siteContent = {
       payload: "HeartCreated",
       state: "Investigação em andamento",
     },
+    actions: [
+      futureCta("Explorar o Case Study", "Em preparação"),
+      futureCta("Assistir ao LabLog", "Em preparação"),
+    ] satisfies CtaItem[],
   },
   education: {
     title: "Do método à prática",
+    intro:
+      "O Payload Journey LAB transforma seus métodos em experiências de formação, investigações aplicadas e oportunidades de colaboração.",
     items: [
       {
         title: "Aprender",
         description:
-          "Conteúdos, cursos, vídeos e experiências para desenvolver visão estrutural de sistemas.",
+          "Cursos, vídeos, LabLogs e experiências pedagógicas para desenvolver visão estrutural e capacidade de tracing.",
       },
       {
         title: "Investigar",
         description:
-          "Aplicação de tracing, deep debugging, Reverse Payload Journey e Track to Origin em sistemas reais.",
+          "Aplicação de Payload Journey, Reverse Payload Journey, Operational Payload Path e Track to Origin em sistemas reais.",
       },
       {
         title: "Colaborar",
         description:
-          "Pilotos com estudantes, universidades, pesquisadores, laboratórios e organizações.",
+          "Pilotos acadêmicos, estudos, pesquisa aplicada e parcerias com estudantes, universidades, laboratórios e organizações.",
       },
     ] satisfies CardItem[],
-    links: ["Curso", "LabLogs", "Workshops", "Pilotos acadêmicos", "Programa Trace Engineer"],
+    links: ["Curso", "LabLogs", "Workshops", "Programa Trace Engineer", "Pilotos acadêmicos"],
+  },
+  whitePapers: {
+    title: "White Papers",
+    description:
+      "Publicações destinadas a documentar os conceitos, métodos, experimentos e descobertas desenvolvidos no Payload Journey LAB.",
+    action: futureCta("Ver todos os White Papers", "Página em desenvolvimento"),
+    items: [
+      {
+        id: "White Paper 01",
+        type: "Placeholder editorial",
+        title: "Payload Journey: seguindo a informação através das camadas",
+        summary:
+          "Estrutura inicial para documentar o método de observação progressiva do payload e suas transformações através do sistema.",
+        date: "Data a definir",
+        status: "Em preparação",
+      },
+      {
+        id: "White Paper 02",
+        type: "Placeholder editorial",
+        title: "Reverse Payload Journey e investigação estrutural de sistemas",
+        summary:
+          "Base metodológica para reconstruir o caminho de uma anomalia observável através de payloads, representações e checkpoints.",
+        date: "Data a definir",
+        status: "Em preparação",
+      },
+      {
+        id: "White Paper 03",
+        type: "Placeholder editorial",
+        title: "Trace Engineer na era dos agentes de IA",
+        summary:
+          "Discussão inicial sobre tracing, autoria, observabilidade e preservação da compreensão estrutural em sistemas expandidos por agentes de IA.",
+        date: "Data a definir",
+        status: "Em preparação",
+      },
+    ] satisfies WhitePaper[],
   },
   about: {
     title: "Sobre o Payload Journey LAB",
     text:
-      "Agentes de IA podem expandir sistemas mais rapidamente do que pessoas conseguem compreendê-los. O Payload Journey LAB nasce para investigar essa diferença de velocidade e desenvolver métodos que preservem rastreabilidade, compreensão estrutural e capacidade de decisão.",
+      "Agentes de IA podem expandir sistemas mais rapidamente do que pessoas conseguem compreendê-los. Quando a velocidade de produção supera a velocidade de compreensão, torna-se mais difícil preservar rastreabilidade, autoridade, observabilidade e capacidade de decisão.",
+    secondaryText:
+      "O Payload Journey LAB nasce para investigar essa diferença de velocidade e desenvolver métodos que ajudem estudantes, engenheiros e organizações a compreender sistemas complexos antes de modificá-los.",
+    vision:
+      "A visão do LAB é consolidar uma prática de Software System Investigation que conecte formação, pesquisa metodológica e investigação aplicada.",
     reserved: ["Fundadora", "Pesquisadores", "Colaboradores", "Instituições parceiras"],
   },
   contact: {
     title: "Vamos seguir o flow",
     text:
       "Para colaborações, pilotos acadêmicos, pesquisa aplicada ou desenvolvimento do programa Trace Engineer, entre em contato com o Payload Journey LAB.",
-    email: "email@payloadjourneylab.example",
-    links: [
-      { label: "LinkedIn", href: "#" },
-      { label: "YouTube", href: "#" },
-      { label: "GitHub", href: "#" },
-    ],
+    action: futureCta("Contato em configuração", "Contato em configuração"),
+    channels: [
+      futureCta("LinkedIn", "Canal em configuração"),
+      futureCta("YouTube", "Canal em configuração"),
+      futureCta("GitHub", "Canal em configuração"),
+    ] satisfies CtaItem[],
   },
   footer: {
     policies: ["Política de privacidade", "Termos de uso"],
+  },
+  preservedFutureContent: {
+    futureRoutes: [
+      "/usmt",
+      "/methods/payload-journey",
+      "/methods/reverse-payload-journey",
+      "/methods/operational-payload-path",
+      "/methods/track-to-origin",
+      "/case-study/hora-city",
+      "/white-papers",
+    ],
+    nonRenderedAreas: [
+      "Detalhamento completo dos 12 elementos da USMT",
+      "One Bit Machine",
+      "Pesquisadores e instituições parceiras",
+      "Páginas futuras de métodos",
+      "Páginas futuras de White Papers",
+      "Página completa do Case Study",
+    ],
   },
   icons: {
     ArrowUpRight,

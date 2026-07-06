@@ -14,7 +14,8 @@ export function WhitePapersSection() {
           description={siteContent.whitePapers.description}
         />
         <Button disabled variant="secondary" className="w-fit">
-          White Papers em preparação
+          {siteContent.whitePapers.action.label}
+          {siteContent.whitePapers.action.status ? ` - ${siteContent.whitePapers.action.status}` : null}
         </Button>
       </div>
       <div className="mt-10 grid gap-4 lg:grid-cols-3">
