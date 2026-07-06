@@ -7,7 +7,10 @@ import { siteContent } from "@/content/payload-journey-lab";
 export function EducationSection() {
   return (
     <Section id="formacao" className="bg-subtle">
-      <SectionHeader title={siteContent.education.title} />
+      <SectionHeader
+        title={siteContent.education.title}
+        description={siteContent.education.intro}
+      />
       <div className="mt-10 grid gap-4 lg:grid-cols-3">
         {siteContent.education.items.map((item) => (
           <Card key={item.title} className="min-h-56">

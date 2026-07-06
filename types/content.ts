@@ -5,6 +5,15 @@ export type NavItem = {
   href: string;
 };
 
+export type CtaState = "active" | "future" | "disabled" | "external" | "anchor";
+
+export type CtaItem = {
+  label: string;
+  state: CtaState;
+  href?: string;
+  status?: string;
+};
+
 export type Pillar = {
   title: string;
   description: string;
@@ -14,6 +23,9 @@ export type Pillar = {
 export type CardItem = {
   title: string;
   description: string;
+  category?: string;
+  status?: string;
+  action?: CtaItem;
 };
 
 export type WhitePaper = {

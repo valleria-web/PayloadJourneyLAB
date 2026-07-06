@@ -47,21 +47,32 @@ export function CaseStudySection() {
             title={siteContent.caseStudy.title}
             description={siteContent.caseStudy.description}
           />
+          <p className="mt-5 max-w-3xl text-base leading-7 text-graphite">
+            {siteContent.caseStudy.secondaryDescription}
+          </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button disabled>
-              <Search aria-hidden="true" className="mr-2 size-4" />
-              Explorar o Case Study em preparação
-            </Button>
-            <Button disabled variant="secondary">
-              <Play aria-hidden="true" className="mr-2 size-4" />
-              LabLog em preparação
-            </Button>
+            {siteContent.caseStudy.actions.map((action, index) => {
+              const Icon = index === 0 ? Search : Play;
+
+              return (
+                <Button
+                  key={action.label}
+                  disabled
+                  variant={index === 0 ? "primary" : "secondary"}
+                >
+                  <Icon aria-hidden="true" className="mr-2 size-4" />
+                  {action.label}
+                  {action.status ? ` - ${action.status}` : null}
+                </Button>
+              );
+            })}
           </div>
           <div className="mt-10 grid gap-3 sm:grid-cols-4">
             {siteContent.caseStudy.stages.map((stage, index) => (
-              <div key={stage} className="border border-line p-4">
+              <div key={stage.label} className="border border-line p-4">
                 <p className="text-xs text-graphite">0{index + 1}</p>
-                <p className="mt-4 font-semibold">{stage}</p>
+                <p className="mt-4 font-semibold">{stage.label}</p>
+                <p className="mt-2 text-xs text-graphite">{stage.status}</p>
               </div>
             ))}
           </div>

@@ -8,7 +8,12 @@ export function LabOverviewSection() {
   return (
     <Section id="lab">
       <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-        <SectionHeader title={siteContent.lab.title} description={siteContent.lab.intro} />
+        <div>
+          <SectionHeader title={siteContent.lab.title} description={siteContent.lab.intro} />
+          <p className="mt-5 max-w-3xl text-base leading-7 text-graphite">
+            {siteContent.lab.complement}
+          </p>
+        </div>
         <div className="grid gap-4 sm:grid-cols-2">
           {siteContent.lab.pillars.map((pillar) => (
             <Card key={pillar.title} className="min-h-48">

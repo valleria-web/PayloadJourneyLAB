@@ -18,7 +18,7 @@ export function SiteFooter() {
                 Links
               </p>
               <div className="mt-3 grid gap-2 text-sm text-graphite">
-                {siteContent.nav.slice(1, 6).map((item) => (
+                {siteContent.nav.slice(1).map((item) => (
                   <a key={item.href} href={item.href} className="hover:text-ink">
                     {item.label}
                   </a>
@@ -30,16 +30,11 @@ export function SiteFooter() {
                 Redes
               </p>
               <div className="mt-3 grid gap-2 text-sm text-graphite">
-                {siteContent.contact.links.map((link) => (
-                  link.href === "#" ? (
-                    <span key={link.label} aria-disabled="true">
-                      {link.label} em preparação
-                    </span>
-                  ) : (
-                    <a key={link.label} href={link.href} className="hover:text-ink">
-                      {link.label}
-                    </a>
-                  )
+                {siteContent.contact.channels.map((channel) => (
+                  <span key={channel.label} aria-disabled="true">
+                    {channel.label}
+                    {channel.status ? ` - ${channel.status}` : null}
+                  </span>
                 ))}
               </div>
             </div>
