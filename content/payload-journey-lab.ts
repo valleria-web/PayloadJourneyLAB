@@ -359,6 +359,13 @@ export const siteContent = {
       "O Payload Journey LAB nasce para investigar essa diferença de velocidade e desenvolver métodos que ajudem estudantes, engenheiros e organizações a compreender sistemas complexos antes de modificá-los.",
     vision:
       "A visão do LAB é consolidar uma prática de Software System Investigation que conecte formação, pesquisa metodológica e investigação aplicada.",
+    founder: {
+      title: "Fundadora",
+      paragraphs: [
+        "Valéria dos Santos Reiser é a criadora do Payload Journey LAB e dos métodos que estruturam sua prática de investigação aplicada.",
+        "Seu trabalho desenvolve formas de observar como payloads, estados, eventos e decisões atravessam sistemas complexos, especialmente em codebases expandidas por agentes de IA",
+      ],
+    },
     reserved: ["Fundadora", "Pesquisadores", "Colaboradores", "Instituições parceiras"],
   },
   contact: {
