@@ -9,10 +9,13 @@ import { MethodsSection } from "@/components/sections/MethodsSection";
 import { WhitePapersSection } from "@/components/sections/WhitePapersSection";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { getHomePageStructuredData } from "@/lib/structured-data";
 
 export default function Home() {
   return (
     <>
+      <JsonLd data={getHomePageStructuredData()} />
       <SiteHeader />
       <main>
         <HeroSection />
