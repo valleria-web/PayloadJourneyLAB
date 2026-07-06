@@ -33,7 +33,7 @@ export const siteContent = {
     { label: "Início", href: "#inicio" },
     { label: "O LAB", href: "#lab" },
     { label: "Métodos", href: "#metodos" },
-    { label: "Case Study", href: "#case-study" },
+    { label: "Study Case", href: "#case-study" },
     { label: "Formação", href: "#formacao" },
     { label: "White Papers", href: "#white-papers" },
     { label: "Sobre", href: "#sobre" },
@@ -47,7 +47,7 @@ export const siteContent = {
       "Laboratório de formação, pesquisa e investigação aplicada dedicado a compreender como payloads, estados, eventos e decisões atravessam sistemas complexos.",
     primaryAction: { label: "Explorar o LAB", href: "#lab", state: "anchor" } satisfies CtaItem,
     secondaryAction: {
-      label: "Conhecer o Case Study",
+      label: "Conhecer o Study Case",
       href: "#case-study",
       state: "anchor",
     } satisfies CtaItem,
@@ -128,7 +128,7 @@ export const siteContent = {
   ecosystem: {
     title: "Um ecossistema para compreender sistemas",
     intro:
-      "Os métodos do LAB não funcionam de forma isolada. Eles fazem parte de uma prática de investigação estrutural orientada por evidências.",
+      "Os métodos do LAB fazem parte de uma prática de investigação estrutural orientada por evidências.",
     flow: ["Track Mode", "Reverse Payload Journey", "Track to Origin", "Evidência", "Restauração"],
     flowDescription:
       "O Track Mode suspende mudanças e prioriza observação. O Reverse Payload Journey reconstrói o caminho. Track to Origin conduz a investigação até a origem. A evidência permite restaurar autoridade e compreensão.",
@@ -262,7 +262,7 @@ export const siteContent = {
     ],
   },
   caseStudy: {
-    title: "Case Study",
+    title: "Study Case",
     subtitle: "Saving HORA.city",
     description:
       "O HORA.city é um sistema geolocalizado utilizado pelo Payload Journey LAB como caso real de investigação aplicada. Após uma expansão acelerada com agentes de IA, o sistema passou de aproximadamente 6 mil para 40 mil linhas de código e perdeu parte de sua observabilidade estrutural.",
@@ -289,7 +289,7 @@ export const siteContent = {
       state: "Investigação em andamento",
     },
     actions: [
-      futureCta("Explorar o Case Study", "Em preparação"),
+      futureCta("Explorar o Study Case", "Em preparação"),
       futureCta("Assistir ao LabLog", "Em preparação"),
     ] satisfies CtaItem[],
   },
@@ -391,7 +391,7 @@ export const siteContent = {
       "Pesquisadores e instituições parceiras",
       "Páginas futuras de métodos",
       "Páginas futuras de White Papers",
-      "Página completa do Case Study",
+      "Página completa do Study Case",
     ],
   },
   icons: {
