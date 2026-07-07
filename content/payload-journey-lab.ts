@@ -354,9 +354,9 @@ export const siteContent = {
   about: {
     title: "Sobre o Payload Journey LAB",
     text:
-      "Agentes de IA podem expandir sistemas mais rapidamente do que pessoas conseguem compreendê-los. Quando a velocidade de produção supera a velocidade de compreensão, torna-se mais difícil preservar rastreabilidade, autoridade, observabilidade e capacidade de decisão.",
+      "Agentes de IA podem expandir sistemas mais rapidamente do que pessoas conseguem compreendê-los. Quando a produção de código avança sem uma compreensão estrutural equivalente, torna-se mais difícil preservar rastreabilidade, autoridade, observabilidade e capacidade de decisão.",
     secondaryText:
-      "O Payload Journey LAB nasce para investigar essa diferença de velocidade e desenvolver métodos que ajudem estudantes, engenheiros e organizações a compreender sistemas complexos antes de modificá-los.",
+      "O Payload Journey LAB nasce nesse contexto para formar estudantes e engenheiros capazes de seguir o payload através das camadas de um sistema, compreender como eventos, estados e decisões se propagam, e investigar sistemas complexos antes de modificá-los.",
     vision:
       "A visão do LAB é consolidar uma prática de Software System Investigation que conecte formação, pesquisa metodológica e investigação aplicada.",
     founder: {

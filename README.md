@@ -10,11 +10,12 @@ The LAB develops methods and pedagogical artifacts to understand how payloads, s
 
 ## Purpose
 
-AI agents can expand software systems faster than people can understand them.
+AI agents can expand software systems faster than people can structurally understand them.
 
-When production speed becomes greater than comprehension speed, software teams may lose structural visibility, data authority, traceability, and confidence in system behavior.
+When code production grows without equivalent system comprehension, software teams may lose visibility over data flow, authority, traceability, and confidence in system behavior.
 
-Payload Journey LAB exists to investigate this gap and develop methods that help students, engineers, and organizations understand systems before modifying them.
+Payload Journey LAB exists to help students, engineers, and organizations follow payloads across system layers, understand how events, states, and decisions propagate, and investigate complex software systems before modifying them.
+
 
 ## Core methods
 
