@@ -19,7 +19,7 @@ export function MobileNavigation({ items }: MobileNavigationProps) {
         aria-label={open ? "Fechar navegação" : "Abrir navegação"}
         aria-expanded={open}
         aria-controls={menuId}
-        className="flex size-11 items-center justify-center rounded-sm border border-line bg-white text-ink transition-colors hover:border-accent hover:text-accent"
+        className="flex size-11 items-center justify-center rounded-lg border border-line bg-paper text-ink transition-colors hover:border-accent hover:text-accent"
         onClick={() => setOpen((current) => !current)}
       >
         {open ? (
@@ -31,14 +31,14 @@ export function MobileNavigation({ items }: MobileNavigationProps) {
       {open ? (
         <div
           id={menuId}
-          className="absolute left-0 top-full w-full border-b border-line bg-white px-5 py-4 shadow-sm"
+          className="absolute left-0 top-full w-full border-b border-line bg-paper px-5 py-4 shadow-sm"
         >
           <nav aria-label="Navegação móvel" className="grid gap-2">
             {items.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="rounded-sm border border-transparent px-3 py-3 text-sm font-medium text-graphite hover:border-line hover:bg-subtle hover:text-ink"
+                className="rounded-lg border border-transparent px-3 py-3 text-sm font-medium text-graphite hover:border-line hover:bg-accent-muted hover:text-ink"
                 onClick={() => setOpen(false)}
               >
                 {item.label}

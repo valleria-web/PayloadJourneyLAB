@@ -6,19 +6,33 @@ import { siteContent } from "@/content/payload-journey-lab";
 
 export function LabOverviewSection() {
   return (
-    <Section id="lab">
+    <Section id="lab" className="bg-paper">
       <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
-          <SectionHeader title={siteContent.lab.title} description={siteContent.lab.intro} />
+          <SectionHeader
+            eyebrow="LAB STRUCTURE"
+            title={siteContent.lab.title}
+            description={siteContent.lab.intro}
+          />
           <p className="mt-5 max-w-3xl text-base leading-7 text-graphite">
             {siteContent.lab.complement}
           </p>
+          <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-line bg-white px-4 py-2 font-mono text-xs text-accent">
+            <span>{">_"}</span>
+            flow trace origin
+          </div>
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
-          {siteContent.lab.pillars.map((pillar) => (
-            <Card key={pillar.title} className="min-h-48 transition-colors hover:border-accent">
-              <IconWrapper icon={pillar.icon} />
-              <h3 className="mt-6 text-xl font-semibold">{pillar.title}</h3>
+          {siteContent.lab.pillars.map((pillar, index) => (
+            <Card
+              key={pillar.title}
+              className="group min-h-48 hover:-translate-y-0.5 hover:border-accent"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <IconWrapper icon={pillar.icon} />
+                <span className="font-mono text-xs text-accent">0{index + 1}</span>
+              </div>
+              <h3 className="mt-6 text-xl font-bold">{pillar.title}</h3>
               <p className="mt-3 text-sm leading-6 text-graphite">{pillar.description}</p>
             </Card>
           ))}

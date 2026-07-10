@@ -14,15 +14,15 @@ export function SectionHeader({
   return (
     <div className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
       {eyebrow ? (
-        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-accent">
+        <p className="mb-4 font-mono text-xs font-semibold uppercase tracking-[0.08em] text-accent">
           {eyebrow}
         </p>
       ) : null}
-      <h2 className="text-3xl font-semibold tracking-normal text-ink sm:text-4xl">
+      <h2 className="text-3xl font-bold tracking-normal text-ink sm:text-4xl">
         {title}
       </h2>
       {description ? (
-        <p className="mt-5 max-w-3xl text-base leading-7 text-graphite sm:text-lg">
+        <p className="mt-5 max-w-3xl text-base leading-7 text-graphite sm:text-lg sm:leading-8">
           {description}
         </p>
       ) : null}

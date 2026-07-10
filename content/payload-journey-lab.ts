@@ -20,6 +20,7 @@ import type { CardItem, CaseFact, CtaItem, NavItem, Pillar, WhitePaper } from "@
 
 const betaCourseUrl =
   "https://www.udemy.com/course/payload-journey-lab-siga-o-flow-entenda-o-sistema/?couponCode=FOLLOW-THE-FLOW";
+const labLogUrl = "https://www.youtube.com/@Lab-Log";
 
 const futureCta = (label: string, status = "Em preparação"): CtaItem => ({
   label,
@@ -38,7 +39,7 @@ export const siteContent = {
     { label: "Métodos", href: "#metodos" },
     { label: "Study Case", href: "#case-study" },
     { label: "Formação", href: "#formacao" },
-    { label: "White Papers", href: "#white-papers" },
+    { label: "LabLog", href: "#lablog" },
     { label: "Sobre", href: "#sobre" },
     { label: "Contato", href: "#contato" },
   ] satisfies NavItem[],
@@ -56,8 +57,8 @@ export const siteContent = {
     } satisfies CtaItem,
     secondaryAction: {
       label: "Assistir ao LabLog",
-      href: "#case-study",
-      state: "anchor",
+      href: labLogUrl,
+      state: "external",
     } satisfies CtaItem,
   },
   lab: {
@@ -308,7 +309,7 @@ export const siteContent = {
     beta: {
       title: "Formação Beta na Udemy",
       description:
-        "A primeira formação do Payload Journey LAB já está disponível na Udemy. Entre no LAB Beta, aprenda a seguir o payload através das camadas e desenvolva a visão estrutural necessária para pensar como Trace Engineer.",
+        "A primeira formação do Payload Journey LAB já está disponível na Udemy. Aprenda a seguir o payload através das camadas e desenvolva a visão estrutural necessária para pensar como Trace Engineer.",
       action: {
         label: "Começar com cupom FOLLOW-THE-FLOW",
         href: betaCourseUrl,
