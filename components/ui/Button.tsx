@@ -7,8 +7,8 @@ type ButtonProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
 };
 
 const variants = {
-  primary: "border-ink bg-ink text-white hover:border-accent hover:bg-accent",
-  secondary: "border-line bg-white text-ink hover:border-accent hover:text-accent",
+  primary: "border-pink bg-pink text-white shadow-[0_12px_30px_rgba(235,92,184,0.18)] hover:border-pink-dark hover:bg-pink-dark",
+  secondary: "border-line bg-paper text-ink hover:border-pink hover:bg-blush/45",
 };
 
 export function Button({
@@ -19,7 +19,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseClasses =
-    "inline-flex min-h-11 items-center justify-center gap-2 rounded-sm border px-5 py-3 text-center text-sm font-semibold leading-5 transition-colors";
+    "inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border px-5 py-3 text-center text-sm font-semibold leading-5 transition-all duration-200";
 
   if (disabled) {
     return (

@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import { SectionHeader } from "@/components/sections/SectionHeader";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -7,45 +8,51 @@ import { siteContent } from "@/content/payload-journey-lab";
 
 export function EducationSection() {
   return (
-    <Section id="formacao" className="bg-subtle">
+    <Section id="formacao" className="bg-paper">
       <SectionHeader
+        eyebrow="DO METODO A PRATICA"
         title={siteContent.education.title}
         description={siteContent.education.intro}
       />
-      <Card className="mt-10 border-ink bg-ink text-white">
-        <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
+      <Card className="mt-10 overflow-hidden border-accent/30 bg-white/85">
+        <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent-muted">
+            <p className="font-mono text-xs font-semibold uppercase tracking-[0.08em] text-accent">
               LAB Beta
             </p>
-            <h3 className="mt-4 text-2xl font-semibold">
+            <h3 className="mt-4 text-2xl font-bold text-ink sm:text-3xl">
               {siteContent.education.beta.title}
             </h3>
-            <p className="mt-5 max-w-3xl text-sm leading-6 text-white/80">
+            <p className="mt-5 max-w-3xl text-sm leading-6 text-graphite sm:text-base sm:leading-7">
               {siteContent.education.beta.description}
             </p>
+            <div className="mt-5 inline-flex w-fit items-center rounded-full border border-accent/25 bg-accent-muted px-3 py-1 font-mono text-xs font-semibold text-accent">
+              coupon: FOLLOW-THE-FLOW
+            </div>
           </div>
           <Button
             href={siteContent.education.beta.action.href}
             target="_blank"
             rel="noopener noreferrer"
-            variant="secondary"
-            className="w-full border-white/20 bg-white text-ink hover:border-accent hover:text-accent sm:w-fit"
+            className="w-full sm:w-fit"
           >
-            {siteContent.education.beta.action.label}
+            Entrar no LAB Beta
+            <ArrowUpRight aria-hidden="true" className="size-4" />
           </Button>
         </div>
       </Card>
       <div className="mt-10 grid gap-4 lg:grid-cols-3">
         {siteContent.education.items.map((item) => (
-          <Card key={item.title} className="min-h-56">
-            <h3 className="text-xl font-semibold">{item.title}</h3>
+          <Card key={item.title} className="min-h-56 hover:-translate-y-0.5 hover:border-accent">
+            <h3 className="text-xl font-bold">{item.title}</h3>
             <p className="mt-5 text-sm leading-6 text-graphite">{item.description}</p>
           </Card>
         ))}
       </div>
-      <div className="mt-10 rounded-sm border border-line bg-white p-6">
-        <p className="text-sm font-semibold">Links futuros</p>
+      <div className="mt-10 rounded-xl border border-line bg-white/75 p-6">
+        <p className="font-mono text-xs font-semibold uppercase tracking-[0.08em] text-accent">
+          Trilhas futuras
+        </p>
         <div className="mt-4 flex flex-wrap gap-2">
           {siteContent.education.links.map((link) => (
             <Badge key={link}>{link}</Badge>

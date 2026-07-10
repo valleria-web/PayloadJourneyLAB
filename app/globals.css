@@ -4,13 +4,15 @@
 
 :root {
   color-scheme: light;
-  --paper: #ffffff;
-  --ink: #0a0a0a;
-  --muted: #66666d;
-  --line: #d9d9de;
-  --soft: #f7f7f8;
-  --accent: #0f766e;
-  --accent-muted: #e6f2f0;
+  --paper: #f8f7f4;
+  --ink: #101010;
+  --muted: #4b4b4b;
+  --line: #d8d6d1;
+  --soft: #e9e7e2;
+  --accent: #2fae42;
+  --terminal: #78e65d;
+  --pink: #eb5cb8;
+  --accent-muted: #e9f8e6;
 }
 
 * {
@@ -34,7 +36,7 @@ a {
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--pink);
   outline-offset: 3px;
 }
 

@@ -1,51 +1,31 @@
-import { ArrowUpRight } from "lucide-react";
-import { SectionHeader } from "@/components/sections/SectionHeader";
+import { Play } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { siteContent } from "@/content/payload-journey-lab";
 
 export function WhitePapersSection() {
   return (
-    <Section id="white-papers">
-      <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-        <SectionHeader
-          title={siteContent.whitePapers.title}
-          description={siteContent.whitePapers.description}
-        />
-        <Button disabled variant="secondary" className="w-fit">
-          {siteContent.whitePapers.action.label}
-          {siteContent.whitePapers.action.status ? ` - ${siteContent.whitePapers.action.status}` : null}
-        </Button>
-      </div>
-      <div className="mt-10 grid gap-4 lg:grid-cols-3">
-        {siteContent.whitePapers.items.map((paper) => (
-          <Card key={paper.id} className="flex min-h-80 flex-col">
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-graphite">
-                  {paper.id}
-                </p>
-                <p className="mt-2 text-xs text-graphite">{paper.type}</p>
-              </div>
-              <span className="rounded-sm border border-line bg-accent-muted px-2 py-1 text-xs text-accent">
-                {paper.status}
-              </span>
-            </div>
-            <h3 className="mt-8 text-xl font-semibold">{paper.title}</h3>
-            <p className="mt-4 flex-1 text-sm leading-6 text-graphite">{paper.summary}</p>
-            <div className="mt-8 flex items-center justify-between border-t border-line pt-4 text-sm">
-              <span className="text-graphite">{paper.date}</span>
-              <span
-                aria-disabled="true"
-                className="inline-flex items-center gap-2 text-right font-semibold text-muted"
-              >
-                Publicação em preparação
-                <ArrowUpRight aria-hidden="true" className="size-4" />
-              </span>
-            </div>
-          </Card>
-        ))}
+    <Section id="lablog" className="border-y border-line bg-subtle">
+      <div className="max-w-3xl">
+        <p className="mb-4 font-mono text-xs font-semibold uppercase tracking-[0.08em] text-accent">
+          LABLOG / YOUTUBE
+        </p>
+        <h2 className="text-3xl font-bold tracking-normal text-ink sm:text-4xl">LabLog</h2>
+        <p className="mt-5 text-base leading-7 text-graphite sm:text-lg sm:leading-8">
+          Acompanhe a investigacao em movimento: payloads, anomalias, decisoes, camadas e retorno a
+          origem.
+        </p>
+        <div className="mt-8">
+          <Button
+            href={siteContent.hero.secondaryAction.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="secondary"
+          >
+            <Play aria-hidden="true" className="size-4" />
+            Assistir ao LabLog
+          </Button>
+        </div>
       </div>
     </Section>
   );
