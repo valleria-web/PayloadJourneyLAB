@@ -5,9 +5,9 @@ import { ConceptEcosystemSection } from "@/components/sections/ConceptEcosystemS
 import { ContactSection } from "@/components/sections/ContactSection";
 import { EducationSection } from "@/components/sections/EducationSection";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { LabLogSection } from "@/components/sections/LabLogSection";
 import { LabOverviewSection } from "@/components/sections/LabOverviewSection";
 import { MethodsSection } from "@/components/sections/MethodsSection";
-import { WhitePapersSection } from "@/components/sections/WhitePapersSection";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -25,7 +25,7 @@ export default function Home() {
         <ConceptEcosystemSection />
         <CaseStudySection />
         <EducationSection />
-        <WhitePapersSection />
+        <LabLogSection />
         <AboutSection />
         <ContactSection />
         <BetaCtaSection />
