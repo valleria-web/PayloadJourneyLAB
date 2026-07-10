@@ -4,8 +4,7 @@ import { siteContent } from "@/content/payload-journey-lab";
 const footerLinks = [
   { label: "Udemy", href: siteContent.hero.primaryAction.href, external: true },
   { label: "LabLog", href: "#lablog" },
-  { label: "LinkedIn", href: "#contato" },
-  { label: "GitHub", href: "#contato" },
+  { label: "YouTube", href: "https://www.youtube.com/@Lab-Log", external: true },
 ];
 
 export function SiteFooter() {
