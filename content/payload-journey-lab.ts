@@ -41,7 +41,6 @@ export const siteContent = {
     { label: "Formação", href: "#formacao" },
     { label: "LabLog", href: "#lablog" },
     { label: "Sobre", href: "#sobre" },
-    { label: "Contato", href: "#contato" },
   ] satisfies NavItem[],
   hero: {
     eyebrow: "Software System Investigation",

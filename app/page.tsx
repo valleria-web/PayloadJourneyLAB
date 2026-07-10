@@ -2,7 +2,6 @@ import { AboutSection } from "@/components/sections/AboutSection";
 import { BetaCtaSection } from "@/components/sections/BetaCtaSection";
 import { CaseStudySection } from "@/components/sections/CaseStudySection";
 import { ConceptEcosystemSection } from "@/components/sections/ConceptEcosystemSection";
-import { ContactSection } from "@/components/sections/ContactSection";
 import { EducationSection } from "@/components/sections/EducationSection";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { LabLogSection } from "@/components/sections/LabLogSection";
@@ -27,7 +26,6 @@ export default function Home() {
         <EducationSection />
         <LabLogSection />
         <AboutSection />
-        <ContactSection />
         <BetaCtaSection />
       </main>
       <SiteFooter />

@@ -24,7 +24,7 @@ export function UsmtSection() {
                 </span>
               ))}
             </div>
-            <Button href="#contato">{siteContent.usmt.action}</Button>
+            <Button href="#lablog">{siteContent.usmt.action}</Button>
           </div>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
