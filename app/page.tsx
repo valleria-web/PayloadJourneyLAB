@@ -1,4 +1,5 @@
 import { AboutSection } from "@/components/sections/AboutSection";
+import { BetaCtaSection } from "@/components/sections/BetaCtaSection";
 import { CaseStudySection } from "@/components/sections/CaseStudySection";
 import { ConceptEcosystemSection } from "@/components/sections/ConceptEcosystemSection";
 import { ContactSection } from "@/components/sections/ContactSection";
@@ -27,6 +28,7 @@ export default function Home() {
         <WhitePapersSection />
         <AboutSection />
         <ContactSection />
+        <BetaCtaSection />
       </main>
       <SiteFooter />
     </>

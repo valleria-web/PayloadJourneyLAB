@@ -22,7 +22,11 @@ export function HeroSection() {
             {siteContent.hero.intro}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button href={siteContent.hero.primaryAction.href}>
+            <Button
+              href={siteContent.hero.primaryAction.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {siteContent.hero.primaryAction.label}
               <ArrowRight aria-hidden="true" className="size-4" />
             </Button>
@@ -30,6 +34,11 @@ export function HeroSection() {
               {siteContent.hero.secondaryAction.label}
             </Button>
           </div>
+          {siteContent.hero.primaryAction.status ? (
+            <p className="mt-3 max-w-xl text-sm leading-6 text-graphite">
+              {siteContent.hero.primaryAction.status}
+            </p>
+          ) : null}
         </div>
       </Container>
     </section>

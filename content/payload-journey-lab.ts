@@ -18,6 +18,9 @@ import {
 } from "lucide-react";
 import type { CardItem, CaseFact, CtaItem, NavItem, Pillar, WhitePaper } from "@/types/content";
 
+const betaCourseUrl =
+  "https://www.udemy.com/course/payload-journey-lab-siga-o-flow-entenda-o-sistema/?couponCode=FOLLOW-THE-FLOW";
+
 const futureCta = (label: string, status = "Em preparação"): CtaItem => ({
   label,
   state: "future",
@@ -45,9 +48,14 @@ export const siteContent = {
     subtitle: "Siga o flow. Entenda o sistema.",
     intro:
       "Laboratório de formação, pesquisa e investigação aplicada dedicado a compreender como payloads, estados, eventos e decisões atravessam sistemas complexos.",
-    primaryAction: { label: "Explorar o LAB", href: "#lab", state: "anchor" } satisfies CtaItem,
+    primaryAction: {
+      label: "Entrar no LAB Beta",
+      href: betaCourseUrl,
+      state: "external",
+      status: "Comece pela formação na Udemy com o cupom FOLLOW-THE-FLOW.",
+    } satisfies CtaItem,
     secondaryAction: {
-      label: "Conhecer o Study Case",
+      label: "Assistir ao LabLog",
       href: "#case-study",
       state: "anchor",
     } satisfies CtaItem,
@@ -297,6 +305,16 @@ export const siteContent = {
     title: "Do método à prática",
     intro:
       "O Payload Journey LAB transforma seus métodos em experiências de formação, investigações aplicadas e oportunidades de colaboração.",
+    beta: {
+      title: "Formação Beta na Udemy",
+      description:
+        "A primeira formação do Payload Journey LAB já está disponível na Udemy. Entre no LAB Beta, aprenda a seguir o payload através das camadas e desenvolva a visão estrutural necessária para pensar como Trace Engineer.",
+      action: {
+        label: "Começar com cupom FOLLOW-THE-FLOW",
+        href: betaCourseUrl,
+        state: "external",
+      } satisfies CtaItem,
+    },
     items: [
       {
         title: "Aprender",
@@ -315,6 +333,16 @@ export const siteContent = {
       },
     ] satisfies CardItem[],
     links: ["Curso", "LabLogs", "Workshops", "Programa Trace Engineer", "Pilotos acadêmicos"],
+  },
+  betaCta: {
+    title: "Primeiro círculo de estudantes do LAB",
+    text:
+      "O Payload Journey LAB está abrindo sua etapa beta para estudantes, desenvolvedores e pessoas interessadas em compreender sistemas como fluxo. Esta é a porta de entrada para aprender Payload Journey, USMT, Reverse Payload Journey e Track Mode.",
+    action: {
+      label: "Acessar curso beta",
+      href: betaCourseUrl,
+      state: "external",
+    } satisfies CtaItem,
   },
   whitePapers: {
     title: "White Papers",
