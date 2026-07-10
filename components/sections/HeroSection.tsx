@@ -1,26 +1,100 @@
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { Container } from "@/components/ui/Container";
+import { HighlightPanel } from "@/components/ui/HighlightPanel";
+import { Section } from "@/components/ui/Section";
+import { TechnicalLabel } from "@/components/ui/TechnicalLabel";
+import { TerminalChip } from "@/components/ui/TerminalChip";
+import { TerminalLine } from "@/components/ui/TerminalLine";
 import { siteContent } from "@/content/payload-journey-lab";
 
-export function HeroSection() {
+const payloadFlow = [
+  { action: "FREEZE", target: "PAYLOAD" },
+  { action: "MAP", target: "PATH" },
+  { action: "DETECT", target: "MUTATION" },
+  { action: "RESTORE", target: "AUTHORITY" },
+];
+
+function PayloadFlowPanel() {
   return (
-    <section
-      id="inicio"
-      className="scroll-mt-24 overflow-hidden border-b border-line bg-paper py-16 sm:py-20 lg:py-24"
+    <HighlightPanel
+      variant="soft-blush"
+      className="relative overflow-hidden border-accent-cta/20 bg-surface-page/80 p-5 sm:p-6 lg:p-7"
     >
-      <Container>
-        <div className="max-w-4xl">
-          <p className="mb-5 font-mono text-xs font-semibold uppercase tracking-[0.08em] text-accent">
-            {siteContent.hero.eyebrow}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-6 top-24 h-px bg-accent-technical/20"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute bottom-5 right-5 h-12 w-px bg-accent-cta/20"
+      />
+
+      <div className="relative flex items-start justify-between gap-4">
+        <div>
+          <TerminalChip>TRACK MODE ACTIVE</TerminalChip>
+          <p className="mt-4 font-mono text-xs leading-6 text-text-muted">
+            &gt;_ payload.route.observe()
           </p>
-          <h1 className="whitespace-pre-line text-5xl font-bold leading-[0.98] tracking-normal text-ink sm:text-7xl lg:text-8xl">
-            {siteContent.hero.title}
+        </div>
+        <span className="rounded-full border border-accent-technical/25 bg-accent-muted px-2.5 py-1 font-mono text-[0.7rem] font-semibold uppercase tracking-[0.08em] text-accent-technical">
+          active
+        </span>
+      </div>
+
+      <div className="relative mt-10 grid gap-3">
+        {payloadFlow.map((item, index) => (
+          <div
+            key={item.action}
+            className="grid grid-cols-[auto_1fr] items-center gap-4 rounded-xl border border-border-default/80 bg-white/70 px-4 py-3 shadow-[0_10px_30px_rgba(16,16,16,0.03)]"
+          >
+            <span className="grid size-10 place-items-center rounded-lg border border-accent-technical/25 bg-accent-muted font-mono text-xs font-semibold text-accent-technical">
+              0{index + 1}
+            </span>
+            <div className="min-w-0">
+              <p className="font-mono text-sm font-semibold uppercase tracking-[0.08em] text-ink">
+                {item.action}
+              </p>
+              <p className="mt-1 font-mono text-[0.7rem] uppercase tracking-[0.08em] text-text-muted">
+                {item.target}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="relative mt-5 flex flex-wrap gap-2">
+        <TerminalChip>TRACK MODE</TerminalChip>
+        <TerminalChip tone="cta">REVERSE</TerminalChip>
+        <TerminalChip tone="neutral">ORIGIN</TerminalChip>
+      </div>
+    </HighlightPanel>
+  );
+}
+
+export function HeroSection() {
+  const title = siteContent.hero.title.replace(/\s+/g, " ");
+
+  return (
+    <Section
+      id="inicio"
+      className="overflow-hidden border-b border-line py-20 sm:py-24 lg:py-28"
+      containerClassName="relative"
+    >
+      <div
+        aria-hidden="true"
+        className="absolute left-8 top-8 hidden h-16 w-px bg-accent-technical/25 lg:block"
+      />
+      <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.08fr)_minmax(22rem,0.92fr)] lg:gap-14">
+        <div className="max-w-4xl">
+          <TechnicalLabel className="mb-5">{siteContent.hero.eyebrow}</TechnicalLabel>
+          <h1 className="max-w-4xl text-5xl font-bold leading-[0.94] tracking-normal text-ink sm:text-6xl md:text-7xl lg:text-[5.6rem]">
+            {title}
           </h1>
-          <p className="mt-5 text-xl font-semibold text-ink sm:text-2xl">
+          <div className="mt-5 h-1 w-16 rounded-full bg-accent-cta" aria-hidden="true" />
+          <p className="mt-6 text-xl font-semibold leading-8 text-ink sm:text-2xl">
             {siteContent.hero.subtitle}
           </p>
-          <p className="mt-7 max-w-2xl text-lg leading-8 text-graphite">
+          <p className="mt-7 max-w-2xl text-base leading-8 text-text-muted sm:text-lg">
             {siteContent.hero.intro}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -42,11 +116,13 @@ export function HeroSection() {
               {siteContent.hero.secondaryAction.label}
             </Button>
           </div>
-          <p className="mt-5 max-w-xl font-mono text-sm leading-6 text-accent">
-            <span>{">_"}</span> Congelar. Mapear. Detectar. Restaurar.
-          </p>
+          <TerminalLine className="mt-6">
+            Congelar. Mapear. Detectar. Restaurar.
+          </TerminalLine>
         </div>
-      </Container>
-    </section>
+
+        <PayloadFlowPanel />
+      </div>
+    </Section>
   );
 }
