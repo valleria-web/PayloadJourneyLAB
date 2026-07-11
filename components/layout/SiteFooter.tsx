@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { siteContent } from "@/content/payload-journey-lab";
 
@@ -15,7 +16,14 @@ export function SiteFooter() {
       <Container>
         <div className="grid gap-8 md:grid-cols-[1.2fr_2fr]">
           <div>
-            <p className="font-mono font-semibold text-terminal">{siteContent.brand.name}</p>
+            <Image
+              src="/brand/logo.png"
+              alt={siteContent.brand.name}
+              width={224}
+              height={96}
+              sizes="224px"
+              className="h-24 w-56 rounded-md object-cover"
+            />
             <p className="mt-3 max-w-sm text-sm leading-6 text-white/70">
               Payload Journey LAB - formacao, pesquisa e investigacao aplicada em sistemas
               complexos.
