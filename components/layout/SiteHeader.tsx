@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { MobileNavigation } from "@/components/layout/MobileNavigation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
@@ -9,17 +10,18 @@ export function SiteHeader() {
       <Container className="relative flex h-16 items-center justify-between gap-5">
         <a
           href="#inicio"
-          className="flex min-h-11 min-w-0 items-center gap-3 font-mono text-sm font-semibold text-accent"
+          className="flex min-h-11 min-w-0 items-center gap-3 font-mono text-base font-semibold text-accent"
           aria-label={`${siteContent.brand.name} - inicio`}
         >
-          <span
-            aria-hidden="true"
-            className="grid size-8 shrink-0 grid-cols-2 rounded-md border border-accent bg-ink"
-          >
-            <span className="border-b border-r border-accent" />
-            <span className="border-b border-accent" />
-            <span className="border-r border-accent" />
-            <span />
+          <span className="relative h-11 w-20 shrink-0 overflow-hidden rounded-md bg-black">
+            <Image
+              src="/brand/logo.png"
+              alt=""
+              fill
+              priority
+              sizes="80px"
+              className="object-cover"
+            />
           </span>
           <span className="truncate">{siteContent.brand.name}</span>
         </a>
