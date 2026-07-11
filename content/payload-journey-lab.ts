@@ -20,7 +20,7 @@ import type { CardItem, CaseFact, CtaItem, NavItem, Pillar, WhitePaper } from "@
 
 const betaCourseUrl =
   "https://www.udemy.com/course/payload-journey-lab-siga-o-flow-entenda-o-sistema/?couponCode=FOLLOW-THE-FLOW";
-const labLogUrl = "https://www.youtube.com/@Lab-Log";
+const labLogUrl = "https://www.youtube.com/@PayloadJourneyLAB";
 
 const futureCta = (label: string, status = "Em preparação"): CtaItem => ({
   label,
