@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
+
+const googleAnalyticsId = "G-8HW6J5BBY2";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -45,6 +48,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang={siteConfig.language} className="scroll-smooth bg-surface-page">
+      <head>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${googleAnalyticsId}');
+          `}
+        </Script>
+      </head>
       <body className="bg-paper font-sans text-ink antialiased">{children}</body>
     </html>
   );
