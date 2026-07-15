@@ -19,7 +19,7 @@ export function TerminalChip({
 }: TerminalChipProps) {
   return (
     <span
-      className={`inline-flex w-fit items-center rounded-md border px-2.5 py-1 font-mono text-[0.7rem] font-semibold uppercase leading-none tracking-[0.08em] ${tones[tone]} ${className}`}
+      className={`inline-flex w-fit items-center rounded-md border px-2.5 py-1 font-mono text-[calc(0.7rem+5px)] font-semibold uppercase leading-none tracking-[0.08em] ${tones[tone]} ${className}`}
     >
       {children}
     </span>

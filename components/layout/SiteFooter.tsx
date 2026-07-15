@@ -31,7 +31,7 @@ export function SiteFooter() {
           </div>
           <div className="grid gap-6 sm:grid-cols-3">
             <div>
-              <p className="font-mono text-xs font-semibold uppercase tracking-[0.08em] text-terminal">
+              <p className="font-mono text-[calc(0.75rem+10px)] font-semibold uppercase tracking-[0.08em] text-terminal">
                 Navegacao
               </p>
               <div className="mt-3 grid gap-2 text-sm text-white/70">
@@ -43,7 +43,7 @@ export function SiteFooter() {
               </div>
             </div>
             <div>
-              <p className="font-mono text-xs font-semibold uppercase tracking-[0.08em] text-terminal">
+              <p className="font-mono text-[calc(0.75rem+10px)] font-semibold uppercase tracking-[0.08em] text-terminal">
                 Links
               </p>
               <div className="mt-3 grid gap-2 text-sm text-white/70">
@@ -53,7 +53,7 @@ export function SiteFooter() {
                     href={link.href}
                     target={link.external ? "_blank" : undefined}
                     rel={link.external ? "noopener noreferrer" : undefined}
-                    className="w-fit py-1 hover:text-terminal"
+                    className="w-fit py-1 text-[calc(0.875rem+5px)] hover:text-terminal"
                   >
                     {link.label}
                   </a>
@@ -61,7 +61,7 @@ export function SiteFooter() {
               </div>
             </div>
             <div>
-              <p className="font-mono text-xs font-semibold uppercase tracking-[0.08em] text-terminal">
+              <p className="font-mono text-[calc(0.75rem+10px)] font-semibold uppercase tracking-[0.08em] text-terminal">
                 Legal
               </p>
               <div className="mt-3 grid gap-2 text-sm text-white/60">

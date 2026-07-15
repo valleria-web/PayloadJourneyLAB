@@ -20,17 +20,17 @@ function InvestigationStatusCard() {
   return (
     <Card className="border-line/70 bg-[#fcf7f8]/90 p-6 sm:p-7 lg:p-8">
       <div className="flex items-center justify-between gap-3">
-        <TechnicalLabel tone="terminal" className="text-[0.68rem]">
+        <TechnicalLabel tone="terminal" className="text-[calc(0.68rem+10px)]">
           {">_"} HORA.city
         </TechnicalLabel>
-        <span className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-text-muted">
+        <span className="font-mono text-[calc(0.62rem+5px)] uppercase tracking-[0.16em] text-text-muted">
           case file
         </span>
       </div>
 
-      <div className="mt-6 rounded-2xl border border-ink/10 bg-ink p-5 font-mono text-[0.78rem] leading-6 text-white shadow-[0_18px_50px_rgba(16,16,16,0.18)]">
+      <div className="mt-6 rounded-2xl border border-ink/10 bg-ink p-5 font-mono text-[calc(0.78rem+5px)] leading-6 text-white shadow-[0_18px_50px_rgba(16,16,16,0.18)]">
         <p>
-          <span className="text-terminal">{">_"}</span> case: {investigation.caseId}
+          <span className="text-[calc(0.78rem+10px)] text-terminal">{">_"}</span> case: {investigation.caseId}
         </p>
         <p className="mt-1 text-white/70">region: BR</p>
         <p className="mt-1 text-white/70">status: active investigation</p>
@@ -40,13 +40,13 @@ function InvestigationStatusCard() {
 
       <div className="mt-5 grid gap-3 sm:grid-cols-[1fr_1fr]">
         <div className="rounded-2xl border border-line/70 bg-white/75 p-4">
-          <TechnicalLabel tone="terminal" className="text-[0.6rem]">
+          <TechnicalLabel tone="terminal" className="text-[calc(0.6rem+10px)]">
             Validated Flow
           </TechnicalLabel>
           <p className="mt-2 text-sm font-semibold text-ink">in progress</p>
         </div>
         <div className="rounded-2xl border border-line/70 bg-white/75 p-4">
-          <TechnicalLabel tone="terminal" className="text-[0.6rem]">
+          <TechnicalLabel tone="terminal" className="text-[calc(0.6rem+10px)]">
             Authority
           </TechnicalLabel>
           <p className="mt-2 text-sm font-semibold text-ink">temporal authority under review</p>
@@ -56,7 +56,7 @@ function InvestigationStatusCard() {
       <div className="mt-5 divide-y divide-line/70 rounded-2xl border border-line/70 bg-white/70">
         {technicalRows.map(([label, value]) => (
           <div key={label} className="flex items-center justify-between gap-4 px-4 py-3">
-            <span className="font-mono text-[0.7rem] uppercase tracking-[0.1em] text-graphite">
+            <span className="font-mono text-[calc(0.7rem+5px)] uppercase tracking-[0.1em] text-graphite">
               {label}
             </span>
             <span className="text-right text-sm font-medium text-ink">{value}</span>
@@ -65,10 +65,10 @@ function InvestigationStatusCard() {
       </div>
 
       <div className="mt-5 flex flex-wrap gap-2">
-        <span className="rounded-full border border-line/70 bg-white/75 px-3 py-1.5 font-mono text-[0.66rem] uppercase tracking-[0.12em] text-graphite">
+        <span className="rounded-full border border-line/70 bg-white/75 px-3 py-1.5 font-mono text-[calc(0.66rem+5px)] uppercase tracking-[0.12em] text-graphite">
           ~6k → ~40k linhas
         </span>
-        <span className="rounded-full border border-line/70 bg-white/75 px-3 py-1.5 font-mono text-[0.66rem] uppercase tracking-[0.12em] text-graphite">
+        <span className="rounded-full border border-line/70 bg-white/75 px-3 py-1.5 font-mono text-[calc(0.66rem+5px)] uppercase tracking-[0.12em] text-graphite">
           createdAt incorreto
         </span>
       </div>
@@ -129,7 +129,7 @@ export function CaseStudySection() {
             <div className="flex flex-wrap gap-x-6 gap-y-3">
               {microFacts.map((fact) => (
                 <div key={fact.label} className="flex items-baseline gap-2">
-                  <TechnicalLabel tone="terminal" className="text-[0.58rem]">
+                  <TechnicalLabel tone="terminal" className="text-[calc(0.58rem+10px)]">
                     {fact.label}
                   </TechnicalLabel>
                   <span className="text-sm font-medium text-ink">{fact.value}</span>

@@ -17,7 +17,7 @@ export function EducationSection() {
       <Card className="mt-10 overflow-hidden border-accent/30 bg-white/85">
         <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
-            <p className="font-mono text-xs font-semibold uppercase tracking-[0.08em] text-accent">
+            <p className="font-mono text-[calc(0.75rem+5px)] font-semibold uppercase tracking-[0.08em] text-accent">
               LAB Beta
             </p>
             <h3 className="mt-4 text-2xl font-bold text-ink sm:text-3xl">
@@ -26,7 +26,7 @@ export function EducationSection() {
             <p className="mt-5 max-w-3xl text-sm leading-6 text-graphite sm:text-base sm:leading-7">
               {siteContent.education.beta.description}
             </p>
-            <div className="mt-5 inline-flex w-fit items-center rounded-full border border-accent/25 bg-accent-muted px-3 py-1 font-mono text-xs font-semibold text-accent">
+            <div className="mt-5 inline-flex w-fit items-center rounded-full border border-accent/25 bg-accent-muted px-3 py-1 font-mono text-[calc(0.75rem+5px)] font-semibold text-accent">
               coupon: FOLLOW-THE-FLOW
             </div>
           </div>
@@ -50,7 +50,7 @@ export function EducationSection() {
         ))}
       </div>
       <div className="mt-10 rounded-xl border border-line bg-white/75 p-6">
-        <p className="font-mono text-xs font-semibold uppercase tracking-[0.08em] text-accent">
+        <p className="font-mono text-[calc(0.75rem+5px)] font-semibold uppercase tracking-[0.08em] text-accent">
           Trilhas futuras
         </p>
         <div className="mt-4 flex flex-wrap gap-2">
