@@ -36,9 +36,6 @@ function PayloadFlowPanel() {
             &gt;_ payload.route.observe()
           </p>
         </div>
-        <span className="rounded-full border border-accent-technical/25 bg-accent-muted px-2.5 py-1 font-mono text-[calc(0.7rem+5px)] font-semibold uppercase tracking-[0.08em] text-accent-technical">
-          active
-        </span>
       </div>
 
       <div className="relative mt-10 grid gap-3">
