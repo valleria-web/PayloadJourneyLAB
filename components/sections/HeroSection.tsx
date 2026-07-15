@@ -32,11 +32,11 @@ function PayloadFlowPanel() {
       <div className="relative flex items-start justify-between gap-4">
         <div>
           <TerminalChip>TRACK MODE ACTIVE</TerminalChip>
-          <p className="mt-4 font-mono text-xs leading-6 text-text-muted">
+          <p className="mt-4 font-mono text-[calc(0.75rem+5px)] leading-6 text-text-muted">
             &gt;_ payload.route.observe()
           </p>
         </div>
-        <span className="rounded-full border border-accent-technical/25 bg-accent-muted px-2.5 py-1 font-mono text-[0.7rem] font-semibold uppercase tracking-[0.08em] text-accent-technical">
+        <span className="rounded-full border border-accent-technical/25 bg-accent-muted px-2.5 py-1 font-mono text-[calc(0.7rem+5px)] font-semibold uppercase tracking-[0.08em] text-accent-technical">
           active
         </span>
       </div>
@@ -47,14 +47,14 @@ function PayloadFlowPanel() {
             key={item.action}
             className="grid grid-cols-[auto_1fr] items-center gap-4 rounded-xl border border-border-default/80 bg-white/70 px-4 py-3 shadow-[0_10px_30px_rgba(16,16,16,0.03)]"
           >
-            <span className="grid size-10 place-items-center rounded-lg border border-accent-technical/25 bg-accent-muted font-mono text-xs font-semibold text-accent-technical">
+            <span className="grid size-10 place-items-center rounded-lg border border-accent-technical/25 bg-accent-muted font-mono text-[calc(0.75rem+5px)] font-semibold text-accent-technical">
               0{index + 1}
             </span>
             <div className="min-w-0">
-              <p className="font-mono text-sm font-semibold uppercase tracking-[0.08em] text-ink">
+              <p className="font-mono text-[calc(0.875rem+5px)] font-semibold uppercase tracking-[0.08em] text-ink">
                 {item.action}
               </p>
-              <p className="mt-1 font-mono text-[0.7rem] uppercase tracking-[0.08em] text-text-muted">
+              <p className="mt-1 font-mono text-[calc(0.7rem+5px)] uppercase tracking-[0.08em] text-text-muted">
                 {item.target}
               </p>
             </div>

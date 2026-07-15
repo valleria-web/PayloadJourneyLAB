@@ -10,7 +10,7 @@ export function SiteHeader() {
       <Container className="relative flex h-16 items-center justify-between gap-5">
         <a
           href="#inicio"
-          className="flex min-h-11 min-w-0 items-center gap-3 font-mono text-base font-semibold text-accent"
+          className="flex min-h-11 min-w-0 items-center gap-3 font-mono text-[calc(1rem+5px)] font-semibold text-accent"
           aria-label={`${siteContent.brand.name} - inicio`}
         >
           <span className="relative h-11 w-20 shrink-0 overflow-hidden rounded-md bg-black">

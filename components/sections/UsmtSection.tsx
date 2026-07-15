@@ -31,7 +31,7 @@ export function UsmtSection() {
           {siteContent.usmt.steps.map((step) => (
             <article key={step.number} className="border border-line bg-white p-5">
               <div className="flex items-start justify-between gap-4">
-                <span className="font-mono text-sm font-semibold text-graphite">
+                <span className="font-mono text-[calc(0.875rem+5px)] font-semibold text-graphite">
                   {step.number}
                 </span>
                 <span className="text-2xl" aria-hidden="true">

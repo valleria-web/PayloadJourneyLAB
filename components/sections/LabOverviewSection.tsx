@@ -17,7 +17,7 @@ export function LabOverviewSection() {
           <p className="mt-5 max-w-3xl text-base leading-7 text-graphite">
             {siteContent.lab.complement}
           </p>
-          <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-line bg-white px-4 py-2 font-mono text-xs text-accent">
+          <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-line bg-white px-4 py-2 font-mono text-[calc(0.75rem+5px)] text-accent">
             <span>{">_"}</span>
             flow trace origin
           </div>
@@ -30,7 +30,7 @@ export function LabOverviewSection() {
             >
               <div className="flex items-start justify-between gap-4">
                 <IconWrapper icon={pillar.icon} />
-                <span className="font-mono text-xs text-accent">0{index + 1}</span>
+                <span className="font-mono text-[calc(0.75rem+5px)] text-accent">0{index + 1}</span>
               </div>
               <h3 className="mt-6 text-xl font-bold">{pillar.title}</h3>
               <p className="mt-3 text-sm leading-6 text-graphite">{pillar.description}</p>
