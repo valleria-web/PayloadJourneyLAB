@@ -46,6 +46,8 @@ export type HomepageAnchorKey =
   | "home"
   | "learn"
   | "competencies"
+  | "learningPath"
+  | "demo"
   | "lab"
   | "methods"
   | "ecosystem"
@@ -92,6 +94,44 @@ export type LearningOutcome = {
   description: string;
 };
 
+export type LearningPathStepId =
+  | "understand-payload"
+  | "payload-journey"
+  | "reverse-payload-journey"
+  | "track-to-origin";
+
+export type LearningPathStep = {
+  id: LearningPathStepId;
+  number: string;
+  title: string;
+  description: string;
+  concepts: string[];
+  result: string;
+};
+
+export type OperationalRole = "transport" | "transform" | "decide" | "present";
+
+export type PayloadFlowNodeId =
+  | "interaction"
+  | "structured-payload"
+  | "request"
+  | "api"
+  | "domain"
+  | "repository"
+  | "response"
+  | "projection"
+  | "ui";
+
+export type PayloadFlowNode = {
+  id: PayloadFlowNodeId;
+  number: string;
+  label: string;
+  representation: string;
+  responsibility: string;
+  role: OperationalRole;
+  investigativeQuestion: string;
+};
+
 export type HomepageEntry = {
   hero: {
     eyebrow: string;
@@ -119,6 +159,23 @@ export type HomepageEntry = {
     title: string;
     description: string;
     items: LearningOutcome[];
+  };
+  learningPath: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    steps: LearningPathStep[];
+  };
+  flowDemo: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    context: string;
+    nodes: PayloadFlowNode[];
+    cta: {
+      supportingText: string;
+      action: EntryCta;
+    };
   };
 };
 
@@ -160,6 +217,31 @@ export type CampaignConfig = {
     heroStatus: string;
     firstCircleTitle: string;
     firstCircleText: string;
+  };
+};
+
+export type TrainingPresentation = {
+  id: "formacao";
+  eyebrow: string;
+  title: string;
+  description: string;
+  product: {
+    name: string;
+    historicalLabel: string;
+  };
+  promise: string;
+  audience: string[];
+  topics: string[];
+  format: {
+    platform: "Udemy";
+    state: "beta";
+  };
+  primaryCta: CtaItem & { state: "external"; href: string };
+  secondaryCta: EntryCta;
+  campaign: {
+    id: CampaignConfig["id"];
+    state: CampaignConfig["state"];
+    coupon: CampaignConfig["coupon"];
   };
 };
 
@@ -209,6 +291,37 @@ export type HoraCityEditorialVariant = {
   renderedAtSprintStart: boolean;
 };
 
+export type HoraCityPublicSectionId =
+  | "context"
+  | "anomaly"
+  | "selected-flow"
+  | "payload"
+  | "investigation"
+  | "evidence"
+  | "current-status";
+
+export type HoraCityPublicNarrative = {
+  sourceStrategy: "shared-confirmed-facts";
+  eyebrow: string;
+  transition: string;
+  title: string;
+  introduction: string;
+  mainMessage: string;
+  sections: Array<{
+    id: HoraCityPublicSectionId;
+    number: string;
+    title: string;
+    description: string;
+  }>;
+  technicalFacts: CaseFact[];
+  primaryCta: EntryCta;
+  secondaryCta: EntryCta;
+  omissions: {
+    unconfirmed: string[];
+    editorialDivergence: string[];
+  };
+};
+
 export type HoraCityCase = {
   id: "hora-city";
   caseId: string;
@@ -230,6 +343,7 @@ export type HoraCityCase = {
     audited: HoraCityEditorialVariant;
     rendered: HoraCityEditorialVariant;
   };
+  publicNarrative: HoraCityPublicNarrative;
   stages: Array<{ label: string; status: string }>;
   auditedFacts: CaseFact[];
   renderedMicroFacts: CaseFact[];

@@ -90,6 +90,8 @@ try {
     "inicio",
     "aprender",
     "competencias",
+    "trilha",
+    "demo",
     "lab",
     "metodos",
     "ecossistema",
@@ -100,9 +102,10 @@ try {
   ];
   const navigationAnchors = [
     "aprender",
+    "trilha",
+    "demo",
     "formacao",
     "case-study",
-    "metodos",
     "lab",
   ];
   const essentialContent = [
@@ -116,11 +119,34 @@ try {
     "Uma estratégia para compreender sistemas pelo flow",
     "Identificar o payload",
     "Rastrear a origem",
+    "Seu caminho no Payload Journey LAB",
+    "Você passa a enxergar informação atravessando o sistema.",
+    "Você consegue reconstruir um flow de ponta a ponta.",
+    "Você deixa de adivinhar e começa a investigar.",
+    "Você consegue explicar onde e por que uma decisão ocorreu.",
+    "Veja o payload atravessar o sistema",
+    "Uma representação pedagógica de um flow operacional.",
+    "Clique",
+    "Structured Payload",
+    "Projection",
+    "Transporta",
+    "Transforma",
+    "Decide",
+    "Apresenta",
+    "Comece a aprender Payload Tracing",
+    "Payload Journey LAB: Siga o flow, entenda o sistema",
+    "Entrar na formação",
+    "Rever a trilha",
+    "Veja o Payload Tracing aplicado numa codebase real",
+    "Da aprendizagem à investigação aplicada",
+    "Flow selecionado",
+    "Caso documentado como investigação aplicada do LAB.",
+    "Acompanhar o caso no LabLog",
+    "Rever o flow",
     "O LAB",
     "Métodos para compreender sistemas",
     "Um ecossistema para compreender sistemas",
     "HORA.city",
-    "Do método à prática",
     "LabLog",
     "Sobre o Payload Journey LAB",
     "Primeiro círculo de estudantes do LAB",
@@ -130,7 +156,6 @@ try {
     "Operational Payload Path",
     "Track to Origin",
     "HeartCreated",
-    "createdAt incorreto",
   ];
   const externalDestinations = [
     "https://www.udemy.com/course/payload-journey-lab-siga-o-flow-entenda-o-sistema/?couponCode=FOLLOW-THE-FLOW",
@@ -159,12 +184,103 @@ try {
   }
 
   assert(
-    html.includes('href="#aprender"') && html.includes("Começar a aprender"),
-    "Primary Hero CTA must point to #aprender",
+    html.includes('href="#demo"') && html.includes("Ver o payload atravessar o sistema"),
+    "Primary Hero CTA must point to #demo",
   );
   assert(
-    html.includes('href="#formacao"') && html.includes("Conhecer a formação"),
-    "Secondary Hero CTA must point to #formacao",
+    html.includes('href="#trilha"') && html.includes("Explorar a trilha"),
+    "Secondary Hero CTA must point to #trilha",
+  );
+  assert(
+    html.includes('href="#trilha"') && html.includes("Começar"),
+    "Header CTA must point to #trilha",
+  );
+  assert(
+    html.includes('href="#formacao"') && html.includes("Começar pela formação"),
+    "Demo CTA must point to #formacao",
+  );
+
+  const orderedSectionIds = [
+    "aprender",
+    "competencias",
+    "trilha",
+    "demo",
+    "formacao",
+    "case-study",
+    "lab",
+    "metodos",
+    "ecossistema",
+    "lablog",
+    "sobre",
+  ];
+  let previousSectionIndex = -1;
+  for (const id of orderedSectionIds) {
+    const sectionIndex = html.indexOf(`id="${id}"`);
+    assert(sectionIndex > previousSectionIndex, `Homepage section order is incorrect at #${id}`);
+    previousSectionIndex = sectionIndex;
+  }
+
+  const learningPathIds = [
+    "understand-payload",
+    "payload-journey",
+    "reverse-payload-journey",
+    "track-to-origin",
+  ];
+  const flowNodeIds = [
+    "interaction",
+    "structured-payload",
+    "request",
+    "api",
+    "domain",
+    "repository",
+    "response",
+    "projection",
+    "ui",
+  ];
+  for (const orderedIds of [learningPathIds, flowNodeIds]) {
+    let previousIdIndex = -1;
+    for (const id of orderedIds) {
+      const idIndex = html.indexOf(`id="${id}"`);
+      assert(idIndex > previousIdIndex, `Rendered order is incorrect at stable id: ${id}`);
+      previousIdIndex = idIndex;
+    }
+  }
+
+  const caseSectionIds = [
+    "case-context",
+    "case-anomaly",
+    "case-selected-flow",
+    "case-payload",
+    "case-investigation",
+    "case-evidence",
+    "case-current-status",
+  ];
+  let previousCaseIndex = -1;
+  for (const id of caseSectionIds) {
+    const idIndex = html.indexOf(`id="${id}"`);
+    assert(idIndex > previousCaseIndex, `HORA.city public narrative order is incorrect at: ${id}`);
+    previousCaseIndex = idIndex;
+  }
+
+  assert(
+    html.includes('href="#trilha"') && html.includes("Rever a trilha"),
+    "Training secondary CTA must point to #trilha",
+  );
+  assert(
+    html.includes('href="#lablog"') && html.includes("Acompanhar o caso no LabLog"),
+    "Case primary CTA must point to the existing #lablog anchor",
+  );
+  assert(
+    html.includes('href="#demo"') && html.includes("Rever o flow"),
+    "Case secondary CTA must point to #demo",
+  );
+  assert(
+    !/Send Heart|create\/join|informação não disponível/i.test(html),
+    "The public case narrative must omit unconfirmed technical names and empty-field messages",
+  );
+  assert(
+    !/certifica(?:do|ção)|Practitioner|Expert/i.test(html),
+    "The fundamental training must not introduce nonexistent certification language",
   );
 
   const renderedIds = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]));
@@ -218,6 +334,16 @@ try {
     "document-path",
     "reconstruct-anomalies",
     "trace-origin",
+    "understand-payload",
+    "interaction",
+    "structured-payload",
+    "request",
+    "api",
+    "domain",
+    "repository",
+    "response",
+    "projection",
+    "ui",
   ];
 
   for (const id of stableIds) {
@@ -227,6 +353,32 @@ try {
   assert(
     canonicalSource.includes('editorialResolution: "unresolved"'),
     "HORA.city editorial variants must remain explicitly unresolved",
+  );
+  assert(
+    canonicalSource.includes('sourceStrategy: "shared-confirmed-facts"'),
+    "HORA.city public narrative must declare its shared confirmed facts strategy",
+  );
+  assert(
+    canonicalSource.includes('anomaly: "createdAt incorreto"') &&
+      canonicalSource.includes('payload: "HeartCreated"'),
+    "The historical HORA.city anomaly and payload facts must remain preserved in source",
+  );
+  assert(
+    canonicalSource.includes('historicalLabel: trainingContent.name') &&
+      canonicalSource.includes('name: "Formação Beta na Udemy"'),
+    "The historical training label must remain separately preserved",
+  );
+  const auditedVariantCopy =
+    "O HORA.city é um sistema geolocalizado utilizado pelo Payload Journey LAB como caso real de investigação aplicada. Após uma expansão acelerada com agentes de IA, o sistema passou de aproximadamente 6 mil para 40 mil linhas de código e perdeu parte de sua observabilidade estrutural.";
+  const renderedVariantCopy =
+    "O HORA.city é um caso real de investigação aplicada no Payload Journey LAB, marcado por uma expansão acelerada e por perda de observabilidade estrutural.";
+  assert(
+    canonicalSource.includes(auditedVariantCopy) && canonicalSource.includes(renderedVariantCopy),
+    "Both complete HORA.city editorial variants must remain in the server-side source",
+  );
+  assert(
+    !html.includes(auditedVariantCopy) && !html.includes(renderedVariantCopy),
+    "Complete HORA.city editorial variants must not be rendered in the public HTML",
   );
   assert(
     canonicalSource.includes('resolutionStatus: "unresolved"'),
@@ -249,6 +401,22 @@ try {
   assert(
     !footerSource.includes("siteContent.nav"),
     "Footer must not consume the Header navigation source",
+  );
+  const headerNavigationSource = siteSource.match(
+    /export const siteNavigation = \[([\s\S]*?)\] satisfies NavItem\[\];/,
+  )?.[1];
+  assert(headerNavigationSource, "Could not inspect the canonical Header navigation");
+  assert(
+    !headerNavigationSource.includes("homepageAnchors.methods"),
+    "Methods may leave only the Header; its Footer destination must remain independent",
+  );
+  assert(
+    siteSource.includes("homepageAnchors.methods") && html.includes('id="metodos"'),
+    "The legacy Methods anchor must remain available",
+  );
+  assert(
+    !html.includes("demonstração completa") && !html.includes("execução em tempo real"),
+    "The pedagogical demo must not promise a nonexistent real execution",
   );
   const mobileNavigationSource = await fs.readFile(
     path.join(repositoryRoot, "components", "layout", "MobileNavigation.tsx"),
@@ -288,6 +456,17 @@ try {
           mobileEscapeAndFocusReturnProtected: true,
           mobileNavigationInitialState: true,
           unresolvedEditorialDecisionsProtected: true,
+          learningPathSteps: learningPathIds.length,
+          flowNodes: flowNodeIds.length,
+          flowNodeHtmlOrderPreserved: true,
+          operationalRolesExplicit: 4,
+          pedagogicalDemoDisclosure: true,
+          trainingAndCaseOrderProtected: true,
+          trainingPresentationProtected: true,
+          casePublicNarrativeSections: caseSectionIds.length,
+          caseSharedFactsStrategyProtected: true,
+          completeEditorialVariantsExcludedFromHtml: true,
+          unconfirmedCaseFactsOmitted: true,
         },
       },
       null,

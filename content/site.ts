@@ -5,6 +5,7 @@ import type {
   NavItem,
   SiteIdentity,
   SiteLinks,
+  TrainingPresentation,
 } from "@/types/content";
 
 const udemyCouponCode = "FOLLOW-THE-FLOW";
@@ -15,6 +16,8 @@ export const homepageAnchors = {
   home: "inicio",
   learn: "aprender",
   competencies: "competencias",
+  learningPath: "trilha",
+  demo: "demo",
   lab: "lab",
   methods: "metodos",
   ecosystem: "ecossistema",
@@ -67,9 +70,10 @@ export const campaignConfig = {
 
 export const siteNavigation = [
   { label: "Aprender", href: `#${homepageAnchors.learn}` },
+  { label: "Trilha", href: `#${homepageAnchors.learningPath}` },
+  { label: "Demo", href: `#${homepageAnchors.demo}` },
   { label: "Formação", href: `#${homepageAnchors.training}` },
   { label: "Caso real", href: `#${homepageAnchors.caseStudy}` },
-  { label: "Métodos", href: `#${homepageAnchors.methods}` },
   { label: "O LAB", href: `#${homepageAnchors.lab}` },
 ] satisfies NavItem[];
 
@@ -77,7 +81,7 @@ export const siteCtas = {
   headerStart: {
     label: "Começar",
     state: "anchor",
-    href: `#${homepageAnchors.learn}`,
+    href: `#${homepageAnchors.learningPath}`,
   },
   headerTraining: {
     label: "Entrar no LAB",
@@ -115,6 +119,55 @@ export const trainingContent = {
     href: siteLinks.udemy.courseWithCoupon,
   } satisfies CtaItem,
 } as const;
+
+export const trainingPresentation = {
+  id: homepageAnchors.training,
+  eyebrow: "Formação fundamental",
+  title: "Comece a aprender Payload Tracing",
+  description:
+    "Uma entrada prática para estudantes e developers que precisam de uma estratégia para compreender codebases grandes através do fluxo da informação.",
+  product: {
+    name: "Payload Journey LAB: Siga o flow, entenda o sistema",
+    historicalLabel: trainingContent.name,
+  },
+  promise:
+    "Aprenda a escolher um flow, encontrar o payload, acompanhar suas transformações e localizar onde o sistema toma decisões.",
+  audience: [
+    "Estudantes de Engenharia de Software",
+    "Developers junior",
+    "Developers entrando em codebases desconhecidas",
+    "Pessoas trabalhando com sistemas expandidos por IA",
+    "Profissionais sem uma estratégia estruturada de tracing",
+  ],
+  topics: [
+    "Fundamentos de payload",
+    "Estados e eventos",
+    "Camadas e representações",
+    "Payload Journey",
+    "Estratégia de entrada",
+    "Visão estrutural",
+    "Tracing de flows",
+  ],
+  format: {
+    platform: "Udemy",
+    state: trainingContent.state,
+  },
+  primaryCta: {
+    label: "Entrar na formação",
+    state: "external",
+    href: siteLinks.udemy.courseWithCoupon,
+  },
+  secondaryCta: {
+    label: "Rever a trilha",
+    state: "anchor",
+    href: `#${homepageAnchors.learningPath}`,
+  },
+  campaign: {
+    id: campaignConfig.id,
+    state: campaignConfig.state,
+    coupon: campaignConfig.coupon,
+  },
+} as const satisfies TrainingPresentation;
 
 export const labLogContent = {
   id: homepageAnchors.labLog,
