@@ -20,6 +20,7 @@ export const homepageAnchors = {
   competencies: "competencias",
   learningPath: "trilha",
   demo: "demo",
+  usmt: "usmt",
   procedure: "procedimento",
   investigativePractice: "pratica-investigativa",
   lab: "lab",

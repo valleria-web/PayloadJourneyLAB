@@ -190,6 +190,7 @@ export type HomepageAnchorKey =
   | "competencies"
   | "learningPath"
   | "demo"
+  | "usmt"
   | "procedure"
   | "investigativePractice"
   | "lab"
@@ -394,6 +395,82 @@ export type TrainingPresentation = {
     state: CampaignConfig["state"];
     coupon: CampaignConfig["coupon"];
   };
+};
+
+export type UsmtElementId =
+  | "description"
+  | "delimitation"
+  | "states"
+  | "events"
+  | "allowed-transitions"
+  | "forbidden-transitions"
+  | "invalidation"
+  | "termination"
+  | "invariants"
+  | "layers"
+  | "metrics"
+  | "spec";
+
+export type UsmtElement = {
+  id: UsmtElementId;
+  number: string;
+  title: string;
+  englishTerm: string;
+  description: string;
+};
+
+export type UsmtLensId = "where" | "how" | "logic" | "safe";
+
+export type UsmtLens = {
+  id: UsmtLensId;
+  label: "WHERE" | "HOW" | "LOGIC" | "SAFE";
+  action: string;
+  question: string;
+  description: string;
+  observes: string[];
+};
+
+export type UsmtConnectionStepId =
+  | "expected-model"
+  | "observed-flow"
+  | "evidence"
+  | "investigation";
+
+export type UsmtConnectionStep = {
+  id: UsmtConnectionStepId;
+  number: string;
+  label: string;
+  description: string;
+};
+
+export type UsmtPresentation = {
+  id: "usmt";
+  eyebrow: string;
+  title: string;
+  lead: string;
+  description: string;
+  centralQuestion: string;
+  centralAnswer: string;
+  indexableContext: string;
+  elementsHeading: string;
+  elementsDescription: string;
+  elements: UsmtElement[];
+  lensesHeading: string;
+  lensesDescription: string;
+  lenses: UsmtLens[];
+  connection: {
+    title: string;
+    description: string;
+    conclusion: string;
+    steps: UsmtConnectionStep[];
+  };
+  protocolTransition: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    steps: ["Congelar", "Mapear", "Detectar", "Restaurar"];
+  };
+  deepDiveCta: (CtaItem & { href: string }) | null;
 };
 
 export type MethodId =

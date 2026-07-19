@@ -44,6 +44,7 @@ const files = {
   about: path.join(repositoryRoot, "components", "sections", "AboutSection.tsx"),
   finalCta: path.join(repositoryRoot, "components", "sections", "BetaCtaSection.tsx"),
   footer: path.join(repositoryRoot, "components", "layout", "SiteFooter.tsx"),
+  usmtSection: path.join(repositoryRoot, "components", "sections", "UsmtSection.tsx"),
   flowDiagram: path.join(repositoryRoot, "components", "diagrams", "FlowDiagram.tsx"),
 };
 
@@ -243,6 +244,13 @@ for (const component of ["labOverview", "ecosystem", "labLog", "about", "finalCt
   assert(!sources[component].includes('"use client"'), `${component} must remain a Server Component`);
   assert(!/#[\da-f]{3,8}/i.test(sources[component]), `${component} must not contain color literals`);
 }
+assert(!sources.usmtSection.includes('"use client"'), "USMT must remain a Server Component");
+assert(!/#[\da-f]{3,8}/i.test(sources.usmtSection), "USMT must not contain color literals");
+assert(
+  sources.usmtSection.includes("usmtContent.elements.map") &&
+    sources.usmtSection.includes("usmtContent.lenses.map"),
+  "USMT must render its structural elements and lenses from canonical content",
+);
 
 let legacyHeaderAdapterExists = true;
 try {
@@ -278,6 +286,7 @@ console.log(
         sprint5ServerSections: 2,
         sprint6ServerSections: 4,
         sprint7ServerSections: 6,
+        sprint9UsmtServerSection: true,
         flowDiagramPreservedAsServerComponent: true,
       },
     },

@@ -13,6 +13,7 @@ import { LearningPathSection } from "@/components/sections/LearningPathSection";
 import { MethodsSection } from "@/components/sections/MethodsSection";
 import { PayloadFlowDemoSection } from "@/components/sections/PayloadFlowDemoSection";
 import { ProblemSection } from "@/components/sections/ProblemSection";
+import { UsmtSection } from "@/components/sections/UsmtSection";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -31,6 +32,7 @@ export default function Home() {
         <PayloadFlowDemoSection />
         <EducationSection />
         <CaseStudySection />
+        <UsmtSection />
         <InvestigationCycleSection />
         <MethodsSection />
         <InvestigationPracticeSection />

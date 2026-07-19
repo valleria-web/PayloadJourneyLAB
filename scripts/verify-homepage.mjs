@@ -92,6 +92,7 @@ try {
     "competencias",
     "trilha",
     "demo",
+    "usmt",
     "procedimento",
     "pratica-investigativa",
     "lab",
@@ -145,6 +146,20 @@ try {
     "Caso documentado como investigação aplicada do LAB.",
     "Acompanhar o caso no LabLog",
     "Rever o flow",
+    "USMT — Universal System Model Template",
+    "Entenda o sistema que o payload atravessa.",
+    "Seguir o payload revela o que aconteceu. A USMT ajuda a compreender o que deveria acontecer.",
+    "Doze elementos para tornar o sistema investigável",
+    "Quatro lentes para investigar qualquer fluxo",
+    "Do modelo esperado ao comportamento observado",
+    "Com o sistema modelado e o fluxo visível, a investigação pode começar.",
+    "software system investigation",
+    "system modeling",
+    "payload tracing",
+    "states",
+    "events",
+    "invariants",
+    "layers",
     "Procedimento investigativo",
     "Congelar, Mapear, Detectar e Restaurar",
     "Qual comportamento precisa ser preservado antes de qualquer alteração?",
@@ -232,6 +247,7 @@ try {
     "demo",
     "formacao",
     "case-study",
+    "usmt",
     "procedimento",
     "metodos",
     "pratica-investigativa",
@@ -272,6 +288,49 @@ try {
       previousIdIndex = idIndex;
     }
   }
+
+  const usmtElementIds = [
+    "description",
+    "delimitation",
+    "states",
+    "events",
+    "allowed-transitions",
+    "forbidden-transitions",
+    "invalidation",
+    "termination",
+    "invariants",
+    "layers",
+    "metrics",
+    "spec",
+  ];
+  const usmtLensIds = ["where", "how", "logic", "safe"];
+  const usmtConnectionIds = ["expected-model", "observed-flow", "evidence", "investigation"];
+  for (const [prefix, ids] of [
+    ["usmt-element", usmtElementIds],
+    ["usmt-lens", usmtLensIds],
+    ["usmt-connection", usmtConnectionIds],
+  ]) {
+    let previousIdIndex = -1;
+    for (const id of ids) {
+      const idIndex = html.indexOf(`id="${prefix}-${id}"`);
+      assert(idIndex > previousIdIndex, `USMT order is incorrect at: ${prefix}-${id}`);
+      previousIdIndex = idIndex;
+    }
+  }
+  assert(
+    html.indexOf('id="demo"') < html.indexOf('id="usmt"') &&
+      html.indexOf('id="usmt"') < html.indexOf('id="procedimento"'),
+    "USMT must appear after the Demo and before the investigation procedure",
+  );
+  assert(
+    ["WHERE", "HOW", "LOGIC", "SAFE"].every((label) => html.includes(`>${label}<`)) &&
+      ["Localiza", "Acompanha", "Interpreta", "Valida"].every((action) => html.includes(action)),
+    "USMT lenses must remain explicit, explained, and ordered",
+  );
+  assert(
+    !html.includes('href="#usmt"') && !html.includes('href="/usmt"'),
+    "USMT must not render a navigation CTA before a real destination exists",
+  );
 
   const procedureIds = ["freeze", "map", "detect", "restore"];
   let previousProcedureIndex = -1;
@@ -314,7 +373,7 @@ try {
   );
   assert(
     !html.includes("Phenomenon description") && !html.includes("State Enumeration"),
-    "The complete twelve-element USMT must remain outside the homepage",
+    "The historical long-form USMT steps must remain outside the homepage",
   );
   assert(
     !/única (?:linha|arquivo)|uma linha única|um arquivo único/i.test(html),
@@ -440,6 +499,7 @@ try {
     fs.readFile(path.join(repositoryRoot, "content", "site.ts"), "utf8"),
     fs.readFile(path.join(repositoryRoot, "content", "methods.ts"), "utf8"),
     fs.readFile(path.join(repositoryRoot, "content", "hora-city.ts"), "utf8"),
+    fs.readFile(path.join(repositoryRoot, "content", "usmt.ts"), "utf8"),
     fs.readFile(path.join(repositoryRoot, "content", "payload-journey-lab.ts"), "utf8"),
   ]);
   const canonicalSource = canonicalSources.join("\n");
@@ -484,6 +544,9 @@ try {
     "methodological-research",
     "applied-investigation",
     "collaboration",
+    ...usmtElementIds,
+    ...usmtLensIds,
+    ...usmtConnectionIds,
   ];
 
   for (const id of stableIds) {
@@ -629,6 +692,11 @@ try {
           collaborationPossibilitiesOnly: true,
           finalCtaDestinationsProtected: true,
           nonexistentLegalPagesOmitted: true,
+          usmtElements: usmtElementIds.length,
+          usmtLenses: usmtLensIds.length,
+          usmtConnectionSteps: usmtConnectionIds.length,
+          usmtServerRenderedAndIndexable: true,
+          usmtFalseCtaRejected: true,
         },
       },
       null,

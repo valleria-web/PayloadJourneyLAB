@@ -276,3 +276,38 @@ Os itens destinados às Sprints 7 e 8 permanecem pendentes. A Sprint 6 não reso
 | sprint8-qa-release | QA integral, SEO, performance e publicação | Documentação da Sprint 7 | Sprint 8 | pendente | Sem deploy, release, tag ou alteração de versão |
 
 Continuam pendentes e não foram marcados como concluídos: demonstração aprofundada, resolução editorial de HORA.city, YouTube oficial, validade do cupom, integrações externas, páginas legais, deploy e release.
+
+## Atualização da Sprint 9 — reincorporação da USMT
+
+| ID | Conteúdo | Fonte canônica | Destino | Estado | Observações |
+| --- | --- | --- | --- | --- | --- |
+| usmt-homepage-section | Seção própria da Universal System Model Template | `content/usmt.ts#usmtContent` | `#usmt` | implementado | Inserida depois de HORA.city e imediatamente antes do Procedimento |
+| usmt-anchor | Anchor público da seção | `homepageAnchors.usmt` | `#usmt` | implementado | Não foi adicionado ao Header ou Footer |
+| usmt-central-question | Confrontação entre comportamento observado e esperado | `usmtContent.centralQuestion/centralAnswer` | Introdução da USMT | implementado | Copy curta e operacional |
+| usmt-elements-compact | Doze elementos estruturais com microdescrições | `usmtContent.elements` | Grade numerada | implementado | Um ou dois blocos por linha no mobile e quatro no desktop; sem cards editoriais extensos |
+| usmt-description | Descrição | `elements[description]` | Elemento 01 | implementado | O que é o sistema |
+| usmt-delimitation | Delimitação | `elements[delimitation]` | Elemento 02 | implementado | Onde começa e termina |
+| usmt-states | Estados / states | `elements[states]` | Elemento 03 | implementado | Termo indexável preservado |
+| usmt-events | Eventos / events | `elements[events]` | Elemento 04 | implementado | Termo indexável preservado |
+| usmt-allowed-transitions | Transições permitidas | `elements[allowed-transitions]` | Elemento 05 | implementado | Definição oficial preservada |
+| usmt-forbidden-transitions | Transições proibidas | `elements[forbidden-transitions]` | Elemento 06 | implementado | Definição oficial preservada |
+| usmt-invalidation | Invalidação | `elements[invalidation]` | Elemento 07 | implementado | Condição de estado inválido |
+| usmt-termination | Terminação | `elements[termination]` | Elemento 08 | implementado | Fechamento do ciclo |
+| usmt-invariants | Invariantes / invariants | `elements[invariants]` | Elemento 09 | implementado | Termo indexável preservado |
+| usmt-layers | Camadas / layers | `elements[layers]` | Elemento 10 | implementado | Termo indexável preservado |
+| usmt-metrics | Métricas | `elements[metrics]` | Elemento 11 | implementado | Comportamento mensurável |
+| usmt-spec | Spec | `elements[spec]` | Elemento 12 | implementado | Síntese operacional |
+| usmt-lenses | WHERE → HOW → LOGIC → SAFE | `usmtContent.lenses` | Bloco de lentes | implementado | Ordem textual e visual equivalente |
+| usmt-where | Localiza responsabilidade, fronteira e autoridade | `lenses[where]` | Lente 01 | implementado | WHERE acompanhado de explicação |
+| usmt-how | Acompanha transporte, transformação e sequência | `lenses[how]` | Lente 02 | implementado | HOW acompanhado de explicação |
+| usmt-logic | Interpreta regra, condição, decisão e transição | `lenses[logic]` | Lente 03 | implementado | LOGIC acompanhado de explicação |
+| usmt-safe | Valida invariantes, limites, invalidação e terminação | `lenses[safe]` | Lente 04 | implementado | SAFE acompanhado de explicação |
+| usmt-payload-connection | Modelo esperado → Flow observado → Evidência → Investigação | `usmtContent.connection` | Relação operacional | implementado | Confrontação entre USMT e Payload Journey explícita |
+| usmt-protocol-transition | Congelar → Mapear → Detectar → Restaurar | `usmtContent.protocolTransition` | Fechamento da seção | implementado | Prepara diretamente a seção seguinte |
+| usmt-indexable-content | software system investigation, system modeling, payload tracing e termos estruturais | `usmtContent.indexableContext` | HTML público | implementado | Texto real, sem canvas ou imagem |
+| usmt-deep-dive-cta | Paper, documentação ou rota completa | `usmtContent.deepDiveCta` | Aprofundamento futuro | pendente | `null`; nenhum link falso renderizado |
+| usmt-historical-long-form | Doze passos extensos anteriores em inglês e CTA futuro | `siteContent.usmt` | Histórico server-side | preservado | Não enviado ao HTML público |
+| usmt-placeholder-diagram | Placeholder estrutural antigo | `components/diagrams/UsmtDiagram.tsx` | Conteúdo reservado | preservado | Não modificado nem renderizado |
+| sprint9-existing-sections | Todas as seções anteriores | `app/page.tsx` | Homepage | preservado | Somente USMT foi inserida; nenhuma seção removida ou reordenada relativamente |
+
+Continuam fora do escopo: paper completo, rota `/usmt`, documentação aprofundada, alteração dos 12 elementos, alteração das quatro lentes, novas dependências, Header, Footer, branding, deploy e release.
