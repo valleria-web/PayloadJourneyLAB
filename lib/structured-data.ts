@@ -47,3 +47,23 @@ export function getHomePageStructuredData(): JsonLdValue {
     ],
   };
 }
+
+export function getThematicPageStructuredData(
+  path: string,
+  name: string,
+  description: string,
+): JsonLdValue {
+  const url = `${siteConfig.url}${path}`;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${url}#webpage`,
+    url,
+    name,
+    description,
+    inLanguage: siteConfig.language,
+    isPartOf: { "@id": websiteId },
+    about: { "@id": organizationId },
+  };
+}

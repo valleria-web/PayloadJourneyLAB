@@ -5,7 +5,7 @@ export type NavItem = {
   href: string;
 };
 
-export type CtaState = "active" | "future" | "disabled" | "external" | "anchor";
+export type CtaState = "active" | "future" | "disabled" | "external" | "anchor" | "internal";
 
 export type CtaItem = {
   label: string;
@@ -18,6 +18,148 @@ export type Pillar = {
   title: string;
   description: string;
   icon: LucideIcon;
+};
+
+export type InstitutionalPillarId =
+  | "education"
+  | "methodological-research"
+  | "applied-investigation"
+  | "collaboration";
+
+export type InstitutionalPillar = {
+  id: InstitutionalPillarId;
+  title: string;
+  description: string;
+  activities: string[];
+  audience?: string[];
+  result: string;
+  icon: LucideIcon;
+  cta?: CtaItem;
+};
+
+export type LabPresentation = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  mission: string;
+  principle: string;
+  connectionToInvestigativePractice: string;
+  cta?: EntryCta;
+  historicalPresentation: {
+    eyebrow: string;
+    terminalLine: string;
+    title: string;
+    intro: string;
+    complement: string;
+    pillars: Pillar[];
+  };
+};
+
+export type InstitutionalEcosystemPresentation = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  pillars: InstitutionalPillar[];
+  collaborationNote: string;
+  collaborationCta?: CtaItem;
+  historicalPresentation: {
+    title: string;
+    intro: string;
+    institutionalTransition: string;
+  };
+};
+
+export type LabLogPresentation = {
+  id: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  themes: string[];
+  featuredContent?: Array<{
+    title: string;
+    description: string;
+    href: string;
+  }>;
+  action: CtaItem & { state: "external"; href: string };
+  editorialStatus: "current";
+  youtubeResolution: {
+    canonical: string | null;
+    status: "unresolved" | "resolved";
+    currentHomepageDestination: string;
+    currentFooterDestination: string;
+  };
+  historicalPresentation: {
+    eyebrow: string;
+    title: string;
+    description: string;
+  };
+};
+
+export type FounderProfile = {
+  name: string;
+  role: string;
+  labCreation: string;
+  usmtCreation: string;
+  confirmedContext: string[];
+  professionalLink: string | null;
+};
+
+export type AboutPresentation = {
+  eyebrow: string;
+  title: string;
+  origin: string;
+  vision: string;
+  motivatingProblem: string;
+  authorship: string;
+  founder: FounderProfile;
+  relationshipToUsmt: string;
+  institutionalSignature: string;
+  values: string[];
+  historicalPresentation: {
+    title: string;
+    text: string;
+    secondaryText: string;
+    vision: string;
+    founderTitle: string;
+    founderParagraphs: string[];
+  };
+};
+
+export type FinalCtaPresentation = {
+  eyebrow?: string;
+  title: string;
+  description: string;
+  primaryCta: CtaItem & { state: "external"; href: string };
+  secondaryCta: EntryCta;
+  campaignNote?: string;
+  historicalPresentation: {
+    label: string;
+    title: string;
+    text: string;
+    action: CtaItem;
+  };
+};
+
+export type FooterPresentation = {
+  identity: {
+    name: string;
+    tagline: string;
+    description: string;
+  };
+  headings: {
+    navigation: string;
+    channels: string;
+  };
+  navigation: NavItem[];
+  channels: Array<{
+    label: string;
+    href: string;
+    external: boolean;
+  }>;
+  legalNotice: string;
+  copyrightSuffix: string;
+  historicalPolicies: string[];
+  missingLegalRoutes: string[];
 };
 
 export type CardItem = {
@@ -48,6 +190,7 @@ export type HomepageAnchorKey =
   | "competencies"
   | "learningPath"
   | "demo"
+  | "usmt"
   | "procedure"
   | "investigativePractice"
   | "lab"
@@ -62,8 +205,8 @@ export type HomepageAnchors = Record<HomepageAnchorKey, string>;
 
 export type EntryCta = {
   label: string;
-  href: `#${string}`;
-  state: "anchor";
+  href: string;
+  state: "anchor" | "internal";
 };
 
 export type ProblemStepId =
@@ -252,6 +395,82 @@ export type TrainingPresentation = {
     state: CampaignConfig["state"];
     coupon: CampaignConfig["coupon"];
   };
+};
+
+export type UsmtElementId =
+  | "description"
+  | "delimitation"
+  | "states"
+  | "events"
+  | "allowed-transitions"
+  | "forbidden-transitions"
+  | "invalidation"
+  | "termination"
+  | "invariants"
+  | "layers"
+  | "metrics"
+  | "spec";
+
+export type UsmtElement = {
+  id: UsmtElementId;
+  number: string;
+  title: string;
+  englishTerm: string;
+  description: string;
+};
+
+export type UsmtLensId = "where" | "how" | "logic" | "safe";
+
+export type UsmtLens = {
+  id: UsmtLensId;
+  label: "WHERE" | "HOW" | "LOGIC" | "SAFE";
+  action: string;
+  question: string;
+  description: string;
+  observes: string[];
+};
+
+export type UsmtConnectionStepId =
+  | "expected-model"
+  | "observed-flow"
+  | "evidence"
+  | "investigation";
+
+export type UsmtConnectionStep = {
+  id: UsmtConnectionStepId;
+  number: string;
+  label: string;
+  description: string;
+};
+
+export type UsmtPresentation = {
+  id: "usmt";
+  eyebrow: string;
+  title: string;
+  lead: string;
+  description: string;
+  centralQuestion: string;
+  centralAnswer: string;
+  indexableContext: string;
+  elementsHeading: string;
+  elementsDescription: string;
+  elements: UsmtElement[];
+  lensesHeading: string;
+  lensesDescription: string;
+  lenses: UsmtLens[];
+  connection: {
+    title: string;
+    description: string;
+    conclusion: string;
+    steps: UsmtConnectionStep[];
+  };
+  protocolTransition: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    steps: ["Congelar", "Mapear", "Detectar", "Restaurar"];
+  };
+  deepDiveCta: (CtaItem & { href: string }) | null;
 };
 
 export type MethodId =

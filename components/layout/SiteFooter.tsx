@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
-import { siteContent } from "@/content/payload-journey-lab";
 import { footerContent } from "@/content/site";
 
 export function SiteFooter() {
@@ -13,17 +12,20 @@ export function SiteFooter() {
           <div>
             <Image
               src="/brand/logo.png"
-              alt={siteContent.brand.name}
+              alt={footerContent.identity.name}
               width={224}
               height={96}
               sizes="224px"
               className="h-24 w-56 rounded-md object-cover"
             />
             <p className="mt-3 max-w-sm text-sm leading-6 text-white/70">
-              {footerContent.description}
+              {footerContent.identity.description}
+            </p>
+            <p className="mt-3 font-mono text-sm text-terminal">
+              {footerContent.identity.tagline}
             </p>
           </div>
-          <div className="grid gap-6 sm:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <div>
               <p className="font-mono text-[calc(0.75rem+10px)] font-semibold uppercase tracking-[0.08em] text-terminal">
                 {footerContent.headings.navigation}
@@ -38,10 +40,10 @@ export function SiteFooter() {
             </div>
             <div>
               <p className="font-mono text-[calc(0.75rem+10px)] font-semibold uppercase tracking-[0.08em] text-terminal">
-                {footerContent.headings.links}
+                {footerContent.headings.channels}
               </p>
               <div className="mt-3 grid gap-2 text-sm text-white/70">
-                {footerContent.links.map((link) => (
+                {footerContent.channels.map((link) => (
                   <a
                     key={link.label}
                     href={link.href}
@@ -56,20 +58,16 @@ export function SiteFooter() {
             </div>
             <div>
               <p className="font-mono text-[calc(0.75rem+10px)] font-semibold uppercase tracking-[0.08em] text-terminal">
-                {footerContent.headings.legal}
+                Informação
               </p>
-              <div className="mt-3 grid gap-2 text-sm text-white/60">
-                {footerContent.policies.map((item) => (
-                  <span key={item} aria-disabled="true" className="py-1">
-                    {item}
-                  </span>
-                ))}
-              </div>
+              <p className="mt-3 max-w-xs text-sm leading-6 text-white/60">
+                {footerContent.legalNotice}
+              </p>
             </div>
           </div>
         </div>
         <p className="mt-10 border-t border-white/10 pt-5 text-xs text-white/55">
-          © {year} {siteContent.brand.name}. {footerContent.copyrightSuffix}
+          © {year} {footerContent.identity.name}. {footerContent.copyrightSuffix}
         </p>
       </Container>
     </footer>

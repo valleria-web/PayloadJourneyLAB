@@ -34,13 +34,18 @@ import {
   labLogContent,
   siteCtas,
   siteIdentity,
+  siteLinks,
   siteNavigation,
   trainingContent,
 } from "@/content/site";
 import type {
+  AboutPresentation,
   CardItem,
   CtaItem,
+  FinalCtaPresentation,
   HomepageEntry,
+  InstitutionalEcosystemPresentation,
+  LabPresentation,
   Pillar,
   WhitePaper,
 } from "@/types/content";
@@ -65,8 +70,8 @@ export const homepageEntry = {
     },
     secondaryCta: {
       label: "Explorar a trilha",
-      state: "anchor",
-      href: `#${homepageAnchors.learningPath}`,
+      state: "internal",
+      href: `/learn#${homepageAnchors.learningPath}`,
     },
     signature: siteIdentity.tagline,
   },
@@ -350,8 +355,8 @@ export const homepageEntry = {
         "Aprenda a reconstruir esse caminho com uma estratégia de entrada clara.",
       action: {
         label: "Começar pela formação",
-        state: "anchor",
-        href: `#${homepageAnchors.training}`,
+        state: "internal",
+        href: `/learn#${homepageAnchors.training}`,
       },
     },
   },
@@ -372,39 +377,51 @@ export const siteContent = {
     secondaryAction: labLogContent.action,
   },
   lab: {
-    eyebrow: "LAB STRUCTURE",
-    terminalLine: "flow trace origin",
-    title: "O LAB",
-    intro:
-      "O Payload Journey LAB desenvolve métodos, artefatos pedagógicos e investigações aplicadas para observar, modelar, rastrear e compreender sistemas de software.",
-    complement:
-      "O trabalho do LAB combina formação, pesquisa metodológica e aplicação em codebases reais, especialmente em sistemas cuja expansão tornou a compreensão estrutural mais difícil.",
-    pillars: [
-      {
-        title: "Formação",
-        description:
-          "Desenvolvimento de visão estrutural, capacidade de tracing e compreensão de sistemas através de experiências educacionais.",
-        icon: GraduationCap,
-      },
-      {
-        title: "Pesquisa",
-        description:
-          "Criação, documentação e refinamento de métodos para observar, modelar e investigar sistemas de software.",
-        icon: BookOpen,
-      },
-      {
-        title: "Investigação aplicada",
-        description: "Aplicação dos métodos do LAB em anomalias, fluxos e codebases reais.",
-        icon: Search,
-      },
-      {
-        title: "Colaboração",
-        description:
-          "Construção de pilotos, estudos e parcerias com estudantes, pesquisadores, instituições e organizações.",
-        icon: Share2,
-      },
-    ] satisfies Pillar[],
-  },
+    eyebrow: "O laboratório",
+    title: "Formação, pesquisa e investigação aplicada",
+    description:
+      "O Payload Journey LAB desenvolve maneiras de ensinar, modelar e investigar software seguindo o fluxo da informação.",
+    mission:
+      "O LAB conecta educação, desenvolvimento metodológico, investigação de sistemas, aplicação em casos reais e possibilidades de colaboração.",
+    principle:
+      "Compreender antes de modificar: seguir o flow, produzir evidências e tornar as decisões do sistema visíveis.",
+    connectionToInvestigativePractice:
+      "A prática que você acabou de conhecer faz parte de um laboratório dedicado a desenvolver formação, métodos e investigação aplicada.",
+    historicalPresentation: {
+      eyebrow: "LAB STRUCTURE",
+      terminalLine: "flow trace origin",
+      title: "O LAB",
+      intro:
+        "O Payload Journey LAB desenvolve métodos, artefatos pedagógicos e investigações aplicadas para observar, modelar, rastrear e compreender sistemas de software.",
+      complement:
+        "O trabalho do LAB combina formação, pesquisa metodológica e aplicação em codebases reais, especialmente em sistemas cuja expansão tornou a compreensão estrutural mais difícil.",
+      pillars: [
+        {
+          title: "Formação",
+          description:
+            "Desenvolvimento de visão estrutural, capacidade de tracing e compreensão de sistemas através de experiências educacionais.",
+          icon: GraduationCap,
+        },
+        {
+          title: "Pesquisa",
+          description:
+            "Criação, documentação e refinamento de métodos para observar, modelar e investigar sistemas de software.",
+          icon: BookOpen,
+        },
+        {
+          title: "Investigação aplicada",
+          description: "Aplicação dos métodos do LAB em anomalias, fluxos e codebases reais.",
+          icon: Search,
+        },
+        {
+          title: "Colaboração",
+          description:
+            "Construção de pilotos, estudos e parcerias com estudantes, pesquisadores, instituições e organizações.",
+          icon: Share2,
+        },
+      ] satisfies Pillar[],
+    },
+  } satisfies LabPresentation,
   methods: {
     ...methodsSectionContent,
     items: methodsContent,
@@ -415,14 +432,84 @@ export const siteContent = {
   },
   investigativePractice: investigativePracticePresentation,
   ecosystem: {
-    title: "Um ecossistema para compreender sistemas",
-    intro:
-      "Os métodos do LAB fazem parte de uma prática de investigação estrutural orientada por evidências.",
+    eyebrow: "Ecossistema do LAB",
+    title: "Quatro áreas conectadas pelo mesmo propósito",
+    description:
+      "O LAB transforma investigação de sistemas em aprendizagem, pesquisa metodológica, aplicação prática e colaboração.",
+    pillars: [
+      {
+        id: "education",
+        title: "Formação",
+        description:
+          "Experiências educacionais para desenvolver visão estrutural, capacidade de tracing e estratégias de entrada em codebases grandes.",
+        activities: ["Cursos", "Trilhas", "Vídeos", "Materiais educacionais"],
+        audience: ["Estudantes", "Developers", "Pessoas entrando em codebases desconhecidas"],
+        result: "Engenheiros mais capazes de compreender sistemas antes de modificá-los.",
+        icon: GraduationCap,
+      },
+      {
+        id: "methodological-research",
+        title: "Pesquisa metodológica",
+        description:
+          "Criação, documentação, teste e refinamento dos métodos utilizados pelo Payload Journey LAB.",
+        activities: [
+          "Desenvolvimento da USMT",
+          "Refinamento do Payload Journey",
+          "Reverse Payload Journey",
+          "Operational Payload Path",
+          "Track to Origin",
+          "Documentação do procedimento investigativo",
+        ],
+        result: "Métodos mais claros, verificáveis e ensináveis.",
+        icon: BookOpen,
+      },
+      {
+        id: "applied-investigation",
+        title: "Investigação aplicada",
+        description:
+          "Aplicação dos métodos em codebases, flows, anomalias e decisões reais de software.",
+        activities: [
+          "Seleção de flows",
+          "Mapping",
+          "Checkpoints",
+          "Confronto de evidências",
+          "Estudo de anomalias",
+          "Documentação de casos",
+        ],
+        result: "Casos reais que testam e fortalecem a prática investigativa.",
+        icon: Search,
+      },
+      {
+        id: "collaboration",
+        title: "Colaboração",
+        description:
+          "O LAB está aberto a pilotos, estudos e experiências compartilhadas com públicos interessados em aprendizagem e investigação de sistemas.",
+        activities: ["Pilotos de aprendizagem", "Estudos compartilhados", "Pesquisa aplicada"],
+        audience: [
+          "Estudantes",
+          "Educadores",
+          "Universidades",
+          "Laboratórios",
+          "Equipes",
+          "Organizações",
+        ],
+        result:
+          "Aprendizagem e investigação desenvolvidas em contato com possibilidades e contextos reais.",
+        icon: Share2,
+      },
+    ],
+    collaborationNote:
+      "Estas são possibilidades de colaboração; os públicos indicam com quem o LAB pode colaborar.",
+    historicalPresentation: {
+      title: "Um ecossistema para compreender sistemas",
+      intro:
+        "Os métodos do LAB fazem parte de uma prática de investigação estrutural orientada por evidências.",
+      institutionalTransition:
+        "Formação, pesquisa, investigação aplicada e colaboração sustentam o desenvolvimento contínuo dos métodos e da prática do LAB.",
+    },
     flow: ecosystemFlow,
     flowDescription: ecosystemFlowDescription,
     items: investigativePractice,
-    institutionalTransition:
-      "Formação, pesquisa, investigação aplicada e colaboração sustentam o desenvolvimento contínuo dos métodos e da prática do LAB.",
     futureArtifacts: [
       {
         title: "One Bit Machine",
@@ -430,6 +517,11 @@ export const siteContent = {
           "Conteúdo preservado para uma área futura de formação, experimentos e artefatos pedagógicos.",
       },
     ] satisfies CardItem[],
+  } satisfies InstitutionalEcosystemPresentation & {
+    flow: typeof ecosystemFlow;
+    flowDescription: typeof ecosystemFlowDescription;
+    items: typeof investigativePractice;
+    futureArtifacts: CardItem[];
   },
   usmt: {
     title: "USMT",
@@ -586,11 +678,28 @@ export const siteContent = {
     links: ["Curso", "LabLogs", "Workshops", "Programa Trace Engineer", "Pilotos acadêmicos"],
   },
   betaCta: {
-    label: "LAB Beta",
-    title: campaignConfig.messages.firstCircleTitle,
-    text: campaignConfig.messages.firstCircleText,
-    action: siteCtas.finalTraining,
-  },
+    eyebrow: "Comece agora",
+    title: "Comece por um único flow",
+    description:
+      "Você não precisa compreender toda a codebase para começar. Escolha uma interação, encontre o payload e siga o caminho.",
+    primaryCta: {
+      label: "Entrar na formação",
+      state: "external",
+      href: siteLinks.udemy.courseWithCoupon,
+    },
+    secondaryCta: {
+      label: "Ver o payload atravessar o sistema",
+      state: "anchor",
+      href: `#${homepageAnchors.demo}`,
+    },
+    campaignNote: campaignConfig.messages.heroStatus,
+    historicalPresentation: {
+      label: "LAB Beta",
+      title: campaignConfig.messages.firstCircleTitle,
+      text: campaignConfig.messages.firstCircleText,
+      action: siteCtas.finalTraining,
+    },
+  } satisfies FinalCtaPresentation,
   whitePapers: {
     title: "White Papers",
     description:
@@ -627,22 +736,54 @@ export const siteContent = {
     ] satisfies WhitePaper[],
   },
   about: {
-    title: "Sobre o Payload Journey LAB",
-    text:
-      "Agentes de IA podem expandir sistemas mais rapidamente do que pessoas conseguem compreendê-los. Quando a produção de código avança sem uma compreensão estrutural equivalente, torna-se mais difícil preservar rastreabilidade, autoridade, observabilidade e capacidade de decisão.",
-    secondaryText:
-      "O Payload Journey LAB nasce nesse contexto para formar estudantes e engenheiros capazes de seguir o payload através das camadas de um sistema, compreender como eventos, estados e decisões se propagam, e investigar sistemas complexos antes de modificá-los.",
+    eyebrow: "Sobre o LAB",
+    title: "Criado para ensinar a compreender sistemas",
+    origin:
+      "Sistemas podem crescer mais rapidamente do que a nossa capacidade de explicá-los. O LAB nasce da necessidade de recuperar visão estrutural, rastreabilidade e confiança antes de modificar software complexo.",
     vision:
-      "A visão do LAB é consolidar uma prática de Software System Investigation que conecte formação, pesquisa metodológica e investigação aplicada.",
+      "O Payload Journey LAB trabalha para tornar investigação de sistemas uma capacidade ensinável, praticável e documentável.",
+    motivatingProblem:
+      "Quando a produção de código avança sem compreensão estrutural equivalente, torna-se mais difícil preservar rastreabilidade, autoridade, observabilidade e capacidade de decisão.",
+    authorship:
+      "Os métodos apresentados são criados, desenvolvidos e documentados no contexto do Payload Journey LAB.",
     founder: {
-      title: "Fundadora",
-      paragraphs: [
+      name: "Valéria dos Santos Reiser",
+      role: "Criadora do Payload Journey LAB e da USMT",
+      labCreation: "Criou o Payload Journey LAB.",
+      usmtCreation: "Criou a Universal System Modeling Template (USMT).",
+      confirmedContext: [
+        "Desenvolvimento de maneiras de observar payloads, estados, eventos e decisões em sistemas complexos",
+        "Desenvolvimento dos métodos que estruturam a prática de investigação aplicada do LAB",
+      ],
+      professionalLink: siteLinks.linkedin,
+    },
+    relationshipToUsmt:
+      "A USMT integra o trabalho metodológico do LAB como instrumento para explicitar estados, regras, invariantes e o comportamento esperado.",
+    institutionalSignature: siteIdentity.tagline,
+    values: [
+      "Seguir o flow",
+      "Compreender antes de modificar",
+      "Produzir evidência",
+      "Tornar decisões visíveis",
+      "Desenvolver visão estrutural",
+      "Compartilhar métodos",
+    ],
+    historicalPresentation: {
+      title: "Sobre o Payload Journey LAB",
+      text:
+        "Agentes de IA podem expandir sistemas mais rapidamente do que pessoas conseguem compreendê-los. Quando a produção de código avança sem uma compreensão estrutural equivalente, torna-se mais difícil preservar rastreabilidade, autoridade, observabilidade e capacidade de decisão.",
+      secondaryText:
+        "O Payload Journey LAB nasce nesse contexto para formar estudantes e engenheiros capazes de seguir o payload através das camadas de um sistema, compreender como eventos, estados e decisões se propagam, e investigar sistemas complexos antes de modificá-los.",
+      vision:
+        "A visão do LAB é consolidar uma prática de Software System Investigation que conecte formação, pesquisa metodológica e investigação aplicada.",
+      founderTitle: "Fundadora",
+      founderParagraphs: [
         "Valéria dos Santos Reiser é a criadora do Payload Journey LAB e dos métodos que estruturam sua prática de investigação aplicada.",
         "Seu trabalho desenvolve formas de observar como payloads, estados, eventos e decisões atravessam sistemas complexos, especialmente em codebases expandidas por agentes de IA",
       ],
     },
     reserved: ["Fundadora", "Pesquisadores", "Colaboradores", "Instituições parceiras"],
-  },
+  } satisfies AboutPresentation & { reserved: string[] },
   contact: {
     title: "Vamos seguir o flow",
     text:
@@ -655,7 +796,8 @@ export const siteContent = {
     ] satisfies CtaItem[],
   },
   footer: {
-    policies: footerContent.policies,
+    historicalPolicies: footerContent.historicalPolicies,
+    missingLegalRoutes: footerContent.missingLegalRoutes,
   },
   preservedFutureContent: {
     futureRoutes: [

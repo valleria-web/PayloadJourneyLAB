@@ -366,8 +366,8 @@ export const investigativePracticePresentation = {
     supportingText: "Veja como formação, pesquisa e investigação aplicada se conectam.",
     action: {
       label: "Conhecer o LAB",
-      state: "anchor",
-      href: "#lab",
+      state: "internal",
+      href: "/lab",
     },
   },
 } satisfies InvestigativePracticePresentation;

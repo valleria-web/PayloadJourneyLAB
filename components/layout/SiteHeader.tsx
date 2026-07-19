@@ -3,14 +3,14 @@ import { MobileNavigation } from "@/components/layout/MobileNavigation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { siteContent } from "@/content/payload-journey-lab";
-import { homepageAnchors, siteCtas, siteNavigation } from "@/content/site";
+import { siteCtas, siteNavigation } from "@/content/site";
 
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur">
       <Container className="relative flex h-16 items-center justify-between gap-5">
         <a
-          href={`#${homepageAnchors.home}`}
+          href="/"
           className="flex min-h-11 min-w-0 items-center gap-3 font-mono text-[calc(1rem+5px)] font-semibold text-accent"
           aria-label={`${siteContent.brand.name} - inicio`}
         >

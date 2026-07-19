@@ -242,3 +242,72 @@ Nenhum item pertencente às Sprints 6 a 8 foi declarado concluído.
 | lablog-about-sprint6 | Consolidação institucional de LabLog e Sobre | Fontes atuais | Sprint 7 | pendente | Seções preservadas sem refatoração integral |
 
 Os itens destinados às Sprints 7 e 8 permanecem pendentes. A Sprint 6 não resolve HORA.city, YouTube, validade do cupom, templates documentais ou demonstração técnica aprofundada.
+
+## Atualização da Sprint 7 — ecossistema institucional e encerramento
+
+| ID | Conteúdo | Fonte canônica | Destino | Estado | Observações |
+| --- | --- | --- | --- | --- | --- |
+| lab-presentation-sprint7 | Missão, princípio e conexão com a prática | `siteContent.lab` | `#lab` | implementado | A metodologia completa não é repetida |
+| lab-historical-presentation | Copy, terminal e quatro cards anteriores | `siteContent.lab.historicalPresentation` | Histórico editorial server-side | preservado | Não enviado ao HTML público |
+| institutional-ecosystem | Quatro áreas conectadas | `siteContent.ecosystem` | `#ecossistema` | implementado | Assume a apresentação detalhada dos pilares |
+| institutional-education | Formação, atividades, públicos e resultado | `ecosystem.pillars[education]` | Ecossistema 01 | implementado | Condensa a dimensão institucional sem repetir a Formação fundamental |
+| institutional-methodological-research | Pesquisa metodológica e desenvolvimento dos métodos | `ecosystem.pillars[methodological-research]` | Ecossistema 02 | implementado | Sem claim de validação científica formal |
+| institutional-applied-investigation | Aplicação em codebases, flows, anomalias e decisões | `ecosystem.pillars[applied-investigation]` | Ecossistema 03 | implementado | HORA.city permanece na seção própria |
+| institutional-collaboration | Públicos e possibilidades de colaboração | `ecosystem.pillars[collaboration]` | Ecossistema 04 | implementado | Não declara parceria, piloto ou contrato ativo |
+| collaboration-cta | CTA para colaboração | `siteLinks.contact/email/linkedin` | Ecossistema | pendente | Destinos continuam `null`; nenhum CTA fictício foi renderizado |
+| lablog-sprint7 | Narrativa, temas, CTA e status editorial | `labLogContent` | `#lablog` | implementado | Eyebrow usa singular coerente: “Investigação em movimento” |
+| lablog-current-youtube | Destino atualmente usado pelo LabLog | `siteLinks.youtube.labLogCurrent` | CTA LabLog | preservado | `@PayloadJourneyLAB` não foi declarado oficial |
+| footer-current-youtube-sprint7 | Destino atualmente usado pelo Footer | `siteLinks.youtube.footerCurrent` | Canal do Footer | preservado | `@Lab-Log` permanece distinto |
+| youtube-resolution-sprint7 | Escolha do YouTube canônico | `siteLinks.youtube` | Decisão editorial futura | pendente | `resolutionStatus: "unresolved"` e `canonical: null` |
+| about-origin-sprint7 | Origem e problema motivador | `siteContent.about` | `#sobre` | implementado | Sem estatísticas novas e sem repetir HORA.city |
+| about-vision-sprint7 | Visão e seis valores | `siteContent.about` | `#sobre` | implementado | Sem reconhecimento externo alegado |
+| founder-sprint7 | Nome, criação do LAB, criação da USMT e contexto confirmado | `siteContent.about.founder` | `#sobre` | implementado | Biografia limitada às fontes do projeto |
+| founder-professional-link | Perfil profissional | `siteLinks.linkedin` | Sobre | pendente | Continua `null`; nenhum link foi inventado |
+| about-historical-presentation | Copy e parágrafos anteriores da fundadora | `about.historicalPresentation` | Histórico editorial server-side | preservado | Não enviado ao HTML público |
+| final-cta-sprint7 | Comece por um único flow | `siteContent.betaCta` | CTA final | implementado | Dois CTAs, sem terceiro destino |
+| final-cta-training | Entrar na formação | `betaCta.primaryCta` | Udemy atual | implementado | Cupom preservado; `expiration: null` |
+| final-cta-demo | Ver o payload atravessar o sistema | `betaCta.secondaryCta` | `#demo` | implementado | Anchor existente |
+| final-cta-history | Primeiro círculo de estudantes e CTA anterior | `betaCta.historicalPresentation` | Histórico editorial server-side | preservado | Não enviado ao HTML público |
+| footer-sprint7 | Identidade, navegação, canais e copyright | `footerContent` | Footer | implementado | Navegação continua independente do Header |
+| footer-legal-real | Informação institucional e copyright existentes | `footerContent.legalNotice/copyrightSuffix` | Footer | implementado | Somente informação real é renderizada |
+| footer-legal-missing | Política de privacidade e Termos de uso sem rota | `footerContent.historicalPolicies/missingLegalRoutes` | Pendência documental | pendente | Nomes históricos preservados na fonte, não renderizados |
+| contact-section-sprint7 | Componente de contato sem destino | `ContactSection` + `siteContent.contact` | Conteúdo reservado | preservado | Não renderizado e não removido |
+| institutional-duplications | Pilares no O LAB, prática no Ecossistema e campanha no CTA | Fontes históricas nomeadas | HTML público condensado | implementado | Cada conceito completo permanece em sua seção principal |
+| sprint8-qa-release | QA integral, SEO, performance e publicação | Documentação da Sprint 7 | Sprint 8 | pendente | Sem deploy, release, tag ou alteração de versão |
+
+Continuam pendentes e não foram marcados como concluídos: demonstração aprofundada, resolução editorial de HORA.city, YouTube oficial, validade do cupom, integrações externas, páginas legais, deploy e release.
+
+## Atualização da Sprint 9 — reincorporação da USMT
+
+| ID | Conteúdo | Fonte canônica | Destino | Estado | Observações |
+| --- | --- | --- | --- | --- | --- |
+| usmt-homepage-section | Seção própria da Universal System Model Template | `content/usmt.ts#usmtContent` | `#usmt` | implementado | Inserida depois de HORA.city e imediatamente antes do Procedimento |
+| usmt-anchor | Anchor público da seção | `homepageAnchors.usmt` | `#usmt` | implementado | Não foi adicionado ao Header ou Footer |
+| usmt-central-question | Confrontação entre comportamento observado e esperado | `usmtContent.centralQuestion/centralAnswer` | Introdução da USMT | implementado | Copy curta e operacional |
+| usmt-elements-compact | Doze elementos estruturais com microdescrições | `usmtContent.elements` | Grade numerada | implementado | Um ou dois blocos por linha no mobile e quatro no desktop; sem cards editoriais extensos |
+| usmt-description | Descrição | `elements[description]` | Elemento 01 | implementado | O que é o sistema |
+| usmt-delimitation | Delimitação | `elements[delimitation]` | Elemento 02 | implementado | Onde começa e termina |
+| usmt-states | Estados / states | `elements[states]` | Elemento 03 | implementado | Termo indexável preservado |
+| usmt-events | Eventos / events | `elements[events]` | Elemento 04 | implementado | Termo indexável preservado |
+| usmt-allowed-transitions | Transições permitidas | `elements[allowed-transitions]` | Elemento 05 | implementado | Definição oficial preservada |
+| usmt-forbidden-transitions | Transições proibidas | `elements[forbidden-transitions]` | Elemento 06 | implementado | Definição oficial preservada |
+| usmt-invalidation | Invalidação | `elements[invalidation]` | Elemento 07 | implementado | Condição de estado inválido |
+| usmt-termination | Terminação | `elements[termination]` | Elemento 08 | implementado | Fechamento do ciclo |
+| usmt-invariants | Invariantes / invariants | `elements[invariants]` | Elemento 09 | implementado | Termo indexável preservado |
+| usmt-layers | Camadas / layers | `elements[layers]` | Elemento 10 | implementado | Termo indexável preservado |
+| usmt-metrics | Métricas | `elements[metrics]` | Elemento 11 | implementado | Comportamento mensurável |
+| usmt-spec | Spec | `elements[spec]` | Elemento 12 | implementado | Síntese operacional |
+| usmt-lenses | WHERE → HOW → LOGIC → SAFE | `usmtContent.lenses` | Bloco de lentes | implementado | Ordem textual e visual equivalente |
+| usmt-where | Localiza responsabilidade, fronteira e autoridade | `lenses[where]` | Lente 01 | implementado | WHERE acompanhado de explicação |
+| usmt-how | Acompanha transporte, transformação e sequência | `lenses[how]` | Lente 02 | implementado | HOW acompanhado de explicação |
+| usmt-logic | Interpreta regra, condição, decisão e transição | `lenses[logic]` | Lente 03 | implementado | LOGIC acompanhado de explicação |
+| usmt-safe | Valida invariantes, limites, invalidação e terminação | `lenses[safe]` | Lente 04 | implementado | SAFE acompanhado de explicação |
+| usmt-payload-connection | Modelo esperado → Flow observado → Evidência → Investigação | `usmtContent.connection` | Relação operacional | implementado | Confrontação entre USMT e Payload Journey explícita |
+| usmt-protocol-transition | Congelar → Mapear → Detectar → Restaurar | `usmtContent.protocolTransition` | Fechamento da seção | implementado | Prepara diretamente a seção seguinte |
+| usmt-indexable-content | software system investigation, system modeling, payload tracing e termos estruturais | `usmtContent.indexableContext` | HTML público | implementado | Texto real, sem canvas ou imagem |
+| usmt-deep-dive-cta | Paper, documentação ou rota completa | `usmtContent.deepDiveCta` | Aprofundamento futuro | pendente | `null`; nenhum link falso renderizado |
+| usmt-historical-long-form | Doze passos extensos anteriores em inglês e CTA futuro | `siteContent.usmt` | Histórico server-side | preservado | Não enviado ao HTML público |
+| usmt-placeholder-diagram | Placeholder estrutural antigo | `components/diagrams/UsmtDiagram.tsx` | Conteúdo reservado | preservado | Não modificado nem renderizado |
+| sprint9-existing-sections | Todas as seções anteriores | `app/page.tsx` | Homepage | preservado | Somente USMT foi inserida; nenhuma seção removida ou reordenada relativamente |
+
+Continuam fora do escopo: paper completo, rota `/usmt`, documentação aprofundada, alteração dos 12 elementos, alteração das quatro lentes, novas dependências, Header, Footer, branding, deploy e release.
