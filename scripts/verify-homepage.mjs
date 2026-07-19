@@ -92,6 +92,8 @@ try {
     "competencias",
     "trilha",
     "demo",
+    "procedimento",
+    "pratica-investigativa",
     "lab",
     "metodos",
     "ecossistema",
@@ -143,8 +145,23 @@ try {
     "Caso documentado como investigação aplicada do LAB.",
     "Acompanhar o caso no LabLog",
     "Rever o flow",
+    "Procedimento investigativo",
+    "Congelar, Mapear, Detectar e Restaurar",
+    "Qual comportamento precisa ser preservado antes de qualquer alteração?",
+    "Por onde o payload realmente atravessa o sistema?",
+    "Em que ponto o comportamento observado diverge do esperado ou do modelo?",
+    "Que autoridade, regra ou comportamento precisa ser corrigido e validado?",
+    "registro da divergência detectada",
+    "validação do comportamento restaurado",
+    "Métodos e instrumentos",
+    "Cada método responde a uma pergunta diferente",
+    "O procedimento define a sequência investigativa.",
+    "Prática investigativa",
+    "Da observação à restauração",
+    "Função investigativa proposta e desenvolvida pelo LAB.",
+    "Prática organizada e desenvolvida no contexto do Payload Journey LAB.",
+    "Conhecer o LAB",
     "O LAB",
-    "Métodos para compreender sistemas",
     "Um ecossistema para compreender sistemas",
     "HORA.city",
     "LabLog",
@@ -207,8 +224,10 @@ try {
     "demo",
     "formacao",
     "case-study",
-    "lab",
+    "procedimento",
     "metodos",
+    "pratica-investigativa",
+    "lab",
     "ecossistema",
     "lablog",
     "sobre",
@@ -246,6 +265,70 @@ try {
     }
   }
 
+  const procedureIds = ["freeze", "map", "detect", "restore"];
+  let previousProcedureIndex = -1;
+  for (const id of procedureIds) {
+    const idIndex = html.indexOf(`id="${id}"`);
+    assert(idIndex > previousProcedureIndex, `Investigation procedure order is incorrect at: ${id}`);
+    previousProcedureIndex = idIndex;
+  }
+  assert(
+    html.includes("Confronte evidências produzidas nos checkpoints") &&
+      html.includes("Uma divergência sustentada por evidências, não apenas uma hipótese."),
+    "Detect must be defined through evidence confrontation rather than random debugging",
+  );
+  assert(
+    html.includes("percorra novamente o flow para validar o resultado") &&
+      html.includes("validado através do mesmo flow investigado"),
+    "Restore must include validation through the investigated flow",
+  );
+
+  const methodDomIds = [
+    "method-payload-journey",
+    "method-usmt",
+    "method-reverse-payload-journey",
+    "method-operational-payload-path",
+    "method-track-to-origin",
+  ];
+  let previousMethodIndex = -1;
+  for (const id of methodDomIds) {
+    const idIndex = html.indexOf(`id="${id}"`);
+    assert(idIndex > previousMethodIndex, `Methods order is incorrect at: ${id}`);
+    previousMethodIndex = idIndex;
+  }
+  assert(
+    occurrences(html, /Relação com o procedimento/g) >= 5,
+    "Every method must expose its textual relationship with the procedure",
+  );
+  assert(
+    occurrences(html, /Pergunta respondida/g) >= 5 && occurrences(html, /Quando utilizar/g) >= 5,
+    "Every method must expose its question and usage context",
+  );
+  assert(
+    !html.includes("Phenomenon description") && !html.includes("State Enumeration"),
+    "The complete twelve-element USMT must remain outside the homepage",
+  );
+  assert(
+    !/única (?:linha|arquivo)|uma linha única|um arquivo único/i.test(html),
+    "Track to Origin must not promise a single line or file",
+  );
+
+  for (const id of [
+    "practice-track-mode",
+    "practice-trace-engineer",
+    "practice-software-system-investigation",
+  ]) {
+    assert(html.includes(`id="${id}"`), `Missing investigative practice block: ${id}`);
+  }
+  assert(
+    html.includes("Evidência") && html.includes("Autoridade") && html.includes("Restauração"),
+    "Investigative practice must expose evidence, authority, and restoration",
+  );
+  assert(
+    html.includes('href="#lab"') && html.includes("Conhecer o LAB"),
+    "Investigative practice CTA must point to the existing #lab anchor",
+  );
+
   const caseSectionIds = [
     "case-context",
     "case-anomaly",
@@ -282,8 +365,19 @@ try {
     !/certifica(?:do|ção)|Practitioner|Expert/i.test(html),
     "The fundamental training must not introduce nonexistent certification language",
   );
+  assert(
+    !/profissão reconhecida|cargo padronizado|standard externo|disciplina formalmente padronizada/i.test(
+      html,
+    ),
+    "Investigative practice must not claim external recognition or standardization",
+  );
 
-  const renderedIds = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]));
+  const renderedIdList = [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
+  const renderedIds = new Set(renderedIdList);
+  assert(
+    renderedIds.size === renderedIdList.length,
+    "Every rendered DOM id must be unique across the homepage",
+  );
   const internalDestinations = [...html.matchAll(/\shref="#([^"]+)"/g)].map(
     (match) => match[1],
   );
@@ -459,7 +553,7 @@ try {
           learningPathSteps: learningPathIds.length,
           flowNodes: flowNodeIds.length,
           flowNodeHtmlOrderPreserved: true,
-          operationalRolesExplicit: 4,
+          operationalRolesExplicit: 7,
           pedagogicalDemoDisclosure: true,
           trainingAndCaseOrderProtected: true,
           trainingPresentationProtected: true,
@@ -467,6 +561,12 @@ try {
           caseSharedFactsStrategyProtected: true,
           completeEditorialVariantsExcludedFromHtml: true,
           unconfirmedCaseFactsOmitted: true,
+          investigationProcedureSteps: procedureIds.length,
+          investigationMethods: methodDomIds.length,
+          investigativePracticeBlocks: 3,
+          uniqueDomIds: renderedIds.size,
+          methodProcedureRelationshipsTextual: true,
+          externalRecognitionClaimsRejected: true,
         },
       },
       null,

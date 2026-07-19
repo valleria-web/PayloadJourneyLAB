@@ -31,10 +31,10 @@ export function CaseStudySection() {
         </p>
 
         <HighlightPanel
-          variant="soft-blush"
-          className="mt-8 border-line/70 bg-case-card/90 p-6 sm:p-8"
+          variant="dark"
+          className="mt-8 !bg-ink p-6 sm:p-8"
         >
-          <p className="max-w-4xl text-xl font-semibold leading-8 text-ink sm:text-2xl sm:leading-9">
+          <p className="max-w-4xl text-xl font-semibold leading-8 text-white sm:text-2xl sm:leading-9">
             {narrative.mainMessage}
           </p>
         </HighlightPanel>

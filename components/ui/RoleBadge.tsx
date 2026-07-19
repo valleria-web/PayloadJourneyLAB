@@ -6,16 +6,22 @@ export type RoleBadgeProps = {
 };
 
 const roleLabels = {
-  transport: "Transporta",
+  trigger: "Dispara",
   transform: "Transforma",
+  transport: "Transporta",
+  forward: "Encaminha",
   decide: "Decide",
+  persist: "Persiste",
   present: "Apresenta",
 } satisfies Record<OperationalRole, string>;
 
 const roleStyles = {
+  trigger: "border-role-present/20 bg-role-present-surface text-role-present",
   transport: "border-role-transport/25 bg-role-transport-surface text-role-transport",
   transform: "border-role-transform/25 bg-role-transform-surface text-role-transform",
+  forward: "border-role-transform/25 bg-role-transform-surface text-role-transform",
   decide: "border-role-decide/20 bg-role-decide-surface text-role-decide",
+  persist: "border-role-transport/25 bg-role-transport-surface text-role-transport",
   present: "border-role-present/20 bg-role-present-surface text-role-present",
 } satisfies Record<OperationalRole, string>;
 

@@ -4,6 +4,8 @@ import { CaseStudySection } from "@/components/sections/CaseStudySection";
 import { ConceptEcosystemSection } from "@/components/sections/ConceptEcosystemSection";
 import { EducationSection } from "@/components/sections/EducationSection";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { InvestigationCycleSection } from "@/components/sections/InvestigationCycleSection";
+import { InvestigationPracticeSection } from "@/components/sections/InvestigationPracticeSection";
 import { LabLogSection } from "@/components/sections/LabLogSection";
 import { LabOverviewSection } from "@/components/sections/LabOverviewSection";
 import { LearningOutcomesSection } from "@/components/sections/LearningOutcomesSection";
@@ -29,8 +31,10 @@ export default function Home() {
         <PayloadFlowDemoSection />
         <EducationSection />
         <CaseStudySection />
-        <LabOverviewSection />
+        <InvestigationCycleSection />
         <MethodsSection />
+        <InvestigationPracticeSection />
+        <LabOverviewSection />
         <ConceptEcosystemSection />
         <LabLogSection />
         <AboutSection />

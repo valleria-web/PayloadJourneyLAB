@@ -48,6 +48,8 @@ export type HomepageAnchorKey =
   | "competencies"
   | "learningPath"
   | "demo"
+  | "procedure"
+  | "investigativePractice"
   | "lab"
   | "methods"
   | "ecosystem"
@@ -109,7 +111,14 @@ export type LearningPathStep = {
   result: string;
 };
 
-export type OperationalRole = "transport" | "transform" | "decide" | "present";
+export type OperationalRole =
+  | "trigger"
+  | "transform"
+  | "transport"
+  | "forward"
+  | "decide"
+  | "persist"
+  | "present";
 
 export type PayloadFlowNodeId =
   | "interaction"
@@ -255,6 +264,11 @@ export type MethodId =
 export type LearningMethod = CardItem & {
   id: MethodId;
   purpose: string;
+  whenToUse: string;
+  question: string;
+  result: string;
+  relatedSteps: InvestigationStepId[];
+  relationship: string;
   currentSection: "metodos";
   futureSection: "methods-and-instruments";
   currentOrder: number;
@@ -268,6 +282,14 @@ export type InvestigationStep = {
   action: string;
   actionPt: string;
   target: string;
+  number: string;
+  question: string;
+  description: string;
+  inputs: string[];
+  activities: string[];
+  result: string;
+  evidence: string;
+  relatedMethods: MethodId[];
   currentOrder: number;
   futureSection: "investigation-procedure";
 };
@@ -280,6 +302,45 @@ export type InvestigativePracticeId =
 export type InvestigativePractice = CardItem & {
   id: InvestigativePracticeId;
   futureSection: "investigative-practice-and-trace-engineer";
+};
+
+export type InvestigativePracticePresentation = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  progression: string[];
+  trackMode: {
+    id: "track-mode";
+    title: "Track Mode";
+    definition: string;
+    principle: string;
+    actions: string[];
+  };
+  traceEngineer: {
+    id: "trace-engineer";
+    title: "Trace Engineer";
+    definition: string;
+    context: string;
+    responsibilities: string[];
+  };
+  softwareSystemInvestigation: {
+    id: "software-system-investigation";
+    title: "Software System Investigation";
+    definition: string;
+    context: string;
+    elements: string[];
+    result: string;
+  };
+  centralConcepts: {
+    evidence: string;
+    authority: string;
+    restoration: string;
+    observationBeforeModification: string;
+  };
+  cta: {
+    supportingText: string;
+    action: EntryCta;
+  };
 };
 
 export type HoraCityEditorialVariant = {

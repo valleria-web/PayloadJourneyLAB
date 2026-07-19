@@ -208,3 +208,37 @@ As variantes editoriais de HORA.city continuam separadas e com `editorialResolut
 | future-ecosystem-refactor | Ecossistema investigativo | Fonte atual preservada | Sprint futura | pendente | Não refatorado nesta sprint |
 
 Nenhum item pertencente às Sprints 6 a 8 foi declarado concluído.
+
+## Atualização da Sprint 6 — procedimento, métodos e prática investigativa
+
+| ID | Conteúdo | Fonte canônica | Destino | Estado | Observações |
+| --- | --- | --- | --- | --- | --- |
+| investigation-procedure | Sequência Congelar → Mapear → Detectar → Restaurar | `investigationCycle` | `#procedimento` | implementado | Aparece imediatamente depois de HORA.city |
+| procedure-freeze | Pergunta, entrada, atividades, resultado e evidência de Congelar | `investigationCycle[freeze]` | Procedimento 01 | implementado | Preserva `FREEZE / PAYLOAD` como identidade histórica |
+| procedure-map | Pergunta, entrada, atividades, resultado e evidência de Mapear | `investigationCycle[map]` | Procedimento 02 | implementado | Inclui Operational Payload Path e checkpoints candidatos |
+| procedure-detect | Confronto de evidências e primeira divergência relevante | `investigationCycle[detect]` | Procedimento 03 | implementado | Não promete linha, arquivo ou bug encontrado por adivinhação |
+| procedure-restore | Mudança mínima e validação pelo mesmo flow | `investigationCycle[restore]` | Procedimento 04 | implementado | Restauração não é reduzida a correção de código |
+| procedure-method-relation | Métodos relacionados a cada etapa | `relatedMethods` | Cards do Procedimento | implementado | Relação explícita em texto; não depende de cor |
+| methods-public-contracts | Categoria, propósito, uso, pergunta, resultado e relação | `methodsContent` | `#metodos` | implementado | IDs canônicos permanecem nos dados; DOM usa prefixo `method-` |
+| payload-journey-sprint6 | Payload Journey como instrumento de observação e validação | `methodsContent[payload-journey]` | Métodos 01 | implementado | Relacionado a Mapear e Restaurar |
+| usmt-sprint6 | USMT como instrumento de modelagem | `methodsContent[usmt]` | Métodos 02 | implementado | Doze elementos continuam reservados fora da homepage |
+| reverse-payload-journey-sprint6 | Reconstrução reversa orientada pela anomalia | `methodsContent[reverse-payload-journey]` | Métodos 03 | implementado | Relacionado a Congelar, Mapear e Detectar |
+| operational-payload-path-sprint6 | Trajetória concreta por componentes e fronteiras | `methodsContent[operational-payload-path]` | Métodos 04 | implementado | Produz mapa e checkpoints candidatos |
+| track-to-origin-sprint6 | Rastreamento da autoridade de origem | `methodsContent[track-to-origin]` | Métodos 05 | implementado | Não promete uma única linha ou arquivo |
+| methods-historical-presentation | Copy anterior da seção Métodos | `methodsSectionContent.historicalPresentation` | Fonte server-side histórica | preservado | Não renderizada pela nova apresentação pública |
+| investigative-practice | Progressão operacional e três blocos públicos | `investigativePracticePresentation` | `#pratica-investigativa` | implementado | Não substitui o ciclo oficial |
+| track-mode-sprint6 | Estado operacional e ações | `investigativePracticePresentation.trackMode` | Prática investigativa | implementado | Não apresentado como produto, ferramenta ou automação |
+| trace-engineer-sprint6 | Função investigativa proposta pelo LAB | `investigativePracticePresentation.traceEngineer` | Prática investigativa | implementado | Sem claim de profissão, cargo ou certificação reconhecida |
+| software-system-investigation-sprint6 | Prática estrutural no contexto do LAB | `investigativePracticePresentation.softwareSystemInvestigation` | Prática investigativa | implementado | Sem claim de disciplina ou standard externo |
+| evidence-authority-restoration | Conceitos centrais da prática | `investigativePracticePresentation.centralConcepts` | Prática investigativa | implementado | Expostos por texto e lista semântica |
+| practice-lab-cta | Conhecer o LAB | `investigativePracticePresentation.cta` | `#lab` | implementado | Destino interno preexistente |
+| ecosystem-visible-duplication | Flow e três cards repetidos depois da nova Prática | `siteContent.ecosystem` | Fonte histórica | condensado no HTML | Fontes, `FlowDiagram`, IDs e conteúdo institucional preservados |
+| ecosystem-institutional-transition | Relação entre formação, pesquisa, investigação e colaboração | `siteContent.ecosystem.institutionalTransition` | `#ecossistema` | implementado | Mantém a função institucional da seção sem repetir a Prática |
+| lab-pillars-sprint6 | Formação, Pesquisa, Investigação aplicada e Colaboração | `siteContent.lab.pillars` | `#lab` | preservado | Sem mudança de copy ou componente |
+| hero-methodology-history | Ciclo, Track Mode, Trace Engineer e SSI retirados do Hero na Sprint 3 | Fontes históricas de `content/methods.ts` | Procedimento e Prática | reaproveitado | Fontes anteriores permanecem separadas |
+| hora-city-resolution-sprint6 | Decisão entre variantes editoriais | `horaCityCase.editorialResolution` | Decisão editorial futura | pendente | Continua `unresolved` |
+| documentary-templates | Freeze Record, checkpoints e protocolo documental completo | Conteúdo ainda não criado | Sprint futura | pendente | Não implementado nesta sprint |
+| deep-demo-sprint6 | Logs, schemas, request/response e execução aprofundada | Conteúdo ainda não confirmado | Sprint futura | pendente | Demo pedagógica atual preservada |
+| lablog-about-sprint6 | Consolidação institucional de LabLog e Sobre | Fontes atuais | Sprint 7 | pendente | Seções preservadas sem refatoração integral |
+
+Os itens destinados às Sprints 7 e 8 permanecem pendentes. A Sprint 6 não resolve HORA.city, YouTube, validade do cupom, templates documentais ou demonstração técnica aprofundada.

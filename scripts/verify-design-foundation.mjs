@@ -20,6 +20,26 @@ const files = {
   flowDemo: path.join(repositoryRoot, "components", "sections", "PayloadFlowDemoSection.tsx"),
   education: path.join(repositoryRoot, "components", "sections", "EducationSection.tsx"),
   caseStudy: path.join(repositoryRoot, "components", "sections", "CaseStudySection.tsx"),
+  investigationCycle: path.join(
+    repositoryRoot,
+    "components",
+    "sections",
+    "InvestigationCycleSection.tsx",
+  ),
+  methodsSection: path.join(repositoryRoot, "components", "sections", "MethodsSection.tsx"),
+  investigationPractice: path.join(
+    repositoryRoot,
+    "components",
+    "sections",
+    "InvestigationPracticeSection.tsx",
+  ),
+  ecosystem: path.join(
+    repositoryRoot,
+    "components",
+    "sections",
+    "ConceptEcosystemSection.tsx",
+  ),
+  flowDiagram: path.join(repositoryRoot, "components", "diagrams", "FlowDiagram.tsx"),
 };
 
 function assert(condition, message) {
@@ -193,8 +213,26 @@ for (const component of ["education", "caseStudy"]) {
   assert(!sources[component].includes('"use client"'), `${component} must remain a Server Component`);
   assert(!/#[\da-f]{3,8}/i.test(sources[component]), `${component} must not contain color literals`);
 }
-for (const label of ["Transporta", "Transforma", "Decide", "Apresenta"]) {
+for (const label of [
+  "Dispara",
+  "Transforma",
+  "Transporta",
+  "Encaminha",
+  "Decide",
+  "Persiste",
+  "Apresenta",
+]) {
   assert(sources.roleBadge.includes(`"${label}"`), `Missing explicit operational label: ${label}`);
+}
+for (const component of [
+  "investigationCycle",
+  "methodsSection",
+  "investigationPractice",
+  "ecosystem",
+  "flowDiagram",
+]) {
+  assert(!sources[component].includes('"use client"'), `${component} must remain a Server Component`);
+  assert(!/#[\da-f]{3,8}/i.test(sources[component]), `${component} must not contain color literals`);
 }
 
 let legacyHeaderAdapterExists = true;
@@ -229,6 +267,8 @@ console.log(
         ),
         flowServerComponents: 4,
         sprint5ServerSections: 2,
+        sprint6ServerSections: 4,
+        flowDiagramPreservedAsServerComponent: true,
       },
     },
     null,
