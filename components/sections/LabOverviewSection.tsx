@@ -1,4 +1,4 @@
-import { SectionHeader } from "@/components/sections/SectionHeader";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { IconWrapper } from "@/components/ui/IconWrapper";
 import { Section } from "@/components/ui/Section";

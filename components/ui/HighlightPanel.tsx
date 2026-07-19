@@ -19,7 +19,7 @@ export function HighlightPanel({
 }: HighlightPanelProps) {
   return (
     <div
-      className={`technical-corners rounded-2xl border p-6 shadow-[0_18px_54px_rgba(16,16,16,0.06)] ${variants[variant]} ${className}`}
+      className={`technical-corners rounded-foundation-card border p-6 shadow-foundation-highlight ${variants[variant]} ${className}`}
     >
       {children}
     </div>

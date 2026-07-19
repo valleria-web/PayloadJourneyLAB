@@ -1,5 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
-import { SectionHeader } from "@/components/sections/SectionHeader";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";

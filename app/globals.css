@@ -4,26 +4,73 @@
 
 :root {
   color-scheme: light;
-  --paper: #f8f7f4;
-  --ink: #101010;
-  --muted: #4b4b4b;
-  --line: #d8d6d1;
-  --soft: #e9e7e2;
-  --surface-page: #f8f7f4;
-  --surface-card: #ffffff;
-  --surface-soft: #e9e7e2;
-  --border-default: #d8d6d1;
-  --border-active: #2fae42;
-  --text-primary: #101010;
-  --text-muted: #4b4b4b;
-  --accent: #2fae42;
-  --accent-technical: #2fae42;
-  --terminal: #78e65d;
-  --pink: #eb5cb8;
-  --pink-dark: #c93f99;
-  --accent-cta: #eb5cb8;
-  --accent-soft: #f7d6ea;
-  --accent-muted: #e9f8e6;
+  --color-paper: 248 247 244;
+  --color-ink: 16 16 16;
+  --color-graphite: 75 75 75;
+  --color-line: 216 214 209;
+  --color-subtle: 243 241 236;
+  --color-soft: 233 231 226;
+  --color-surface-card: 255 255 255;
+  --color-blush: 247 214 234;
+  --color-accent: 47 174 66;
+  --color-terminal: 120 230 93;
+  --color-pink: 235 92 184;
+  --color-pink-dark: 201 63 153;
+  --color-focus: var(--color-pink-dark);
+  --color-accent-muted: 233 248 230;
+  --color-danger: 180 35 24;
+  --color-case-section: 246 231 235;
+  --color-case-card: 251 241 244;
+  --color-case-panel: 252 247 248;
+
+  --font-family-sans: "Space Grotesk", "Inter", Arial, Helvetica, sans-serif;
+  --font-family-mono: "IBM Plex Mono", "Courier New", monospace;
+  --font-size-technical-sm: calc(0.7rem + 5px);
+  --font-size-technical: calc(0.75rem + 5px);
+  --font-size-technical-lg: calc(0.875rem + 5px);
+  --tracking-technical: 0.08em;
+  --tracking-technical-wide: 0.12em;
+
+  --container-narrow: 64rem;
+  --container-default: 80rem;
+  --container-wide: 88rem;
+  --space-container-inline: 1.25rem;
+  --space-section-block: 4rem;
+  --space-card: 1.5rem;
+  --radius-control: 0.5rem;
+  --radius-card: 1rem;
+
+  --shadow-button-primary: 0 12px 30px rgb(var(--color-pink) / 0.18);
+  --shadow-card: 0 14px 40px rgb(var(--color-ink) / 0.05);
+  --shadow-card-technical: 0 18px 44px rgb(var(--color-accent) / 0.12);
+  --shadow-card-cta: 0 18px 44px rgb(var(--color-pink) / 0.12);
+  --shadow-highlight: 0 18px 54px rgb(var(--color-ink) / 0.06);
+  --shadow-flow: 0 10px 30px rgb(var(--color-ink) / 0.03);
+  --shadow-investigation: 0 18px 50px rgb(var(--color-ink) / 0.18);
+
+  --motion-duration-fast: 180ms;
+  --motion-duration-base: 200ms;
+  --motion-easing-standard: ease;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --space-container-inline: 2rem;
+    --space-section-block: 5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --space-container-inline: 2.5rem;
+    --space-section-block: 6rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --space-container-inline: 3rem;
+  }
 }
 
 * {
@@ -31,7 +78,7 @@
 }
 
 html {
-  background: var(--paper);
+  background: rgb(var(--color-paper));
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -40,8 +87,8 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  background: var(--paper);
-  color: var(--ink);
+  background: rgb(var(--color-paper));
+  color: rgb(var(--color-ink));
   line-height: 1.6;
 }
 
@@ -49,48 +96,83 @@ a {
   color: inherit;
   text-decoration: none;
   text-underline-offset: 0.22em;
-  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
+  transition:
+    color var(--motion-duration-fast) var(--motion-easing-standard),
+    background-color var(--motion-duration-fast) var(--motion-easing-standard),
+    border-color var(--motion-duration-fast) var(--motion-easing-standard);
 }
 
 a:hover {
-  color: var(--pink-dark);
+  color: rgb(var(--color-pink-dark));
 }
 
 :focus-visible {
-  outline: 2px solid var(--pink);
+  outline: 2px solid rgb(var(--color-focus));
   outline-offset: 4px;
 }
 
 ::selection {
-  background: var(--accent-muted);
-  color: var(--ink);
+  background: rgb(var(--color-accent-muted));
+  color: rgb(var(--color-ink));
+}
+
+@layer components {
+  .foundation-container {
+    margin-inline: auto;
+    width: 100%;
+    padding-inline: var(--space-container-inline);
+  }
+
+  .foundation-container-narrow {
+    max-width: var(--container-narrow);
+  }
+
+  .foundation-container-default {
+    max-width: var(--container-default);
+  }
+
+  .foundation-container-wide {
+    max-width: var(--container-wide);
+  }
+
+  .foundation-section {
+    padding-block: var(--space-section-block);
+  }
 }
 
 @layer utilities {
   .terminal-grid {
     background-image:
-      linear-gradient(rgba(47, 174, 66, 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(47, 174, 66, 0.08) 1px, transparent 1px);
+      linear-gradient(rgb(var(--color-accent) / 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--color-accent) / 0.08) 1px, transparent 1px);
     background-size: 32px 32px;
   }
 
   .soft-noise {
     background-image:
-      radial-gradient(circle at 1px 1px, rgba(16, 16, 16, 0.055) 1px, transparent 0);
+      radial-gradient(circle at 1px 1px, rgb(var(--color-ink) / 0.055) 1px, transparent 0);
     background-size: 18px 18px;
   }
 
   .hairline-divider {
-    border-color: var(--border-default);
+    border-color: rgb(var(--color-line));
     border-top-width: 1px;
   }
 
   .technical-corners {
     background:
-      linear-gradient(var(--accent-technical), var(--accent-technical)) left top / 18px 1px no-repeat,
-      linear-gradient(var(--accent-technical), var(--accent-technical)) left top / 1px 18px no-repeat,
-      linear-gradient(var(--pink), var(--pink)) right bottom / 18px 1px no-repeat,
-      linear-gradient(var(--pink), var(--pink)) right bottom / 1px 18px no-repeat;
+      linear-gradient(rgb(var(--color-accent)), rgb(var(--color-accent))) left top / 18px 1px no-repeat,
+      linear-gradient(rgb(var(--color-accent)), rgb(var(--color-accent))) left top / 1px 18px no-repeat,
+      linear-gradient(rgb(var(--color-pink)), rgb(var(--color-pink))) right bottom / 18px 1px no-repeat,
+      linear-gradient(rgb(var(--color-pink)), rgb(var(--color-pink))) right bottom / 1px 18px no-repeat;
+  }
+
+  .case-study-grid {
+    background-image: radial-gradient(
+      rgb(var(--color-ink) / 0.08) 1px,
+      transparent 1px
+    );
+    background-size: 14px 14px;
   }
 }
 

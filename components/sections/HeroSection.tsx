@@ -41,7 +41,7 @@ function PayloadFlowPanel() {
         {investigationCycle.map((item, index) => (
           <div
             key={item.action}
-            className="grid grid-cols-[auto_1fr] items-center gap-4 rounded-xl border border-border-default/80 bg-white/70 px-4 py-3 shadow-[0_10px_30px_rgba(16,16,16,0.03)]"
+            className="grid grid-cols-[auto_1fr] items-center gap-4 rounded-xl border border-border-default/80 bg-white/70 px-4 py-3 shadow-foundation-flow"
           >
             <span className="grid size-10 place-items-center rounded-lg border border-accent-technical/25 bg-accent-muted font-mono text-[calc(0.75rem+5px)] font-semibold text-accent-technical">
               0{index + 1}

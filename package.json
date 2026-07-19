@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "verify:homepage": "node scripts/verify-homepage.mjs"
+    "verify:homepage": "node scripts/verify-homepage.mjs",
+    "verify:foundation": "node scripts/verify-design-foundation.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

@@ -1,20 +1,29 @@
-import type { ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 
-type ContainerProps = {
+export type ContainerSize = "default" | "narrow" | "wide";
+
+export type ContainerProps = HTMLAttributes<HTMLDivElement> & {
   children: ReactNode;
-  className?: string;
-  size?: "default" | "narrow" | "wide";
+  size?: ContainerSize;
 };
 
 const sizes = {
-  narrow: "max-w-5xl",
-  default: "max-w-7xl",
-  wide: "max-w-[88rem]",
-};
+  narrow: "foundation-container-narrow",
+  default: "foundation-container-default",
+  wide: "foundation-container-wide",
+} satisfies Record<ContainerSize, string>;
 
-export function Container({ children, className = "", size = "default" }: ContainerProps) {
+export function Container({
+  children,
+  className = "",
+  size = "default",
+  ...props
+}: ContainerProps) {
   return (
-    <div className={`mx-auto w-full ${sizes[size]} px-5 sm:px-8 lg:px-10 xl:px-12 ${className}`}>
+    <div
+      className={`foundation-container ${sizes[size]} ${className}`}
+      {...props}
+    >
       {children}
     </div>
   );

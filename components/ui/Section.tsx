@@ -1,11 +1,12 @@
-import type { ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 import { Container } from "@/components/ui/Container";
 
-type SectionProps = {
-  id: string;
+export type SectionVariant = "default" | "soft" | "dark" | "blush";
+
+export type SectionProps = Omit<HTMLAttributes<HTMLElement>, "id"> & {
+  id?: string;
   children: ReactNode;
-  className?: string;
-  variant?: "default" | "soft" | "dark" | "blush";
+  variant?: SectionVariant;
   containerClassName?: string;
 };
 
@@ -22,11 +23,13 @@ export function Section({
   className = "",
   variant = "default",
   containerClassName = "",
+  ...props
 }: SectionProps) {
   return (
     <section
       id={id}
-      className={`scroll-mt-24 py-16 sm:py-20 lg:py-24 ${variants[variant]} ${className}`}
+      className={`foundation-section scroll-mt-24 ${variants[variant]} ${className}`}
+      {...props}
     >
       <Container className={containerClassName}>{children}</Container>
     </section>
