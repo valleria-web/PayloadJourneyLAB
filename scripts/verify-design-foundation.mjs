@@ -20,6 +20,30 @@ function assert(condition, message) {
   if (!condition) throw new Error(message);
 }
 
+function tokenRgb(source, token) {
+  const match = source.match(new RegExp(`${token}:\\s*(\\d+)\\s+(\\d+)\\s+(\\d+);`));
+  assert(match, `Expected an RGB value for ${token}`);
+  return match.slice(1).map(Number);
+}
+
+function relativeLuminance(rgb) {
+  const channels = rgb.map((channel) => {
+    const normalized = channel / 255;
+    return normalized <= 0.04045
+      ? normalized / 12.92
+      : ((normalized + 0.055) / 1.055) ** 2.4;
+  });
+  return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
+}
+
+function contrastRatio(first, second) {
+  const firstLuminance = relativeLuminance(first);
+  const secondLuminance = relativeLuminance(second);
+  const lighter = Math.max(firstLuminance, secondLuminance);
+  const darker = Math.min(firstLuminance, secondLuminance);
+  return (lighter + 0.05) / (darker + 0.05);
+}
+
 const sources = Object.fromEntries(
   await Promise.all(
     Object.entries(files).map(async ([name, filePath]) => [name, await fs.readFile(filePath, "utf8")]),
@@ -36,6 +60,8 @@ const requiredTokenGroups = {
     "--color-terminal",
     "--color-pink",
     "--color-focus",
+    "--color-accent-text",
+    "--color-cta-contrast-text",
   ],
   typography: ["--font-family-sans", "--font-family-mono", "--font-size-technical"],
   layout: ["--container-default", "--space-container-inline", "--space-section-block"],
@@ -56,6 +82,30 @@ assert(
 assert(
   sources.tailwind.includes("<alpha-value>"),
   "Tailwind color aliases must preserve opacity modifier support",
+);
+assert(
+  sources.tailwind.includes('"accent-readable": color("--color-accent-text")') &&
+    sources.tailwind.includes('"cta-contrast-text": color("--color-cta-contrast-text")'),
+  "Sprint 3 contrast aliases must reference additive CSS custom properties",
+);
+
+const readableGreenContrast = contrastRatio(
+  tokenRgb(sources.tokens, "--color-accent-text"),
+  tokenRgb(sources.tokens, "--color-paper"),
+);
+const contrastCtaRatio = contrastRatio(
+  tokenRgb(sources.tokens, "--color-ink"),
+  tokenRgb(sources.tokens, "--color-pink"),
+);
+assert(readableGreenContrast >= 4.5, "Readable green must meet WCAG AA on paper");
+assert(contrastCtaRatio >= 4.5, "Contrast CTA must meet WCAG AA with dark text");
+assert(
+  sources.button.includes('primary:\n    "border-accent-cta bg-accent-cta text-white'),
+  "The preexisting primary Button variant must remain unchanged",
+);
+assert(
+  sources.button.includes("contrast:") && sources.button.includes("text-cta-contrast-text"),
+  "The additive contrast Button variant is missing",
 );
 assert(
   sources.tokens.includes("@media (prefers-reduced-motion: reduce)"),
@@ -111,6 +161,9 @@ console.log(
         nativeButtonDisabledState: true,
         newClientBoundaries: 0,
         legacyAdapterRemoved: true,
+        readableGreenContrast: Number(readableGreenContrast.toFixed(2)),
+        contrastCtaRatio: Number(contrastCtaRatio.toFixed(2)),
+        preexistingButtonDefaultsPreserved: true,
       },
     },
     null,

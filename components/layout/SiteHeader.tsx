@@ -3,7 +3,7 @@ import { MobileNavigation } from "@/components/layout/MobileNavigation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { siteContent } from "@/content/payload-journey-lab";
-import { homepageAnchors, siteCtas } from "@/content/site";
+import { homepageAnchors, siteCtas, siteNavigation } from "@/content/site";
 
 export function SiteHeader() {
   return (
@@ -24,10 +24,10 @@ export function SiteHeader() {
               className="object-cover"
             />
           </span>
-          <span className="truncate">{siteContent.brand.name}</span>
+          <span className="truncate lg:hidden xl:inline">{siteContent.brand.name}</span>
         </a>
         <nav aria-label="Navegacao principal" className="hidden items-center gap-1 text-sm lg:flex">
-          {siteContent.nav.map((item) => (
+          {siteNavigation.map((item) => (
             <a
               key={item.href}
               href={item.href}
@@ -39,15 +39,14 @@ export function SiteHeader() {
         </nav>
         <div className="hidden lg:block">
           <Button
-            href={siteCtas.headerTraining.href}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={siteCtas.headerStart.href}
+            variant="contrast"
             className="min-h-10 px-4 py-2"
           >
-            {siteCtas.headerTraining.label}
+            {siteCtas.headerStart.label}
           </Button>
         </div>
-        <MobileNavigation items={siteContent.nav} />
+        <MobileNavigation items={siteNavigation} cta={siteCtas.headerStart} />
       </Container>
     </header>
   );

@@ -44,6 +44,8 @@ export type CaseFact = {
 
 export type HomepageAnchorKey =
   | "home"
+  | "learn"
+  | "competencies"
   | "lab"
   | "methods"
   | "ecosystem"
@@ -53,6 +55,72 @@ export type HomepageAnchorKey =
   | "about";
 
 export type HomepageAnchors = Record<HomepageAnchorKey, string>;
+
+export type EntryCta = {
+  label: string;
+  href: `#${string}`;
+  state: "anchor";
+};
+
+export type ProblemStepId =
+  | "choose-flow"
+  | "find-payload"
+  | "follow-transformations"
+  | "locate-decision";
+
+export type ProblemStep = {
+  id: ProblemStepId;
+  number: string;
+  title: string;
+  description: string;
+};
+
+export type LearningOutcomeId =
+  | "identify-payload"
+  | "recognize-representations"
+  | "follow-flow"
+  | "distinguish-responsibilities"
+  | "position-checkpoints"
+  | "document-path"
+  | "reconstruct-anomalies"
+  | "trace-origin";
+
+export type LearningOutcome = {
+  id: LearningOutcomeId;
+  number: string;
+  title: string;
+  description: string;
+};
+
+export type HomepageEntry = {
+  hero: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    description: string;
+    primaryCta: EntryCta;
+    secondaryCta: EntryCta;
+    signature: string;
+  };
+  problem: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    supportingText: string;
+    steps: ProblemStep[];
+    result: string;
+    comparison: {
+      withoutTracing: { title: string; items: string[] };
+      withTracing: { title: string; items: string[] };
+    };
+  };
+  learningOutcomes: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    items: LearningOutcome[];
+  };
+};
 
 export type SiteIdentity = {
   name: string;

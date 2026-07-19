@@ -110,3 +110,48 @@ Nenhuma das variantes abaixo é declarada “a versão editorial oficial”. O r
 - Remoções editoriais: nenhuma.
 - Remoções permitidas: somente cópias hardcoded substituídas por dados tipados equivalentes.
 - Pendências explícitas: URL oficial do YouTube, validade/política do cupom e reconciliação das variantes editoriais de HORA.city.
+
+## Atualização da Sprint 3 — nova porta de entrada
+
+As classificações abaixo distinguem explicitamente conteúdo já representado, conteúdo reservado para sprint futura e histórico editorial. A remoção do Hero significa somente que o item deixou a primeira dobra; nenhuma fonte editorial foi apagada.
+
+### Destino individual dos conteúdos retirados do Hero anterior
+
+| ID | Conteúdo retirado da primeira dobra | Fonte preservada | Destino atual ou futuro | Classificação na Sprint 3 | Estado |
+| --- | --- | --- | --- | --- | --- |
+| hero-legacy-eyebrow | `Software System Investigation` | `siteContent.hero.eyebrow` e `content/methods.ts#investigativePractice` | Card de Software System Investigation no Ecossistema | Já representado + histórico editorial | preservado |
+| hero-legacy-h1 | `PAYLOAD JOURNEY LAB` | `siteContent.hero.title` | Identidade do Header, Footer, metadata e conteúdo histórico do Hero | Já representado + histórico editorial | preservado |
+| hero-legacy-tagline | `Siga o flow. Entenda o sistema.` | `siteIdentity.tagline` e `siteContent.hero.subtitle` | Assinatura do novo Hero | Já representado | migrado |
+| hero-legacy-institutional-intro | Apresentação extensa do laboratório | `siteIdentity.shortDescription` e `siteContent.hero.intro` | O LAB, Sobre, metadata e histórico editorial | Já representado + histórico editorial | preservado |
+| hero-legacy-formation-axis | Formação como eixo institucional | `siteContent.lab.pillars`, `siteContent.education` e texto histórico | O LAB e Formação | Já representado | preservado |
+| hero-legacy-research-axis | Pesquisa metodológica | `siteContent.lab.pillars` e `siteContent.about` | O LAB e Sobre | Já representado | preservado |
+| hero-legacy-applied-investigation-axis | Investigação aplicada | `siteContent.lab.pillars`, Formação e Sobre | O LAB, Formação e Sobre | Já representado | preservado |
+| hero-legacy-training-cta | `Entrar no LAB Beta` e campanha Udemy | `siteCtas.heroTraining`, `trainingContent` e `campaignConfig` | Formação, CTA final e Footer; variante antiga permanece histórica | Já representado + histórico editorial | preservado |
+| hero-legacy-lablog-cta | `Assistir ao LabLog` | `labLogContent.action` e `siteContent.hero.secondaryAction` | Seção LabLog, HORA.city e Footer | Já representado + histórico editorial | preservado |
+| hero-legacy-cycle-summary | `Congelar. Mapear. Detectar. Restaurar.` | `content/methods.ts#investigationCycleSummary` | Futura seção do procedimento investigativo | Reservado para sprint futura | preservado |
+| hero-legacy-freeze-step | `FREEZE / PAYLOAD` | `content/methods.ts#investigationCycle[freeze]` | Futura seção Congelar, Mapear, Detectar e Restaurar | Reservado para sprint futura | preservado |
+| hero-legacy-map-step | `MAP / PATH` | `content/methods.ts#investigationCycle[map]` | Futura seção Congelar, Mapear, Detectar e Restaurar | Reservado para sprint futura | preservado |
+| hero-legacy-detect-step | `DETECT / MUTATION` | `content/methods.ts#investigationCycle[detect]` | Futura seção Congelar, Mapear, Detectar e Restaurar | Reservado para sprint futura | preservado |
+| hero-legacy-restore-step | `RESTORE / AUTHORITY` | `content/methods.ts#investigationCycle[restore]` | Futura seção Congelar, Mapear, Detectar e Restaurar | Reservado para sprint futura | preservado |
+| hero-legacy-track-state | `TRACK MODE ACTIVE` | `content/methods.ts#heroInvestigationPanel.state` e prática `track-mode` | Ecossistema e futura demonstração resumida | Já representado + reservado para sprint futura | preservado |
+| hero-legacy-terminal-command | `>_ payload.route.observe()` | `content/methods.ts#heroInvestigationPanel.command` | Futura demonstração visual | Reservado para Sprint 4 | preservado |
+| hero-legacy-track-chip | `TRACK MODE` | `content/methods.ts#heroInvestigationPanel.chips` | Ecossistema e futura demonstração | Já representado + reservado para Sprint 4 | preservado |
+| hero-legacy-reverse-chip | `REVERSE` | `content/methods.ts#heroInvestigationPanel.chips` | Métodos, Ecossistema e HORA.city | Já representado | preservado |
+| hero-legacy-origin-chip | `ORIGIN` | `content/methods.ts#heroInvestigationPanel.chips` | Métodos, Ecossistema e HORA.city | Já representado | preservado |
+| hero-legacy-method-set | Payload Journey, USMT, Reverse Payload Journey, Operational Payload Path e Track to Origin | `content/methods.ts#methodsContent` | Seção Métodos | Já representado | preservado |
+| hero-legacy-trace-engineer | Trace Engineer | `content/methods.ts#investigativePractice` e conteúdo da Formação | Ecossistema e Formação | Já representado | preservado |
+| hero-legacy-ecosystem-explanation | Explicação aprofundada de prática e ecossistema | `siteContent.ecosystem`, `ecosystemFlow` e `investigativePractice` | Seção Ecossistema | Já representado | preservado |
+
+### Conteúdo introduzido na Sprint 3
+
+| ID | Conteúdo | Fonte canônica | Destino | Estado |
+| --- | --- | --- | --- | --- |
+| entry-hero | Nova copy orientada a Payload Tracing | `homepageEntry.hero` | `#inicio` | implementado |
+| entry-problem | Dor, quatro passos, resultado e comparação | `homepageEntry.problem` | `#aprender` | implementado |
+| entry-learning-outcomes | Oito competências profissionais | `homepageEntry.learningOutcomes` | `#competencias` | implementado |
+| anchor-aprender | Anchor da estratégia de entrada | `homepageAnchors.learn` | Header e CTAs | implementado |
+| anchor-competencias | Anchor das competências | `homepageAnchors.competencies` | Seção de competências | implementado |
+| future-learning-path | Trilha progressiva | Conteúdo ainda não criado | Sprint 4 | reservado, não implementado |
+| future-payload-demo | Demonstração visual do payload | `heroInvestigationPanel` preservado | Sprint 4 | reservado, não implementado |
+
+As variantes editoriais de HORA.city continuam separadas e com `editorialResolution: "unresolved"`. Nenhum item das Sprints 4 a 8 foi declarado concluído.

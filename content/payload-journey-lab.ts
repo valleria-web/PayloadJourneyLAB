@@ -27,19 +27,167 @@ import {
 import {
   campaignConfig,
   footerContent,
+  homepageAnchors,
   labLogContent,
   siteCtas,
   siteIdentity,
   siteNavigation,
   trainingContent,
 } from "@/content/site";
-import type { CardItem, CtaItem, Pillar, WhitePaper } from "@/types/content";
+import type {
+  CardItem,
+  CtaItem,
+  HomepageEntry,
+  Pillar,
+  WhitePaper,
+} from "@/types/content";
 
 const futureCta = (label: string, status = "Em preparação"): CtaItem => ({
   label,
   state: "future",
   status,
 });
+
+export const homepageEntry = {
+  hero: {
+    eyebrow: "Payload Tracing para estudantes e developers",
+    title: "Aprenda a seguir o payload",
+    lead: "Reduza uma codebase grande a um único flow investigável.",
+    description:
+      "Aprenda a acompanhar como a informação nasce, atravessa camadas, muda de representação e chega aos pontos onde o sistema toma decisões.",
+    primaryCta: {
+      label: "Começar a aprender",
+      state: "anchor",
+      href: `#${homepageAnchors.learn}`,
+    },
+    secondaryCta: {
+      label: "Conhecer a formação",
+      state: "anchor",
+      href: `#${homepageAnchors.training}`,
+    },
+    signature: siteIdentity.tagline,
+  },
+  problem: {
+    eyebrow: "Estratégia de entrada",
+    title: "Não abra arquivos aleatoriamente",
+    description: "Uma codebase grande não precisa ser compreendida inteira de uma vez.",
+    supportingText:
+      "Quando não existe uma estratégia de entrada, cada arquivo parece importante. O payload oferece um ponto concreto para começar.",
+    steps: [
+      {
+        id: "choose-flow",
+        number: "01",
+        title: "Escolha um flow",
+        description: "Comece por uma interação concreta que possa ser observada.",
+      },
+      {
+        id: "find-payload",
+        number: "02",
+        title: "Encontre o payload",
+        description:
+          "Identifique a informação produzida ou transportada por essa interação.",
+      },
+      {
+        id: "follow-transformations",
+        number: "03",
+        title: "Siga as transformações",
+        description:
+          "Observe como a informação muda de forma e significado entre as camadas.",
+      },
+      {
+        id: "locate-decision",
+        number: "04",
+        title: "Localize a decisão",
+        description:
+          "Descubra onde o sistema interpreta, valida ou altera o comportamento.",
+      },
+    ],
+    result: "Transforme milhares de arquivos numa rota investigável.",
+    comparison: {
+      withoutTracing: {
+        title: "Sem tracing",
+        items: [
+          "abrir arquivos aleatoriamente",
+          "procurar pelo sistema inteiro",
+          "formular hipóteses vagas",
+          "modificar antes de compreender",
+        ],
+      },
+      withTracing: {
+        title: "Com tracing",
+        items: [
+          "selecionar um flow",
+          "seguir um payload",
+          "produzir checkpoints",
+          "observar antes de modificar",
+        ],
+      },
+    },
+  },
+  learningOutcomes: {
+    eyebrow: "O que você aprenderá",
+    title: "Uma estratégia para compreender sistemas pelo flow",
+    description:
+      "O Payload Journey LAB desenvolve a capacidade de seguir a informação através do sistema, reconhecer transformações e localizar os pontos onde decisões realmente acontecem.",
+    items: [
+      {
+        id: "identify-payload",
+        number: "01",
+        title: "Identificar o payload",
+        description:
+          "Reconhecer a informação produzida por uma interação, evento ou operação.",
+      },
+      {
+        id: "recognize-representations",
+        number: "02",
+        title: "Reconhecer representações",
+        description:
+          "Observar as diferentes formas assumidas pela mesma semântica ao atravessar as camadas.",
+      },
+      {
+        id: "follow-flow",
+        number: "03",
+        title: "Seguir o flow",
+        description:
+          "Reconstruir o caminho operacional entre interface, aplicação, domínio, persistência e resposta.",
+      },
+      {
+        id: "distinguish-responsibilities",
+        number: "04",
+        title: "Distinguir responsabilidades",
+        description: "Identificar quem transporta, quem transforma e quem decide.",
+      },
+      {
+        id: "position-checkpoints",
+        number: "05",
+        title: "Posicionar checkpoints",
+        description:
+          "Escolher pontos de observação capazes de produzir evidências úteis.",
+      },
+      {
+        id: "document-path",
+        number: "06",
+        title: "Documentar o caminho",
+        description:
+          "Registrar componentes, representações, operações e fronteiras do flow.",
+      },
+      {
+        id: "reconstruct-anomalies",
+        number: "07",
+        title: "Reconstruir anomalias",
+        description:
+          "Partir de um comportamento observável e rastrear onde surgiu a divergência.",
+      },
+      {
+        id: "trace-origin",
+        number: "08",
+        title: "Rastrear a origem",
+        description:
+          "Encontrar a primeira decisão técnica, temporal ou semântica relevante.",
+      },
+    ],
+  },
+} satisfies HomepageEntry;
 
 export const siteContent = {
   brand: {
