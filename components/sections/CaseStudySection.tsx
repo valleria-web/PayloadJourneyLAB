@@ -1,5 +1,5 @@
 import { BookOpen, Search } from "lucide-react";
-import { SectionHeader } from "@/components/sections/SectionHeader";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { HighlightPanel } from "@/components/ui/HighlightPanel";
@@ -12,7 +12,7 @@ function InvestigationStatusCard() {
   const technicalRows = horaCityCase.technicalRows;
 
   return (
-    <Card className="border-line/70 bg-[#fcf7f8]/90 p-6 sm:p-7 lg:p-8">
+    <Card className="border-line/70 bg-case-panel/90 p-6 sm:p-7 lg:p-8">
       <div className="flex items-center justify-between gap-3">
         <TechnicalLabel tone="terminal" className="text-[calc(0.68rem+10px)]">
           {horaCityCase.technicalCopy.commandPrefix} {horaCityCase.project}
@@ -22,7 +22,7 @@ function InvestigationStatusCard() {
         </span>
       </div>
 
-      <div className="mt-6 rounded-2xl border border-ink/10 bg-ink p-5 font-mono text-[calc(0.78rem+5px)] leading-6 text-white shadow-[0_18px_50px_rgba(16,16,16,0.18)]">
+      <div className="mt-6 rounded-2xl border border-ink/10 bg-ink p-5 font-mono text-[calc(0.78rem+5px)] leading-6 text-white shadow-foundation-investigation">
         <p>
           <span className="text-[calc(0.78rem+10px)] text-terminal">
             {horaCityCase.technicalCopy.commandPrefix}
@@ -89,14 +89,14 @@ export function CaseStudySection() {
   return (
     <Section
       id={homepageAnchors.caseStudy}
-      className="relative overflow-hidden border-y border-line bg-[#f6e7eb]/70"
+      className="relative overflow-hidden border-y border-line bg-case-section/70"
       containerClassName="relative"
     >
-      <div className="pointer-events-none absolute inset-0 opacity-40 [background-image:radial-gradient(rgba(16,16,16,0.08)_1px,transparent_1px)] [background-size:14px_14px]" />
+      <div className="case-study-grid pointer-events-none absolute inset-0 opacity-40" />
       <div className="relative grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
         <HighlightPanel
           variant="soft-blush"
-          className="border-line/70 bg-[#fbf1f4]/90 p-6 sm:p-8 lg:p-8"
+          className="border-line/70 bg-case-card/90 p-6 sm:p-8 lg:p-8"
         >
           <SectionHeader
             eyebrow={horaCityCase.editorialVariants.rendered.subtitle}

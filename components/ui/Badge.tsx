@@ -1,8 +1,10 @@
-import type { ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 
-type BadgeProps = {
+export type BadgeVariant = "technical" | "cta" | "neutral";
+
+export type BadgeProps = HTMLAttributes<HTMLSpanElement> & {
   children: ReactNode;
-  variant?: "technical" | "cta" | "neutral";
+  variant?: BadgeVariant;
 };
 
 const variants = {
@@ -11,10 +13,11 @@ const variants = {
   neutral: "border-border-default bg-white text-text-muted",
 };
 
-export function Badge({ children, variant = "technical" }: BadgeProps) {
+export function Badge({ children, className = "", variant = "technical", ...props }: BadgeProps) {
   return (
     <span
-      className={`inline-flex w-fit items-center rounded-full border px-3 py-1 font-mono text-[calc(0.75rem+5px)] font-medium uppercase tracking-[0.08em] ${variants[variant]}`}
+      className={`inline-flex w-fit items-center rounded-full border px-3 py-1 font-mono text-technical font-medium uppercase tracking-technical ${variants[variant]} ${className}`}
+      {...props}
     >
       {children}
     </span>

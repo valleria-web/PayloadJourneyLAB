@@ -1,5 +1,5 @@
 import { FlowDiagram } from "@/components/diagrams/FlowDiagram";
-import { SectionHeader } from "@/components/sections/SectionHeader";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { siteContent } from "@/content/payload-journey-lab";

@@ -13,7 +13,7 @@ export function TerminalLine({
 }: TerminalLineProps) {
   return (
     <p
-      className={`inline-flex max-w-full items-start gap-2 rounded-lg border border-accent-technical/20 bg-accent-muted/75 px-3 py-2 font-mono text-[calc(0.75rem+5px)] leading-5 text-text-muted ${className}`}
+      className={`inline-flex max-w-full items-start gap-2 rounded-foundation-control border border-accent-technical/20 bg-accent-muted/75 px-3 py-2 font-mono text-technical leading-5 text-text-muted ${className}`}
     >
       <span className="shrink-0 font-semibold text-accent-technical">{prefix}</span>
       <span>{children}</span>
