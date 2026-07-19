@@ -18,6 +18,8 @@ export const homepageAnchors = {
   competencies: "competencias",
   learningPath: "trilha",
   demo: "demo",
+  procedure: "procedimento",
+  investigativePractice: "pratica-investigativa",
   lab: "lab",
   methods: "metodos",
   ecosystem: "ecossistema",

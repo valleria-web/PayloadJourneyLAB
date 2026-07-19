@@ -8,7 +8,15 @@ import { homepageEntry } from "@/content/payload-journey-lab";
 import { homepageAnchors } from "@/content/site";
 import type { OperationalRole } from "@/types/content";
 
-const operationalRoles: OperationalRole[] = ["transport", "transform", "decide", "present"];
+const operationalRoles: OperationalRole[] = [
+  "trigger",
+  "transform",
+  "transport",
+  "forward",
+  "decide",
+  "persist",
+  "present",
+];
 
 export function PayloadFlowDemoSection() {
   const { flowDemo } = homepageEntry;

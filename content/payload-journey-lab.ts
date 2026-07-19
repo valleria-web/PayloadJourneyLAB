@@ -20,7 +20,10 @@ import { horaCityCase } from "@/content/hora-city";
 import {
   ecosystemFlow,
   ecosystemFlowDescription,
+  investigationCycle,
+  investigationCycleSectionContent,
   investigativePractice,
+  investigativePracticePresentation,
   methodsContent,
   methodsSectionContent,
 } from "@/content/methods";
@@ -264,7 +267,7 @@ export const homepageEntry = {
         number: "01",
         label: "Clique",
         representation: "Interação do usuário",
-        role: "present",
+        role: "trigger",
         responsibility: "Iniciar um comportamento observável no sistema.",
         investigativeQuestion: "Qual interação deu origem ao flow?",
       },
@@ -292,7 +295,7 @@ export const homepageEntry = {
         number: "04",
         label: "API",
         representation: "Entrada recebida",
-        role: "transform",
+        role: "forward",
         responsibility: "Receber, validar e encaminhar a informação.",
         investigativeQuestion: "Como a entrada foi interpretada?",
       },
@@ -310,7 +313,7 @@ export const homepageEntry = {
         number: "06",
         label: "Repository",
         representation: "Operação de persistência",
-        role: "transport",
+        role: "persist",
         responsibility: "Transportar a decisão do domínio até a persistência.",
         investigativeQuestion: "O que foi enviado para persistência?",
       },
@@ -406,6 +409,11 @@ export const siteContent = {
     ...methodsSectionContent,
     items: methodsContent,
   },
+  investigationCycle: {
+    ...investigationCycleSectionContent,
+    steps: investigationCycle,
+  },
+  investigativePractice: investigativePracticePresentation,
   ecosystem: {
     title: "Um ecossistema para compreender sistemas",
     intro:
@@ -413,6 +421,8 @@ export const siteContent = {
     flow: ecosystemFlow,
     flowDescription: ecosystemFlowDescription,
     items: investigativePractice,
+    institutionalTransition:
+      "Formação, pesquisa, investigação aplicada e colaboração sustentam o desenvolvimento contínuo dos métodos e da prática do LAB.",
     futureArtifacts: [
       {
         title: "One Bit Machine",

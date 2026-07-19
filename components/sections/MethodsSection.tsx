@@ -1,62 +1,73 @@
-import { ArrowUpRight, GitBranch } from "lucide-react";
+import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { siteContent } from "@/content/payload-journey-lab";
 import { homepageAnchors } from "@/content/site";
 
 export function MethodsSection() {
   return (
     <Section id={homepageAnchors.methods} className="border-y border-line bg-subtle">
-      <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
-        <div className="max-w-3xl">
-          <p className="mb-4 font-mono text-[calc(0.75rem+5px)] font-semibold uppercase tracking-[0.08em] text-accent">
-            {siteContent.methods.eyebrow}
-          </p>
-          <h2 className="text-3xl font-bold tracking-normal text-ink sm:text-4xl">
-            {siteContent.methods.title}
-          </h2>
-          <p className="mt-5 text-base leading-7 text-graphite sm:text-lg sm:leading-8">
-            {siteContent.methods.intro}
-          </p>
-        </div>
-        <div className="w-fit rounded-full border border-line bg-white px-4 py-2 font-mono text-[calc(0.75rem+5px)] text-accent">
-          {siteContent.methods.traceStack}
-        </div>
-      </div>
-      <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
-        {siteContent.methods.items.map((method, index) => (
-          <Card
-            key={method.title}
-            className="group flex min-h-72 flex-col justify-between hover:-translate-y-0.5 hover:border-accent"
-          >
-            <div>
-              <div className="mb-5 flex items-start justify-between gap-4">
-                <span className="grid size-10 place-items-center rounded-lg border border-line bg-blush/50 text-pink">
-                  <GitBranch aria-hidden="true" className="size-4" />
-                </span>
-                <span className="font-mono text-[calc(0.75rem+5px)] text-accent">0{index + 1}</span>
-              </div>
-              {method.category ? (
-                <p className="mb-3 font-mono text-[calc(0.75rem+5px)] font-semibold uppercase tracking-[0.08em] text-accent">
-                  {method.category}
-                </p>
-              ) : null}
-              <h3 className="text-xl font-bold">{method.title}</h3>
-              <p className="mt-5 text-sm leading-6 text-graphite">{method.description}</p>
-              {method.status ? (
-                <p className="mt-4 font-mono text-[calc(0.75rem+5px)] font-semibold text-accent">{method.status}</p>
-              ) : null}
-            </div>
-            <ArrowUpRight
-              aria-hidden="true"
-              className="mt-8 size-5 self-end text-pink transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            />
-          </Card>
-        ))}
-      </div>
-      <p className="mt-8 rounded-xl border border-line bg-white/80 p-6 text-sm leading-6 text-graphite">
-        <span className="font-mono text-[calc(0.875rem+5px)] text-accent">{">_"}</span> {siteContent.methods.relation}
+      <SectionHeader
+        eyebrow={siteContent.methods.eyebrow}
+        title={siteContent.methods.title}
+        description={siteContent.methods.intro}
+      />
+
+      <p className="mt-7 max-w-4xl rounded-foundation-card border border-border-default bg-surface-card p-5 text-base font-semibold leading-7 text-ink">
+        {siteContent.methods.distinction}
       </p>
+
+      <ol className="mt-10 grid gap-5 lg:grid-cols-2">
+        {siteContent.methods.items.map((method, index) => (
+          <li key={method.id} id={`method-${method.id}`} className="scroll-mt-24">
+            <Card className="h-full">
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <Badge>{method.category}</Badge>
+                  <h3 className="mt-4 text-xl font-bold text-ink">{method.title}</h3>
+                </div>
+                <span className="font-mono text-technical-lg font-semibold text-accent-readable">
+                  0{index + 1}
+                </span>
+              </div>
+
+              <div className="mt-6 space-y-5 text-sm leading-6 text-text-muted sm:text-base sm:leading-7">
+                <div>
+                  <p className="font-mono text-technical-sm font-semibold uppercase tracking-technical text-accent-readable">
+                    Propósito
+                  </p>
+                  <p className="mt-2">{method.purpose}</p>
+                </div>
+                <div>
+                  <p className="font-mono text-technical-sm font-semibold uppercase tracking-technical text-accent-readable">
+                    Quando utilizar
+                  </p>
+                  <p className="mt-2">{method.whenToUse}</p>
+                </div>
+                <div className="rounded-foundation-control bg-surface-soft p-4">
+                  <p className="font-mono text-technical-sm font-semibold uppercase tracking-technical text-accent-readable">
+                    Pergunta respondida
+                  </p>
+                  <p className="mt-2 font-semibold text-ink">{method.question}</p>
+                </div>
+                <div>
+                  <p className="font-mono text-technical-sm font-semibold uppercase tracking-technical text-accent-readable">
+                    Resultado
+                  </p>
+                  <p className="mt-2 font-semibold text-ink">{method.result}</p>
+                </div>
+                <div className="border-t border-border-default pt-5">
+                  <p className="font-mono text-technical-sm font-semibold uppercase tracking-technical text-accent-readable">
+                    Relação com o procedimento
+                  </p>
+                  <p className="mt-2">{method.relationship}</p>
+                </div>
+              </div>
+            </Card>
+          </li>
+        ))}
+      </ol>
     </Section>
   );
 }
