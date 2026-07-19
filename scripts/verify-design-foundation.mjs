@@ -45,6 +45,26 @@ const files = {
   finalCta: path.join(repositoryRoot, "components", "sections", "BetaCtaSection.tsx"),
   footer: path.join(repositoryRoot, "components", "layout", "SiteFooter.tsx"),
   usmtSection: path.join(repositoryRoot, "components", "sections", "UsmtSection.tsx"),
+  homeMethodOverview: path.join(
+    repositoryRoot,
+    "components",
+    "sections",
+    "HomeMethodOverviewSection.tsx",
+  ),
+  homePathways: path.join(
+    repositoryRoot,
+    "components",
+    "sections",
+    "HomePathwaysSections.tsx",
+  ),
+  pageIntro: path.join(repositoryRoot, "components", "pages", "PageIntro.tsx"),
+  pageContinuation: path.join(
+    repositoryRoot,
+    "components",
+    "pages",
+    "PageContinuation.tsx",
+  ),
+  sitePage: path.join(repositoryRoot, "components", "pages", "SitePage.tsx"),
   flowDiagram: path.join(repositoryRoot, "components", "diagrams", "FlowDiagram.tsx"),
 };
 
@@ -251,6 +271,36 @@ assert(
     sources.usmtSection.includes("usmtContent.lenses.map"),
   "USMT must render its structural elements and lenses from canonical content",
 );
+for (const component of [
+  "homeMethodOverview",
+  "homePathways",
+  "pageIntro",
+  "pageContinuation",
+  "sitePage",
+]) {
+  assert(!sources[component].includes('"use client"'), `${component} must remain a Server Component`);
+  assert(!/#[\da-f]{3,8}/i.test(sources[component]), `${component} must not contain color literals`);
+}
+
+const thematicPageFiles = [
+  "payload-journey",
+  "learn",
+  "cases",
+  "usmt",
+  "method",
+  "protocol",
+  "investigation",
+  "lab",
+  "ecosystem",
+  "lablog",
+  "about",
+];
+for (const route of thematicPageFiles) {
+  const pageSource = await fs.readFile(path.join(repositoryRoot, "app", route, "page.tsx"), "utf8");
+  assert(!pageSource.includes('"use client"'), `${route} page must remain a Server Component`);
+  assert(pageSource.includes("<SitePage"), `${route} must reuse the thematic page shell`);
+  assert(pageSource.includes("createPageMetadata"), `${route} must expose route metadata`);
+}
 
 let legacyHeaderAdapterExists = true;
 try {
@@ -287,6 +337,8 @@ console.log(
         sprint6ServerSections: 4,
         sprint7ServerSections: 6,
         sprint9UsmtServerSection: true,
+        sprint8ThematicServerPages: thematicPageFiles.length,
+        sprint8SummaryServerComponents: 2,
         flowDiagramPreservedAsServerComponent: true,
       },
     },

@@ -1,19 +1,13 @@
-import { AboutSection } from "@/components/sections/AboutSection";
 import { BetaCtaSection } from "@/components/sections/BetaCtaSection";
-import { CaseStudySection } from "@/components/sections/CaseStudySection";
-import { ConceptEcosystemSection } from "@/components/sections/ConceptEcosystemSection";
-import { EducationSection } from "@/components/sections/EducationSection";
 import { HeroSection } from "@/components/sections/HeroSection";
-import { InvestigationCycleSection } from "@/components/sections/InvestigationCycleSection";
-import { InvestigationPracticeSection } from "@/components/sections/InvestigationPracticeSection";
-import { LabLogSection } from "@/components/sections/LabLogSection";
-import { LabOverviewSection } from "@/components/sections/LabOverviewSection";
-import { LearningOutcomesSection } from "@/components/sections/LearningOutcomesSection";
-import { LearningPathSection } from "@/components/sections/LearningPathSection";
-import { MethodsSection } from "@/components/sections/MethodsSection";
+import { HomeMethodOverviewSection } from "@/components/sections/HomeMethodOverviewSection";
+import {
+  HomeAboutSection,
+  HomeAppliedInvestigationSection,
+  HomeEcosystemSection,
+  HomeLearningSection,
+} from "@/components/sections/HomePathwaysSections";
 import { PayloadFlowDemoSection } from "@/components/sections/PayloadFlowDemoSection";
-import { ProblemSection } from "@/components/sections/ProblemSection";
-import { UsmtSection } from "@/components/sections/UsmtSection";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -26,20 +20,12 @@ export default function Home() {
       <SiteHeader />
       <main>
         <HeroSection />
-        <ProblemSection />
-        <LearningOutcomesSection />
-        <LearningPathSection />
         <PayloadFlowDemoSection />
-        <EducationSection />
-        <CaseStudySection />
-        <UsmtSection />
-        <InvestigationCycleSection />
-        <MethodsSection />
-        <InvestigationPracticeSection />
-        <LabOverviewSection />
-        <ConceptEcosystemSection />
-        <LabLogSection />
-        <AboutSection />
+        <HomeMethodOverviewSection />
+        <HomeAppliedInvestigationSection />
+        <HomeEcosystemSection />
+        <HomeLearningSection />
+        <HomeAboutSection />
         <BetaCtaSection />
       </main>
       <SiteFooter />

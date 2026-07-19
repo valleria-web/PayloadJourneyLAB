@@ -70,8 +70,8 @@ export const homepageEntry = {
     },
     secondaryCta: {
       label: "Explorar a trilha",
-      state: "anchor",
-      href: `#${homepageAnchors.learningPath}`,
+      state: "internal",
+      href: `/learn#${homepageAnchors.learningPath}`,
     },
     signature: siteIdentity.tagline,
   },
@@ -355,8 +355,8 @@ export const homepageEntry = {
         "Aprenda a reconstruir esse caminho com uma estratégia de entrada clara.",
       action: {
         label: "Começar pela formação",
-        state: "anchor",
-        href: `#${homepageAnchors.training}`,
+        state: "internal",
+        href: `/learn#${homepageAnchors.training}`,
       },
     },
   },

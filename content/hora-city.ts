@@ -129,13 +129,13 @@ export const horaCityCase = {
     ],
     primaryCta: {
       label: "Acompanhar o caso no LabLog",
-      state: "anchor",
-      href: `#${homepageAnchors.labLog}`,
+      state: "internal",
+      href: `/lablog#${homepageAnchors.labLog}`,
     },
     secondaryCta: {
       label: "Rever o flow",
-      state: "anchor",
-      href: `#${homepageAnchors.demo}`,
+      state: "internal",
+      href: `/payload-journey#${homepageAnchors.demo}`,
     },
     omissions: {
       unconfirmed: [

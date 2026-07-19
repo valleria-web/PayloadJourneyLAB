@@ -5,7 +5,7 @@ export type NavItem = {
   href: string;
 };
 
-export type CtaState = "active" | "future" | "disabled" | "external" | "anchor";
+export type CtaState = "active" | "future" | "disabled" | "external" | "anchor" | "internal";
 
 export type CtaItem = {
   label: string;
@@ -205,8 +205,8 @@ export type HomepageAnchors = Record<HomepageAnchorKey, string>;
 
 export type EntryCta = {
   label: string;
-  href: `#${string}`;
-  state: "anchor";
+  href: string;
+  state: "anchor" | "internal";
 };
 
 export type ProblemStepId =

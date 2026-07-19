@@ -74,19 +74,18 @@ export const campaignConfig = {
 } as const satisfies CampaignConfig;
 
 export const siteNavigation = [
-  { label: "Aprender", href: `#${homepageAnchors.learn}` },
-  { label: "Trilha", href: `#${homepageAnchors.learningPath}` },
-  { label: "Demo", href: `#${homepageAnchors.demo}` },
-  { label: "Formação", href: `#${homepageAnchors.training}` },
-  { label: "Caso real", href: `#${homepageAnchors.caseStudy}` },
-  { label: "O LAB", href: `#${homepageAnchors.lab}` },
+  { label: "Método", href: "/method" },
+  { label: "Aprender", href: "/learn" },
+  { label: "Casos", href: "/cases" },
+  { label: "O LAB", href: "/lab" },
+  { label: "Sobre", href: "/about" },
 ] satisfies NavItem[];
 
 export const siteCtas = {
   headerStart: {
     label: "Começar",
-    state: "anchor",
-    href: `#${homepageAnchors.learningPath}`,
+    state: "internal",
+    href: "/learn",
   },
   headerTraining: {
     label: "Entrar no LAB",
@@ -223,11 +222,11 @@ export const footerContent = {
     channels: "Canais",
   },
   navigation: [
-    { label: "O LAB", href: `#${homepageAnchors.lab}` },
-    { label: "Métodos", href: `#${homepageAnchors.methods}` },
-    { label: "Study Case", href: `#${homepageAnchors.caseStudy}` },
-    { label: "Formação", href: `#${homepageAnchors.training}` },
-    { label: "LabLog", href: `#${homepageAnchors.labLog}` },
+    { label: "O LAB", href: "/lab" },
+    { label: "Métodos", href: "/method" },
+    { label: "Study Case", href: "/cases" },
+    { label: "Formação", href: "/learn" },
+    { label: "LabLog", href: "/lablog" },
   ] satisfies NavItem[],
   channels: [
     { label: "Udemy", href: siteLinks.udemy.courseWithCoupon, external: true },
