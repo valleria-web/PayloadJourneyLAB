@@ -16,11 +16,24 @@ import {
   ShieldCheck,
   Workflow,
 } from "lucide-react";
-import type { CardItem, CaseFact, CtaItem, NavItem, Pillar, WhitePaper } from "@/types/content";
-
-const betaCourseUrl =
-  "https://www.udemy.com/course/payload-journey-lab-siga-o-flow-entenda-o-sistema/?couponCode=FOLLOW-THE-FLOW";
-const labLogUrl = "https://www.youtube.com/@PayloadJourneyLAB";
+import { horaCityCase } from "@/content/hora-city";
+import {
+  ecosystemFlow,
+  ecosystemFlowDescription,
+  investigativePractice,
+  methodsContent,
+  methodsSectionContent,
+} from "@/content/methods";
+import {
+  campaignConfig,
+  footerContent,
+  labLogContent,
+  siteCtas,
+  siteIdentity,
+  siteNavigation,
+  trainingContent,
+} from "@/content/site";
+import type { CardItem, CtaItem, Pillar, WhitePaper } from "@/types/content";
 
 const futureCta = (label: string, status = "Em preparação"): CtaItem => ({
   label,
@@ -30,37 +43,21 @@ const futureCta = (label: string, status = "Em preparação"): CtaItem => ({
 
 export const siteContent = {
   brand: {
-    name: "Payload Journey LAB",
-    tagline: "Siga o flow. Entenda o sistema.",
+    name: siteIdentity.name,
+    tagline: siteIdentity.tagline,
   },
-  nav: [
-    { label: "Início", href: "#inicio" },
-    { label: "O LAB", href: "#lab" },
-    { label: "Métodos", href: "#metodos" },
-    { label: "Study Case", href: "#case-study" },
-    { label: "Formação", href: "#formacao" },
-    { label: "LabLog", href: "#lablog" },
-    { label: "Sobre", href: "#sobre" },
-  ] satisfies NavItem[],
+  nav: siteNavigation,
   hero: {
     eyebrow: "Software System Investigation",
     title: "PAYLOAD\nJOURNEY LAB",
-    subtitle: "Siga o flow. Entenda o sistema.",
-    intro:
-      "Laboratório de formação, pesquisa e investigação aplicada dedicado a compreender como payloads, estados, eventos e decisões atravessam sistemas complexos.",
-    primaryAction: {
-      label: "Entrar no LAB Beta",
-      href: betaCourseUrl,
-      state: "external",
-      status: "Comece pela formação na Udemy com o cupom FOLLOW-THE-FLOW.",
-    } satisfies CtaItem,
-    secondaryAction: {
-      label: "Assistir ao LabLog",
-      href: labLogUrl,
-      state: "external",
-    } satisfies CtaItem,
+    subtitle: siteIdentity.tagline,
+    intro: siteIdentity.shortDescription,
+    primaryAction: siteCtas.heroTraining,
+    secondaryAction: labLogContent.action,
   },
   lab: {
+    eyebrow: "LAB STRUCTURE",
+    terminalLine: "flow trace origin",
     title: "O LAB",
     intro:
       "O Payload Journey LAB desenvolve métodos, artefatos pedagógicos e investigações aplicadas para observar, modelar, rastrear e compreender sistemas de software.",
@@ -93,70 +90,16 @@ export const siteContent = {
     ] satisfies Pillar[],
   },
   methods: {
-    title: "Métodos para compreender sistemas",
-    intro:
-      "O LAB organiza observação, modelagem e investigação em métodos complementares. Cada método responde a uma necessidade específica, desde seguir uma informação através das camadas até reconstruir a origem de uma anomalia.",
-    relation:
-      "Payload Journey observa o percurso. A USMT modela a estrutura. Reverse Payload Journey reconstrói a anomalia. Operational Payload Path organiza o Mapping. Track to Origin conduz a investigação até a origem.",
-    items: [
-      {
-        title: "Payload Journey",
-        category: "Observação",
-        description:
-          "Método de observação progressiva que acompanha como uma informação nasce, atravessa camadas, assume diferentes representações e produz efeitos no sistema.",
-      },
-      {
-        title: "USMT",
-        category: "Modelagem",
-        description:
-          "Universal System Modeling Template é um template de modelagem estrutural que organiza fenômenos, estados, eventos, transições permitidas e proibidas, invariantes, camadas, métricas e condições de término.",
-        status: "A USMT é composta por 12 elementos metodológicos.",
-        action: futureCta("Conhecer a USMT", "Página em desenvolvimento"),
-      },
-      {
-        title: "Reverse Payload Journey",
-        category: "Investigação",
-        description:
-          "Método de investigação que parte de uma anomalia observável e reconstrói, em sentido reverso, o caminho percorrido pelo payload.",
-      },
-      {
-        title: "Operational Payload Path",
-        category: "Mapping",
-        description:
-          "Instrumento operacional de Mapping que organiza zonas, fronteiras, componentes, representações, responsabilidades, autoridades e checkpoints ao longo de uma operação. Ele transforma a arquitetura abstrata em uma rota investigável.",
-      },
-      {
-        title: "Track to Origin",
-        category: "Origem e autoridade",
-        description:
-          "Processo investigativo que conduz o rastreamento até a origem técnica, semântica ou temporal e até o primeiro ponto de decisão relevante.",
-      },
-    ] satisfies CardItem[],
+    ...methodsSectionContent,
+    items: methodsContent,
   },
   ecosystem: {
     title: "Um ecossistema para compreender sistemas",
     intro:
       "Os métodos do LAB fazem parte de uma prática de investigação estrutural orientada por evidências.",
-    flow: ["Track Mode", "Reverse Payload Journey", "Track to Origin", "Evidência", "Restauração"],
-    flowDescription:
-      "O Track Mode suspende mudanças e prioriza observação. O Reverse Payload Journey reconstrói o caminho. Track to Origin conduz a investigação até a origem. A evidência permite restaurar autoridade e compreensão.",
-    items: [
-      {
-        title: "Trace Engineer",
-        description:
-          "Profissional ou função investigativa dedicada a seguir payloads, estados, eventos e decisões através das camadas de um sistema.",
-      },
-      {
-        title: "Track Mode",
-        description:
-          "Estado operacional no qual mudanças são suspensas e a prioridade passa a ser observar, delimitar, registrar e compreender.",
-      },
-      {
-        title: "Software System Investigation",
-        description:
-          "Prática de investigação estrutural de sistemas baseada em tracing, modelagem, evidências e reconstrução de decisões.",
-      },
-    ] satisfies CardItem[],
+    flow: ecosystemFlow,
+    flowDescription: ecosystemFlowDescription,
+    items: investigativePractice,
     futureArtifacts: [
       {
         title: "One Bit Machine",
@@ -270,50 +213,35 @@ export const siteContent = {
     ],
   },
   caseStudy: {
-    title: "Study Case",
-    subtitle: "Saving HORA.city",
-    description:
-      "O HORA.city é um sistema geolocalizado utilizado pelo Payload Journey LAB como caso real de investigação aplicada. Após uma expansão acelerada com agentes de IA, o sistema passou de aproximadamente 6 mil para 40 mil linhas de código e perdeu parte de sua observabilidade estrutural.",
-    secondaryDescription:
-      "A investigação atual acompanha uma anomalia temporal em createdAt, associada ao payload HeartCreated. O objetivo é reconstruir o caminho operacional, identificar a autoridade temporal e rastrear o primeiro ponto relevante de decisão.",
-    stages: [
-      { label: "Contexto", status: "Em documentação" },
-      { label: "Anomalia", status: "Em investigação" },
-      { label: "Investigação", status: "Em andamento" },
-      { label: "Aprendizados", status: "Etapa futura" },
-    ],
-    facts: [
-      { label: "Sistema inicial", value: "Aproximadamente 6 mil linhas" },
-      { label: "Expansão", value: "Aproximadamente 40 mil linhas" },
-      { label: "Anomalia observada", value: "createdAt incorreto" },
-      { label: "Payload associado", value: "HeartCreated" },
-      { label: "Método aplicado", value: "Reverse Payload Journey" },
-      { label: "Missão", value: "Track to Origin" },
-    ] satisfies CaseFact[],
+    title: horaCityCase.editorialVariants.audited.title,
+    subtitle: horaCityCase.editorialVariants.audited.subtitle,
+    description: horaCityCase.editorialVariants.audited.description,
+    secondaryDescription: horaCityCase.editorialVariants.audited.investigation,
+    editorialVariants: horaCityCase.editorialVariants,
+    editorialResolution: horaCityCase.editorialResolution,
+    stages: horaCityCase.stages,
+    facts: horaCityCase.auditedFacts,
     investigation: {
-      caseId: "RPJ-HORA-001",
-      anomaly: "createdAt incorreto",
-      payload: "HeartCreated",
-      state: "Investigação em andamento",
+      caseId: horaCityCase.caseId,
+      anomaly: horaCityCase.anomaly,
+      payload: horaCityCase.payload,
+      state: horaCityCase.status,
     },
-    actions: [
-      futureCta("Explorar o Study Case", "Em preparação"),
-      futureCta("Assistir ao LabLog", "Em preparação"),
-    ] satisfies CtaItem[],
+    actions: horaCityCase.futureActions,
   },
   education: {
+    eyebrow: "DO METODO A PRATICA",
+    betaLabel: "LAB Beta",
+    couponLabel: `coupon: ${campaignConfig.coupon.code}`,
+    futurePathsLabel: "Trilhas futuras",
     title: "Do método à prática",
     intro:
       "O Payload Journey LAB transforma seus métodos em experiências de formação, investigações aplicadas e oportunidades de colaboração.",
     beta: {
-      title: "Formação Beta na Udemy",
-      description:
-        "A primeira formação do Payload Journey LAB já está disponível na Udemy. Aprenda a seguir o payload através das camadas e desenvolva a visão estrutural necessária para pensar como Trace Engineer.",
-      action: {
-        label: "Começar com cupom FOLLOW-THE-FLOW",
-        href: betaCourseUrl,
-        state: "external",
-      } satisfies CtaItem,
+      title: trainingContent.name,
+      description: trainingContent.description,
+      action: trainingContent.renderedAction,
+      preservedEditorialAction: trainingContent.preservedEditorialAction,
     },
     items: [
       {
@@ -335,14 +263,10 @@ export const siteContent = {
     links: ["Curso", "LabLogs", "Workshops", "Programa Trace Engineer", "Pilotos acadêmicos"],
   },
   betaCta: {
-    title: "Primeiro círculo de estudantes do LAB",
-    text:
-      "O Payload Journey LAB está abrindo sua etapa beta para estudantes, desenvolvedores e pessoas interessadas em compreender sistemas como fluxo. Esta é a porta de entrada para aprender Payload Journey, USMT, Reverse Payload Journey e Track Mode.",
-    action: {
-      label: "Acessar curso beta",
-      href: betaCourseUrl,
-      state: "external",
-    } satisfies CtaItem,
+    label: "LAB Beta",
+    title: campaignConfig.messages.firstCircleTitle,
+    text: campaignConfig.messages.firstCircleText,
+    action: siteCtas.finalTraining,
   },
   whitePapers: {
     title: "White Papers",
@@ -408,7 +332,7 @@ export const siteContent = {
     ] satisfies CtaItem[],
   },
   footer: {
-    policies: ["Política de privacidade", "Termos de uso"],
+    policies: footerContent.policies,
   },
   preservedFutureContent: {
     futureRoutes: [

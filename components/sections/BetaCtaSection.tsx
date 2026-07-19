@@ -10,7 +10,7 @@ export function BetaCtaSection() {
         <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
             <p className="font-mono text-[calc(0.75rem+10px)] font-semibold uppercase tracking-[0.08em] text-terminal">
-              LAB Beta
+              {siteContent.betaCta.label}
             </p>
             <h2 className="mt-3 text-2xl font-bold sm:text-3xl">{siteContent.betaCta.title}</h2>
             <p className="mt-4 max-w-3xl text-sm leading-6 text-white/75 sm:text-base sm:leading-7">

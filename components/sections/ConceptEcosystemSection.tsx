@@ -3,10 +3,11 @@ import { SectionHeader } from "@/components/sections/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { siteContent } from "@/content/payload-journey-lab";
+import { homepageAnchors } from "@/content/site";
 
 export function ConceptEcosystemSection() {
   return (
-    <Section id="ecossistema">
+    <Section id={homepageAnchors.ecosystem}>
       <SectionHeader
         title={siteContent.ecosystem.title}
         description={siteContent.ecosystem.intro}

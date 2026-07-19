@@ -2,10 +2,11 @@ import { SectionHeader } from "@/components/sections/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { siteContent } from "@/content/payload-journey-lab";
+import { homepageAnchors } from "@/content/site";
 
 export function AboutSection() {
   return (
-    <Section id="sobre">
+    <Section id={homepageAnchors.about}>
       <div className="max-w-4xl">
         <SectionHeader title={siteContent.about.title} description={siteContent.about.text} />
         <div className="mt-6 grid gap-5 text-base leading-7 text-graphite">

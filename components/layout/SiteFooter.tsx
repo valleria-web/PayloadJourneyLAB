@@ -1,12 +1,7 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { siteContent } from "@/content/payload-journey-lab";
-
-const footerLinks = [
-  { label: "Udemy", href: siteContent.hero.primaryAction.href, external: true },
-  { label: "LabLog", href: "#lablog" },
-  { label: "YouTube", href: "https://www.youtube.com/@Lab-Log", external: true },
-];
+import { footerContent } from "@/content/site";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -25,14 +20,13 @@ export function SiteFooter() {
               className="h-24 w-56 rounded-md object-cover"
             />
             <p className="mt-3 max-w-sm text-sm leading-6 text-white/70">
-              Payload Journey LAB - formacao, pesquisa e investigacao aplicada em sistemas
-              complexos.
+              {footerContent.description}
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-3">
             <div>
               <p className="font-mono text-[calc(0.75rem+10px)] font-semibold uppercase tracking-[0.08em] text-terminal">
-                Navegacao
+                {footerContent.headings.navigation}
               </p>
               <div className="mt-3 grid gap-2 text-sm text-white/70">
                 {siteContent.nav.slice(1, 6).map((item) => (
@@ -44,10 +38,10 @@ export function SiteFooter() {
             </div>
             <div>
               <p className="font-mono text-[calc(0.75rem+10px)] font-semibold uppercase tracking-[0.08em] text-terminal">
-                Links
+                {footerContent.headings.links}
               </p>
               <div className="mt-3 grid gap-2 text-sm text-white/70">
-                {footerLinks.map((link) => (
+                {footerContent.links.map((link) => (
                   <a
                     key={link.label}
                     href={link.href}
@@ -62,10 +56,10 @@ export function SiteFooter() {
             </div>
             <div>
               <p className="font-mono text-[calc(0.75rem+10px)] font-semibold uppercase tracking-[0.08em] text-terminal">
-                Legal
+                {footerContent.headings.legal}
               </p>
               <div className="mt-3 grid gap-2 text-sm text-white/60">
-                {siteContent.footer.policies.map((item) => (
+                {footerContent.policies.map((item) => (
                   <span key={item} aria-disabled="true" className="py-1">
                     {item}
                   </span>
@@ -75,7 +69,7 @@ export function SiteFooter() {
           </div>
         </div>
         <p className="mt-10 border-t border-white/10 pt-5 text-xs text-white/55">
-          © {year} {siteContent.brand.name}. Todos os direitos reservados.
+          © {year} {siteContent.brand.name}. {footerContent.copyrightSuffix}
         </p>
       </Container>
     </footer>

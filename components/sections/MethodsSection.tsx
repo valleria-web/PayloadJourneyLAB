@@ -2,14 +2,15 @@ import { ArrowUpRight, GitBranch } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { siteContent } from "@/content/payload-journey-lab";
+import { homepageAnchors } from "@/content/site";
 
 export function MethodsSection() {
   return (
-    <Section id="metodos" className="border-y border-line bg-subtle">
+    <Section id={homepageAnchors.methods} className="border-y border-line bg-subtle">
       <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
         <div className="max-w-3xl">
           <p className="mb-4 font-mono text-[calc(0.75rem+5px)] font-semibold uppercase tracking-[0.08em] text-accent">
-            METODOS PARA COMPREENDER SISTEMAS
+            {siteContent.methods.eyebrow}
           </p>
           <h2 className="text-3xl font-bold tracking-normal text-ink sm:text-4xl">
             {siteContent.methods.title}
@@ -19,7 +20,7 @@ export function MethodsSection() {
           </p>
         </div>
         <div className="w-fit rounded-full border border-line bg-white px-4 py-2 font-mono text-[calc(0.75rem+5px)] text-accent">
-          trace stack: payload / usmt / origin
+          {siteContent.methods.traceStack}
         </div>
       </div>
       <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
