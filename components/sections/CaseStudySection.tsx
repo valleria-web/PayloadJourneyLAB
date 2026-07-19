@@ -5,56 +5,65 @@ import { Card } from "@/components/ui/Card";
 import { HighlightPanel } from "@/components/ui/HighlightPanel";
 import { Section } from "@/components/ui/Section";
 import { TechnicalLabel } from "@/components/ui/TechnicalLabel";
-import { siteContent } from "@/content/payload-journey-lab";
+import { horaCityCase } from "@/content/hora-city";
+import { homepageAnchors } from "@/content/site";
 
 function InvestigationStatusCard() {
-  const investigation = siteContent.caseStudy.investigation;
-  const technicalRows = [
-    ["Anomalia", investigation.anomaly],
-    ["Payload", investigation.payload],
-    ["Método", "Reverse Payload Journey"],
-    ["Missão", "Track to Origin"],
-    ["Authority", "temporal authority under review"],
-  ];
+  const technicalRows = horaCityCase.technicalRows;
 
   return (
     <Card className="border-line/70 bg-[#fcf7f8]/90 p-6 sm:p-7 lg:p-8">
       <div className="flex items-center justify-between gap-3">
         <TechnicalLabel tone="terminal" className="text-[calc(0.68rem+10px)]">
-          {">_"} HORA.city
+          {horaCityCase.technicalCopy.commandPrefix} {horaCityCase.project}
         </TechnicalLabel>
         <span className="font-mono text-[calc(0.62rem+5px)] uppercase tracking-[0.16em] text-text-muted">
-          case file
+          {horaCityCase.technicalCopy.caseFileLabel}
         </span>
       </div>
 
       <div className="mt-6 rounded-2xl border border-ink/10 bg-ink p-5 font-mono text-[calc(0.78rem+5px)] leading-6 text-white shadow-[0_18px_50px_rgba(16,16,16,0.18)]">
         <p>
-          <span className="text-[calc(0.78rem+10px)] text-terminal">{">_"}</span> case: {investigation.caseId}
+          <span className="text-[calc(0.78rem+10px)] text-terminal">
+            {horaCityCase.technicalCopy.commandPrefix}
+          </span>{" "}
+          case: {horaCityCase.caseId}
         </p>
-        <p className="mt-1 text-white/70">region: BR</p>
-        <p className="mt-1 text-white/70">status: active investigation</p>
-        <p className="mt-1 text-white/70">primary payload: HeartCreated</p>
-        <p className="mt-1 text-white/70">validated flow: in progress</p>
+        <p className="mt-1 text-white/70">
+          {horaCityCase.technicalCopy.regionLabel}: {horaCityCase.region}
+        </p>
+        <p className="mt-1 text-white/70">
+          {horaCityCase.technicalCopy.statusLabel}: {horaCityCase.technicalStatus.activeStatus}
+        </p>
+        <p className="mt-1 text-white/70">
+          {horaCityCase.technicalCopy.payloadLabel}: {horaCityCase.payload}
+        </p>
+        <p className="mt-1 text-white/70">
+          {horaCityCase.technicalCopy.validatedFlowLabel}: {horaCityCase.technicalStatus.validatedFlow}
+        </p>
       </div>
 
       <div className="mt-5 grid gap-3 sm:grid-cols-[1fr_1fr]">
         <div className="rounded-2xl border border-line/70 bg-white/75 p-4">
           <TechnicalLabel tone="terminal" className="text-[calc(0.6rem+10px)]">
-            Validated Flow
+            {horaCityCase.technicalCopy.validatedFlowHeading}
           </TechnicalLabel>
-          <p className="mt-2 text-sm font-semibold text-ink">in progress</p>
+          <p className="mt-2 text-sm font-semibold text-ink">
+            {horaCityCase.technicalStatus.validatedFlow}
+          </p>
         </div>
         <div className="rounded-2xl border border-line/70 bg-white/75 p-4">
           <TechnicalLabel tone="terminal" className="text-[calc(0.6rem+10px)]">
-            Authority
+            {horaCityCase.technicalCopy.authorityHeading}
           </TechnicalLabel>
-          <p className="mt-2 text-sm font-semibold text-ink">temporal authority under review</p>
+          <p className="mt-2 text-sm font-semibold text-ink">
+            {horaCityCase.technicalStatus.authority}
+          </p>
         </div>
       </div>
 
       <div className="mt-5 divide-y divide-line/70 rounded-2xl border border-line/70 bg-white/70">
-        {technicalRows.map(([label, value]) => (
+        {technicalRows.map(({ label, value }) => (
           <div key={label} className="flex items-center justify-between gap-4 px-4 py-3">
             <span className="font-mono text-[calc(0.7rem+5px)] uppercase tracking-[0.1em] text-graphite">
               {label}
@@ -66,10 +75,10 @@ function InvestigationStatusCard() {
 
       <div className="mt-5 flex flex-wrap gap-2">
         <span className="rounded-full border border-line/70 bg-white/75 px-3 py-1.5 font-mono text-[calc(0.66rem+5px)] uppercase tracking-[0.12em] text-graphite">
-          ~6k → ~40k linhas
+          {horaCityCase.codebase.renderedScale}
         </span>
         <span className="rounded-full border border-line/70 bg-white/75 px-3 py-1.5 font-mono text-[calc(0.66rem+5px)] uppercase tracking-[0.12em] text-graphite">
-          createdAt incorreto
+          {horaCityCase.anomaly}
         </span>
       </div>
     </Card>
@@ -77,16 +86,9 @@ function InvestigationStatusCard() {
 }
 
 export function CaseStudySection() {
-  const microFacts = [
-    { label: "Escala", value: "~6k → ~40k linhas" },
-    { label: "Anomalia", value: "createdAt incorreto" },
-    { label: "Payload", value: "HeartCreated" },
-    { label: "Missão", value: "Track to Origin" },
-  ];
-
   return (
     <Section
-      id="case-study"
+      id={homepageAnchors.caseStudy}
       className="relative overflow-hidden border-y border-line bg-[#f6e7eb]/70"
       containerClassName="relative"
     >
@@ -97,37 +99,43 @@ export function CaseStudySection() {
           className="border-line/70 bg-[#fbf1f4]/90 p-6 sm:p-8 lg:p-8"
         >
           <SectionHeader
-            eyebrow="STUDY CASE"
-            title="HORA.city"
+            eyebrow={horaCityCase.editorialVariants.rendered.subtitle}
+            title={horaCityCase.editorialVariants.rendered.title}
             className="max-w-none"
           />
           <p className="mt-5 max-w-2xl text-base leading-7 text-graphite sm:text-[1.02rem]">
-            O HORA.city é um caso real de investigação aplicada no Payload Journey LAB, marcado por uma expansão acelerada e por perda de observabilidade estrutural.
+            {horaCityCase.editorialVariants.rendered.description}
           </p>
           <p className="mt-4 max-w-2xl text-base leading-7 text-graphite sm:text-[1.02rem]">
-            A investigação atual acompanha uma anomalia temporal em createdAt associada ao payload HeartCreated, com o objetivo de reconstruir o caminho operacional e rastrear a origem da decisão temporal.
+            {horaCityCase.editorialVariants.rendered.investigation}
           </p>
 
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <Button
-              href="#case-study"
+              href={horaCityCase.renderedActions[0].href}
               variant="secondary"
               className="sm:w-fit border-accent-cta/25 bg-white/80 text-pink-dark shadow-none hover:border-accent-cta/40 hover:bg-blush/70 hover:text-pink-dark"
             >
               <Search aria-hidden="true" className="size-4" />
-              Explorar o estudo
+              {horaCityCase.renderedActions[0].label}
             </Button>
-            <Button href="#lablog" variant="ghost" className="sm:w-fit text-ink/80 hover:bg-white/70">
+            <Button
+              href={horaCityCase.renderedActions[1].href}
+              variant="ghost"
+              className="sm:w-fit text-ink/80 hover:bg-white/70"
+            >
               <BookOpen aria-hidden="true" className="size-4" />
-              Acompanhar no LabLog
+              {horaCityCase.renderedActions[1].label}
             </Button>
           </div>
 
-          <p className="mt-3 text-xs leading-6 text-text-muted/80">Detalhes completos em breve.</p>
+          <p className="mt-3 text-xs leading-6 text-text-muted/80">
+            {horaCityCase.renderedNotice}
+          </p>
 
           <div className="mt-8 border-t border-line/70 pt-5">
             <div className="flex flex-wrap gap-x-6 gap-y-3">
-              {microFacts.map((fact) => (
+              {horaCityCase.renderedMicroFacts.map((fact) => (
                 <div key={fact.label} className="flex items-baseline gap-2">
                   <TechnicalLabel tone="terminal" className="text-[calc(0.58rem+10px)]">
                     {fact.label}

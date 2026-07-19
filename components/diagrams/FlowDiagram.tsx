@@ -1,5 +1,5 @@
 type FlowDiagramProps = {
-  steps: string[];
+  steps: readonly string[];
 };
 
 export function FlowDiagram({ steps }: FlowDiagramProps) {

@@ -5,14 +5,13 @@ import { Section } from "@/components/ui/Section";
 import { TechnicalLabel } from "@/components/ui/TechnicalLabel";
 import { TerminalChip } from "@/components/ui/TerminalChip";
 import { TerminalLine } from "@/components/ui/TerminalLine";
+import {
+  heroInvestigationPanel,
+  investigationCycle,
+  investigationCycleSummary,
+} from "@/content/methods";
 import { siteContent } from "@/content/payload-journey-lab";
-
-const payloadFlow = [
-  { action: "FREEZE", target: "PAYLOAD" },
-  { action: "MAP", target: "PATH" },
-  { action: "DETECT", target: "MUTATION" },
-  { action: "RESTORE", target: "AUTHORITY" },
-];
+import { homepageAnchors } from "@/content/site";
 
 function PayloadFlowPanel() {
   return (
@@ -31,15 +30,15 @@ function PayloadFlowPanel() {
 
       <div className="relative flex items-start justify-between gap-4">
         <div>
-          <TerminalChip>TRACK MODE ACTIVE</TerminalChip>
+          <TerminalChip>{heroInvestigationPanel.state}</TerminalChip>
           <p className="mt-4 font-mono text-[calc(0.75rem+5px)] leading-6 text-text-muted">
-            &gt;_ payload.route.observe()
+            {heroInvestigationPanel.command}
           </p>
         </div>
       </div>
 
       <div className="relative mt-10 grid gap-3">
-        {payloadFlow.map((item, index) => (
+        {investigationCycle.map((item, index) => (
           <div
             key={item.action}
             className="grid grid-cols-[auto_1fr] items-center gap-4 rounded-xl border border-border-default/80 bg-white/70 px-4 py-3 shadow-[0_10px_30px_rgba(16,16,16,0.03)]"
@@ -60,9 +59,11 @@ function PayloadFlowPanel() {
       </div>
 
       <div className="relative mt-5 flex flex-wrap gap-2">
-        <TerminalChip>TRACK MODE</TerminalChip>
-        <TerminalChip tone="cta">REVERSE</TerminalChip>
-        <TerminalChip tone="neutral">ORIGIN</TerminalChip>
+        {heroInvestigationPanel.chips.map((chip) => (
+          <TerminalChip key={chip.label} tone={chip.tone}>
+            {chip.label}
+          </TerminalChip>
+        ))}
       </div>
     </HighlightPanel>
   );
@@ -73,7 +74,7 @@ export function HeroSection() {
 
   return (
     <Section
-      id="inicio"
+      id={homepageAnchors.home}
       className="overflow-hidden border-b border-line py-20 sm:py-24 lg:py-28"
       containerClassName="relative"
     >
@@ -114,7 +115,7 @@ export function HeroSection() {
             </Button>
           </div>
           <TerminalLine className="mt-6">
-            Congelar. Mapear. Detectar. Restaurar.
+            {investigationCycleSummary}
           </TerminalLine>
         </div>
 

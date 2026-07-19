@@ -3,14 +3,15 @@ import { Card } from "@/components/ui/Card";
 import { IconWrapper } from "@/components/ui/IconWrapper";
 import { Section } from "@/components/ui/Section";
 import { siteContent } from "@/content/payload-journey-lab";
+import { homepageAnchors } from "@/content/site";
 
 export function LabOverviewSection() {
   return (
-    <Section id="lab" className="bg-paper">
+    <Section id={homepageAnchors.lab} className="bg-paper">
       <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
           <SectionHeader
-            eyebrow="LAB STRUCTURE"
+            eyebrow={siteContent.lab.eyebrow}
             title={siteContent.lab.title}
             description={siteContent.lab.intro}
           />
@@ -19,7 +20,7 @@ export function LabOverviewSection() {
           </p>
           <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-line bg-white px-4 py-2 font-mono text-[calc(0.75rem+5px)] text-accent">
             <span>{">_"}</span>
-            flow trace origin
+            {siteContent.lab.terminalLine}
           </div>
         </div>
         <div className="grid gap-4 sm:grid-cols-2">

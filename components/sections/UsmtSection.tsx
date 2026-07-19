@@ -2,6 +2,7 @@ import { SectionHeader } from "@/components/sections/SectionHeader";
 import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
 import { siteContent } from "@/content/payload-journey-lab";
+import { homepageAnchors } from "@/content/site";
 
 export function UsmtSection() {
   return (
@@ -24,7 +25,7 @@ export function UsmtSection() {
                 </span>
               ))}
             </div>
-            <Button href="#lablog">{siteContent.usmt.action}</Button>
+            <Button href={`#${homepageAnchors.labLog}`}>{siteContent.usmt.action}</Button>
           </div>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
