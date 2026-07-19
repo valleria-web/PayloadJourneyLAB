@@ -1,9 +1,13 @@
-import { TechnicalLabel } from "@/components/ui/TechnicalLabel";
+import {
+  TechnicalLabel,
+  type TechnicalLabelTone,
+} from "@/components/ui/TechnicalLabel";
 
 export type SectionHeadingLevel = "h2" | "h3" | "h4";
 
 export type SectionHeaderProps = {
   eyebrow?: string;
+  eyebrowTone?: TechnicalLabelTone;
   title: string;
   description?: string;
   align?: "left" | "center";
@@ -13,6 +17,7 @@ export type SectionHeaderProps = {
 
 export function SectionHeader({
   eyebrow,
+  eyebrowTone = "technical",
   title,
   description,
   align = "left",
@@ -24,7 +29,11 @@ export function SectionHeader({
 
   return (
     <div className={`${isCenter ? "mx-auto max-w-3xl text-center" : "max-w-3xl"} ${className}`}>
-      {eyebrow ? <TechnicalLabel className="mb-4">{eyebrow}</TechnicalLabel> : null}
+      {eyebrow ? (
+        <TechnicalLabel className="mb-4" tone={eyebrowTone}>
+          {eyebrow}
+        </TechnicalLabel>
+      ) : null}
       <Heading className="text-3xl font-bold tracking-normal text-ink sm:text-4xl">
         {title}
       </Heading>

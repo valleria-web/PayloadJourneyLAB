@@ -29,7 +29,7 @@ export function SiteFooter() {
                 {footerContent.headings.navigation}
               </p>
               <div className="mt-3 grid gap-2 text-sm text-white/70">
-                {siteContent.nav.slice(1, 6).map((item) => (
+                {footerContent.navigation.map((item) => (
                   <a key={item.href} href={item.href} className="w-fit py-1 hover:text-white">
                     {item.label}
                   </a>

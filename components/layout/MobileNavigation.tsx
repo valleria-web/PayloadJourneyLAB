@@ -1,20 +1,37 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Button } from "@/components/ui/Button";
 import type { NavItem } from "@/types/content";
 
 type MobileNavigationProps = {
   items: NavItem[];
+  cta: NavItem;
 };
 
-export function MobileNavigation({ items }: MobileNavigationProps) {
+export function MobileNavigation({ items, cta }: MobileNavigationProps) {
   const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const menuId = "mobile-navigation";
+
+  useEffect(() => {
+    if (!open) return;
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key !== "Escape") return;
+      setOpen(false);
+      triggerRef.current?.focus();
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [open]);
 
   return (
     <div className="lg:hidden">
       <button
+        ref={triggerRef}
         type="button"
         aria-label={open ? "Fechar navegação" : "Abrir navegação"}
         aria-expanded={open}
@@ -44,6 +61,14 @@ export function MobileNavigation({ items }: MobileNavigationProps) {
                 {item.label}
               </a>
             ))}
+            <Button
+              href={cta.href}
+              variant="contrast"
+              className="mt-2 w-full"
+              onClick={() => setOpen(false)}
+            >
+              {cta.label}
+            </Button>
           </nav>
         </div>
       ) : null}

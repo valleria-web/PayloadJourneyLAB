@@ -20,6 +20,17 @@ function occurrences(source, pattern) {
   return [...source.matchAll(pattern)].length;
 }
 
+async function listSourceFiles(directory) {
+  const entries = await fs.readdir(directory, { withFileTypes: true });
+  const files = await Promise.all(
+    entries.map(async (entry) => {
+      const entryPath = path.join(directory, entry.name);
+      return entry.isDirectory() ? listSourceFiles(entryPath) : [entryPath];
+    }),
+  );
+  return files.flat().filter((filePath) => /\.(?:ts|tsx)$/.test(filePath));
+}
+
 async function waitForHomepage() {
   const startedAt = Date.now();
   let lastError;
@@ -77,6 +88,8 @@ try {
   const html = await response.text();
   const anchors = [
     "inicio",
+    "aprender",
+    "competencias",
     "lab",
     "metodos",
     "ecossistema",
@@ -86,16 +99,23 @@ try {
     "sobre",
   ];
   const navigationAnchors = [
-    "inicio",
-    "lab",
-    "metodos",
-    "case-study",
+    "aprender",
     "formacao",
-    "lablog",
-    "sobre",
+    "case-study",
+    "metodos",
+    "lab",
   ];
   const essentialContent = [
-    "PAYLOAD JOURNEY LAB",
+    "Payload Journey LAB",
+    "Aprenda a seguir o payload",
+    "Reduza uma codebase grande a um único flow investigável.",
+    "Não abra arquivos aleatoriamente",
+    "Transforme milhares de arquivos numa rota investigável.",
+    "Sem tracing",
+    "Com tracing",
+    "Uma estratégia para compreender sistemas pelo flow",
+    "Identificar o payload",
+    "Rastrear a origem",
     "O LAB",
     "Métodos para compreender sistemas",
     "Um ecossistema para compreender sistemas",
@@ -121,6 +141,10 @@ try {
   assert(response.status === 200, `Expected HTTP 200, received ${response.status}`);
   assert(occurrences(html, /<h1\b/g) === 1, "Expected exactly one h1 in rendered HTML");
   assert(
+    /<h1\b[^>]*>\s*Aprenda a seguir o payload\s*<\/h1>/.test(html),
+    "The homepage h1 does not contain the Sprint 3 message",
+  );
+  assert(
     html.includes('aria-controls="mobile-navigation"'),
     "Mobile navigation trigger is missing",
   );
@@ -132,6 +156,23 @@ try {
 
   for (const anchor of navigationAnchors) {
     assert(html.includes(`href="#${anchor}"`), `Missing navigation href: #${anchor}`);
+  }
+
+  assert(
+    html.includes('href="#aprender"') && html.includes("Começar a aprender"),
+    "Primary Hero CTA must point to #aprender",
+  );
+  assert(
+    html.includes('href="#formacao"') && html.includes("Conhecer a formação"),
+    "Secondary Hero CTA must point to #formacao",
+  );
+
+  const renderedIds = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]));
+  const internalDestinations = [...html.matchAll(/\shref="#([^"]+)"/g)].map(
+    (match) => match[1],
+  );
+  for (const destination of internalDestinations) {
+    assert(renderedIds.has(destination), `Internal link points to missing id: #${destination}`);
   }
 
   for (const content of essentialContent) {
@@ -147,6 +188,7 @@ try {
     fs.readFile(path.join(repositoryRoot, "content", "site.ts"), "utf8"),
     fs.readFile(path.join(repositoryRoot, "content", "methods.ts"), "utf8"),
     fs.readFile(path.join(repositoryRoot, "content", "hora-city.ts"), "utf8"),
+    fs.readFile(path.join(repositoryRoot, "content", "payload-journey-lab.ts"), "utf8"),
   ]);
   const canonicalSource = canonicalSources.join("\n");
   const stableIds = [
@@ -164,6 +206,18 @@ try {
     "software-system-investigation",
     "hora-city",
     "lablog",
+    "choose-flow",
+    "find-payload",
+    "follow-transformations",
+    "locate-decision",
+    "identify-payload",
+    "recognize-representations",
+    "follow-flow",
+    "distinguish-responsibilities",
+    "position-checkpoints",
+    "document-path",
+    "reconstruct-anomalies",
+    "trace-origin",
   ];
 
   for (const id of stableIds) {
@@ -183,6 +237,38 @@ try {
     "Campaign expiration must remain explicitly unknown",
   );
 
+  const siteSource = await fs.readFile(path.join(repositoryRoot, "content", "site.ts"), "utf8");
+  const footerSource = await fs.readFile(
+    path.join(repositoryRoot, "components", "layout", "SiteFooter.tsx"),
+    "utf8",
+  );
+  assert(
+    siteSource.includes("navigation: [") && footerSource.includes("footerContent.navigation"),
+    "Footer navigation must remain independent from simplified Header navigation",
+  );
+  assert(
+    !footerSource.includes("siteContent.nav"),
+    "Footer must not consume the Header navigation source",
+  );
+  const mobileNavigationSource = await fs.readFile(
+    path.join(repositoryRoot, "components", "layout", "MobileNavigation.tsx"),
+    "utf8",
+  );
+  assert(
+    mobileNavigationSource.includes('event.key !== "Escape"') &&
+      mobileNavigationSource.includes("triggerRef.current?.focus()"),
+    "MobileNavigation must own Escape handling and focus return",
+  );
+
+  const sourceRoots = ["app", "components", "content", "lib"];
+  const sourceFiles = (
+    await Promise.all(sourceRoots.map((root) => listSourceFiles(path.join(repositoryRoot, root))))
+  ).flat();
+  const clientDirectives = (
+    await Promise.all(sourceFiles.map((filePath) => fs.readFile(filePath, "utf8")))
+  ).reduce((count, source) => count + occurrences(source, /^\s*["']use client["'];/gm), 0);
+  assert(clientDirectives === 1, `Expected one Client Component boundary, found ${clientDirectives}`);
+
   console.log(
     JSON.stringify(
       {
@@ -196,6 +282,10 @@ try {
           essentialContent: essentialContent.length,
           externalDestinations: externalDestinations.length,
           stableIds: stableIds.length,
+          internalDestinations: new Set(internalDestinations).size,
+          clientComponentBoundaries: clientDirectives,
+          footerNavigationIndependent: true,
+          mobileEscapeAndFocusReturnProtected: true,
           mobileNavigationInitialState: true,
           unresolvedEditorialDecisionsProtected: true,
         },

@@ -13,6 +13,8 @@ const udemyCourseWithCouponUrl =
 
 export const homepageAnchors = {
   home: "inicio",
+  learn: "aprender",
+  competencies: "competencias",
   lab: "lab",
   methods: "metodos",
   ecosystem: "ecossistema",
@@ -64,16 +66,19 @@ export const campaignConfig = {
 } as const satisfies CampaignConfig;
 
 export const siteNavigation = [
-  { label: "Início", href: `#${homepageAnchors.home}` },
-  { label: "O LAB", href: `#${homepageAnchors.lab}` },
-  { label: "Métodos", href: `#${homepageAnchors.methods}` },
-  { label: "Study Case", href: `#${homepageAnchors.caseStudy}` },
+  { label: "Aprender", href: `#${homepageAnchors.learn}` },
   { label: "Formação", href: `#${homepageAnchors.training}` },
-  { label: "LabLog", href: `#${homepageAnchors.labLog}` },
-  { label: "Sobre", href: `#${homepageAnchors.about}` },
+  { label: "Caso real", href: `#${homepageAnchors.caseStudy}` },
+  { label: "Métodos", href: `#${homepageAnchors.methods}` },
+  { label: "O LAB", href: `#${homepageAnchors.lab}` },
 ] satisfies NavItem[];
 
 export const siteCtas = {
+  headerStart: {
+    label: "Começar",
+    state: "anchor",
+    href: `#${homepageAnchors.learn}`,
+  },
   headerTraining: {
     label: "Entrar no LAB",
     state: "external",
@@ -138,6 +143,13 @@ export const footerContent = {
     links: "Links",
     legal: "Legal",
   },
+  navigation: [
+    { label: "O LAB", href: `#${homepageAnchors.lab}` },
+    { label: "Métodos", href: `#${homepageAnchors.methods}` },
+    { label: "Study Case", href: `#${homepageAnchors.caseStudy}` },
+    { label: "Formação", href: `#${homepageAnchors.training}` },
+    { label: "LabLog", href: `#${homepageAnchors.labLog}` },
+  ] satisfies NavItem[],
   links: [
     { label: "Udemy", href: siteLinks.udemy.courseWithCoupon, external: true },
     { label: "LabLog", href: `#${homepageAnchors.labLog}`, external: false },

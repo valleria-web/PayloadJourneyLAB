@@ -1,13 +1,16 @@
 import type { ReactNode } from "react";
 
+export type TechnicalLabelTone = "technical" | "readable" | "terminal" | "cta" | "muted";
+
 type TechnicalLabelProps = {
   children: ReactNode;
   className?: string;
-  tone?: "technical" | "terminal" | "cta" | "muted";
+  tone?: TechnicalLabelTone;
 };
 
 const tones = {
   technical: "text-accent-technical",
+  readable: "text-accent-readable",
   terminal: "text-terminal",
   cta: "text-pink-dark",
   muted: "text-text-muted",
