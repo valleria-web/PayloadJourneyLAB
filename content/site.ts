@@ -1,7 +1,9 @@
 import type {
   CampaignConfig,
   CtaItem,
+  FooterPresentation,
   HomepageAnchors,
+  LabLogPresentation,
   NavItem,
   SiteIdentity,
   SiteLinks,
@@ -173,30 +175,51 @@ export const trainingPresentation = {
 
 export const labLogContent = {
   id: homepageAnchors.labLog,
-  eyebrow: "LABLOG / YOUTUBE",
-  title: "LabLog",
+  eyebrow: "Investigação em movimento",
+  title: "Acompanhe o LAB em movimento",
   description:
-    "Acompanhe a investigacao em movimento: payloads, anomalias, decisoes, camadas e retorno a origem.",
+    "O LabLog registra flows, anomalias, decisões, checkpoints, mappings e o desenvolvimento público dos métodos do LAB.",
+  themes: [
+    "Payload Journey",
+    "Mapping",
+    "Checkpoints",
+    "HORA.city",
+    "Codebases",
+    "Anomalias",
+    "Track Mode",
+    "Investigação de sistemas",
+    "Formação",
+  ],
   action: {
     label: "Assistir ao LabLog",
     state: "external",
     href: siteLinks.youtube.labLogCurrent,
-  } satisfies CtaItem,
+  },
+  editorialStatus: "current",
   youtubeResolution: {
     canonical: siteLinks.youtube.canonical,
     status: siteLinks.youtube.resolutionStatus,
     currentHomepageDestination: siteLinks.youtube.labLogCurrent,
     currentFooterDestination: siteLinks.youtube.footerCurrent,
   },
-} as const;
+  historicalPresentation: {
+    eyebrow: "LABLOG / YOUTUBE",
+    title: "LabLog",
+    description:
+      "Acompanhe a investigacao em movimento: payloads, anomalias, decisoes, camadas e retorno a origem.",
+  },
+} as const satisfies LabLogPresentation;
 
 export const footerContent = {
-  description:
-    "Payload Journey LAB - formacao, pesquisa e investigacao aplicada em sistemas complexos.",
+  identity: {
+    name: siteIdentity.name,
+    tagline: siteIdentity.tagline,
+    description:
+      "Formação, pesquisa metodológica e investigação aplicada para compreender sistemas seguindo o fluxo da informação.",
+  },
   headings: {
-    navigation: "Navegacao",
-    links: "Links",
-    legal: "Legal",
+    navigation: "Navegação",
+    channels: "Canais",
   },
   navigation: [
     { label: "O LAB", href: `#${homepageAnchors.lab}` },
@@ -205,11 +228,12 @@ export const footerContent = {
     { label: "Formação", href: `#${homepageAnchors.training}` },
     { label: "LabLog", href: `#${homepageAnchors.labLog}` },
   ] satisfies NavItem[],
-  links: [
+  channels: [
     { label: "Udemy", href: siteLinks.udemy.courseWithCoupon, external: true },
-    { label: "LabLog", href: `#${homepageAnchors.labLog}`, external: false },
     { label: "YouTube", href: siteLinks.youtube.footerCurrent, external: true },
   ],
-  policies: ["Política de privacidade", "Termos de uso"],
+  legalNotice: "Informações institucionais e canais confirmados do Payload Journey LAB.",
   copyrightSuffix: "Todos os direitos reservados.",
-} as const;
+  historicalPolicies: ["Política de privacidade", "Termos de uso"],
+  missingLegalRoutes: ["privacy-policy", "terms-of-use"],
+} as const satisfies FooterPresentation;

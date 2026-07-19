@@ -20,6 +20,148 @@ export type Pillar = {
   icon: LucideIcon;
 };
 
+export type InstitutionalPillarId =
+  | "education"
+  | "methodological-research"
+  | "applied-investigation"
+  | "collaboration";
+
+export type InstitutionalPillar = {
+  id: InstitutionalPillarId;
+  title: string;
+  description: string;
+  activities: string[];
+  audience?: string[];
+  result: string;
+  icon: LucideIcon;
+  cta?: CtaItem;
+};
+
+export type LabPresentation = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  mission: string;
+  principle: string;
+  connectionToInvestigativePractice: string;
+  cta?: EntryCta;
+  historicalPresentation: {
+    eyebrow: string;
+    terminalLine: string;
+    title: string;
+    intro: string;
+    complement: string;
+    pillars: Pillar[];
+  };
+};
+
+export type InstitutionalEcosystemPresentation = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  pillars: InstitutionalPillar[];
+  collaborationNote: string;
+  collaborationCta?: CtaItem;
+  historicalPresentation: {
+    title: string;
+    intro: string;
+    institutionalTransition: string;
+  };
+};
+
+export type LabLogPresentation = {
+  id: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  themes: string[];
+  featuredContent?: Array<{
+    title: string;
+    description: string;
+    href: string;
+  }>;
+  action: CtaItem & { state: "external"; href: string };
+  editorialStatus: "current";
+  youtubeResolution: {
+    canonical: string | null;
+    status: "unresolved" | "resolved";
+    currentHomepageDestination: string;
+    currentFooterDestination: string;
+  };
+  historicalPresentation: {
+    eyebrow: string;
+    title: string;
+    description: string;
+  };
+};
+
+export type FounderProfile = {
+  name: string;
+  role: string;
+  labCreation: string;
+  usmtCreation: string;
+  confirmedContext: string[];
+  professionalLink: string | null;
+};
+
+export type AboutPresentation = {
+  eyebrow: string;
+  title: string;
+  origin: string;
+  vision: string;
+  motivatingProblem: string;
+  authorship: string;
+  founder: FounderProfile;
+  relationshipToUsmt: string;
+  institutionalSignature: string;
+  values: string[];
+  historicalPresentation: {
+    title: string;
+    text: string;
+    secondaryText: string;
+    vision: string;
+    founderTitle: string;
+    founderParagraphs: string[];
+  };
+};
+
+export type FinalCtaPresentation = {
+  eyebrow?: string;
+  title: string;
+  description: string;
+  primaryCta: CtaItem & { state: "external"; href: string };
+  secondaryCta: EntryCta;
+  campaignNote?: string;
+  historicalPresentation: {
+    label: string;
+    title: string;
+    text: string;
+    action: CtaItem;
+  };
+};
+
+export type FooterPresentation = {
+  identity: {
+    name: string;
+    tagline: string;
+    description: string;
+  };
+  headings: {
+    navigation: string;
+    channels: string;
+  };
+  navigation: NavItem[];
+  channels: Array<{
+    label: string;
+    href: string;
+    external: boolean;
+  }>;
+  legalNotice: string;
+  copyrightSuffix: string;
+  historicalPolicies: string[];
+  missingLegalRoutes: string[];
+};
+
 export type CardItem = {
   title: string;
   description: string;

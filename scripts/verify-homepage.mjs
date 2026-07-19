@@ -161,12 +161,20 @@ try {
     "Função investigativa proposta e desenvolvida pelo LAB.",
     "Prática organizada e desenvolvida no contexto do Payload Journey LAB.",
     "Conhecer o LAB",
-    "O LAB",
-    "Um ecossistema para compreender sistemas",
+    "Formação, pesquisa e investigação aplicada",
+    "A prática que você acabou de conhecer faz parte de um laboratório",
+    "Quatro áreas conectadas pelo mesmo propósito",
+    "Pesquisa metodológica",
+    "Aplicação dos métodos em codebases, flows, anomalias e decisões reais de software.",
+    "Colaboração",
     "HORA.city",
-    "LabLog",
-    "Sobre o Payload Journey LAB",
-    "Primeiro círculo de estudantes do LAB",
+    "Investigação em movimento",
+    "Acompanhe o LAB em movimento",
+    "Temas acompanhados",
+    "Criado para ensinar a compreender sistemas",
+    "Valéria dos Santos Reiser",
+    "Criadora do Payload Journey LAB e da USMT",
+    "Comece por um único flow",
     "Payload Journey",
     "USMT",
     "Reverse Payload Journey",
@@ -329,6 +337,28 @@ try {
     "Investigative practice CTA must point to the existing #lab anchor",
   );
 
+  const institutionalPillarIds = [
+    "education",
+    "methodological-research",
+    "applied-investigation",
+    "collaboration",
+  ];
+  let previousInstitutionalPillarIndex = -1;
+  for (const id of institutionalPillarIds) {
+    const idIndex = html.indexOf(`id="${id}"`);
+    assert(idIndex > previousInstitutionalPillarIndex, `Institutional pillar order is incorrect at: ${id}`);
+    previousInstitutionalPillarIndex = idIndex;
+  }
+  assert(
+    html.includes("Estas são possibilidades de colaboração") &&
+      !/parcerias ativas|pilotos ativos|contratos ativos/i.test(html),
+    "Collaboration must be framed as a possibility rather than an active partnership",
+  );
+  assert(
+    !html.includes("Propor uma colaboração") && !html.includes("Conversar sobre colaboração"),
+    "Collaboration CTA must not render without a confirmed destination",
+  );
+
   const caseSectionIds = [
     "case-context",
     "case-anomaly",
@@ -370,6 +400,18 @@ try {
       html,
     ),
     "Investigative practice must not claim external recognition or standardization",
+  );
+  assert(
+    html.includes('href="#demo"') &&
+      html.includes("Ver o payload atravessar o sistema") &&
+      html.includes("Comece por um único flow"),
+    "Final CTA must offer the Udemy entry and the existing #demo destination",
+  );
+  assert(
+    !html.includes("Política de privacidade") &&
+      !html.includes("Termos de uso") &&
+      !html.includes("Impressum"),
+    "Footer must not render names of legal pages that do not exist",
   );
 
   const renderedIdList = [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
@@ -438,6 +480,10 @@ try {
     "response",
     "projection",
     "ui",
+    "education",
+    "methodological-research",
+    "applied-investigation",
+    "collaboration",
   ];
 
   for (const id of stableIds) {
@@ -481,6 +527,18 @@ try {
   assert(
     canonicalSource.includes("expiration: null"),
     "Campaign expiration must remain explicitly unknown",
+  );
+  assert(
+    canonicalSource.includes('historicalPolicies: ["Política de privacidade", "Termos de uso"]') &&
+      canonicalSource.includes('missingLegalRoutes: ["privacy-policy", "terms-of-use"]'),
+    "Historical legal labels and missing route decisions must remain documented server-side",
+  );
+  assert(
+    canonicalSource.includes('professionalLink: siteLinks.linkedin') &&
+      canonicalSource.includes('linkedin: null') &&
+      canonicalSource.includes('contact: null') &&
+      canonicalSource.includes('email: null'),
+    "Unconfirmed professional and collaboration destinations must remain null",
   );
 
   const siteSource = await fs.readFile(path.join(repositoryRoot, "content", "site.ts"), "utf8");
@@ -567,6 +625,10 @@ try {
           uniqueDomIds: renderedIds.size,
           methodProcedureRelationshipsTextual: true,
           externalRecognitionClaimsRejected: true,
+          institutionalPillars: institutionalPillarIds.length,
+          collaborationPossibilitiesOnly: true,
+          finalCtaDestinationsProtected: true,
+          nonexistentLegalPagesOmitted: true,
         },
       },
       null,

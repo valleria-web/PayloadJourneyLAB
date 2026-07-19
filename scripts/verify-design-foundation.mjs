@@ -39,6 +39,11 @@ const files = {
     "sections",
     "ConceptEcosystemSection.tsx",
   ),
+  labOverview: path.join(repositoryRoot, "components", "sections", "LabOverviewSection.tsx"),
+  labLog: path.join(repositoryRoot, "components", "sections", "LabLogSection.tsx"),
+  about: path.join(repositoryRoot, "components", "sections", "AboutSection.tsx"),
+  finalCta: path.join(repositoryRoot, "components", "sections", "BetaCtaSection.tsx"),
+  footer: path.join(repositoryRoot, "components", "layout", "SiteFooter.tsx"),
   flowDiagram: path.join(repositoryRoot, "components", "diagrams", "FlowDiagram.tsx"),
 };
 
@@ -234,6 +239,10 @@ for (const component of [
   assert(!sources[component].includes('"use client"'), `${component} must remain a Server Component`);
   assert(!/#[\da-f]{3,8}/i.test(sources[component]), `${component} must not contain color literals`);
 }
+for (const component of ["labOverview", "ecosystem", "labLog", "about", "finalCta", "footer"]) {
+  assert(!sources[component].includes('"use client"'), `${component} must remain a Server Component`);
+  assert(!/#[\da-f]{3,8}/i.test(sources[component]), `${component} must not contain color literals`);
+}
 
 let legacyHeaderAdapterExists = true;
 try {
@@ -268,6 +277,7 @@ console.log(
         flowServerComponents: 4,
         sprint5ServerSections: 2,
         sprint6ServerSections: 4,
+        sprint7ServerSections: 6,
         flowDiagramPreservedAsServerComponent: true,
       },
     },

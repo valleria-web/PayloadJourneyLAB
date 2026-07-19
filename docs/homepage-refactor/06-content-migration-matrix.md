@@ -242,3 +242,37 @@ Nenhum item pertencente às Sprints 6 a 8 foi declarado concluído.
 | lablog-about-sprint6 | Consolidação institucional de LabLog e Sobre | Fontes atuais | Sprint 7 | pendente | Seções preservadas sem refatoração integral |
 
 Os itens destinados às Sprints 7 e 8 permanecem pendentes. A Sprint 6 não resolve HORA.city, YouTube, validade do cupom, templates documentais ou demonstração técnica aprofundada.
+
+## Atualização da Sprint 7 — ecossistema institucional e encerramento
+
+| ID | Conteúdo | Fonte canônica | Destino | Estado | Observações |
+| --- | --- | --- | --- | --- | --- |
+| lab-presentation-sprint7 | Missão, princípio e conexão com a prática | `siteContent.lab` | `#lab` | implementado | A metodologia completa não é repetida |
+| lab-historical-presentation | Copy, terminal e quatro cards anteriores | `siteContent.lab.historicalPresentation` | Histórico editorial server-side | preservado | Não enviado ao HTML público |
+| institutional-ecosystem | Quatro áreas conectadas | `siteContent.ecosystem` | `#ecossistema` | implementado | Assume a apresentação detalhada dos pilares |
+| institutional-education | Formação, atividades, públicos e resultado | `ecosystem.pillars[education]` | Ecossistema 01 | implementado | Condensa a dimensão institucional sem repetir a Formação fundamental |
+| institutional-methodological-research | Pesquisa metodológica e desenvolvimento dos métodos | `ecosystem.pillars[methodological-research]` | Ecossistema 02 | implementado | Sem claim de validação científica formal |
+| institutional-applied-investigation | Aplicação em codebases, flows, anomalias e decisões | `ecosystem.pillars[applied-investigation]` | Ecossistema 03 | implementado | HORA.city permanece na seção própria |
+| institutional-collaboration | Públicos e possibilidades de colaboração | `ecosystem.pillars[collaboration]` | Ecossistema 04 | implementado | Não declara parceria, piloto ou contrato ativo |
+| collaboration-cta | CTA para colaboração | `siteLinks.contact/email/linkedin` | Ecossistema | pendente | Destinos continuam `null`; nenhum CTA fictício foi renderizado |
+| lablog-sprint7 | Narrativa, temas, CTA e status editorial | `labLogContent` | `#lablog` | implementado | Eyebrow usa singular coerente: “Investigação em movimento” |
+| lablog-current-youtube | Destino atualmente usado pelo LabLog | `siteLinks.youtube.labLogCurrent` | CTA LabLog | preservado | `@PayloadJourneyLAB` não foi declarado oficial |
+| footer-current-youtube-sprint7 | Destino atualmente usado pelo Footer | `siteLinks.youtube.footerCurrent` | Canal do Footer | preservado | `@Lab-Log` permanece distinto |
+| youtube-resolution-sprint7 | Escolha do YouTube canônico | `siteLinks.youtube` | Decisão editorial futura | pendente | `resolutionStatus: "unresolved"` e `canonical: null` |
+| about-origin-sprint7 | Origem e problema motivador | `siteContent.about` | `#sobre` | implementado | Sem estatísticas novas e sem repetir HORA.city |
+| about-vision-sprint7 | Visão e seis valores | `siteContent.about` | `#sobre` | implementado | Sem reconhecimento externo alegado |
+| founder-sprint7 | Nome, criação do LAB, criação da USMT e contexto confirmado | `siteContent.about.founder` | `#sobre` | implementado | Biografia limitada às fontes do projeto |
+| founder-professional-link | Perfil profissional | `siteLinks.linkedin` | Sobre | pendente | Continua `null`; nenhum link foi inventado |
+| about-historical-presentation | Copy e parágrafos anteriores da fundadora | `about.historicalPresentation` | Histórico editorial server-side | preservado | Não enviado ao HTML público |
+| final-cta-sprint7 | Comece por um único flow | `siteContent.betaCta` | CTA final | implementado | Dois CTAs, sem terceiro destino |
+| final-cta-training | Entrar na formação | `betaCta.primaryCta` | Udemy atual | implementado | Cupom preservado; `expiration: null` |
+| final-cta-demo | Ver o payload atravessar o sistema | `betaCta.secondaryCta` | `#demo` | implementado | Anchor existente |
+| final-cta-history | Primeiro círculo de estudantes e CTA anterior | `betaCta.historicalPresentation` | Histórico editorial server-side | preservado | Não enviado ao HTML público |
+| footer-sprint7 | Identidade, navegação, canais e copyright | `footerContent` | Footer | implementado | Navegação continua independente do Header |
+| footer-legal-real | Informação institucional e copyright existentes | `footerContent.legalNotice/copyrightSuffix` | Footer | implementado | Somente informação real é renderizada |
+| footer-legal-missing | Política de privacidade e Termos de uso sem rota | `footerContent.historicalPolicies/missingLegalRoutes` | Pendência documental | pendente | Nomes históricos preservados na fonte, não renderizados |
+| contact-section-sprint7 | Componente de contato sem destino | `ContactSection` + `siteContent.contact` | Conteúdo reservado | preservado | Não renderizado e não removido |
+| institutional-duplications | Pilares no O LAB, prática no Ecossistema e campanha no CTA | Fontes históricas nomeadas | HTML público condensado | implementado | Cada conceito completo permanece em sua seção principal |
+| sprint8-qa-release | QA integral, SEO, performance e publicação | Documentação da Sprint 7 | Sprint 8 | pendente | Sem deploy, release, tag ou alteração de versão |
+
+Continuam pendentes e não foram marcados como concluídos: demonstração aprofundada, resolução editorial de HORA.city, YouTube oficial, validade do cupom, integrações externas, páginas legais, deploy e release.
