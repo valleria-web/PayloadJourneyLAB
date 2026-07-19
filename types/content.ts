@@ -46,6 +46,8 @@ export type HomepageAnchorKey =
   | "home"
   | "learn"
   | "competencies"
+  | "learningPath"
+  | "demo"
   | "lab"
   | "methods"
   | "ecosystem"
@@ -92,6 +94,44 @@ export type LearningOutcome = {
   description: string;
 };
 
+export type LearningPathStepId =
+  | "understand-payload"
+  | "payload-journey"
+  | "reverse-payload-journey"
+  | "track-to-origin";
+
+export type LearningPathStep = {
+  id: LearningPathStepId;
+  number: string;
+  title: string;
+  description: string;
+  concepts: string[];
+  result: string;
+};
+
+export type OperationalRole = "transport" | "transform" | "decide" | "present";
+
+export type PayloadFlowNodeId =
+  | "interaction"
+  | "structured-payload"
+  | "request"
+  | "api"
+  | "domain"
+  | "repository"
+  | "response"
+  | "projection"
+  | "ui";
+
+export type PayloadFlowNode = {
+  id: PayloadFlowNodeId;
+  number: string;
+  label: string;
+  representation: string;
+  responsibility: string;
+  role: OperationalRole;
+  investigativeQuestion: string;
+};
+
 export type HomepageEntry = {
   hero: {
     eyebrow: string;
@@ -119,6 +159,23 @@ export type HomepageEntry = {
     title: string;
     description: string;
     items: LearningOutcome[];
+  };
+  learningPath: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    steps: LearningPathStep[];
+  };
+  flowDemo: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    context: string;
+    nodes: PayloadFlowNode[];
+    cta: {
+      supportingText: string;
+      action: EntryCta;
+    };
   };
 };
 

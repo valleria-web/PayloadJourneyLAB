@@ -151,7 +151,33 @@ As classificações abaixo distinguem explicitamente conteúdo já representado,
 | entry-learning-outcomes | Oito competências profissionais | `homepageEntry.learningOutcomes` | `#competencias` | implementado |
 | anchor-aprender | Anchor da estratégia de entrada | `homepageAnchors.learn` | Header e CTAs | implementado |
 | anchor-competencias | Anchor das competências | `homepageAnchors.competencies` | Seção de competências | implementado |
-| future-learning-path | Trilha progressiva | Conteúdo ainda não criado | Sprint 4 | reservado, não implementado |
-| future-payload-demo | Demonstração visual do payload | `heroInvestigationPanel` preservado | Sprint 4 | reservado, não implementado |
+| future-learning-path | Trilha progressiva | `homepageEntry.learningPath` | `#trilha` | implementado na Sprint 4 |
+| future-payload-demo | Demonstração visual do payload | `homepageEntry.flowDemo`; `heroInvestigationPanel` permanece preservado separadamente | `#demo` | implementado como representação pedagógica na Sprint 4 |
 
-As variantes editoriais de HORA.city continuam separadas e com `editorialResolution: "unresolved"`. Nenhum item das Sprints 4 a 8 foi declarado concluído.
+As variantes editoriais de HORA.city continuam separadas e com `editorialResolution: "unresolved"`.
+
+## Atualização da Sprint 4 — Trilha e demonstração pedagógica
+
+| ID | Conteúdo | Fonte canônica | Destino | Estado | Observações |
+| --- | --- | --- | --- | --- | --- |
+| anchor-trilha | Anchor da progressão de aprendizagem | `homepageAnchors.learningPath` | `#trilha` | implementado | Anchors anteriores preservados |
+| anchor-demo | Anchor da demonstração resumida | `homepageAnchors.demo` | `#demo` | implementado | Demo estática e pedagógica |
+| learning-path-understand | Entenda o Payload | `homepageEntry.learningPath.steps[understand-payload]` | Trilha 01 | implementado | Introduz payload, representações e continuidade semântica |
+| learning-path-journey | Payload Journey | `homepageEntry.learningPath.steps[payload-journey]` | Trilha 02 | implementado | Método inserido na progressão sem alterar a seção Métodos |
+| learning-path-reverse | Reverse Payload Journey | `homepageEntry.learningPath.steps[reverse-payload-journey]` | Trilha 03 | implementado | Reconstrução reversa de uma anomalia observável |
+| learning-path-origin | Track to Origin | `homepageEntry.learningPath.steps[track-to-origin]` | Trilha 04 | implementado | Investigação até a primeira decisão relevante |
+| payload-flow-summary | Clique → Structured Payload → Request → API → Domain → Repository → Response → Projection → UI | `homepageEntry.flowDemo.nodes` | `#demo` | implementado | Nove nodes em ordem semântica, sem alegação de execução real |
+| operational-roles | Transporta, Transforma, Decide e Apresenta | `OperationalRole` + `RoleBadge` | `#demo` | implementado | Texto explícito; cor apenas como apoio |
+| hero-flow-related-content | Painel, comando, Track Mode e chips retirados do Hero anterior | `content/methods.ts#heroInvestigationPanel` | Histórico editorial e possível demonstração aprofundada futura | preservado | A demo resumida não finge executar o comando nem substitui esse acervo |
+| header-navigation-sprint-4 | Aprender, Trilha, Demo, Formação, Caso real e O LAB | `siteNavigation` | Header desktop e mobile | implementado | `Métodos` saiu somente do Header |
+| header-methods-link | Item Métodos do Header | `homepageAnchors.methods` e `footerContent.navigation` | Footer e seção `#metodos` | removido apenas do Header | Anchor, seção e acesso pelo Footer preservados |
+| header-start-sprint-4 | Começar → Trilha | `siteCtas.headerStart` | `#trilha` | implementado | Destino existente |
+| hero-primary-sprint-4 | Ver o payload atravessar o sistema | `homepageEntry.hero.primaryCta` | `#demo` | implementado | Não promete demo completa |
+| hero-secondary-sprint-4 | Explorar a trilha | `homepageEntry.hero.secondaryCta` | `#trilha` | implementado | Formação continua no Header |
+| demo-case-cta | Ver o caso real HORA.city | `homepageEntry.flowDemo.cta` | `#case-study` | implementado | Não afirma que o caso já contém a demo completa |
+| future-deep-demo | Demonstração aprofundada | Conteúdo ainda não criado | Sprint futura | pendente | Sem página, modal, vídeo ou runtime nesta sprint |
+| future-real-code-demo | Request/response, checkpoints e componentes reais | Conteúdo ainda não criado | Sprint futura | pendente | Nenhum arquivo, endpoint ou log foi inventado |
+| future-demo-video | Vídeo específico da demonstração | Destino ainda não confirmado | Sprint futura | pendente | Decisão sobre YouTube continua unresolved |
+| future-hora-city-refactor | Refatoração editorial e visual do caso real | `horaCityCase.editorialVariants` | Sprint 5 | pendente | Variantes `audited` e `rendered` continuam separadas e unresolved |
+
+Nenhum item pertencente às Sprints 5 a 8 foi declarado concluído.

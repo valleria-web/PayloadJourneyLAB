@@ -24,6 +24,14 @@
   --color-case-section: 246 231 235;
   --color-case-card: 251 241 244;
   --color-case-panel: 252 247 248;
+  --color-role-transport: var(--color-graphite);
+  --color-role-transport-surface: var(--color-soft);
+  --color-role-transform: var(--color-accent-text);
+  --color-role-transform-surface: var(--color-accent-muted);
+  --color-role-decide: var(--color-ink);
+  --color-role-decide-surface: var(--color-pink);
+  --color-role-present: var(--color-ink);
+  --color-role-present-surface: var(--color-blush);
 
   --font-family-sans: "Space Grotesk", "Inter", Arial, Helvetica, sans-serif;
   --font-family-mono: "IBM Plex Mono", "Courier New", monospace;

@@ -15,6 +15,8 @@ export const homepageAnchors = {
   home: "inicio",
   learn: "aprender",
   competencies: "competencias",
+  learningPath: "trilha",
+  demo: "demo",
   lab: "lab",
   methods: "metodos",
   ecosystem: "ecossistema",
@@ -67,9 +69,10 @@ export const campaignConfig = {
 
 export const siteNavigation = [
   { label: "Aprender", href: `#${homepageAnchors.learn}` },
+  { label: "Trilha", href: `#${homepageAnchors.learningPath}` },
+  { label: "Demo", href: `#${homepageAnchors.demo}` },
   { label: "Formação", href: `#${homepageAnchors.training}` },
   { label: "Caso real", href: `#${homepageAnchors.caseStudy}` },
-  { label: "Métodos", href: `#${homepageAnchors.methods}` },
   { label: "O LAB", href: `#${homepageAnchors.lab}` },
 ] satisfies NavItem[];
 
@@ -77,7 +80,7 @@ export const siteCtas = {
   headerStart: {
     label: "Começar",
     state: "anchor",
-    href: `#${homepageAnchors.learn}`,
+    href: `#${homepageAnchors.learningPath}`,
   },
   headerTraining: {
     label: "Entrar no LAB",

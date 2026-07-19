@@ -90,6 +90,8 @@ try {
     "inicio",
     "aprender",
     "competencias",
+    "trilha",
+    "demo",
     "lab",
     "metodos",
     "ecossistema",
@@ -100,9 +102,10 @@ try {
   ];
   const navigationAnchors = [
     "aprender",
+    "trilha",
+    "demo",
     "formacao",
     "case-study",
-    "metodos",
     "lab",
   ];
   const essentialContent = [
@@ -116,6 +119,20 @@ try {
     "Uma estratégia para compreender sistemas pelo flow",
     "Identificar o payload",
     "Rastrear a origem",
+    "Seu caminho no Payload Journey LAB",
+    "Você passa a enxergar informação atravessando o sistema.",
+    "Você consegue reconstruir um flow de ponta a ponta.",
+    "Você deixa de adivinhar e começa a investigar.",
+    "Você consegue explicar onde e por que uma decisão ocorreu.",
+    "Veja o payload atravessar o sistema",
+    "Uma representação pedagógica de um flow operacional.",
+    "Clique",
+    "Structured Payload",
+    "Projection",
+    "Transporta",
+    "Transforma",
+    "Decide",
+    "Apresenta",
     "O LAB",
     "Métodos para compreender sistemas",
     "Um ecossistema para compreender sistemas",
@@ -159,13 +176,55 @@ try {
   }
 
   assert(
-    html.includes('href="#aprender"') && html.includes("Começar a aprender"),
-    "Primary Hero CTA must point to #aprender",
+    html.includes('href="#demo"') && html.includes("Ver o payload atravessar o sistema"),
+    "Primary Hero CTA must point to #demo",
   );
   assert(
-    html.includes('href="#formacao"') && html.includes("Conhecer a formação"),
-    "Secondary Hero CTA must point to #formacao",
+    html.includes('href="#trilha"') && html.includes("Explorar a trilha"),
+    "Secondary Hero CTA must point to #trilha",
   );
+  assert(
+    html.includes('href="#trilha"') && html.includes("Começar"),
+    "Header CTA must point to #trilha",
+  );
+  assert(
+    html.includes('href="#case-study"') && html.includes("Ver o caso real HORA.city"),
+    "Demo CTA must point to #case-study",
+  );
+
+  const orderedSectionIds = ["aprender", "competencias", "trilha", "demo", "lab"];
+  let previousSectionIndex = -1;
+  for (const id of orderedSectionIds) {
+    const sectionIndex = html.indexOf(`id="${id}"`);
+    assert(sectionIndex > previousSectionIndex, `Homepage section order is incorrect at #${id}`);
+    previousSectionIndex = sectionIndex;
+  }
+
+  const learningPathIds = [
+    "understand-payload",
+    "payload-journey",
+    "reverse-payload-journey",
+    "track-to-origin",
+  ];
+  const flowNodeIds = [
+    "interaction",
+    "structured-payload",
+    "request",
+    "api",
+    "domain",
+    "repository",
+    "response",
+    "projection",
+    "ui",
+  ];
+  for (const orderedIds of [learningPathIds, flowNodeIds]) {
+    let previousIdIndex = -1;
+    for (const id of orderedIds) {
+      const idIndex = html.indexOf(`id="${id}"`);
+      assert(idIndex > previousIdIndex, `Rendered order is incorrect at stable id: ${id}`);
+      previousIdIndex = idIndex;
+    }
+  }
 
   const renderedIds = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]));
   const internalDestinations = [...html.matchAll(/\shref="#([^"]+)"/g)].map(
@@ -218,6 +277,16 @@ try {
     "document-path",
     "reconstruct-anomalies",
     "trace-origin",
+    "understand-payload",
+    "interaction",
+    "structured-payload",
+    "request",
+    "api",
+    "domain",
+    "repository",
+    "response",
+    "projection",
+    "ui",
   ];
 
   for (const id of stableIds) {
@@ -249,6 +318,22 @@ try {
   assert(
     !footerSource.includes("siteContent.nav"),
     "Footer must not consume the Header navigation source",
+  );
+  const headerNavigationSource = siteSource.match(
+    /export const siteNavigation = \[([\s\S]*?)\] satisfies NavItem\[\];/,
+  )?.[1];
+  assert(headerNavigationSource, "Could not inspect the canonical Header navigation");
+  assert(
+    !headerNavigationSource.includes("homepageAnchors.methods"),
+    "Methods may leave only the Header; its Footer destination must remain independent",
+  );
+  assert(
+    siteSource.includes("homepageAnchors.methods") && html.includes('id="metodos"'),
+    "The legacy Methods anchor must remain available",
+  );
+  assert(
+    !html.includes("demonstração completa") && !html.includes("execução em tempo real"),
+    "The pedagogical demo must not promise a nonexistent real execution",
   );
   const mobileNavigationSource = await fs.readFile(
     path.join(repositoryRoot, "components", "layout", "MobileNavigation.tsx"),
@@ -288,6 +373,11 @@ try {
           mobileEscapeAndFocusReturnProtected: true,
           mobileNavigationInitialState: true,
           unresolvedEditorialDecisionsProtected: true,
+          learningPathSteps: learningPathIds.length,
+          flowNodes: flowNodeIds.length,
+          flowNodeHtmlOrderPreserved: true,
+          operationalRolesExplicit: 4,
+          pedagogicalDemoDisclosure: true,
         },
       },
       null,

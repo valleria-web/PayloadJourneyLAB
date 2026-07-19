@@ -14,6 +14,10 @@ const files = {
   button: path.join(repositoryRoot, "components", "ui", "Button.tsx"),
   card: path.join(repositoryRoot, "components", "ui", "Card.tsx"),
   badge: path.join(repositoryRoot, "components", "ui", "Badge.tsx"),
+  roleBadge: path.join(repositoryRoot, "components", "ui", "RoleBadge.tsx"),
+  flowNode: path.join(repositoryRoot, "components", "ui", "FlowNode.tsx"),
+  learningPath: path.join(repositoryRoot, "components", "sections", "LearningPathSection.tsx"),
+  flowDemo: path.join(repositoryRoot, "components", "sections", "PayloadFlowDemoSection.tsx"),
 };
 
 function assert(condition, message) {
@@ -67,6 +71,16 @@ const requiredTokenGroups = {
   layout: ["--container-default", "--space-container-inline", "--space-section-block"],
   shape: ["--radius-control", "--radius-card", "--shadow-card"],
   motion: ["--motion-duration-fast", "--motion-duration-base", "--motion-easing-standard"],
+  operationalRoles: [
+    "--color-role-transport",
+    "--color-role-transport-surface",
+    "--color-role-transform",
+    "--color-role-transform-surface",
+    "--color-role-decide",
+    "--color-role-decide-surface",
+    "--color-role-present",
+    "--color-role-present-surface",
+  ],
 };
 
 for (const [group, tokens] of Object.entries(requiredTokenGroups)) {
@@ -88,6 +102,15 @@ assert(
     sources.tailwind.includes('"cta-contrast-text": color("--color-cta-contrast-text")'),
   "Sprint 3 contrast aliases must reference additive CSS custom properties",
 );
+for (const role of ["transport", "transform", "decide", "present"]) {
+  assert(
+    sources.tailwind.includes(`"role-${role}": color("--color-role-${role}")`) &&
+      sources.tailwind.includes(
+        `"role-${role}-surface": color("--color-role-${role}-surface")`,
+      ),
+    `Operational role ${role} must reference additive CSS custom properties`,
+  );
+}
 
 const readableGreenContrast = contrastRatio(
   tokenRgb(sources.tokens, "--color-accent-text"),
@@ -97,8 +120,29 @@ const contrastCtaRatio = contrastRatio(
   tokenRgb(sources.tokens, "--color-ink"),
   tokenRgb(sources.tokens, "--color-pink"),
 );
+const operationalRoleContrasts = {
+  transport: contrastRatio(
+    tokenRgb(sources.tokens, "--color-graphite"),
+    tokenRgb(sources.tokens, "--color-soft"),
+  ),
+  transform: contrastRatio(
+    tokenRgb(sources.tokens, "--color-accent-text"),
+    tokenRgb(sources.tokens, "--color-accent-muted"),
+  ),
+  decide: contrastRatio(
+    tokenRgb(sources.tokens, "--color-ink"),
+    tokenRgb(sources.tokens, "--color-pink"),
+  ),
+  present: contrastRatio(
+    tokenRgb(sources.tokens, "--color-ink"),
+    tokenRgb(sources.tokens, "--color-blush"),
+  ),
+};
 assert(readableGreenContrast >= 4.5, "Readable green must meet WCAG AA on paper");
 assert(contrastCtaRatio >= 4.5, "Contrast CTA must meet WCAG AA with dark text");
+for (const [role, ratio] of Object.entries(operationalRoleContrasts)) {
+  assert(ratio >= 4.5, `Operational role ${role} must meet WCAG AA`);
+}
 assert(
   sources.button.includes('primary:\n    "border-accent-cta bg-accent-cta text-white'),
   "The preexisting primary Button variant must remain unchanged",
@@ -139,6 +183,13 @@ assert(
 for (const component of ["container", "section", "sectionHeader", "button", "card", "badge"]) {
   assert(!sources[component].includes('"use client"'), `${component} must remain a Server Component`);
 }
+for (const component of ["roleBadge", "flowNode", "learningPath", "flowDemo"]) {
+  assert(!sources[component].includes('"use client"'), `${component} must remain a Server Component`);
+  assert(!/#[\da-f]{3,8}/i.test(sources[component]), `${component} must not contain color literals`);
+}
+for (const label of ["Transporta", "Transforma", "Decide", "Apresenta"]) {
+  assert(sources.roleBadge.includes(`"${label}"`), `Missing explicit operational label: ${label}`);
+}
 
 let legacyHeaderAdapterExists = true;
 try {
@@ -164,6 +215,13 @@ console.log(
         readableGreenContrast: Number(readableGreenContrast.toFixed(2)),
         contrastCtaRatio: Number(contrastCtaRatio.toFixed(2)),
         preexistingButtonDefaultsPreserved: true,
+        operationalRoleContrasts: Object.fromEntries(
+          Object.entries(operationalRoleContrasts).map(([role, ratio]) => [
+            role,
+            Number(ratio.toFixed(2)),
+          ]),
+        ),
+        flowServerComponents: 4,
       },
     },
     null,
