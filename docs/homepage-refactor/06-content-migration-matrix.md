@@ -174,10 +174,37 @@ As variantes editoriais de HORA.city continuam separadas e com `editorialResolut
 | header-start-sprint-4 | Começar → Trilha | `siteCtas.headerStart` | `#trilha` | implementado | Destino existente |
 | hero-primary-sprint-4 | Ver o payload atravessar o sistema | `homepageEntry.hero.primaryCta` | `#demo` | implementado | Não promete demo completa |
 | hero-secondary-sprint-4 | Explorar a trilha | `homepageEntry.hero.secondaryCta` | `#trilha` | implementado | Formação continua no Header |
-| demo-case-cta | Ver o caso real HORA.city | `homepageEntry.flowDemo.cta` | `#case-study` | implementado | Não afirma que o caso já contém a demo completa |
+| demo-case-cta | Começar pela formação | `homepageEntry.flowDemo.cta` | `#formacao` | atualizado na Sprint 5 | Conecta a representação pedagógica à entrada fundamental |
 | future-deep-demo | Demonstração aprofundada | Conteúdo ainda não criado | Sprint futura | pendente | Sem página, modal, vídeo ou runtime nesta sprint |
 | future-real-code-demo | Request/response, checkpoints e componentes reais | Conteúdo ainda não criado | Sprint futura | pendente | Nenhum arquivo, endpoint ou log foi inventado |
 | future-demo-video | Vídeo específico da demonstração | Destino ainda não confirmado | Sprint futura | pendente | Decisão sobre YouTube continua unresolved |
-| future-hora-city-refactor | Refatoração editorial e visual do caso real | `horaCityCase.editorialVariants` | Sprint 5 | pendente | Variantes `audited` e `rendered` continuam separadas e unresolved |
+| future-hora-city-refactor | Refatoração editorial e visual do caso real | `horaCityCase.publicNarrative` + variantes preservadas | `#case-study` | implementado na Sprint 5 | Narrativa pública usa fatos compartilhados; variantes continuam separadas e unresolved |
 
-Nenhum item pertencente às Sprints 5 a 8 foi declarado concluído.
+## Atualização da Sprint 5 — Formação fundamental e caso real
+
+| ID | Conteúdo | Fonte canônica | Destino | Estado | Observações |
+| --- | --- | --- | --- | --- | --- |
+| training-repositioned | Formação fundamental imediatamente depois da Demo | `app/page.tsx` | `#formacao` | implementado | Seção movida sem alterar anchor |
+| training-presentation | Nova copy de entrada fundamental | `trainingPresentation` | `#formacao` | implementado | Nome aprovado na Sprint 5; label histórico preservado separadamente |
+| training-audience | Cinco grupos prioritários | `trainingPresentation.audience` | Formação | implementado | Nenhuma promessa de público avançado ou corporativo |
+| training-topics | Fundamentos, estados/eventos, camadas, representações, Payload Journey, estratégia e tracing | `trainingPresentation.topics` | Formação | implementado | Somente conteúdos confirmados |
+| training-primary-cta | Entrar na formação | `trainingPresentation.primaryCta` | URL Udemy atual | implementado | URL e cupom preservados |
+| training-secondary-cta | Rever a trilha | `trainingPresentation.secondaryCta` | `#trilha` | implementado | Destino interno existente |
+| training-campaign | Estado beta e cupom FOLLOW-THE-FLOW | `campaignConfig` + referência em `trainingPresentation` | Formação | preservado | `expiration: null`; nenhuma urgência inventada |
+| training-historical-label | Formação Beta na Udemy | `trainingContent.name` + `trainingPresentation.product.historicalLabel` | Histórico editorial server-side | preservado | Não substituído silenciosamente |
+| case-repositioned | HORA.city imediatamente depois da Formação | `app/page.tsx` | `#case-study` | implementado | O LAB, Métodos e Ecossistema passam para depois do caso |
+| case-public-narrative | Narrativa neutra em sete partes | `horaCityCase.publicNarrative` | `#case-study` | implementado | `sourceStrategy: shared-confirmed-facts` |
+| case-public-facts | Projeto, escala aproximada, anomalia temporal, HeartCreated, métodos, autoridade e estado | Fatos comuns de `horaCityCase` | Caso público | implementado | Sem declarar origem ou resolução comprovada |
+| case-selected-flow | Comportamento observável associado a HeartCreated | `publicNarrative.sections[selected-flow]` | Caso público | implementado | Sem Send Heart, create/join ou nome técnico não confirmado |
+| case-primary-cta | Acompanhar o caso no LabLog | `publicNarrative.primaryCta` | `#lablog` | implementado | Anchor confirmado antes da configuração |
+| case-secondary-cta | Rever o flow | `publicNarrative.secondaryCta` | `#demo` | implementado | Destino interno existente |
+| case-rendered-variant | Variante rendered completa | `editorialVariants.rendered` | Fonte server-side/histórico editorial | preservado | Não renderizada integralmente no HTML |
+| case-audited-variant | Variante audited completa | `editorialVariants.audited` | Fonte server-side/histórico editorial | preservado | Não renderizada integralmente no HTML |
+| case-editorial-resolution | Resolução entre variantes | `editorialResolution` | Decisão editorial futura | pendente | Continua `unresolved` |
+| sprint5-omitted-unconfirmed | Nome técnico do flow, schema do payload, origem comprovada e resolução concluída | `publicNarrative.omissions.unconfirmed` | Documentação | omitido deliberadamente | Ausência de confirmação |
+| sprint5-omitted-divergent | Título/subtítulo e redações completas de contexto/investigação | `publicNarrative.omissions.editorialDivergence` | Documentação | omitido deliberadamente | Divergência entre variantes editoriais |
+| lab-methods-composition | O LAB, Métodos e Ecossistema depois do caso | `app/page.tsx` | Conteúdo posterior | movido apenas na composição | Componentes, copy e ordem relativa preservados |
+| future-methods-refactor | Procedimento, cinco métodos e prática Trace Engineer | Fontes atuais em `content/methods.ts` | Sprint 6 | pendente | Não refatorado nesta sprint |
+| future-ecosystem-refactor | Ecossistema investigativo | Fonte atual preservada | Sprint futura | pendente | Não refatorado nesta sprint |
+
+Nenhum item pertencente às Sprints 6 a 8 foi declarado concluído.

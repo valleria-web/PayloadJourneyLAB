@@ -27,11 +27,11 @@ export default function Home() {
         <LearningOutcomesSection />
         <LearningPathSection />
         <PayloadFlowDemoSection />
+        <EducationSection />
+        <CaseStudySection />
         <LabOverviewSection />
         <MethodsSection />
         <ConceptEcosystemSection />
-        <CaseStudySection />
-        <EducationSection />
         <LabLogSection />
         <AboutSection />
         <BetaCtaSection />

@@ -18,6 +18,8 @@ const files = {
   flowNode: path.join(repositoryRoot, "components", "ui", "FlowNode.tsx"),
   learningPath: path.join(repositoryRoot, "components", "sections", "LearningPathSection.tsx"),
   flowDemo: path.join(repositoryRoot, "components", "sections", "PayloadFlowDemoSection.tsx"),
+  education: path.join(repositoryRoot, "components", "sections", "EducationSection.tsx"),
+  caseStudy: path.join(repositoryRoot, "components", "sections", "CaseStudySection.tsx"),
 };
 
 function assert(condition, message) {
@@ -187,6 +189,10 @@ for (const component of ["roleBadge", "flowNode", "learningPath", "flowDemo"]) {
   assert(!sources[component].includes('"use client"'), `${component} must remain a Server Component`);
   assert(!/#[\da-f]{3,8}/i.test(sources[component]), `${component} must not contain color literals`);
 }
+for (const component of ["education", "caseStudy"]) {
+  assert(!sources[component].includes('"use client"'), `${component} must remain a Server Component`);
+  assert(!/#[\da-f]{3,8}/i.test(sources[component]), `${component} must not contain color literals`);
+}
 for (const label of ["Transporta", "Transforma", "Decide", "Apresenta"]) {
   assert(sources.roleBadge.includes(`"${label}"`), `Missing explicit operational label: ${label}`);
 }
@@ -222,6 +228,7 @@ console.log(
           ]),
         ),
         flowServerComponents: 4,
+        sprint5ServerSections: 2,
       },
     },
     null,

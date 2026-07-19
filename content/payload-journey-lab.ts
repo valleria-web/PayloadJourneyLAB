@@ -343,11 +343,12 @@ export const homepageEntry = {
       },
     ],
     cta: {
-      supportingText: "Veja como a investigação é aplicada numa codebase real.",
+      supportingText:
+        "Aprenda a reconstruir esse caminho com uma estratégia de entrada clara.",
       action: {
-        label: "Ver o caso real HORA.city",
+        label: "Começar pela formação",
         state: "anchor",
-        href: `#${homepageAnchors.caseStudy}`,
+        href: `#${homepageAnchors.training}`,
       },
     },
   },
