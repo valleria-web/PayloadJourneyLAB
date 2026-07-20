@@ -1,7 +1,6 @@
 import { Card } from "@/components/ui/Card";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Section } from "@/components/ui/Section";
-import { TechnicalLabel } from "@/components/ui/TechnicalLabel";
 import { siteContent } from "@/content/payload-journey-lab";
 import { homepageAnchors } from "@/content/site";
 
@@ -80,24 +79,12 @@ export function LabOverviewSection() {
 
       <Section id="founder" className="scroll-mt-24 bg-paper">
         <Card className="bg-subtle p-6 sm:p-8 lg:p-10">
-          <TechnicalLabel tone="readable">Fundadora</TechnicalLabel>
-          <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl">Fundadora e autoria</h2>
+          <h2 className="text-3xl font-bold text-ink sm:text-4xl">Fundadora</h2>
           <h3 className="mt-7 text-2xl font-semibold text-ink">{content.founder.name}</h3>
-          <p className="mt-2 font-semibold text-graphite">{content.founder.role}</p>
-          <div className="mt-6 grid gap-7 lg:grid-cols-2">
-            <div className="grid gap-3 text-sm leading-6 text-graphite sm:text-base sm:leading-7">
-              <p>{content.founder.labCreation}</p>
-              <p>{content.founder.usmtCreation}</p>
-              <p>{content.relationshipToUsmt}</p>
-            </div>
-            <ul className="grid gap-3 text-sm leading-6 text-graphite sm:text-base sm:leading-7">
-              {content.founder.confirmedContext.map((context) => (
-                <li key={context} className="flex gap-3">
-                  <span aria-hidden="true" className="text-accent-readable">→</span>
-                  <span>{context}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="mt-6 grid max-w-4xl gap-4 text-sm leading-6 text-graphite sm:text-base sm:leading-7">
+            {content.founder.biography.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </div>
         </Card>
       </Section>

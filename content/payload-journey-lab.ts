@@ -408,17 +408,14 @@ export const siteContent = {
     ],
     founder: {
       name: "Valéria dos Santos Reiser",
-      role: "Criadora do Payload Journey LAB e da USMT",
-      labCreation: "Criou o Payload Journey LAB.",
-      usmtCreation: "Criou a Universal System Modeling Template (USMT).",
-      confirmedContext: [
-        "Desenvolvimento de maneiras de observar payloads, estados, eventos e decisões em sistemas complexos",
-        "Desenvolvimento dos métodos que estruturam a prática de investigação aplicada do LAB",
+      biography: [
+        "O Payload Journey LAB nasceu de uma experiência prática.",
+        "Ao trabalhar com sistemas desenvolvidos em alta velocidade com o apoio de agentes de IA, Valéria percebeu que a produção de código podia avançar mais rapidamente do que a compreensão das implementações realizadas. Aos poucos, o sistema tornava-se uma caixa-preta: pequenas alterações passaram a exigir horas de tentativa e erro, porque já não era claro onde as decisões aconteciam, como os dados atravessavam as camadas ou quais regras sustentavam o comportamento observado.",
+        "Para recuperar visão estrutural, Valéria começou a estudar profundamente o payload, a rastreabilidade da informação, os estados, os eventos e as transformações realizadas ao longo do sistema. Esse processo deu origem ao Payload Journey LAB, à Universal System Modeling Template — USMT — e aos métodos de investigação hoje organizados pelo LAB.",
+        "O que começou como uma forma de voltar a compreender sistemas acelerados por IA passou a ser estruturado como formação para estudantes e engenheiros. O objetivo é ajudá-los a entrar em grandes codebases com uma estratégia clara, conquistar autonomia mais rapidamente em equipes modernas de desenvolvimento assistido por IA e desenvolver a capacidade de atuar como Trace Engineers: profissionais capazes de seguir o fluxo, produzir evidências e compreender sistemas antes de modificá-los.",
       ],
       professionalLink: siteLinks.linkedin,
     },
-    relationshipToUsmt:
-      "A USMT integra o trabalho metodológico do LAB como instrumento para explicitar estados, regras, invariantes e o comportamento esperado.",
   } satisfies LabPresentation,
   methods: {
     ...methodsSectionContent,

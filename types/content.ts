@@ -54,7 +54,6 @@ export type LabPresentation = {
   connectionToInvestigativePractice: string;
   values: string[];
   founder: FounderProfile;
-  relationshipToUsmt: string;
   cta?: EntryCta;
 };
 
@@ -100,10 +99,7 @@ export type LabLogPresentation = {
 
 export type FounderProfile = {
   name: string;
-  role: string;
-  labCreation: string;
-  usmtCreation: string;
-  confirmedContext: string[];
+  biography: string[];
   professionalLink: string | null;
 };
 
