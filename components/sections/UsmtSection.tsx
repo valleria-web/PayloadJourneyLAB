@@ -15,6 +15,9 @@ export function UsmtSection() {
               title={usmtContent.title}
               description={usmtContent.lead}
             />
+            <p className="mt-5 rounded-foundation-control border border-line bg-subtle p-4 text-base font-semibold leading-7 text-ink">
+              {usmtContent.provenance}
+            </p>
             <p className="mt-5 text-lg font-semibold leading-8 text-ink">
               {usmtContent.description}
             </p>

@@ -326,7 +326,6 @@ export type YouTubeLinks = {
 };
 
 export type SiteLinks = {
-  website: string;
   udemy: {
     courseWithCoupon: string;
   };
@@ -426,6 +425,7 @@ export type UsmtPresentation = {
   eyebrow: string;
   title: string;
   lead: string;
+  provenance: string;
   description: string;
   centralQuestion: string;
   centralAnswer: string;

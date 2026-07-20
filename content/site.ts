@@ -9,6 +9,7 @@ import type {
   SiteLinks,
   TrainingPresentation,
 } from "@/types/content";
+import { siteConfig } from "@/config/site";
 
 const udemyCouponCode = "FOLLOW-THE-FLOW";
 const udemyCourseWithCouponUrl =
@@ -33,17 +34,15 @@ export const homepageAnchors = {
 } as const satisfies HomepageAnchors;
 
 export const siteIdentity = {
-  name: "Payload Journey LAB",
-  tagline: "Siga o flow. Entenda o sistema.",
-  title: "Payload Journey LAB — Siga o flow. Entenda o sistema.",
-  shortDescription:
-    "Laboratório de formação, pesquisa e investigação aplicada dedicado a compreender como payloads, estados, eventos e decisões atravessam sistemas complexos.",
-  language: "pt-BR",
-  locale: "pt_BR",
+  name: siteConfig.name,
+  tagline: siteConfig.tagline,
+  title: siteConfig.title,
+  shortDescription: siteConfig.description,
+  language: siteConfig.language,
+  locale: siteConfig.locale,
 } as const satisfies SiteIdentity;
 
 export const siteLinks = {
-  website: "https://payloadjourneylab.com",
   udemy: {
     courseWithCoupon: udemyCourseWithCouponUrl,
   },

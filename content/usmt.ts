@@ -1,10 +1,12 @@
 import type { UsmtPresentation } from "@/types/content";
+import { siteConfig } from "@/config/site";
 
 export const usmtContent = {
   id: "usmt",
   eyebrow: "Modelo do sistema",
-  title: "USMT — Universal System Model Template",
+  title: `${siteConfig.usmt.alternateName} — ${siteConfig.usmt.name}`,
   lead: "Entenda o sistema que o payload atravessa.",
+  provenance: siteConfig.usmt.description,
   description:
     "Seguir o payload revela o que aconteceu. A USMT ajuda a compreender o que deveria acontecer.",
   centralQuestion: "Como sabemos se o comportamento observado durante a jornada do payload está correto?",

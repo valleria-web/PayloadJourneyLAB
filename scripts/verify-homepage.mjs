@@ -197,7 +197,8 @@ try {
       "Rever o flow",
     ],
     "/usmt": [
-      "USMT — Universal System Model Template",
+      "USMT — Universal System Modeling Template",
+      "A USMT é um template metodológico autoral desenvolvido no Payload Journey LAB",
       "Entenda o sistema que o payload atravessa.",
       "Doze elementos para tornar o sistema investigável",
       "Quatro lentes para investigar qualquer fluxo",
@@ -304,8 +305,8 @@ try {
   const sitemapResponse = await fetch(`${targetUrl}/sitemap.xml`);
   const sitemap = await sitemapResponse.text();
   assert(sitemapResponse.status === 200, `/sitemap.xml returned HTTP ${sitemapResponse.status}`);
-  assert(sitemap.includes("https://payloadjourneylab.com/lab"), "Sitemap must include /lab");
-  assert(!sitemap.includes("https://payloadjourneylab.com/about"), "Sitemap must exclude /about");
+  assert(sitemap.includes("https://www.payloadjourneylab.com/lab"), "Sitemap must include canonical /lab");
+  assert(!sitemap.includes("https://www.payloadjourneylab.com/about"), "Sitemap must exclude /about");
 
   for (const [route, html] of pages) {
     const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
