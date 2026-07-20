@@ -1,3 +1,5 @@
+import { siteConfig } from "@/config/site";
+
 export const thematicRoutes = {
   payloadJourney: {
     path: "/payload-journey",
@@ -23,7 +25,7 @@ export const thematicRoutes = {
   usmt: {
     path: "/usmt",
     eyebrow: "Modelagem",
-    title: "Universal System Model Template",
+    title: `${siteConfig.usmt.alternateName} — ${siteConfig.usmt.name}`,
     description:
       "Um modelo estrutural para explicitar estados, eventos, regras, invariantes, camadas e limites verificáveis.",
   },
@@ -39,7 +41,7 @@ export const thematicRoutes = {
     eyebrow: "Procedimento investigativo",
     title: "Congelar, Mapear, Detectar e Restaurar",
     description:
-      "Uma sequência operacional que preserva o comportamento, produz evidências, localiza divergências e valida a restauração.",
+      "O processo operacional do Payload Journey LAB preserva o comportamento, produz evidências, localiza divergências e valida a restauração.",
   },
   investigation: {
     path: "/investigation",

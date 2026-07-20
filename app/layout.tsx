@@ -6,14 +6,14 @@ import "./globals.css";
 const googleAnalyticsId = "G-8HW6J5BBY2";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
+  metadataBase: new URL(siteConfig.origin),
   title: {
     default: siteConfig.title,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   applicationName: siteConfig.name,
-  creator: siteConfig.name,
+  creator: siteConfig.founder.name,
   publisher: siteConfig.name,
   alternates: {
     canonical: "/",

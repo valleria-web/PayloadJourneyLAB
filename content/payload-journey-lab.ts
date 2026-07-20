@@ -17,6 +17,7 @@ import {
   Workflow,
 } from "lucide-react";
 import { horaCityCase } from "@/content/hora-city";
+import { siteConfig } from "@/config/site";
 import {
   ecosystemFlow,
   ecosystemFlowDescription,
@@ -407,7 +408,7 @@ export const siteContent = {
       "Compartilhar métodos",
     ],
     founder: {
-      name: "Valéria dos Santos Reiser",
+      name: siteConfig.founder.name,
       biography: [
         "O Payload Journey LAB nasceu de uma experiência prática.",
         "Ao trabalhar com sistemas desenvolvidos em alta velocidade com o apoio de agentes de IA, Valéria percebeu que a produção de código podia avançar mais rapidamente do que a compreensão das implementações realizadas. Aos poucos, o sistema tornava-se uma caixa-preta: pequenas alterações passaram a exigir horas de tentativa e erro, porque já não era claro onde as decisões aconteciam, como os dados atravessavam as camadas ou quais regras sustentavam o comportamento observado.",
