@@ -2,9 +2,9 @@ import { BetaCtaSection } from "@/components/sections/BetaCtaSection";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { HomeMethodOverviewSection } from "@/components/sections/HomeMethodOverviewSection";
 import {
-  HomeAboutSection,
   HomeAppliedInvestigationSection,
   HomeEcosystemSection,
+  HomeLabSection,
   HomeLearningSection,
 } from "@/components/sections/HomePathwaysSections";
 import { PayloadFlowDemoSection } from "@/components/sections/PayloadFlowDemoSection";
@@ -25,7 +25,7 @@ export default function Home() {
         <HomeAppliedInvestigationSection />
         <HomeEcosystemSection />
         <HomeLearningSection />
-        <HomeAboutSection />
+        <HomeLabSection />
         <BetaCtaSection />
       </main>
       <SiteFooter />

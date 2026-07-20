@@ -78,7 +78,6 @@ export const siteNavigation = [
   { label: "Aprender", href: "/learn" },
   { label: "Casos", href: "/cases" },
   { label: "O LAB", href: "/lab" },
-  { label: "Sobre", href: "/about" },
 ] satisfies NavItem[];
 
 export const siteCtas = {

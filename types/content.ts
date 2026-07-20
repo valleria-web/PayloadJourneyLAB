@@ -41,18 +41,21 @@ export type LabPresentation = {
   eyebrow: string;
   title: string;
   description: string;
+  originPresentation: {
+    eyebrow: string;
+    title: string;
+    description: string;
+  };
+  origin: string;
+  motivatingProblem: string;
   mission: string;
   principle: string;
+  vision: string;
   connectionToInvestigativePractice: string;
+  values: string[];
+  founder: FounderProfile;
+  relationshipToUsmt: string;
   cta?: EntryCta;
-  historicalPresentation: {
-    eyebrow: string;
-    terminalLine: string;
-    title: string;
-    intro: string;
-    complement: string;
-    pillars: Pillar[];
-  };
 };
 
 export type InstitutionalEcosystemPresentation = {
@@ -102,27 +105,6 @@ export type FounderProfile = {
   usmtCreation: string;
   confirmedContext: string[];
   professionalLink: string | null;
-};
-
-export type AboutPresentation = {
-  eyebrow: string;
-  title: string;
-  origin: string;
-  vision: string;
-  motivatingProblem: string;
-  authorship: string;
-  founder: FounderProfile;
-  relationshipToUsmt: string;
-  institutionalSignature: string;
-  values: string[];
-  historicalPresentation: {
-    title: string;
-    text: string;
-    secondaryText: string;
-    vision: string;
-    founderTitle: string;
-    founderParagraphs: string[];
-  };
 };
 
 export type FinalCtaPresentation = {
