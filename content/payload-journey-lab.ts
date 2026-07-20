@@ -39,7 +39,6 @@ import {
   trainingContent,
 } from "@/content/site";
 import type {
-  AboutPresentation,
   CardItem,
   CtaItem,
   FinalCtaPresentation,
@@ -377,49 +376,45 @@ export const siteContent = {
     secondaryAction: labLogContent.action,
   },
   lab: {
-    eyebrow: "O laboratório",
-    title: "Formação, pesquisa e investigação aplicada",
+    eyebrow: "Ensino",
+    title: "Criado para ensinar a compreender sistemas",
     description:
       "O Payload Journey LAB desenvolve maneiras de ensinar, modelar e investigar software seguindo o fluxo da informação.",
+    originPresentation: {
+      eyebrow: "Sobre",
+      title: "Origem, visão e autoria",
+      description:
+        "A origem do Payload Journey LAB, sua motivação e as informações confirmadas sobre sua fundadora.",
+    },
+    origin:
+      "Sistemas podem crescer mais rapidamente do que a nossa capacidade de explicá-los. O LAB nasce da necessidade de recuperar visão estrutural, rastreabilidade e confiança antes de modificar software complexo.",
+    motivatingProblem:
+      "Quando a produção de código avança sem compreensão estrutural equivalente, torna-se mais difícil preservar rastreabilidade, autoridade, observabilidade e capacidade de decisão.",
     mission:
       "O LAB conecta educação, desenvolvimento metodológico, investigação de sistemas, aplicação em casos reais e possibilidades de colaboração.",
     principle:
       "Compreender antes de modificar: seguir o flow, produzir evidências e tornar as decisões do sistema visíveis.",
+    vision:
+      "O Payload Journey LAB trabalha para tornar investigação de sistemas uma capacidade ensinável, praticável e documentável.",
     connectionToInvestigativePractice:
       "A prática que você acabou de conhecer faz parte de um laboratório dedicado a desenvolver formação, métodos e investigação aplicada.",
-    historicalPresentation: {
-      eyebrow: "LAB STRUCTURE",
-      terminalLine: "flow trace origin",
-      title: "O LAB",
-      intro:
-        "O Payload Journey LAB desenvolve métodos, artefatos pedagógicos e investigações aplicadas para observar, modelar, rastrear e compreender sistemas de software.",
-      complement:
-        "O trabalho do LAB combina formação, pesquisa metodológica e aplicação em codebases reais, especialmente em sistemas cuja expansão tornou a compreensão estrutural mais difícil.",
-      pillars: [
-        {
-          title: "Formação",
-          description:
-            "Desenvolvimento de visão estrutural, capacidade de tracing e compreensão de sistemas através de experiências educacionais.",
-          icon: GraduationCap,
-        },
-        {
-          title: "Pesquisa",
-          description:
-            "Criação, documentação e refinamento de métodos para observar, modelar e investigar sistemas de software.",
-          icon: BookOpen,
-        },
-        {
-          title: "Investigação aplicada",
-          description: "Aplicação dos métodos do LAB em anomalias, fluxos e codebases reais.",
-          icon: Search,
-        },
-        {
-          title: "Colaboração",
-          description:
-            "Construção de pilotos, estudos e parcerias com estudantes, pesquisadores, instituições e organizações.",
-          icon: Share2,
-        },
-      ] satisfies Pillar[],
+    values: [
+      "Seguir o flow",
+      "Compreender antes de modificar",
+      "Produzir evidência",
+      "Tornar decisões visíveis",
+      "Desenvolver visão estrutural",
+      "Compartilhar métodos",
+    ],
+    founder: {
+      name: "Valéria dos Santos Reiser",
+      biography: [
+        "O Payload Journey LAB nasceu de uma experiência prática.",
+        "Ao trabalhar com sistemas desenvolvidos em alta velocidade com o apoio de agentes de IA, Valéria percebeu que a produção de código podia avançar mais rapidamente do que a compreensão das implementações realizadas. Aos poucos, o sistema tornava-se uma caixa-preta: pequenas alterações passaram a exigir horas de tentativa e erro, porque já não era claro onde as decisões aconteciam, como os dados atravessavam as camadas ou quais regras sustentavam o comportamento observado.",
+        "Para recuperar visão estrutural, Valéria começou a estudar profundamente o payload, a rastreabilidade da informação, os estados, os eventos e as transformações realizadas ao longo do sistema. Esse processo deu origem ao Payload Journey LAB, à Universal System Modeling Template — USMT — e aos métodos de investigação hoje organizados pelo LAB.",
+        "O que começou como uma forma de voltar a compreender sistemas acelerados por IA passou a ser estruturado como formação para estudantes e engenheiros. O objetivo é ajudá-los a entrar em grandes codebases com uma estratégia clara, conquistar autonomia mais rapidamente em equipes modernas de desenvolvimento assistido por IA e desenvolver a capacidade de atuar como Trace Engineers: profissionais capazes de seguir o fluxo, produzir evidências e compreender sistemas antes de modificá-los.",
+      ],
+      professionalLink: siteLinks.linkedin,
     },
   } satisfies LabPresentation,
   methods: {
@@ -735,55 +730,6 @@ export const siteContent = {
       },
     ] satisfies WhitePaper[],
   },
-  about: {
-    eyebrow: "Sobre o LAB",
-    title: "Criado para ensinar a compreender sistemas",
-    origin:
-      "Sistemas podem crescer mais rapidamente do que a nossa capacidade de explicá-los. O LAB nasce da necessidade de recuperar visão estrutural, rastreabilidade e confiança antes de modificar software complexo.",
-    vision:
-      "O Payload Journey LAB trabalha para tornar investigação de sistemas uma capacidade ensinável, praticável e documentável.",
-    motivatingProblem:
-      "Quando a produção de código avança sem compreensão estrutural equivalente, torna-se mais difícil preservar rastreabilidade, autoridade, observabilidade e capacidade de decisão.",
-    authorship:
-      "Os métodos apresentados são criados, desenvolvidos e documentados no contexto do Payload Journey LAB.",
-    founder: {
-      name: "Valéria dos Santos Reiser",
-      role: "Criadora do Payload Journey LAB e da USMT",
-      labCreation: "Criou o Payload Journey LAB.",
-      usmtCreation: "Criou a Universal System Modeling Template (USMT).",
-      confirmedContext: [
-        "Desenvolvimento de maneiras de observar payloads, estados, eventos e decisões em sistemas complexos",
-        "Desenvolvimento dos métodos que estruturam a prática de investigação aplicada do LAB",
-      ],
-      professionalLink: siteLinks.linkedin,
-    },
-    relationshipToUsmt:
-      "A USMT integra o trabalho metodológico do LAB como instrumento para explicitar estados, regras, invariantes e o comportamento esperado.",
-    institutionalSignature: siteIdentity.tagline,
-    values: [
-      "Seguir o flow",
-      "Compreender antes de modificar",
-      "Produzir evidência",
-      "Tornar decisões visíveis",
-      "Desenvolver visão estrutural",
-      "Compartilhar métodos",
-    ],
-    historicalPresentation: {
-      title: "Sobre o Payload Journey LAB",
-      text:
-        "Agentes de IA podem expandir sistemas mais rapidamente do que pessoas conseguem compreendê-los. Quando a produção de código avança sem uma compreensão estrutural equivalente, torna-se mais difícil preservar rastreabilidade, autoridade, observabilidade e capacidade de decisão.",
-      secondaryText:
-        "O Payload Journey LAB nasce nesse contexto para formar estudantes e engenheiros capazes de seguir o payload através das camadas de um sistema, compreender como eventos, estados e decisões se propagam, e investigar sistemas complexos antes de modificá-los.",
-      vision:
-        "A visão do LAB é consolidar uma prática de Software System Investigation que conecte formação, pesquisa metodológica e investigação aplicada.",
-      founderTitle: "Fundadora",
-      founderParagraphs: [
-        "Valéria dos Santos Reiser é a criadora do Payload Journey LAB e dos métodos que estruturam sua prática de investigação aplicada.",
-        "Seu trabalho desenvolve formas de observar como payloads, estados, eventos e decisões atravessam sistemas complexos, especialmente em codebases expandidas por agentes de IA",
-      ],
-    },
-    reserved: ["Fundadora", "Pesquisadores", "Colaboradores", "Instituições parceiras"],
-  } satisfies AboutPresentation & { reserved: string[] },
   contact: {
     title: "Vamos seguir o flow",
     text:

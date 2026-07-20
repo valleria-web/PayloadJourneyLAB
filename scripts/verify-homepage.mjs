@@ -9,7 +9,7 @@ const configuredUrl = process.env.HOMEPAGE_VERIFY_URL;
 const port = process.env.HOMEPAGE_VERIFY_PORT ?? "3210";
 const targetUrl = configuredUrl ?? `http://127.0.0.1:${port}`;
 const startupTimeoutMs = 60_000;
-const routes = [
+const indexableRoutes = [
   "/",
   "/payload-journey",
   "/learn",
@@ -21,7 +21,6 @@ const routes = [
   "/lab",
   "/ecosystem",
   "/lablog",
-  "/about",
 ];
 const forbiddenRoutes = [
   "/mapping",
@@ -106,7 +105,7 @@ try {
 
   await waitForSite();
   const pages = new Map();
-  for (const route of routes) {
+  for (const route of indexableRoutes) {
     const response = await fetch(`${targetUrl}${route === "/" ? "" : route}`);
     const html = await response.text();
     assert(response.status === 200, `${route} returned HTTP ${response.status}`);
@@ -117,6 +116,13 @@ try {
     assert(html.includes('aria-expanded="false"'), `${route} mobile navigation must start closed`);
     pages.set(route, html);
   }
+
+  const aboutRedirect = await fetch(`${targetUrl}/about`, { redirect: "manual" });
+  assert(aboutRedirect.status === 308, `/about must return HTTP 308; received ${aboutRedirect.status}`);
+  assert(
+    aboutRedirect.headers.get("location") === "/lab#sobre",
+    `/about must redirect directly to /lab#sobre; received ${aboutRedirect.headers.get("location")}`,
+  );
 
   for (const route of forbiddenRoutes) {
     const response = await fetch(`${targetUrl}${route}`);
@@ -137,11 +143,11 @@ try {
       "investigacao-aplicada",
       "ecosystem-overview",
       "learning-overview",
-      "about-overview",
+      "lab-overview",
     ],
     "Synthetic homepage",
   );
-  for (const destination of ["/usmt", "/payload-journey", "/protocol", "/cases", "/ecosystem", "/learn", "/lablog", "/about"]) {
+  for (const destination of ["/usmt", "/payload-journey", "/protocol", "/cases", "/ecosystem", "/learn", "/lablog", "/lab"]) {
     assert(home.includes(`href="${destination}"`), `Homepage is missing real CTA ${destination}`);
   }
 
@@ -230,9 +236,29 @@ try {
     ],
     "/lab": [
       "Formação, pesquisa e investigação aplicada",
+      "Criado para ensinar a compreender sistemas",
       "A prática que você acabou de conhecer faz parte de um laboratório",
+      "Origem, visão e autoria",
+      "A origem do Payload Journey LAB, sua motivação e as informações confirmadas sobre sua fundadora.",
+      "Sistemas podem crescer mais rapidamente do que a nossa capacidade de explicá-los.",
+      "Por que o LAB existe",
       "Missão",
       "Princípio",
+      "Visão",
+      "Como o LAB trabalha",
+      "Seguir o flow",
+      "Compreender antes de modificar",
+      "Produzir evidência",
+      "Tornar decisões visíveis",
+      "Desenvolver visão estrutural",
+      "Compartilhar métodos",
+      "Fundadora",
+      "Valéria dos Santos Reiser",
+      "O Payload Journey LAB nasceu de uma experiência prática.",
+      "Ao trabalhar com sistemas desenvolvidos em alta velocidade com o apoio de agentes de IA",
+      "Esse processo deu origem ao Payload Journey LAB, à Universal System Modeling Template — USMT —",
+      "O que começou como uma forma de voltar a compreender sistemas acelerados por IA",
+      "Trace Engineers: profissionais capazes de seguir o fluxo, produzir evidências e compreender sistemas antes de modificá-los.",
     ],
     "/ecosystem": [
       "Quatro áreas conectadas pelo mesmo propósito",
@@ -242,13 +268,6 @@ try {
       "Estas são possibilidades de colaboração",
     ],
     "/lablog": ["Investigação em movimento", "Acompanhe o LAB em movimento", "Temas acompanhados"],
-    "/about": [
-      "Criado para ensinar a compreender sistemas",
-      "Valéria dos Santos Reiser",
-      "Criadora do Payload Journey LAB e da USMT",
-      "Por que o LAB existe",
-      "Visão",
-    ],
   };
   for (const [route, requirements] of Object.entries(routeRequirements)) {
     const html = pages.get(route);
@@ -262,6 +281,7 @@ try {
   assertOrderedIds(pages.get("/protocol"), ["freeze", "map", "detect", "restore"], "Protocol");
   assertOrderedIds(pages.get("/method"), ["method-payload-journey", "method-usmt", "method-reverse-payload-journey", "method-operational-payload-path", "method-track-to-origin"], "Methods");
   assertOrderedIds(pages.get("/investigation"), ["practice-track-mode", "practice-trace-engineer", "practice-software-system-investigation"], "Investigative practice");
+  assertOrderedIds(pages.get("/lab"), ["lab", "sobre", "origin", "mission", "principle", "vision", "how-the-lab-works", "founder"], "Unified institutional page");
   assertOrderedIds(pages.get("/ecosystem"), ["education", "methodological-research", "applied-investigation", "collaboration"], "Institutional pillars");
   assertOrderedIds(pages.get("/usmt"), ["usmt-element-description", "usmt-element-delimitation", "usmt-element-states", "usmt-element-events", "usmt-element-allowed-transitions", "usmt-element-forbidden-transitions", "usmt-element-invalidation", "usmt-element-termination", "usmt-element-invariants", "usmt-element-layers", "usmt-element-metrics", "usmt-element-spec"], "USMT elements");
   assertOrderedIds(pages.get("/usmt"), ["usmt-lens-where", "usmt-lens-how", "usmt-lens-logic", "usmt-lens-safe"], "USMT lenses");
@@ -279,6 +299,13 @@ try {
   assert(!/parcerias ativas|pilotos ativos|contratos ativos/i.test(corpus), "Unconfirmed collaboration claims must not render");
   assert(!/profissão reconhecida|cargo padronizado|standard externo/i.test(corpus), "External recognition claims must not render");
   assert(!/Send Heart|create\/join|informação não disponível/i.test(corpus), "Unconfirmed HORA.city facts must not render");
+  assert(!corpus.includes('href="/about"'), "Indexable pages must link directly to /lab, never /about");
+
+  const sitemapResponse = await fetch(`${targetUrl}/sitemap.xml`);
+  const sitemap = await sitemapResponse.text();
+  assert(sitemapResponse.status === 200, `/sitemap.xml returned HTTP ${sitemapResponse.status}`);
+  assert(sitemap.includes("https://payloadjourneylab.com/lab"), "Sitemap must include /lab");
+  assert(!sitemap.includes("https://payloadjourneylab.com/about"), "Sitemap must exclude /about");
 
   for (const [route, html] of pages) {
     const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
@@ -292,7 +319,7 @@ try {
         !href.startsWith("/icon.svg")
       ) {
         const [pathname, fragment] = href.split("#");
-        assert(routes.includes(pathname || "/"), `${route} links to missing route ${pathname}`);
+        assert(indexableRoutes.includes(pathname || "/"), `${route} links to missing route ${pathname}`);
         if (fragment) assert(pages.get(pathname || "/").includes(`id="${fragment}"`), `${route} links to missing destination ${href}`);
       }
     }
@@ -303,12 +330,14 @@ try {
     "content/hora-city.ts",
     "content/payload-journey-lab.ts",
   ].map((file) => fs.readFile(path.join(repositoryRoot, file), "utf8")));
+  const payloadJourneyLabSource = sources[2];
   const canonicalSource = sources.join("\n");
   assert(canonicalSource.includes('editorialResolution: "unresolved"'), "HORA.city must remain unresolved");
   assert(canonicalSource.includes('resolutionStatus: "unresolved"'), "YouTube must remain unresolved");
   assert(canonicalSource.includes("expiration: null"), "Coupon expiration must remain null");
   assert(canonicalSource.includes('historicalPolicies: ["Política de privacidade", "Termos de uso"]'), "Historical legal labels must remain server-side");
   assert(canonicalSource.includes('professionalLink: siteLinks.linkedin') && canonicalSource.includes('linkedin: null'), "Unconfirmed founder link must remain null");
+  assert(!/^\s{2}about:\s*\{/m.test(payloadJourneyLabSource), "A duplicate institutional runtime source must not remain");
 
   const historicalCopies = [
     "O HORA.city é um sistema geolocalizado utilizado pelo Payload Journey LAB como caso real de investigação aplicada.",
@@ -335,9 +364,10 @@ try {
     result: "pass",
     url: targetUrl,
     checks: {
-      publicRoutes: routes.length,
+      indexableRoutes: indexableRoutes.length,
+      permanentCompatibilityRedirects: 1,
       absentUnsupportedRoutes: forbiddenRoutes.length,
-      pagesWithSingleH1AndMetadata: routes.length,
+      pagesWithSingleH1AndMetadata: indexableRoutes.length,
       preservedFullSections: Object.keys(routeRequirements).length,
       demoSharedRoutes: 2,
       flowNodes: flowIds.length,

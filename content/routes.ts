@@ -53,7 +53,7 @@ export const thematicRoutes = {
     eyebrow: "O LAB",
     title: "Formação, pesquisa e investigação aplicada",
     description:
-      "O Payload Journey LAB organiza aprendizagem e prática investigativa em torno do fluxo da informação.",
+      "Conheça a origem, missão e autoria do Payload Journey LAB, um laboratório de formação, pesquisa metodológica e investigação aplicada de sistemas.",
   },
   ecosystem: {
     path: "/ecosystem",
@@ -68,13 +68,6 @@ export const thematicRoutes = {
     title: "Acompanhe o LAB em movimento",
     description:
       "Registros públicos de flows, anomalias, decisões, checkpoints, mappings e desenvolvimento dos métodos.",
-  },
-  about: {
-    path: "/about",
-    eyebrow: "Sobre",
-    title: "Origem, visão e autoria",
-    description:
-      "A origem do Payload Journey LAB, sua motivação e as informações confirmadas sobre sua fundadora.",
   },
 } as const;
 
@@ -137,13 +130,13 @@ export const homepageSummaries = {
       { label: "LabLog", href: "/lablog", cta: "Acompanhar o LabLog" },
     ],
   },
-  about: {
-    eyebrow: "Sobre",
-    title: "Um laboratório dedicado a compreender sistemas",
+  lab: {
+    eyebrow: "O LAB",
+    title: "Formação, pesquisa e investigação aplicada",
     description:
-      "Conheça a origem do Payload Journey LAB, sua visão e as informações confirmadas sobre Valéria dos Santos Reiser.",
-    href: "/about",
-    cta: "Conhecer o LAB e sua origem",
+      "Conheça a identidade, a origem, a missão e a autoria do Payload Journey LAB.",
+    href: "/lab",
+    cta: "Conhecer o LAB",
   },
 } as const;
 

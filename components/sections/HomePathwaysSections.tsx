@@ -87,11 +87,11 @@ export function HomeLearningSection() {
   );
 }
 
-export function HomeAboutSection() {
-  const content = homepageSummaries.about;
+export function HomeLabSection() {
+  const content = homepageSummaries.lab;
 
   return (
-    <Section id="about-overview" className="border-b border-line">
+    <Section id="lab-overview" className="border-b border-line">
       <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
         <SectionHeader
           eyebrow={content.eyebrow}

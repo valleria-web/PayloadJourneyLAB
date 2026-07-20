@@ -11,8 +11,9 @@ export default function LabPage() {
     <SitePage
       route={route}
       continuation={[
-        { label: "Explorar o ecossistema", href: "/ecosystem" },
-        { label: "Conhecer a origem", href: "/about" },
+        { label: "Explorar a USMT", href: "/usmt" },
+        { label: "Conhecer o método", href: "/method" },
+        { label: "Ver a investigação aplicada", href: "/cases" },
       ]}
     >
       <LabOverviewSection />

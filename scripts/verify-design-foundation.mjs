@@ -41,7 +41,6 @@ const files = {
   ),
   labOverview: path.join(repositoryRoot, "components", "sections", "LabOverviewSection.tsx"),
   labLog: path.join(repositoryRoot, "components", "sections", "LabLogSection.tsx"),
-  about: path.join(repositoryRoot, "components", "sections", "AboutSection.tsx"),
   finalCta: path.join(repositoryRoot, "components", "sections", "BetaCtaSection.tsx"),
   footer: path.join(repositoryRoot, "components", "layout", "SiteFooter.tsx"),
   usmtSection: path.join(repositoryRoot, "components", "sections", "UsmtSection.tsx"),
@@ -260,7 +259,7 @@ for (const component of [
   assert(!sources[component].includes('"use client"'), `${component} must remain a Server Component`);
   assert(!/#[\da-f]{3,8}/i.test(sources[component]), `${component} must not contain color literals`);
 }
-for (const component of ["labOverview", "ecosystem", "labLog", "about", "finalCta", "footer"]) {
+for (const component of ["labOverview", "ecosystem", "labLog", "finalCta", "footer"]) {
   assert(!sources[component].includes('"use client"'), `${component} must remain a Server Component`);
   assert(!/#[\da-f]{3,8}/i.test(sources[component]), `${component} must not contain color literals`);
 }
@@ -293,7 +292,6 @@ const thematicPageFiles = [
   "lab",
   "ecosystem",
   "lablog",
-  "about",
 ];
 for (const route of thematicPageFiles) {
   const pageSource = await fs.readFile(path.join(repositoryRoot, "app", route, "page.tsx"), "utf8");
@@ -301,6 +299,16 @@ for (const route of thematicPageFiles) {
   assert(pageSource.includes("<SitePage"), `${route} must reuse the thematic page shell`);
   assert(pageSource.includes("createPageMetadata"), `${route} must expose route metadata`);
 }
+const nextConfigSource = await fs.readFile(
+  path.join(repositoryRoot, "next.config.mjs"),
+  "utf8",
+);
+assert(
+  nextConfigSource.includes('source: "/about"') &&
+    nextConfigSource.includes('destination: "/lab#sobre"') &&
+    nextConfigSource.includes("permanent: true"),
+  "about must permanently redirect to the preserved institutional anchor",
+);
 
 let legacyHeaderAdapterExists = true;
 try {
@@ -338,6 +346,7 @@ console.log(
         sprint7ServerSections: 6,
         sprint9UsmtServerSection: true,
         sprint8ThematicServerPages: thematicPageFiles.length,
+        sprint10PermanentInstitutionalRedirect: true,
         sprint8SummaryServerComponents: 2,
         flowDiagramPreservedAsServerComponent: true,
       },
