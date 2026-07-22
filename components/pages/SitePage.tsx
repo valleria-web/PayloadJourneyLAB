@@ -12,6 +12,11 @@ type RoutePresentation = {
   title: string;
   description: string;
   metadataDescription?: string;
+  introAction?: {
+    label: string;
+    href: string;
+    external?: boolean;
+  };
 };
 
 type SitePageProps = {
@@ -36,6 +41,7 @@ export function SitePage({ route, children, continuation }: SitePageProps) {
           eyebrow={route.eyebrow}
           title={route.title}
           description={route.description}
+          action={route.introAction}
         />
         {children}
         <PageContinuation items={continuation} />

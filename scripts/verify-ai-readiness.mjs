@@ -167,7 +167,10 @@ try {
     "/usmt": ["A USMT é um template metodológico autoral desenvolvido no Payload Journey LAB"],
     "/method": ["Os métodos do LAB não competem entre si"],
     "/protocol": ["O processo operacional do Payload Journey LAB"],
-    "/investigation": ["O Payload Journey LAB reúne procedimento, métodos e evidências"],
+    "/investigation": [
+      "Aprender sobre payload e tracing",
+      "O Payload Journey LAB reúne procedimento, métodos e evidências",
+    ],
     "/cases": ["ambiente de investigação aplicada do Payload Journey LAB", "Investigação em andamento"],
     "/lablog": ["O LabLog registra", "desenvolvimento público dos métodos do LAB"],
   };
@@ -179,7 +182,7 @@ try {
 
   const publicCorpus = [...pages.values()].map(({ html }) => html).join("\n");
   assert(!publicCorpus.includes(incorrectUsmtName), "An incorrect USMT expansion remains public");
-  assert(pages.get("/").html.includes('href="/lab#lab-construction"'), "Homepage must link to the institutional investigation area");
+  assert(pages.get("/").html.includes('href="/investigation"'), "Homepage audience section must link to the investigation learning path");
   assert(pages.get("/lab").html.includes('id="pilot"'), "/lab must expose the stable pilot anchor");
   assert(occurrences(pages.get("/usmt").html, /id="usmt-element-/g) === 12, "USMT must preserve 12 elements");
   for (const lens of ["where", "how", "logic", "safe"]) {
