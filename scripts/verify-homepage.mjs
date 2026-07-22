@@ -142,7 +142,7 @@ try {
       "method-overview",
       "investigacao-aplicada",
       "ecosystem-overview",
-      "pilot-overview",
+      "audience-investigation",
       "learning-overview",
       "lab-overview",
     ],
@@ -150,6 +150,32 @@ try {
   );
   for (const destination of ["/usmt", "/payload-journey", "/protocol", "/cases", "/ecosystem", "/learn", "/lablog", "/lab"]) {
     assert(home.includes(`href="${destination}"`), `Homepage is missing real CTA ${destination}`);
+  }
+  for (const requirement of [
+    "PARA QUEM O LAB ESTÁ SENDO CONSTRUÍDO",
+    "Compreender sistemas mais cedo",
+    "O Payload Journey LAB está sendo construído prioritariamente para estudantes de Engenharia de Software",
+    "O LAB investiga se — e até que ponto — métodos baseados em flow, payload tracing, causalidade, checkpoints e evidências de runtime",
+    "A hipótese é que essa capacidade pode ajudá-los",
+    "Essa contribuição ainda não é apresentada como um resultado comprovado.",
+    "O LAB procura avaliá-la através de casos reais, protocolos documentados, investigações reproduzíveis e evidências verificáveis.",
+    "Compreensão de codebases",
+    "Causalidade em runtime",
+    "Autonomia técnica",
+    "Conhecer a investigação do LAB",
+  ]) {
+    assert(home.includes(requirement), `Homepage is missing audience rationale: ${requirement}`);
+  }
+  assert(home.includes('href="/lab#lab-construction"'), "Homepage must link to the institutional investigation area");
+  assert(home.includes('href="/cases"'), "Homepage investigation section must preserve the applied case CTA");
+  for (const removedHomepageEmphasis of [
+    "DO ZERO AO PILOTO",
+    "Estamos construindo um laboratório de investigação de sistemas",
+    "Método reproduzível",
+    "Caso real documentado",
+    "Capacidade transferível",
+  ]) {
+    assert(!home.includes(removedHomepageEmphasis), `Homepage still emphasizes internal LAB construction: ${removedHomepageEmphasis}`);
   }
 
   const flowIds = [
@@ -267,6 +293,13 @@ try {
       "Human direction · AI assistance",
       "Seis meses para demonstrar que o laboratório existe",
       "O verdadeiro teste do piloto",
+      "Por que formar estudantes e developers desde cedo",
+      "A formação tradicional costuma concentrar-se em linguagens, frameworks, features e estruturas estáticas da codebase.",
+      "Leitura da codebase",
+      "Arquitectura",
+      "Observabilidade",
+      "Tracing",
+      "O LAB conecta essas perspectivas através de operações concretas, checkpoints e evidências",
       "Estabelecer uma capacidade para a engenharia de software contemporânea",
       "Compreender antes de modificar",
       "Siga o payload. Encontre a causalidade. Recupere a compreensão.",
@@ -310,6 +343,7 @@ try {
   assert(!/parcerias ativas|pilotos ativos|contratos ativos/i.test(corpus), "Unconfirmed collaboration claims must not render");
   assert(!/profissão reconhecida|cargo padronizado|standard externo/i.test(corpus), "External recognition claims must not render");
   assert(!/piloto (?:foi|está) concluído|protocolo (?:já )?reproduzido por outras pessoas/i.test(corpus), "Unverified pilot results must not render");
+  assert(!/estudantes formados pelo LAB (?:já )?são comprovadamente mais valiosos|garantia de empregabilidade|tracing substitui (?:a )?arquitectura/i.test(corpus), "Unverified education claims must not render");
   assert(!/Send Heart|create\/join|informação não disponível/i.test(corpus), "Unconfirmed HORA.city facts must not render");
   assert(!corpus.includes('href="/about"'), "Indexable pages must link directly to /lab, never /about");
 

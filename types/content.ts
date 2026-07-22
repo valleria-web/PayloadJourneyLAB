@@ -78,6 +78,15 @@ export type LabConstructionPresentation = {
     title: string;
     description: string[];
   };
+  earlyFormation: {
+    title: string;
+    description: string[];
+    perspectives: Array<{
+      label: string;
+      description: string;
+    }>;
+    connection: string;
+  };
   pilot: {
     eyebrow: string;
     title: string;

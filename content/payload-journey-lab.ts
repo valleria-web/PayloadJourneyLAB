@@ -460,6 +460,34 @@ export const siteContent = {
           "A visão, direção do trabalho, as perguntas investigativas, os critérios de evidência, a criação dos métodos e a responsabilidade sobre as conclusões permanecem humanas.",
         ],
       },
+      earlyFormation: {
+        title: "Por que formar estudantes e developers desde cedo",
+        description: [
+          "A formação tradicional costuma concentrar-se em linguagens, frameworks, features e estruturas estáticas da codebase. Esses conhecimentos permanecem essenciais, mas já não são suficientes para compreender sistemas que crescem rapidamente com a participação de agentes de IA.",
+          "O Payload Journey LAB acrescenta uma capacidade complementar: seguir uma operação durante a execução, reconhecer as representações que ela assume, localizar a autoridade das decisões e explicar o comportamento do sistema com base em checkpoints e evidências.",
+          "Quanto mais cedo estudantes e developers desenvolverem essa percepção, mais preparados estarão para entrar em codebases complexas, investigar comportamentos inesperados e participar de equipas modernas com maior autonomia, clareza e responsabilidade técnica.",
+        ],
+        perspectives: [
+          {
+            label: "Leitura da codebase",
+            description: "Mostra a estrutura estática do software.",
+          },
+          {
+            label: "Arquitectura",
+            description: "Mostra organização, limites e responsabilidades.",
+          },
+          {
+            label: "Observabilidade",
+            description: "Mostra sinais produzidos pelo sistema.",
+          },
+          {
+            label: "Tracing",
+            description: "Reconstrói o flow e a causalidade da execução.",
+          },
+        ],
+        connection:
+          "O LAB conecta essas perspectivas através de operações concretas, checkpoints e evidências, sem apresentar tracing como substituto das demais práticas.",
+      },
       pilot: {
         eyebrow: "DO ZERO AO PILOTO",
         title: "Seis meses para demonstrar que o laboratório existe",

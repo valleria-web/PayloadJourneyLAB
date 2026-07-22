@@ -5,10 +5,10 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { homepageSummaries } from "@/content/routes";
 
 export function HomeLabConstructionSection() {
-  const content = homepageSummaries.pilot;
+  const content = homepageSummaries.audienceInvestigation;
 
   return (
-    <Section id="pilot-overview" variant="blush" className="border-b border-line">
+    <Section id="audience-investigation" variant="blush" className="border-b border-line">
       <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
         <div>
           <SectionHeader
@@ -21,6 +21,9 @@ export function HomeLabConstructionSection() {
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
+          <p className="mt-7 max-w-3xl border-l-2 border-accent-readable pl-5 text-base font-semibold leading-7 text-ink">
+            {content.closing}
+          </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button href={content.primaryCta.href} variant="contrast">
               {content.primaryCta.label}
