@@ -58,20 +58,21 @@ const futureCta = (label: string, status = "Em preparação"): CtaItem => ({
 
 export const homepageEntry = {
   hero: {
-    eyebrow: "Payload Tracing para estudantes e developers",
-    title: "Aprenda a seguir o payload",
-    lead: "Reduza uma codebase grande a um único flow investigável.",
+    eyebrow: "PAYLOAD JOURNEY LAB",
+    title: "O código acelera. A compreensão precisa acompanhar.",
+    lead:
+      "Software pode crescer mais rápido do que a capacidade humana de explicar o que ele faz, por que faz e onde decide.",
     description:
-      "Aprenda a acompanhar como a informação nasce, atravessa camadas, muda de representação e chega aos pontos onde o sistema toma decisões.",
+      "O LAB investiga como seguir o flow, rastrear o payload e produzir evidências pode ajudar estudantes e developers a construir compreensão antes de modificar sistemas.",
     primaryCta: {
-      label: "Ver o payload atravessar o sistema",
-      state: "anchor",
-      href: `#${homepageAnchors.demo}`,
+      label: "Começar pelo Payload Journey",
+      state: "internal",
+      href: "/payload-journey",
     },
     secondaryCta: {
-      label: "Explorar a trilha",
+      label: "Ver o caso HORA.city",
       state: "internal",
-      href: `/learn#${homepageAnchors.learningPath}`,
+      href: "/cases",
     },
     signature: siteIdentity.tagline,
   },
@@ -826,19 +827,19 @@ export const siteContent = {
     links: ["Curso", "LabLogs", "Workshops", "Programa Trace Engineer", "Pilotos acadêmicos"],
   },
   betaCta: {
-    eyebrow: "Comece agora",
-    title: "Comece por um único flow",
+    eyebrow: "Formação",
+    title: "Transforme a investigação em prática de aprendizagem",
     description:
-      "Você não precisa compreender toda a codebase para começar. Escolha uma interação, encontre o payload e siga o caminho.",
+      "A trilha organiza uma entrada progressiva para aprender payload, flow, tracing, checkpoints e construção de evidências.",
     primaryCta: {
-      label: "Entrar na formação",
-      state: "external",
-      href: siteLinks.udemy.courseWithCoupon,
+      label: "Explorar a trilha de aprendizagem",
+      state: "internal",
+      href: "/learn",
     },
     secondaryCta: {
-      label: "Ver o payload atravessar o sistema",
-      state: "anchor",
-      href: `#${homepageAnchors.demo}`,
+      label: "Conhecer a formação na Udemy",
+      state: "external",
+      href: siteLinks.udemy.courseWithCoupon,
     },
     campaignNote: campaignConfig.messages.heroStatus,
     historicalPresentation: {

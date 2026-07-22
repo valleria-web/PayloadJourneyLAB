@@ -5,7 +5,7 @@ import { siteContent } from "@/content/payload-journey-lab";
 
 export function BetaCtaSection() {
   return (
-    <section className="border-t border-line bg-ink py-10 text-white sm:py-12">
+    <section id="formation" className="scroll-mt-24 border-t border-line bg-ink py-10 text-white sm:py-12">
       <Container>
         <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
@@ -25,21 +25,21 @@ export function BetaCtaSection() {
           <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
             <Button
               href={siteContent.betaCta.primaryCta.href}
-              target="_blank"
-              rel="noopener noreferrer"
               variant="contrast"
               className="w-full sm:w-fit"
             >
               {siteContent.betaCta.primaryCta.label}
-              <ArrowUpRight aria-hidden="true" className="size-4" />
+              <ArrowRight aria-hidden="true" className="size-4" />
             </Button>
             <Button
               href={siteContent.betaCta.secondaryCta.href}
+              target="_blank"
+              rel="noopener noreferrer"
               variant="secondary"
               className="w-full sm:w-fit"
             >
               {siteContent.betaCta.secondaryCta.label}
-              <ArrowRight aria-hidden="true" className="size-4" />
+              <ArrowUpRight aria-hidden="true" className="size-4" />
             </Button>
           </div>
         </div>

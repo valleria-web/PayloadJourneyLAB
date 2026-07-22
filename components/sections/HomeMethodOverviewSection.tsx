@@ -36,6 +36,10 @@ export function HomeMethodOverviewSection() {
           </li>
         ))}
       </ol>
+      <Button href={content.href} variant="secondary" className="mt-8 w-full sm:w-fit">
+        {content.cta}
+        <ArrowRight aria-hidden="true" className="size-4" />
+      </Button>
     </Section>
   );
 }

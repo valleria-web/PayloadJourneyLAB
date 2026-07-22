@@ -144,12 +144,12 @@ try {
 
   const visibleRequirements = {
     "/": [
-      "PARA QUEM O LAB ESTÁ SENDO CONSTRUÍDO",
-      "Compreender sistemas mais cedo",
-      "O Payload Journey LAB está sendo construído prioritariamente para estudantes de Engenharia de Software",
-      "O LAB investiga se — e até que ponto — métodos baseados em flow",
-      "A hipótese é que essa capacidade pode ajudá-los",
-      "Essa contribuição ainda não é apresentada como um resultado comprovado.",
+      "O código acelera. A compreensão precisa acompanhar.",
+      "A IA deve ampliar a capacidade de compreensão dos engenheiros",
+      "A hipótese investigada",
+      "O LAB não presume a resposta. Investiga.",
+      "O que já existe",
+      "O que o LAB investiga",
     ],
     "/lab": [
       "Valéria dos Santos Reiser",
@@ -182,7 +182,12 @@ try {
 
   const publicCorpus = [...pages.values()].map(({ html }) => html).join("\n");
   assert(!publicCorpus.includes(incorrectUsmtName), "An incorrect USMT expansion remains public");
-  assert(pages.get("/").html.includes('href="/investigation"'), "Homepage audience section must link to the investigation learning path");
+  const homeDescription = "Laboratório de Software System Investigation que pesquisa como flow, payload tracing, modelagem, checkpoints e evidências de runtime podem ajudar estudantes e developers a compreender codebases complexas mais cedo.";
+  assert(getMetaContent(pages.get("/").html, "name", "description") === homeDescription, "Homepage metadata must preserve the approved research positioning");
+  assert(JSON.stringify(pages.get("/").graph).includes(homeDescription), "Homepage JSON-LD must match homepage metadata");
+  for (const destination of ["/payload-journey", "/cases", "/method", "/learn"]) {
+    assert(pages.get("/").html.includes(`href="${destination}"`), `Homepage is missing primary journey destination ${destination}`);
+  }
   assert(pages.get("/lab").html.includes('id="pilot"'), "/lab must expose the stable pilot anchor");
   assert(occurrences(pages.get("/usmt").html, /id="usmt-element-/g) === 12, "USMT must preserve 12 elements");
   for (const lens of ["where", "how", "logic", "safe"]) {

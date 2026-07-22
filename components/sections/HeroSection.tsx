@@ -19,11 +19,11 @@ export function HeroSection() {
         aria-hidden="true"
         className="absolute -right-24 top-0 size-80 rounded-full bg-blush/40 blur-3xl sm:size-[28rem]"
       />
-      <div className="relative max-w-5xl">
+      <div className="relative min-w-0 max-w-5xl">
         <TechnicalLabel tone="readable" className="mb-5">
           {hero.eyebrow}
         </TechnicalLabel>
-        <h1 className="max-w-4xl text-5xl font-bold leading-[0.98] tracking-normal text-ink sm:text-6xl lg:text-7xl">
+        <h1 className="max-w-5xl break-words text-4xl font-bold leading-[1.02] tracking-normal text-ink sm:text-6xl lg:text-7xl">
             {hero.title}
           </h1>
         <div className="mt-6 h-1 w-16 rounded-full bg-accent-cta" aria-hidden="true" />
@@ -34,11 +34,11 @@ export function HeroSection() {
             {hero.description}
           </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Button href={hero.primaryCta.href} variant="contrast">
+          <Button href={hero.primaryCta.href} variant="contrast" className="w-full sm:w-fit">
               {hero.primaryCta.label}
               <ArrowRight aria-hidden="true" className="size-4" />
             </Button>
-          <Button href={hero.secondaryCta.href} variant="secondary">
+          <Button href={hero.secondaryCta.href} variant="secondary" className="w-full sm:w-fit">
               {hero.secondaryCta.label}
               <ArrowDownRight aria-hidden="true" className="size-4" />
             </Button>
