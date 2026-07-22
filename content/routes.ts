@@ -124,19 +124,23 @@ export const homepageSummaries = {
     href: "/ecosystem",
     cta: "Explorar o ecossistema",
   },
-  pilot: {
-    eyebrow: "DO ZERO AO PILOTO",
-    title: "Estamos construindo um laboratório de investigação de sistemas",
+  audienceInvestigation: {
+    eyebrow: "PARA QUEM O LAB ESTÁ SENDO CONSTRUÍDO",
+    title: "Compreender sistemas mais cedo",
     description: [
-      "O Payload Journey LAB está a transformar uma experiência real de perda de compreensão sobre sistemas expandidos por IA numa prática de Software System Investigation baseada em modelagem, tracing, checkpoints e evidências.",
-      "O horizonte inicial é consolidar, em seis meses, um piloto capaz de demonstrar que os métodos do LAB podem ser aplicados, documentados, ensinados e transferidos para outras pessoas.",
+      "O Payload Journey LAB está sendo construído prioritariamente para estudantes de Engenharia de Software, developers em início de carreira e profissionais que precisam entrar em codebases grandes, complexas ou pouco conhecidas.",
+      "O LAB investiga se — e até que ponto — métodos baseados em flow, payload tracing, causalidade, checkpoints e evidências de runtime podem contribuir para que esses profissionais construam mais cedo um modelo mental confiável do sistema.",
+      "A hipótese é que essa capacidade pode ajudá-los a compreender operações concretas, formular perguntas tecnicamente melhores, depender menos de longos períodos de explicação interna e conquistar maior autonomia dentro de equipas modernas de desenvolvimento.",
+      "Essa contribuição ainda não é apresentada como um resultado comprovado. O LAB procura avaliá-la através de casos reais, protocolos documentados, investigações reproduzíveis e evidências verificáveis.",
     ],
+    closing:
+      "A ambição pedagógica é fazer com que payload e tracing deixem de parecer técnicas acessórias e passem a ser percebidos como uma forma intuitiva, rigorosa e envolvente de compreender software.",
     indicators: [
-      "Método reproduzível",
-      "Caso real documentado",
-      "Capacidade transferível",
+      "Compreensão de codebases",
+      "Causalidade em runtime",
+      "Autonomia técnica",
     ],
-    primaryCta: { label: "Conhecer a construção do LAB", href: "/lab#pilot" },
+    primaryCta: { label: "Conhecer a investigação do LAB", href: "/lab#lab-construction" },
     secondaryCta: { label: "Ver o caso aplicado", href: "/cases" },
   },
   learning: {

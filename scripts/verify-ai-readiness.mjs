@@ -143,6 +143,14 @@ try {
   assert(usmtWork.creator?.["@id"] === `${canonicalOrigin}/lab#founder`, "USMT creator must resolve to the founder");
 
   const visibleRequirements = {
+    "/": [
+      "PARA QUEM O LAB ESTÁ SENDO CONSTRUÍDO",
+      "Compreender sistemas mais cedo",
+      "O Payload Journey LAB está sendo construído prioritariamente para estudantes de Engenharia de Software",
+      "O LAB investiga se — e até que ponto — métodos baseados em flow",
+      "A hipótese é que essa capacidade pode ajudá-los",
+      "Essa contribuição ainda não é apresentada como um resultado comprovado.",
+    ],
     "/lab": [
       "Valéria dos Santos Reiser",
       "Esse processo deu origem ao Payload Journey LAB",
@@ -151,6 +159,10 @@ try {
       "O primeiro horizonte do Payload Journey LAB",
       "A ambição de longo prazo do Payload Journey LAB",
       "distinguir hipótese de evidência",
+      "Por que formar estudantes e developers desde cedo",
+      "O Payload Journey LAB acrescenta uma capacidade complementar",
+      "Tracing",
+      "Reconstrói o flow e a causalidade da execução.",
     ],
     "/usmt": ["A USMT é um template metodológico autoral desenvolvido no Payload Journey LAB"],
     "/method": ["Os métodos do LAB não competem entre si"],
@@ -167,7 +179,7 @@ try {
 
   const publicCorpus = [...pages.values()].map(({ html }) => html).join("\n");
   assert(!publicCorpus.includes(incorrectUsmtName), "An incorrect USMT expansion remains public");
-  assert(pages.get("/").html.includes('href="/lab#pilot"'), "Homepage must link directly to the six-month pilot horizon");
+  assert(pages.get("/").html.includes('href="/lab#lab-construction"'), "Homepage must link to the institutional investigation area");
   assert(pages.get("/lab").html.includes('id="pilot"'), "/lab must expose the stable pilot anchor");
   assert(occurrences(pages.get("/usmt").html, /id="usmt-element-/g) === 12, "USMT must preserve 12 elements");
   for (const lens of ["where", "how", "logic", "safe"]) {

@@ -67,7 +67,35 @@ export function LabConstructionSection() {
           {content.pilot.description}
         </p>
 
-        <ol className="mt-10 grid gap-x-10 gap-y-7 md:grid-cols-2">
+        <div className="mt-12 border-t border-line pt-10">
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
+            <div>
+              <h3 className="text-2xl font-bold text-ink sm:text-3xl">
+                {content.earlyFormation.title}
+              </h3>
+              <div className="mt-5">
+                <Paragraphs items={content.earlyFormation.description} />
+              </div>
+            </div>
+            <div>
+              <dl className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
+                {content.earlyFormation.perspectives.map((perspective) => (
+                  <div key={perspective.label} className="border-t border-line pt-4">
+                    <dt className="font-semibold text-ink">{perspective.label}</dt>
+                    <dd className="mt-1 text-sm leading-6 text-graphite">
+                      {perspective.description}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="mt-6 border-l-2 border-accent pl-4 text-sm leading-6 text-graphite">
+                {content.earlyFormation.connection}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <ol className="mt-12 grid gap-x-10 gap-y-7 md:grid-cols-2">
           {content.pilot.commitments.map((commitment) => (
             <li key={commitment.number} className="border-t border-line pt-5">
               <div className="flex gap-4">
