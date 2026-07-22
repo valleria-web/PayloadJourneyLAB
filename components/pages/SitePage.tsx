@@ -11,6 +11,7 @@ type RoutePresentation = {
   eyebrow: string;
   title: string;
   description: string;
+  metadataDescription?: string;
 };
 
 type SitePageProps = {
@@ -23,7 +24,11 @@ export function SitePage({ route, children, continuation }: SitePageProps) {
   return (
     <>
       <JsonLd
-        data={getThematicPageStructuredData(route.path, route.title, route.description)}
+        data={getThematicPageStructuredData(
+          route.path,
+          route.title,
+          route.metadataDescription ?? route.description,
+        )}
       />
       <SiteHeader />
       <main>

@@ -142,6 +142,7 @@ try {
       "method-overview",
       "investigacao-aplicada",
       "ecosystem-overview",
+      "pilot-overview",
       "learning-overview",
       "lab-overview",
     ],
@@ -260,6 +261,15 @@ try {
       "Esse processo deu origem ao Payload Journey LAB, à Universal System Modeling Template — USMT —",
       "O que começou como uma forma de voltar a compreender sistemas acelerados por IA",
       "Trace Engineers: profissionais capazes de seguir o fluxo, produzir evidências e compreender sistemas antes de modificá-los.",
+      "Do zero a um piloto de Software System Investigation",
+      "Mais do que conteúdo: uma unidade de investigação aplicada",
+      "O PAPEL DA IA NO LAB",
+      "Human direction · AI assistance",
+      "Seis meses para demonstrar que o laboratório existe",
+      "O verdadeiro teste do piloto",
+      "Estabelecer uma capacidade para a engenharia de software contemporânea",
+      "Compreender antes de modificar",
+      "Siga o payload. Encontre a causalidade. Recupere a compreensão.",
     ],
     "/ecosystem": [
       "Quatro áreas conectadas pelo mesmo propósito",
@@ -282,7 +292,7 @@ try {
   assertOrderedIds(pages.get("/protocol"), ["freeze", "map", "detect", "restore"], "Protocol");
   assertOrderedIds(pages.get("/method"), ["method-payload-journey", "method-usmt", "method-reverse-payload-journey", "method-operational-payload-path", "method-track-to-origin"], "Methods");
   assertOrderedIds(pages.get("/investigation"), ["practice-track-mode", "practice-trace-engineer", "practice-software-system-investigation"], "Investigative practice");
-  assertOrderedIds(pages.get("/lab"), ["lab", "sobre", "origin", "mission", "principle", "vision", "how-the-lab-works", "founder"], "Unified institutional page");
+  assertOrderedIds(pages.get("/lab"), ["lab", "sobre", "origin", "mission", "principle", "vision", "how-the-lab-works", "founder", "lab-construction", "human-ai", "pilot", "long-term-vision", "public-commitment"], "Unified institutional page");
   assertOrderedIds(pages.get("/ecosystem"), ["education", "methodological-research", "applied-investigation", "collaboration"], "Institutional pillars");
   assertOrderedIds(pages.get("/usmt"), ["usmt-element-description", "usmt-element-delimitation", "usmt-element-states", "usmt-element-events", "usmt-element-allowed-transitions", "usmt-element-forbidden-transitions", "usmt-element-invalidation", "usmt-element-termination", "usmt-element-invariants", "usmt-element-layers", "usmt-element-metrics", "usmt-element-spec"], "USMT elements");
   assertOrderedIds(pages.get("/usmt"), ["usmt-lens-where", "usmt-lens-how", "usmt-lens-logic", "usmt-lens-safe"], "USMT lenses");
@@ -299,6 +309,7 @@ try {
   assert(!/Política de privacidade|Termos de uso|Impressum/.test(corpus), "Nonexistent legal pages must not be rendered");
   assert(!/parcerias ativas|pilotos ativos|contratos ativos/i.test(corpus), "Unconfirmed collaboration claims must not render");
   assert(!/profissão reconhecida|cargo padronizado|standard externo/i.test(corpus), "External recognition claims must not render");
+  assert(!/piloto (?:foi|está) concluído|protocolo (?:já )?reproduzido por outras pessoas/i.test(corpus), "Unverified pilot results must not render");
   assert(!/Send Heart|create\/join|informação não disponível/i.test(corpus), "Unconfirmed HORA.city facts must not render");
   assert(!corpus.includes('href="/about"'), "Indexable pages must link directly to /lab, never /about");
 

@@ -130,6 +130,9 @@ try {
 
   const labTypes = pages.get("/lab").graph.map((node) => node["@type"]);
   assert(labTypes.includes("Person"), "/lab JSON-LD must identify the founder as Person");
+  const labMetadataDescription = "Laboratório de formação, pesquisa metodológica e investigação aplicada que desenvolve Software System Investigation e Trace Engineering através de métodos, casos reais e evidências.";
+  assert(getMetaContent(pages.get("/lab").html, "name", "description") === labMetadataDescription, "/lab metadata must describe the expanded institutional scope");
+  assert(JSON.stringify(pages.get("/lab").graph).includes(labMetadataDescription), "/lab JSON-LD must describe the expanded institutional scope");
   const usmtTypes = pages.get("/usmt").graph.map((node) => node["@type"]);
   for (const type of ["WebSite", "WebPage", "Person", "CreativeWork"]) {
     assert(usmtTypes.includes(type), `/usmt JSON-LD is missing ${type}`);
@@ -140,7 +143,15 @@ try {
   assert(usmtWork.creator?.["@id"] === `${canonicalOrigin}/lab#founder`, "USMT creator must resolve to the founder");
 
   const visibleRequirements = {
-    "/lab": ["Valéria dos Santos Reiser", "Esse processo deu origem ao Payload Journey LAB"],
+    "/lab": [
+      "Valéria dos Santos Reiser",
+      "Esse processo deu origem ao Payload Journey LAB",
+      "O Payload Journey LAB não é apenas um curso",
+      "A visão, direção do trabalho, as perguntas investigativas, os critérios de evidência",
+      "O primeiro horizonte do Payload Journey LAB",
+      "A ambição de longo prazo do Payload Journey LAB",
+      "distinguir hipótese de evidência",
+    ],
     "/usmt": ["A USMT é um template metodológico autoral desenvolvido no Payload Journey LAB"],
     "/method": ["Os métodos do LAB não competem entre si"],
     "/protocol": ["O processo operacional do Payload Journey LAB"],
@@ -156,6 +167,8 @@ try {
 
   const publicCorpus = [...pages.values()].map(({ html }) => html).join("\n");
   assert(!publicCorpus.includes(incorrectUsmtName), "An incorrect USMT expansion remains public");
+  assert(pages.get("/").html.includes('href="/lab#pilot"'), "Homepage must link directly to the six-month pilot horizon");
+  assert(pages.get("/lab").html.includes('id="pilot"'), "/lab must expose the stable pilot anchor");
   assert(occurrences(pages.get("/usmt").html, /id="usmt-element-/g) === 12, "USMT must preserve 12 elements");
   for (const lens of ["where", "how", "logic", "safe"]) {
     assert(pages.get("/usmt").html.includes(`id="usmt-lens-${lens}"`), `USMT must preserve ${lens.toUpperCase()}`);

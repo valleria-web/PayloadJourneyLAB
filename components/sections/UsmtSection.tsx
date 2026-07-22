@@ -58,7 +58,7 @@ export function UsmtSection() {
                   </span>
                   <span
                     lang="en"
-                    className="font-mono text-[0.68rem] uppercase tracking-technical text-graphite"
+                    className="font-mono text-[calc(0.68rem+2px)] uppercase tracking-technical text-graphite"
                   >
                     {element.englishTerm}
                   </span>

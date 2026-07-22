@@ -417,6 +417,130 @@ export const siteContent = {
       ],
       professionalLink: siteLinks.linkedin,
     },
+    construction: {
+      eyebrow: "LAB EM CONSTRUÇÃO",
+      title: "Do zero a um piloto de Software System Investigation",
+      introduction: [
+        "O Payload Journey LAB está a ser construído publicamente a partir de uma codebase real, de investigações documentadas e de uma pergunta central: como preservar compreensão, rastreabilidade e autoridade humana quando sistemas passam a crescer mais rapidamente do que conseguimos explicá-los?",
+        "A resposta do LAB é transformar a investigação de sistemas numa capacidade ensinável, praticável, documentável e transferível.",
+      ],
+      currentState: {
+        title: "Mais do que conteúdo: uma unidade de investigação aplicada",
+        description: [
+          "O Payload Journey LAB não é apenas um curso, um canal ou uma coleção de métodos. É um laboratório autoral de formação, pesquisa metodológica e investigação aplicada dedicado a compreender como intenções, payloads, estados, eventos e decisões atravessam sistemas de software.",
+          "Codebases reais funcionam como territórios de investigação. Flows tornam-se recortes observáveis. Anomalias tornam-se casos de estudo. Checkpoints produzem evidências. A documentação transforma descobertas individuais em conhecimento que outras pessoas podem utilizar.",
+          "O payload é o fio condutor porque permite reduzir a complexidade de um sistema a uma operação concreta e investigável, sem exigir que toda a codebase seja compreendida antecipadamente.",
+        ],
+        dimensions: [
+          {
+            number: "01",
+            title: "Campo de estudo",
+            description:
+              "Software System Investigation: investigação estrutural baseada em modelagem, tracing, checkpoints, evidências e reconstrução de decisões.",
+          },
+          {
+            number: "02",
+            title: "Prática profissional",
+            description:
+              "Trace Engineering: capacidade de seguir payloads, interpretar transformações, localizar divergências e rastrear decisões até sua autoridade de origem.",
+          },
+          {
+            number: "03",
+            title: "Ambiente aplicado",
+            description:
+              "Codebases reais, flows operacionais e anomalias observáveis utilizados para testar, documentar e ensinar os métodos do LAB.",
+          },
+        ],
+      },
+      humanAi: {
+        eyebrow: "O PAPEL DA IA NO LAB",
+        title: "Human direction · AI assistance",
+        description: [
+          "A inteligência artificial participa da construção do LAB como assessoria técnica, interlocutora metodológica e instrumento de aceleração. Ela ajuda a explorar codebases, confrontar hipóteses, estruturar documentos, testar formulações e tornar o processo de investigação mais produtivo.",
+          "A visão, direção do trabalho, as perguntas investigativas, os critérios de evidência, a criação dos métodos e a responsabilidade sobre as conclusões permanecem humanas.",
+        ],
+      },
+      pilot: {
+        eyebrow: "DO ZERO AO PILOTO",
+        title: "Seis meses para demonstrar que o laboratório existe",
+        description:
+          "O primeiro horizonte do Payload Journey LAB é transformar a visão autoral numa unidade operacional verificável. O objectivo não é declarar prematuramente uma disciplina consolidada, mas produzir evidência suficiente para demonstrar que o LAB possui um objecto de estudo, um método reproduzível, instrumentos próprios, casos reais e capacidade de formar outras pessoas.",
+        commitments: [
+          {
+            number: "01",
+            title: "Definir",
+            description:
+              "Estabelecer uma definição clara de Software System Investigation e da função investigativa do Trace Engineer.",
+          },
+          {
+            number: "02",
+            title: "Formalizar",
+            description:
+              "Consolidar os métodos, o protocolo e o conjunto documental que sustentam uma investigação verificável.",
+          },
+          {
+            number: "03",
+            title: "Aplicar",
+            description:
+              "Executar o protocolo completo num flow de uma codebase real, da delimitação do caso à restauração validada.",
+          },
+          {
+            number: "04",
+            title: "Evidenciar",
+            description:
+              "Produzir checkpoints, registros, mapas operacionais, relatórios de detecção e pacotes de evidência.",
+          },
+          {
+            number: "05",
+            title: "Ensinar",
+            description:
+              "Transformar o conhecimento produzido em formação, vídeos, LabLogs, materiais e experiências pedagógicas.",
+          },
+          {
+            number: "06",
+            title: "Transferir",
+            description:
+              "Permitir que outra pessoa utilize o protocolo para investigar um flow que não conhecia previamente.",
+          },
+        ],
+        test: {
+          title: "O verdadeiro teste do piloto",
+          description: [
+            "O piloto estará demonstrado quando uma pessoa de fora conseguir entrar numa codebase desconhecida, seleccionar uma operação, identificar o payload, posicionar checkpoints, seguir o flow entre as camadas, confrontar comportamento e modelo, detectar uma divergência e explicar o sistema com base em evidências.",
+            "Nesse momento, o LAB terá produzido mais do que uma metodologia pessoal. Terá produzido uma capacidade transferível.",
+          ],
+        },
+      },
+      longTerm: {
+        eyebrow: "LONG-TERM VISION",
+        title: "Estabelecer uma capacidade para a engenharia de software contemporânea",
+        description: [
+          "A ambição de longo prazo do Payload Journey LAB é contribuir para que Software System Investigation e Trace Engineering se tornem práticas reconhecíveis de formação e actuação profissional.",
+          "O LAB pretende formar pessoas capazes de investigar sistemas complexos, especialmente sistemas distribuídos, expandidos por agentes de IA ou inseridos em contextos nos quais rastreabilidade, autoridade e confiança são essenciais.",
+          "Essa visão conecta arquitectura, debugging, observabilidade, domínio, requisitos, runtime e evidência, avançando progressivamente em direcção a requirements-to-runtime traceability e aplicações industriais e mission-critical.",
+        ],
+        outcomes: [
+          "Formar Trace Engineers",
+          "Preparar estudantes para entrar em codebases grandes",
+          "Apoiar equipas que perderam visibilidade sobre os próprios sistemas",
+          "Produzir casos de investigação tecnicamente verificáveis",
+          "Desenvolver práticas de requirements-to-runtime traceability",
+          "Conectar modelagem, execução e evidência",
+          "Colaborar com estudantes, educadores, universidades, laboratórios e organizações",
+        ],
+        culturalAmbition:
+          "Existe também uma ambição educacional e cultural: contribuir para que o Brasil desenvolva força e reconhecimento em investigação de sistemas, rastreabilidade, causalidade, observabilidade e compreensão estrutural de software.",
+      },
+      publicCommitment: {
+        eyebrow: "PUBLIC COMMITMENT",
+        title: "Compreender antes de modificar",
+        description: [
+          "O Payload Journey LAB assume publicamente o compromisso de investigar sistemas com rigor, distinguir hipótese de evidência, não ampliar fatos não confirmados e documentar o caminho que sustenta cada conclusão.",
+          "O LAB existe para ensinar pessoas a recuperar autoridade sobre sistemas que se tornaram maiores do que a sua compreensão.",
+        ],
+        closing: "Siga o payload. Encontre a causalidade. Recupere a compreensão.",
+      },
+    },
   } satisfies LabPresentation,
   methods: {
     ...methodsSectionContent,

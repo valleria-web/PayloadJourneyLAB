@@ -56,6 +56,8 @@ export const thematicRoutes = {
     title: "Formação, pesquisa e investigação aplicada",
     description:
       "Conheça a origem, missão e autoria do Payload Journey LAB, um laboratório de formação, pesquisa metodológica e investigação aplicada de sistemas.",
+    metadataDescription:
+      "Laboratório de formação, pesquisa metodológica e investigação aplicada que desenvolve Software System Investigation e Trace Engineering através de métodos, casos reais e evidências.",
   },
   ecosystem: {
     path: "/ecosystem",
@@ -121,6 +123,21 @@ export const homepageSummaries = {
       "Formação, pesquisa metodológica, investigação aplicada e colaboração organizam as possibilidades do LAB.",
     href: "/ecosystem",
     cta: "Explorar o ecossistema",
+  },
+  pilot: {
+    eyebrow: "DO ZERO AO PILOTO",
+    title: "Estamos construindo um laboratório de investigação de sistemas",
+    description: [
+      "O Payload Journey LAB está a transformar uma experiência real de perda de compreensão sobre sistemas expandidos por IA numa prática de Software System Investigation baseada em modelagem, tracing, checkpoints e evidências.",
+      "O horizonte inicial é consolidar, em seis meses, um piloto capaz de demonstrar que os métodos do LAB podem ser aplicados, documentados, ensinados e transferidos para outras pessoas.",
+    ],
+    indicators: [
+      "Método reproduzível",
+      "Caso real documentado",
+      "Capacidade transferível",
+    ],
+    primaryCta: { label: "Conhecer a construção do LAB", href: "/lab#pilot" },
+    secondaryCta: { label: "Ver o caso aplicado", href: "/cases" },
   },
   learning: {
     eyebrow: "Formação e conteúdo",
