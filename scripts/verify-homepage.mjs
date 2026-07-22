@@ -162,11 +162,11 @@ try {
     "Compreensão de codebases",
     "Causalidade em runtime",
     "Autonomia técnica",
-    "Conhecer a investigação do LAB",
+    "Aprenda a seguir o payload",
   ]) {
     assert(home.includes(requirement), `Homepage is missing audience rationale: ${requirement}`);
   }
-  assert(home.includes('href="/lab#lab-construction"'), "Homepage must link to the institutional investigation area");
+  assert(home.includes('href="/investigation"'), "Homepage audience section must link to the investigation learning path");
   assert(home.includes('href="/cases"'), "Homepage investigation section must preserve the applied case CTA");
   for (const removedHomepageEmphasis of [
     "DO ZERO AO PILOTO",
@@ -255,6 +255,7 @@ try {
     "/investigation": [
       "Prática investigativa",
       "Da observação à restauração",
+      "Aprender sobre payload e tracing",
       "Track Mode",
       "Trace Engineer",
       "Software System Investigation",
@@ -325,6 +326,14 @@ try {
   assertOrderedIds(pages.get("/protocol"), ["freeze", "map", "detect", "restore"], "Protocol");
   assertOrderedIds(pages.get("/method"), ["method-payload-journey", "method-usmt", "method-reverse-payload-journey", "method-operational-payload-path", "method-track-to-origin"], "Methods");
   assertOrderedIds(pages.get("/investigation"), ["practice-track-mode", "practice-trace-engineer", "practice-software-system-investigation"], "Investigative practice");
+  assert(
+    pages.get("/investigation").includes('href="https://www.udemy.com/course/payload-journey-lab-siga-o-flow-entenda-o-sistema/?couponCode=FOLLOW-THE-FLOW"'),
+    "/investigation hero must link to the Udemy course",
+  );
+  assert(
+    pages.get("/investigation").indexOf("Aprender sobre payload e tracing") < pages.get("/investigation").indexOf("Voltar à homepage"),
+    "/investigation Udemy CTA must render before the homepage return link",
+  );
   assertOrderedIds(pages.get("/lab"), ["lab", "sobre", "origin", "mission", "principle", "vision", "how-the-lab-works", "founder", "lab-construction", "human-ai", "pilot", "long-term-vision", "public-commitment"], "Unified institutional page");
   assertOrderedIds(pages.get("/ecosystem"), ["education", "methodological-research", "applied-investigation", "collaboration"], "Institutional pillars");
   assertOrderedIds(pages.get("/usmt"), ["usmt-element-description", "usmt-element-delimitation", "usmt-element-states", "usmt-element-events", "usmt-element-allowed-transitions", "usmt-element-forbidden-transitions", "usmt-element-invalidation", "usmt-element-termination", "usmt-element-invariants", "usmt-element-layers", "usmt-element-metrics", "usmt-element-spec"], "USMT elements");

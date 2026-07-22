@@ -1,4 +1,5 @@
 import { siteConfig } from "@/config/site";
+import { siteLinks } from "@/content/site";
 
 export const thematicRoutes = {
   payloadJourney: {
@@ -49,6 +50,11 @@ export const thematicRoutes = {
     title: "Do Track Mode à investigação de sistemas",
     description:
       "Uma prática própria para observar antes de modificar, produzir evidência e seguir o flow até a autoridade relevante.",
+    introAction: {
+      label: "Aprender sobre payload e tracing",
+      href: siteLinks.udemy.courseWithCoupon,
+      external: true,
+    },
   },
   lab: {
     path: "/lab",
@@ -140,7 +146,7 @@ export const homepageSummaries = {
       "Causalidade em runtime",
       "Autonomia técnica",
     ],
-    primaryCta: { label: "Conhecer a investigação do LAB", href: "/lab#lab-construction" },
+    primaryCta: { label: "Aprenda a seguir o payload", href: "/investigation" },
     secondaryCta: { label: "Ver o caso aplicado", href: "/cases" },
   },
   learning: {
