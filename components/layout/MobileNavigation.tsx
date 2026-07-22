@@ -29,7 +29,7 @@ export function MobileNavigation({ items, cta }: MobileNavigationProps) {
   }, [open]);
 
   return (
-    <div className="lg:hidden">
+    <div className="shrink-0 lg:hidden">
       <button
         ref={triggerRef}
         type="button"

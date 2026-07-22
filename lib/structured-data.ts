@@ -56,12 +56,20 @@ function getWebPageNode(path: string, name: string, description: string): Record
   };
 }
 
-export function getHomePageStructuredData(): JsonLdValue {
+type HomePageStructuredDataInput = {
+  title: string;
+  description: string;
+};
+
+export function getHomePageStructuredData({
+  title,
+  description,
+}: HomePageStructuredDataInput): JsonLdValue {
   return {
     "@context": "https://schema.org",
     "@graph": [
       getWebsiteNode(),
-      getWebPageNode("/", siteConfig.title, siteConfig.description),
+      getWebPageNode("/", title, description),
     ],
   };
 }

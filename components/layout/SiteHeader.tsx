@@ -11,8 +11,8 @@ export function SiteHeader() {
       <Container className="relative flex h-16 items-center justify-between gap-5">
         <a
           href="/"
-          className="flex min-h-11 min-w-0 items-center gap-3 font-mono text-[calc(1rem+7px)] font-semibold text-accent"
-          aria-label={`${siteContent.brand.name} - inicio`}
+          className="flex min-h-11 min-w-0 flex-1 items-center gap-3 overflow-hidden font-mono text-[calc(1rem+7px)] font-semibold text-accent lg:flex-none"
+          aria-label={`${siteContent.brand.name} - início`}
         >
           <span className="relative h-11 w-20 shrink-0 overflow-hidden rounded-md bg-black">
             <Image
@@ -24,9 +24,9 @@ export function SiteHeader() {
               className="object-cover"
             />
           </span>
-          <span className="truncate lg:hidden xl:inline">{siteContent.brand.name}</span>
+          <span className="min-w-0 truncate lg:hidden xl:inline">{siteContent.brand.name}</span>
         </a>
-        <nav aria-label="Navegacao principal" className="hidden items-center gap-1 text-sm lg:flex">
+        <nav aria-label="Navegação principal" className="hidden items-center gap-1 text-sm lg:flex">
           {siteNavigation.map((item) => (
             <a
               key={item.href}

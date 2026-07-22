@@ -162,8 +162,8 @@ export type FinalCtaPresentation = {
   eyebrow?: string;
   title: string;
   description: string;
-  primaryCta: CtaItem & { state: "external"; href: string };
-  secondaryCta: EntryCta;
+  primaryCta: CtaItem & { href: string };
+  secondaryCta: CtaItem & { href: string };
   campaignNote?: string;
   historicalPresentation: {
     label: string;

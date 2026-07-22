@@ -18,7 +18,11 @@ const operationalRoles: OperationalRole[] = [
   "present",
 ];
 
-export function PayloadFlowDemoSection() {
+type PayloadFlowDemoSectionProps = {
+  homepagePresentation?: boolean;
+};
+
+export function PayloadFlowDemoSection({ homepagePresentation = false }: PayloadFlowDemoSectionProps) {
   const { flowDemo } = homepageEntry;
 
   return (
@@ -26,7 +30,7 @@ export function PayloadFlowDemoSection() {
       <SectionHeader
         eyebrow={flowDemo.eyebrow}
         eyebrowTone="readable"
-        title={flowDemo.title}
+        title={homepagePresentation ? "Veja como uma intenção atravessa o sistema" : flowDemo.title}
         description={flowDemo.description}
       />
 

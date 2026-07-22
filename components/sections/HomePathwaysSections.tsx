@@ -10,16 +10,34 @@ export function HomeAppliedInvestigationSection() {
   const content = homepageSummaries.applied;
 
   return (
-    <Section id="investigacao-aplicada" variant="blush" className="border-b border-line">
-      <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
-        <SectionHeader
-          eyebrow={content.eyebrow}
-          eyebrowTone="readable"
-          title={content.title}
-          description={content.description}
-        />
-        <Button href={content.href} variant="contrast" className="w-fit">
+    <Section id="evidence-hypothesis" variant="blush" className="border-b border-line">
+      <SectionHeader
+        eyebrow={content.eyebrow}
+        eyebrowTone="readable"
+        title={content.title}
+        description={content.description}
+      />
+      <div className="mt-9 grid gap-5 lg:grid-cols-2">
+        <Card className="h-full">
+          <h3 className="text-xl font-bold text-ink">O que já existe</h3>
+          <ul className="mt-5 grid gap-3 text-base leading-7 text-graphite">
+            {content.confirmed.map((item) => <li key={item}>— {item}</li>)}
+          </ul>
+        </Card>
+        <Card className="h-full">
+          <h3 className="text-xl font-bold text-ink">O que o LAB investiga</h3>
+          <ul className="mt-5 grid gap-3 text-base leading-7 text-graphite">
+            {content.investigating.map((item) => <li key={item}>— {item}</li>)}
+          </ul>
+        </Card>
+      </div>
+      <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+        <Button href={content.href} variant="contrast" className="w-full sm:w-fit">
           {content.cta}
+          <ArrowRight aria-hidden="true" className="size-4" />
+        </Button>
+        <Button href={content.secondaryHref} variant="secondary" className="w-full sm:w-fit">
+          {content.secondaryCta}
           <ArrowRight aria-hidden="true" className="size-4" />
         </Button>
       </div>

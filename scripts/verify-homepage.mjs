@@ -131,19 +131,22 @@ try {
 
   const home = pages.get("/");
   assert(
-    /<h1\b[^>]*>\s*Aprenda a seguir o payload\s*<\/h1>/.test(home),
+    /<h1\b[^>]*>\s*O código acelera\. A compreensão precisa acompanhar\.\s*<\/h1>/.test(home),
     "Homepage must preserve the approved h1",
   );
   assertOrderedIds(
     home,
     [
       "inicio",
+      "why-now",
+      "audience-investigation",
+      "proposal",
       "demo",
       "method-overview",
-      "investigacao-aplicada",
+      "evidence-hypothesis",
+      "pedagogical-progression",
+      "formation",
       "ecosystem-overview",
-      "audience-investigation",
-      "learning-overview",
       "lab-overview",
     ],
     "Synthetic homepage",
@@ -152,22 +155,37 @@ try {
     assert(home.includes(`href="${destination}"`), `Homepage is missing real CTA ${destination}`);
   }
   for (const requirement of [
-    "PARA QUEM O LAB ESTÁ SENDO CONSTRUÍDO",
-    "Compreender sistemas mais cedo",
-    "O Payload Journey LAB está sendo construído prioritariamente para estudantes de Engenharia de Software",
-    "O LAB investiga se — e até que ponto — métodos baseados em flow, payload tracing, causalidade, checkpoints e evidências de runtime",
-    "A hipótese é que essa capacidade pode ajudá-los",
-    "Essa contribuição ainda não é apresentada como um resultado comprovado.",
-    "O LAB procura avaliá-la através de casos reais, protocolos documentados, investigações reproduzíveis e evidências verificáveis.",
-    "Compreensão de codebases",
-    "Causalidade em runtime",
-    "Autonomia técnica",
-    "Aprenda a seguir o payload",
+    "PAYLOAD JOURNEY LAB",
+    "Começar pelo Payload Journey",
+    "Ver o caso HORA.city",
+    "A IA deve ampliar a capacidade de compreensão dos engenheiros, não substituir sua autoridade sobre o sistema.",
+    "estudantes de Engenharia de Software",
+    "developers em início de carreira",
+    "codebases desconhecidas, legadas ou complexas",
+    "A hipótese investigada",
+    "Intenção",
+    "Payload",
+    "Interpretação",
+    "Decisão",
+    "Estado",
+    "Efeito",
+    "Veja como uma intenção atravessa o sistema",
+    "Instrumentos para investigar o flow",
+    "O LAB não presume a resposta. Investiga.",
+    "O que já existe",
+    "O que o LAB investiga",
+    "HORA.city",
+    "Horizonte futuro",
+    "sistemas distribuídos e mission-critical permanecem direção futura",
+    "Explorar a trilha de aprendizagem",
+    "Conhecer a formação na Udemy",
   ]) {
-    assert(home.includes(requirement), `Homepage is missing audience rationale: ${requirement}`);
+    assert(home.includes(requirement), `Homepage is missing Sprint 1 invariant: ${requirement}`);
   }
-  assert(home.includes('href="/investigation"'), "Homepage audience section must link to the investigation learning path");
-  assert(home.includes('href="/cases"'), "Homepage investigation section must preserve the applied case CTA");
+  assert(occurrences(home, />Horizonte futuro</g) === 2, "Homepage must mark levels 4 and 5 as future");
+  assert(home.includes('href="/method"'), "Homepage methods must link to /method");
+  assert(home.includes('href="/cases"'), "Homepage evidence must link to /cases");
+  assert(home.includes('href="/learn"'), "Homepage formation must link primarily to /learn");
   for (const removedHomepageEmphasis of [
     "DO ZERO AO PILOTO",
     "Estamos construindo um laboratório de investigação de sistemas",
@@ -176,6 +194,15 @@ try {
     "Capacidade transferível",
   ]) {
     assert(!home.includes(removedHomepageEmphasis), `Homepage still emphasizes internal LAB construction: ${removedHomepageEmphasis}`);
+  }
+  for (const prohibitedClaim of [
+    "profissão reconhecida",
+    "garantia de empregabilidade",
+    "onboarding mais rápido garantido",
+    "eficácia universal",
+    "capacidade transferível comprovada",
+  ]) {
+    assert(!home.toLowerCase().includes(prohibitedClaim.toLowerCase()), `Homepage renders prohibited claim: ${prohibitedClaim}`);
   }
 
   const flowIds = [
