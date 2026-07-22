@@ -35,9 +35,9 @@
 
   --font-family-sans: "Space Grotesk", "Inter", Arial, Helvetica, sans-serif;
   --font-family-mono: "IBM Plex Mono", "Courier New", monospace;
-  --font-size-technical-sm: calc(0.7rem + 5px);
-  --font-size-technical: calc(0.75rem + 5px);
-  --font-size-technical-lg: calc(0.875rem + 5px);
+  --font-size-technical-sm: calc(0.7rem + 7px);
+  --font-size-technical: calc(0.75rem + 7px);
+  --font-size-technical-lg: calc(0.875rem + 7px);
   --tracking-technical: 0.08em;
   --tracking-technical-wide: 0.12em;
 

@@ -1,10 +1,14 @@
 import { SitePage } from "@/components/pages/SitePage";
 import { LabOverviewSection } from "@/components/sections/LabOverviewSection";
+import { LabConstructionSection } from "@/components/sections/LabConstructionSection";
 import { thematicRoutes } from "@/content/routes";
 import { createPageMetadata } from "@/lib/metadata";
 
 const route = thematicRoutes.lab;
-export const metadata = createPageMetadata(route);
+export const metadata = createPageMetadata({
+  ...route,
+  description: route.metadataDescription,
+});
 
 export default function LabPage() {
   return (
@@ -17,6 +21,7 @@ export default function LabPage() {
       ]}
     >
       <LabOverviewSection />
+      <LabConstructionSection />
     </SitePage>
   );
 }

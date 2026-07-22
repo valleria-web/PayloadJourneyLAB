@@ -54,7 +54,53 @@ export type LabPresentation = {
   connectionToInvestigativePractice: string;
   values: string[];
   founder: FounderProfile;
+  construction: LabConstructionPresentation;
   cta?: EntryCta;
+};
+
+export type NumberedStatement = {
+  number: string;
+  title: string;
+  description: string;
+};
+
+export type LabConstructionPresentation = {
+  eyebrow: string;
+  title: string;
+  introduction: string[];
+  currentState: {
+    title: string;
+    description: string[];
+    dimensions: NumberedStatement[];
+  };
+  humanAi: {
+    eyebrow: string;
+    title: string;
+    description: string[];
+  };
+  pilot: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    commitments: NumberedStatement[];
+    test: {
+      title: string;
+      description: string[];
+    };
+  };
+  longTerm: {
+    eyebrow: string;
+    title: string;
+    description: string[];
+    outcomes: string[];
+    culturalAmbition: string;
+  };
+  publicCommitment: {
+    eyebrow: string;
+    title: string;
+    description: string[];
+    closing: string;
+  };
 };
 
 export type InstitutionalEcosystemPresentation = {
