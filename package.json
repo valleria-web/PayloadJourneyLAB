@@ -15,7 +15,8 @@
     "verify:method-practice": "node scripts/verify-method-practice.mjs",
     "verify:cases-evidence": "node scripts/verify-cases-evidence.mjs",
     "verify:navigation-discovery": "node scripts/verify-navigation-discovery.mjs",
-    "verify:refactor-v3": "node scripts/verify-refactor-v3.mjs"
+    "verify:refactor-v3": "node scripts/verify-refactor-v3.mjs",
+    "verify:cycle-closure": "node scripts/verify-cycle-closure.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",
