@@ -3,6 +3,7 @@ import { LearningOutcomesSection } from "@/components/sections/LearningOutcomesS
 import { PayloadFlowDemoSection } from "@/components/sections/PayloadFlowDemoSection";
 import { ProblemSection } from "@/components/sections/ProblemSection";
 import { thematicRoutes } from "@/content/routes";
+import { routeContinuations } from "@/content/site";
 import { createPageMetadata } from "@/lib/metadata";
 
 const route = thematicRoutes.payloadJourney;
@@ -12,10 +13,7 @@ export default function PayloadJourneyPage() {
   return (
     <SitePage
       route={route}
-      continuation={[
-        { label: "Conhecer a USMT", href: "/usmt" },
-        { label: "Ver o protocolo", href: "/protocol" },
-      ]}
+      continuation={[...routeContinuations["/payload-journey"]]}
     >
       <ProblemSection />
       <LearningOutcomesSection />

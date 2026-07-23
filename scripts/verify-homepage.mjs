@@ -234,21 +234,30 @@ try {
       "Uma representação pedagógica de um flow operacional.",
     ],
     "/learn": [
-      "Seu caminho no Payload Journey LAB",
-      "Você passa a enxergar informação atravessando o sistema.",
-      "Você consegue explicar onde e por que uma decisão ocorreu.",
-      "Comece a aprender Payload Tracing",
+      "Começar por um payload. Avançar para o sistema.",
+      "Uma operação concreta reduz o recorte, não a complexidade",
+      "Do primeiro evento à investigação estruturada",
+      "Aprofundamento em construção",
+      "Direção futura de pesquisa e formação",
+      "Investigar exige pensar, observar e confrontar",
+      "O que já pode orientar a aprendizagem",
+      "Seis passos possíveis para começar",
+      "Curso beta como canal de aprofundamento",
       "Payload Journey LAB: Siga o flow, entenda o sistema",
-      "Entrar na formação",
+      "Conhecer o curso",
       "Rever a trilha",
+      "Um caso serve para praticar perguntas e limites",
+      "Ensinar também é investigar",
     ],
     "/cases": [
-      "Veja o Payload Tracing aplicado numa codebase real",
-      "Da aprendizagem à investigação aplicada",
-      "Flow selecionado",
-      "Caso documentado como investigação aplicada do LAB.",
-      "Acompanhar o caso no LabLog",
-      "Rever o flow",
+      "Investigações reais, conclusões proporcionais às evidências",
+      "Um caso localizado, sem simular escala",
+      "RPJ-HORA-001",
+      "Fatos confirmados",
+      "Hipóteses",
+      "Desconhecidos",
+      "Cronologia pública ainda não localizada",
+      "Conclusões não autorizadas",
     ],
     "/usmt": [
       "USMT — Universal System Modeling Template",
@@ -263,16 +272,16 @@ try {
     ],
     "/protocol": [
       "Procedimento investigativo",
-      "Congelar, Mapear, Detectar e Restaurar",
+      "Congelar. Mapear. Detectar. Restaurar.",
       "Qual comportamento precisa ser preservado antes de qualquer alteração?",
       "Por onde o payload realmente atravessa o sistema?",
       "Em que ponto o comportamento observado diverge do esperado ou do modelo?",
       "Que autoridade, regra ou comportamento precisa ser corrigido e validado?",
     ],
     "/method": [
-      "Métodos e instrumentos",
-      "Cada método responde a uma pergunta diferente",
-      "O procedimento define a sequência investigativa.",
+      "Métodos do LAB",
+      "Instrumentos diferentes para perguntas diferentes",
+      "Os termos cumprem responsabilidades diferentes",
       "Payload Journey",
       "USMT",
       "Reverse Payload Journey",
@@ -281,54 +290,28 @@ try {
     ],
     "/investigation": [
       "Prática investigativa",
-      "Da observação à restauração",
-      "Aprender sobre payload e tracing",
+      "Compreender antes de modificar",
+      "Conhecer o protocolo",
       "Track Mode",
       "Trace Engineer",
       "Software System Investigation",
-      "Evidência",
-      "Autoridade",
-      "Restauração",
+      "Capacidades em desenvolvimento",
+      "Função e perfil investigativo em desenvolvimento",
     ],
     "/lab": [
-      "Formação, pesquisa e investigação aplicada",
-      "Criado para ensinar a compreender sistemas",
-      "A prática que você acabou de conhecer faz parte de um laboratório",
-      "Origem, visão e autoria",
-      "A origem do Payload Journey LAB, sua motivação e as informações confirmadas sobre sua fundadora.",
-      "Sistemas podem crescer mais rapidamente do que a nossa capacidade de explicá-los.",
-      "Por que o LAB existe",
-      "Missão",
-      "Princípio",
-      "Visão",
-      "Como o LAB trabalha",
-      "Seguir o flow",
-      "Compreender antes de modificar",
-      "Produzir evidência",
-      "Tornar decisões visíveis",
-      "Desenvolver visão estrutural",
-      "Compartilhar métodos",
-      "Fundadora",
+      "Um laboratório para investigar como sistemas realmente funcionam",
+      "O Payload Journey LAB é um laboratório autoral de formação, pesquisa metodológica e investigação aplicada em sistemas de software.",
+      "Recuperar compreensão e autoridade sobre o sistema",
+      "Quando produzir ficou mais rápido do que compreender",
+      "Transformar perda de compreensão em método",
+      "HUMAN DIRECTION · AI ASSISTANCE",
       "Valéria dos Santos Reiser",
-      "O Payload Journey LAB nasceu de uma experiência prática.",
-      "Ao trabalhar com sistemas desenvolvidos em alta velocidade com o apoio de agentes de IA",
-      "Esse processo deu origem ao Payload Journey LAB, à Universal System Modeling Template — USMT —",
-      "O que começou como uma forma de voltar a compreender sistemas acelerados por IA",
-      "Trace Engineers: profissionais capazes de seguir o fluxo, produzir evidências e compreender sistemas antes de modificá-los.",
-      "Do zero a um piloto de Software System Investigation",
-      "Mais do que conteúdo: uma unidade de investigação aplicada",
-      "O PAPEL DA IA NO LAB",
-      "Human direction · AI assistance",
-      "Seis meses para demonstrar que o laboratório existe",
+      "Uma visão que já possui instrumentos, caso e conteúdo público",
+      "Do método autoral a uma capacidade transferível",
+      "Um horizonte inicial de seis meses",
       "O verdadeiro teste do piloto",
-      "Por que formar estudantes e developers desde cedo",
-      "A formação tradicional costuma concentrar-se em linguagens, frameworks, features e estruturas estáticas da codebase.",
-      "Leitura da codebase",
-      "Arquitectura",
-      "Observabilidade",
-      "Tracing",
-      "O LAB conecta essas perspectivas através de operações concretas, checkpoints e evidências",
-      "Estabelecer uma capacidade para a engenharia de software contemporânea",
+      "Uma função investigativa em desenvolvimento",
+      "Direção futura de pesquisa e formação",
       "Compreender antes de modificar",
       "Siga o payload. Encontre a causalidade. Recupere a compreensão.",
     ],
@@ -339,7 +322,13 @@ try {
       "Colaboração",
       "Estas são possibilidades de colaboração",
     ],
-    "/lablog": ["Investigação em movimento", "Acompanhe o LAB em movimento", "Temas acompanhados"],
+    "/lablog": [
+      "A investigação enquanto acontece",
+      "Um registro datado, não um caso completo",
+      "Nenhuma entrada estruturada foi localizada",
+      "0 entradas publicadas",
+      "Responsabilidade humana permanece explícita",
+    ],
   };
   for (const [route, requirements] of Object.entries(routeRequirements)) {
     const html = pages.get(route);
@@ -348,20 +337,42 @@ try {
     }
   }
 
-  assertOrderedIds(pages.get("/learn"), ["understand-payload", "payload-journey", "reverse-payload-journey", "track-to-origin"], "Learning path");
-  assertOrderedIds(pages.get("/cases"), ["case-context", "case-anomaly", "case-selected-flow", "case-payload", "case-investigation", "case-evidence", "case-current-status"], "HORA.city narrative");
+  assertOrderedIds(
+    pages.get("/learn"),
+    [
+      "aprender",
+      "aprender-por-flow",
+      "progressao",
+      "nivel-1-operacao",
+      "nivel-2-camadas",
+      "nivel-3-investigacao",
+      "nivel-4-sistemas-complexos",
+      "nivel-5-requisitos",
+      "esforco",
+      "fundamentos",
+      "conteudo-disponivel",
+      "trilha",
+      "formacao",
+      "casos-aprendizagem",
+      "evidencia-pedagogica",
+    ],
+    "Learning architecture",
+  );
+  assertOrderedIds(pages.get("/cases"), ["case-reading-guide", "case-registry", "case-hora-city", "case-evidence", "case-timeline", "case-conclusions"], "HORA.city evidence registry");
+  assertOrderedIds(pages.get("/lablog"), ["lablog-guide", "lablog-inventory", "lablog-case-relation", "lablog-provenance"], "LabLog evidence registry");
   assertOrderedIds(pages.get("/protocol"), ["freeze", "map", "detect", "restore"], "Protocol");
   assertOrderedIds(pages.get("/method"), ["method-payload-journey", "method-usmt", "method-reverse-payload-journey", "method-operational-payload-path", "method-track-to-origin"], "Methods");
-  assertOrderedIds(pages.get("/investigation"), ["practice-track-mode", "practice-trace-engineer", "practice-software-system-investigation"], "Investigative practice");
+  assertOrderedIds(pages.get("/investigation"), ["investigation-characteristics", "investigation-practice", "track-mode", "trace-engineering", "trace-engineer", "investigation-questions", "investigation-relations", "investigation-authority", "investigation-limits"], "Investigative practice");
   assert(
-    pages.get("/investigation").includes('href="https://www.udemy.com/course/payload-journey-lab-siga-o-flow-entenda-o-sistema/?couponCode=FOLLOW-THE-FLOW"'),
-    "/investigation hero must link to the Udemy course",
+    pages.get("/investigation").includes('href="/protocol"') &&
+      pages.get("/investigation").includes('href="/method"'),
+    "/investigation must link to the protocol and methods",
   );
   assert(
-    pages.get("/investigation").indexOf("Aprender sobre payload e tracing") < pages.get("/investigation").indexOf("Voltar à homepage"),
-    "/investigation Udemy CTA must render before the homepage return link",
+    pages.get("/investigation").indexOf("Conhecer o protocolo") < pages.get("/investigation").indexOf("Voltar à homepage"),
+    "/investigation protocol CTA must render before the homepage return link",
   );
-  assertOrderedIds(pages.get("/lab"), ["lab", "sobre", "origin", "mission", "principle", "vision", "how-the-lab-works", "founder", "lab-construction", "human-ai", "pilot", "long-term-vision", "public-commitment"], "Unified institutional page");
+  assertOrderedIds(pages.get("/lab"), ["lab", "sobre", "mission", "principle", "origin", "how-the-lab-works", "human-ai", "founder", "current-state", "lab-construction", "pilot", "trace-engineer", "vision", "long-term-vision", "public-commitment"], "Unified institutional page");
   assertOrderedIds(pages.get("/ecosystem"), ["education", "methodological-research", "applied-investigation", "collaboration"], "Institutional pillars");
   assertOrderedIds(pages.get("/usmt"), ["usmt-element-description", "usmt-element-delimitation", "usmt-element-states", "usmt-element-events", "usmt-element-allowed-transitions", "usmt-element-forbidden-transitions", "usmt-element-invalidation", "usmt-element-termination", "usmt-element-invariants", "usmt-element-layers", "usmt-element-metrics", "usmt-element-spec"], "USMT elements");
   assertOrderedIds(pages.get("/usmt"), ["usmt-lens-where", "usmt-lens-how", "usmt-lens-logic", "usmt-lens-safe"], "USMT lenses");
@@ -370,10 +381,14 @@ try {
   const normalizedCorpus = corpus.replaceAll("&amp;", "&");
   for (const destination of [
     "https://www.udemy.com/course/payload-journey-lab-siga-o-flow-entenda-o-sistema/?couponCode=FOLLOW-THE-FLOW",
+  ]) {
+    assert(normalizedCorpus.includes(destination), `Missing preserved external link: ${destination}`);
+  }
+  for (const unresolvedDestination of [
     "https://www.youtube.com/@PayloadJourneyLAB",
     "https://www.youtube.com/@Lab-Log",
   ]) {
-    assert(normalizedCorpus.includes(destination), `Missing preserved external link: ${destination}`);
+    assert(!normalizedCorpus.includes(unresolvedDestination), `Unresolved YouTube link rendered: ${unresolvedDestination}`);
   }
   assert(!/Política de privacidade|Termos de uso|Impressum/.test(corpus), "Nonexistent legal pages must not be rendered");
   assert(!/parcerias ativas|pilotos ativos|contratos ativos/i.test(corpus), "Unconfirmed collaboration claims must not render");
@@ -418,7 +433,7 @@ try {
   assert(canonicalSource.includes('resolutionStatus: "unresolved"'), "YouTube must remain unresolved");
   assert(canonicalSource.includes("expiration: null"), "Coupon expiration must remain null");
   assert(canonicalSource.includes('historicalPolicies: ["Política de privacidade", "Termos de uso"]'), "Historical legal labels must remain server-side");
-  assert(canonicalSource.includes('professionalLink: siteLinks.linkedin') && canonicalSource.includes('linkedin: null'), "Unconfirmed founder link must remain null");
+  assert(canonicalSource.includes('professionalLink: siteLinks.linkedin.personal') && canonicalSource.includes('personal: null') && canonicalSource.includes('institutional: null'), "Personal and institutional LinkedIn links must remain distinct and null");
   assert(!/^\s{2}about:\s*\{/m.test(payloadJourneyLabSource), "A duplicate institutional runtime source must not remain");
 
   const historicalCopies = [
@@ -431,7 +446,7 @@ try {
 
   const footerSource = await fs.readFile(path.join(repositoryRoot, "components/layout/SiteFooter.tsx"), "utf8");
   const siteSource = await fs.readFile(path.join(repositoryRoot, "content/site.ts"), "utf8");
-  assert(footerSource.includes("footerContent.navigation") && !footerSource.includes("siteNavigation"), "Footer navigation must remain independent");
+  assert(footerSource.includes("footerContent.groups") && !footerSource.includes("siteNavigation"), "Footer navigation must remain independent");
   assert(siteSource.includes('labLogCurrent: "https://www.youtube.com/@PayloadJourneyLAB"') && siteSource.includes('footerCurrent: "https://www.youtube.com/@Lab-Log"'), "Both YouTube destinations must remain distinct");
 
   const sourceRoots = ["app", "components", "content", "lib"];
@@ -454,7 +469,7 @@ try {
       demoSharedRoutes: 2,
       flowNodes: flowIds.length,
       internalLinksValidated: true,
-      externalDestinations: 3,
+      externalDestinations: 1,
       clientComponentBoundaries: clientDirectives,
       footerNavigationIndependent: true,
       unresolvedEditorialDecisionsProtected: true,

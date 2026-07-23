@@ -1,4 +1,4 @@
-import { Play } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -16,13 +16,11 @@ export function LabLogSection() {
         />
         <div className="mt-8">
           <Button
-            href={labLogContent.action.href}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/lablog"
             variant="secondary"
           >
-            <Play aria-hidden="true" className="size-4" />
-            {labLogContent.action.label}
+            <ArrowRight aria-hidden="true" className="size-4" />
+            Acompanhar o LabLog
           </Button>
         </div>
         </div>

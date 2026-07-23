@@ -130,7 +130,7 @@ try {
 
   const labTypes = pages.get("/lab").graph.map((node) => node["@type"]);
   assert(labTypes.includes("Person"), "/lab JSON-LD must identify the founder as Person");
-  const labMetadataDescription = "Laboratório de formação, pesquisa metodológica e investigação aplicada que desenvolve Software System Investigation e Trace Engineering através de métodos, casos reais e evidências.";
+  const labMetadataDescription = "Conheça a missão, a origem e a construção do Payload Journey LAB, um laboratório de formação, pesquisa metodológica e investigação aplicada em sistemas de software.";
   assert(getMetaContent(pages.get("/lab").html, "name", "description") === labMetadataDescription, "/lab metadata must describe the expanded institutional scope");
   assert(JSON.stringify(pages.get("/lab").graph).includes(labMetadataDescription), "/lab JSON-LD must describe the expanded institutional scope");
   const usmtTypes = pages.get("/usmt").graph.map((node) => node["@type"]);
@@ -153,26 +153,41 @@ try {
     ],
     "/lab": [
       "Valéria dos Santos Reiser",
-      "Esse processo deu origem ao Payload Journey LAB",
-      "O Payload Journey LAB não é apenas um curso",
-      "A visão, direção do trabalho, as perguntas investigativas, os critérios de evidência",
-      "O primeiro horizonte do Payload Journey LAB",
-      "A ambição de longo prazo do Payload Journey LAB",
+      "criadora do Payload Journey LAB e da Universal System Modeling Template",
+      "A direção do trabalho, as perguntas investigativas, os critérios de evidência",
+      "O primeiro horizonte do LAB",
+      "A visão de longo prazo",
       "distinguir hipótese de evidência",
-      "Por que formar estudantes e developers desde cedo",
-      "O Payload Journey LAB acrescenta uma capacidade complementar",
-      "Tracing",
-      "Reconstrói o flow e a causalidade da execução.",
+      "Esse benefício ainda está sendo investigado.",
+      "Este inventário apresenta somente elementos localizados no repositório",
+      "Direção futura de pesquisa e formação",
     ],
     "/usmt": ["A USMT é um template metodológico autoral desenvolvido no Payload Journey LAB"],
-    "/method": ["Os métodos do LAB não competem entre si"],
-    "/protocol": ["O processo operacional do Payload Journey LAB"],
+    "/method": ["Instrumentos diferentes para perguntas diferentes", "Página canônica disponível"],
+    "/protocol": ["Nomear um artefato não significa que ele já esteja disponível", "Não localizado"],
     "/investigation": [
-      "Aprender sobre payload e tracing",
-      "O Payload Journey LAB reúne procedimento, métodos e evidências",
+      "Compreender antes de modificar",
+      "Função e perfil investigativo em desenvolvimento",
+      "Direção futura de pesquisa e formação",
     ],
-    "/cases": ["ambiente de investigação aplicada do Payload Journey LAB", "Investigação em andamento"],
-    "/lablog": ["O LabLog registra", "desenvolvimento público dos métodos do LAB"],
+    "/learn": [
+      "Começar por um payload. Avançar para o sistema.",
+      "estudante escolhe um flow",
+      "Aprofundamento em construção",
+      "Direção futura de pesquisa e formação",
+      "O método não pensa pelo estudante",
+      "O LAB não presume que um método é eficaz apenas porque foi criado",
+    ],
+    "/cases": [
+      "Investigações reais, conclusões proporcionais às evidências",
+      "Caso interno conduzido pela criadora do método",
+      "não constitui evidência externa",
+    ],
+    "/lablog": [
+      "Nenhuma entrada estruturada foi localizada",
+      "0 entradas publicadas",
+      "responsabilidade humana",
+    ],
   };
   for (const [route, requirements] of Object.entries(visibleRequirements)) {
     for (const requirement of requirements) {
@@ -185,6 +200,16 @@ try {
   const homeDescription = "Laboratório de Software System Investigation que pesquisa como flow, payload tracing, modelagem, checkpoints e evidências de runtime podem ajudar estudantes e developers a compreender codebases complexas mais cedo.";
   assert(getMetaContent(pages.get("/").html, "name", "description") === homeDescription, "Homepage metadata must preserve the approved research positioning");
   assert(JSON.stringify(pages.get("/").graph).includes(homeDescription), "Homepage JSON-LD must match homepage metadata");
+  const learnDescription =
+    "Aprenda progressivamente a seguir flows, payloads, decisões e evidências de runtime para compreender sistemas de software, do primeiro evento à investigação estruturada.";
+  assert(
+    getMetaContent(pages.get("/learn").html, "name", "description") === learnDescription,
+    "/learn metadata must describe progressive learning without efficacy claims",
+  );
+  assert(
+    JSON.stringify(pages.get("/learn").graph).includes(learnDescription),
+    "/learn JSON-LD must match its metadata",
+  );
   for (const destination of ["/payload-journey", "/cases", "/method", "/learn"]) {
     assert(pages.get("/").html.includes(`href="${destination}"`), `Homepage is missing primary journey destination ${destination}`);
   }

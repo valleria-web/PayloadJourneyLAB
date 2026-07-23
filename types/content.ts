@@ -5,6 +5,54 @@ export type NavItem = {
   href: string;
 };
 
+export type CanonicalRoutePath =
+  | "/"
+  | "/payload-journey"
+  | "/learn"
+  | "/cases"
+  | "/usmt"
+  | "/method"
+  | "/protocol"
+  | "/investigation"
+  | "/lab"
+  | "/ecosystem"
+  | "/lablog";
+
+export type NavigationArea = "home" | "learn" | "methods" | "cases" | "lab";
+
+export type PrimaryNavigationItem = {
+  label: string;
+  href: CanonicalRoutePath;
+  area: NavigationArea;
+};
+
+export type FooterLink = {
+  label: string;
+  href: string;
+  external?: boolean;
+};
+
+export type FooterGroup = {
+  title: string;
+  links: FooterLink[];
+};
+
+export type ChannelStatus = "confirmed" | "unresolved" | "not-configured";
+
+export type ExternalChannel = {
+  id: "udemy" | "youtube" | "linkedin-personal" | "linkedin-institutional";
+  label: string;
+  role: "formative-secondary" | "editorial" | "personal" | "institutional";
+  status: ChannelStatus;
+  publicHref: string | null;
+  candidates?: readonly string[];
+};
+
+export type RouteContinuationMap = Record<
+  Exclude<CanonicalRoutePath, "/">,
+  readonly NavItem[]
+>;
+
 export type CtaState = "active" | "future" | "disabled" | "external" | "anchor" | "internal";
 
 export type CtaItem = {
@@ -37,72 +85,107 @@ export type InstitutionalPillar = {
   cta?: CtaItem;
 };
 
-export type LabPresentation = {
-  eyebrow: string;
+export type LabStatus =
+  | "Disponível"
+  | "Documentado"
+  | "Em investigação"
+  | "Em construção"
+  | "Evidência parcial"
+  | "Ainda não validado"
+  | "Direção futura";
+
+export type LabStatusItem = {
   title: string;
   description: string;
-  originPresentation: {
+  status: LabStatus;
+  evidence?: string;
+};
+
+export type LabPresentation = {
+  hero: {
+    eyebrow: string;
+    title: string;
+    description: string[];
+    primaryCta: EntryCta;
+    secondaryCta: EntryCta;
+  };
+  mission: {
+    eyebrow: string;
+    title: string;
+    thesis: string[];
+    description: string[];
+    principle: string;
+  };
+  origin: {
+    eyebrow: string;
+    title: string;
+    description: string[];
+  };
+  methods: {
     eyebrow: string;
     title: string;
     description: string;
-  };
-  origin: string;
-  motivatingProblem: string;
-  mission: string;
-  principle: string;
-  vision: string;
-  connectionToInvestigativePractice: string;
-  values: string[];
-  founder: FounderProfile;
-  construction: LabConstructionPresentation;
-  cta?: EntryCta;
-};
-
-export type NumberedStatement = {
-  number: string;
-  title: string;
-  description: string;
-};
-
-export type LabConstructionPresentation = {
-  eyebrow: string;
-  title: string;
-  introduction: string[];
-  currentState: {
-    title: string;
-    description: string[];
-    dimensions: NumberedStatement[];
+    items: Array<{ title: string; question: string }>;
+    cta: EntryCta;
   };
   humanAi: {
     eyebrow: string;
     title: string;
     description: string[];
+    principle: string;
   };
-  earlyFormation: {
+  founder: {
+    eyebrow: string;
+    title: string;
+    name: string;
+    biography: string[];
+    professionalLink: string | null;
+  };
+  currentState: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    items: LabStatusItem[];
+  };
+  construction: {
+    eyebrow: string;
     title: string;
     description: string[];
-    perspectives: Array<{
-      label: string;
-      description: string;
-    }>;
-    connection: string;
+    items: LabStatusItem[];
   };
   pilot: {
     eyebrow: string;
     title: string;
-    description: string;
-    commitments: NumberedStatement[];
+    description: string[];
+    commitments: Array<LabStatusItem & { number: string }>;
     test: {
       title: string;
-      description: string[];
+      description: string;
+      initialEvidence: string;
+      transferablePilot: string;
+      status: LabStatus;
     };
+  };
+  traceEngineer: {
+    eyebrow: string;
+    title: string;
+    definition: string;
+    status: LabStatus;
+    caveats: string[];
+    competencies: string[];
+    cta: EntryCta;
   };
   longTerm: {
     eyebrow: string;
     title: string;
     description: string[];
     outcomes: string[];
-    culturalAmbition: string;
+    future: {
+      title: string;
+      description: string;
+      status: LabStatus;
+      topics: string[];
+    };
   };
   publicCommitment: {
     eyebrow: string;
@@ -110,6 +193,7 @@ export type LabConstructionPresentation = {
     description: string[];
     closing: string;
   };
+  continuation: Array<{ label: string; href: string }>;
 };
 
 export type InstitutionalEcosystemPresentation = {
@@ -137,7 +221,7 @@ export type LabLogPresentation = {
     description: string;
     href: string;
   }>;
-  action: CtaItem & { state: "external"; href: string };
+  action?: CtaItem & { state: "external"; href: string };
   editorialStatus: "current";
   youtubeResolution: {
     canonical: string | null;
@@ -179,16 +263,7 @@ export type FooterPresentation = {
     tagline: string;
     description: string;
   };
-  headings: {
-    navigation: string;
-    channels: string;
-  };
-  navigation: NavItem[];
-  channels: Array<{
-    label: string;
-    href: string;
-    external: boolean;
-  }>;
+  groups: FooterGroup[];
   legalNotice: string;
   copyrightSuffix: string;
   historicalPolicies: string[];
@@ -272,19 +347,98 @@ export type LearningOutcome = {
   description: string;
 };
 
-export type LearningPathStepId =
-  | "understand-payload"
-  | "payload-journey"
-  | "reverse-payload-journey"
-  | "track-to-origin";
+export type LearningStatus =
+  | "Conteúdo disponível"
+  | "Documentado"
+  | "Aplicado em caso"
+  | "Investigação em andamento"
+  | "Aprofundamento em construção"
+  | "Direção futura de pesquisa e formação";
 
-export type LearningPathStep = {
-  id: LearningPathStepId;
-  number: string;
-  title: string;
-  description: string;
-  concepts: string[];
-  result: string;
+export type LearningPresentation = {
+  hero: {
+    eyebrow: string;
+    title: string;
+    description: string[];
+    primaryCta: EntryCta;
+    secondaryCta: EntryCta;
+  };
+  flow: {
+    eyebrow: string;
+    title: string;
+    description: string[];
+    chain: string[];
+    questions: string;
+  };
+  progression: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    levels: Array<{
+      id: string;
+      number: string;
+      title: string;
+      status: LearningStatus;
+      objective: string;
+      elements: string[];
+      capabilities: string[];
+      claim: string;
+      limit?: string;
+    }>;
+  };
+  effort: {
+    eyebrow: string;
+    title: string;
+    description: string[];
+    requirements: string[];
+    contributions: string[];
+    principle: string;
+  };
+  foundations: {
+    eyebrow: string;
+    title: string;
+    description: string[];
+    items: string[];
+  };
+  available: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    items: Array<{
+      title: string;
+      description: string;
+      learning: string;
+      href: string;
+      status: LearningStatus;
+    }>;
+  };
+  initialPath: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    steps: Array<{
+      number: string;
+      title: string;
+      description: string;
+      href: string;
+    }>;
+  };
+  cases: {
+    eyebrow: string;
+    title: string;
+    description: string[];
+    practices: string[];
+    status: LearningStatus;
+    cta: EntryCta;
+  };
+  evidence: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    demonstrated: string[];
+    investigate: string[];
+  };
+  continuation: Array<{ label: string; href: string }>;
 };
 
 export type OperationalRole =
@@ -345,12 +499,6 @@ export type HomepageEntry = {
     description: string;
     items: LearningOutcome[];
   };
-  learningPath: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    steps: LearningPathStep[];
-  };
   flowDemo: {
     eyebrow: string;
     title: string;
@@ -385,7 +533,10 @@ export type SiteLinks = {
     courseWithCoupon: string;
   };
   youtube: YouTubeLinks;
-  linkedin: string | null;
+  linkedin: {
+    personal: string | null;
+    institutional: string | null;
+  };
   contact: string | null;
   email: string | null;
 };
@@ -413,9 +564,12 @@ export type TrainingPresentation = {
     name: string;
     historicalLabel: string;
   };
-  promise: string;
+  learningIntent: string;
   audience: string[];
   topics: string[];
+  intendedOutcomes: string[];
+  limits: string[];
+  connection: string;
   format: {
     platform: "Udemy";
     state: "beta";
@@ -513,12 +667,30 @@ export type MethodId =
   | "operational-payload-path"
   | "track-to-origin";
 
+export type MethodStatus =
+  | "Página canônica disponível"
+  | "Documentado"
+  | "Em desenvolvimento";
+
+export type MethodClaimKind =
+  | "Definição autoral"
+  | "Estado documentado"
+  | "Em desenvolvimento"
+  | "Direção futura";
+
 export type LearningMethod = CardItem & {
   id: MethodId;
+  definition: string;
   purpose: string;
+  startingPoint: string;
   whenToUse: string;
   question: string;
   result: string;
+  status: MethodStatus;
+  limits: string[];
+  evidence: string;
+  canonicalHref?: "/payload-journey" | "/usmt";
+  claimKind: MethodClaimKind;
   relatedSteps: InvestigationStepId[];
   relationship: string;
   currentSection: "metodos";
@@ -536,31 +708,109 @@ export type InvestigationStep = {
   target: string;
   number: string;
   question: string;
+  objective: string;
   description: string;
   inputs: string[];
   activities: string[];
   result: string;
   evidence: string;
+  possibleEvidence: string[];
+  exitCriterion: string;
   relatedMethods: MethodId[];
   currentOrder: number;
   futureSection: "investigation-procedure";
 };
 
-export type InvestigativePracticeId =
-  | "track-mode"
-  | "trace-engineer"
-  | "software-system-investigation";
-
-export type InvestigativePractice = CardItem & {
-  id: InvestigativePracticeId;
-  futureSection: "investigative-practice-and-trace-engineer";
-};
-
-export type InvestigativePracticePresentation = {
+export type MethodPracticeHero = {
+  id: string;
   eyebrow: string;
   title: string;
-  description: string;
-  progression: string[];
+  description: string[];
+  primaryCta: EntryCta;
+  secondaryCta: EntryCta;
+};
+
+export type MethodPagePresentation = {
+  hero: MethodPracticeHero;
+  taxonomy: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    items: Array<{ term: string; role: string; description: string }>;
+  };
+  supportingInstruments: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    items: Array<{
+      title: string;
+      question: string;
+      result: string;
+      status: "Documentado" | "Não localizado";
+      evidence: string;
+    }>;
+  };
+  relationship: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    steps: Array<{ title: string; action: string }>;
+  };
+  limits: {
+    eyebrow: string;
+    title: string;
+    items: string[];
+  };
+  continuation: Array<{ label: string; href: string }>;
+};
+
+export type ProtocolArtifactStatus =
+  | "Documentado"
+  | "Em uso no caso"
+  | "Em construção"
+  | "Não localizado";
+
+export type ProtocolPagePresentation = {
+  hero: MethodPracticeHero;
+  minimumInputs: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    items: string[];
+  };
+  iteration: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    returns: Array<{ from: string; to: string; reason: string }>;
+  };
+  artifacts: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    items: Array<{
+      title: string;
+      description: string;
+      status: ProtocolArtifactStatus;
+      evidence: string;
+    }>;
+  };
+  limits: {
+    eyebrow: string;
+    title: string;
+    items: string[];
+  };
+  continuation: Array<{ label: string; href: string }>;
+};
+
+export type InvestigationPagePresentation = {
+  hero: MethodPracticeHero;
+  characteristics: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    items: string[];
+  };
   trackMode: {
     id: "track-mode";
     title: "Track Mode";
@@ -568,31 +818,55 @@ export type InvestigativePracticePresentation = {
     principle: string;
     actions: string[];
   };
+  traceEngineering: {
+    id: "trace-engineering";
+    title: "Trace Engineering";
+    definition: string;
+    status: "Capacidades em desenvolvimento";
+    capabilities: string[];
+  };
   traceEngineer: {
     id: "trace-engineer";
     title: "Trace Engineer";
     definition: string;
-    context: string;
+    status: "Função e perfil investigativo em desenvolvimento";
     responsibilities: string[];
+    caveats: string[];
   };
   softwareSystemInvestigation: {
     id: "software-system-investigation";
     title: "Software System Investigation";
     definition: string;
-    context: string;
-    elements: string[];
-    result: string;
+    status: "Prática estruturada autoral";
   };
-  centralConcepts: {
-    evidence: string;
-    authority: string;
-    restoration: string;
-    observationBeforeModification: string;
+  questions: {
+    eyebrow: string;
+    title: string;
+    items: string[];
   };
-  cta: {
-    supportingText: string;
-    action: EntryCta;
+  relations: {
+    eyebrow: string;
+    title: string;
+    principle: string;
+    items: Array<{ title: string; description: string }>;
   };
+  authority: {
+    eyebrow: string;
+    title: string;
+    description: string[];
+    principles: string[];
+  };
+  limits: {
+    eyebrow: string;
+    title: string;
+    current: string[];
+    future: {
+      status: "Direção futura de pesquisa e formação";
+      description: string;
+      topics: string[];
+    };
+  };
+  continuation: Array<{ label: string; href: string }>;
 };
 
 export type HoraCityEditorialVariant = {
@@ -679,4 +953,88 @@ export type HoraCityCase = {
   renderedNotice: string;
   renderedActions: CtaItem[];
   futureActions: CtaItem[];
+};
+
+export type PublicCaseStatus =
+  | "Delimitado"
+  | "Congelado"
+  | "Em mapeamento"
+  | "Em detecção"
+  | "Divergência localizada"
+  | "Comportamento explicado"
+  | "Restauração proposta"
+  | "Restauração implementada"
+  | "Restauração validada"
+  | "Suspenso"
+  | "Encerrado sem conclusão"
+  | "Encerrado";
+
+export type PublicEvidenceStatus =
+  | "localizada"
+  | "verificada"
+  | "parcialmente verificada"
+  | "derivada"
+  | "referenciada"
+  | "não localizada"
+  | "não publicável"
+  | "substituída"
+  | "invalidada";
+
+export type PublicEvidence = {
+  id: string;
+  caseId: string;
+  type: string;
+  title: string;
+  description: string;
+  source: string;
+  observedAt: string;
+  status: PublicEvidenceStatus;
+  access: string;
+  supports: readonly string[];
+  limitations: readonly string[];
+  href?: string;
+};
+
+export type PublicCaseRecord = {
+  id: string;
+  title: string;
+  system: string;
+  origin: string;
+  flow: string;
+  operation: string;
+  question: string;
+  anomaly: string;
+  expectedBehavior: string;
+  observedBehavior: string;
+  status: PublicCaseStatus;
+  protocolStage: string;
+  openedAt: string;
+  updatedAt: string;
+  methods: readonly string[];
+  components: readonly string[];
+  evidenceIds: readonly string[];
+  confirmedFacts: readonly string[];
+  hypotheses: readonly string[];
+  unknowns: readonly string[];
+  limitations: readonly string[];
+  restoration: string;
+  validation: string;
+  nextSteps: readonly string[];
+  authorizedClaims: readonly string[];
+  prohibitedClaims: readonly string[];
+};
+
+export type LabLogEntry = {
+  id: string;
+  date: string;
+  title: string;
+  caseId?: string;
+  entryType: string;
+  question: string;
+  workPerformed: readonly string[];
+  evidenceIds: readonly string[];
+  unknowns: readonly string[];
+  nextSteps: readonly string[];
+  author: string;
+  aiAssistance: string;
 };

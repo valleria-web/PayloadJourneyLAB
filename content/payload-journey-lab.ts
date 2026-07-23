@@ -46,6 +46,7 @@ import type {
   HomepageEntry,
   InstitutionalEcosystemPresentation,
   LabPresentation,
+  LearningPresentation,
   Pillar,
   WhitePaper,
 } from "@/types/content";
@@ -196,71 +197,6 @@ export const homepageEntry = {
       },
     ],
   },
-  learningPath: {
-    eyebrow: "Progressão de aprendizagem",
-    title: "Seu caminho no Payload Journey LAB",
-    description:
-      "Comece entendendo o payload, aprenda a seguir o flow, investigue comportamentos observáveis e avance até a origem das decisões.",
-    steps: [
-      {
-        id: "understand-payload",
-        number: "01",
-        title: "Entenda o Payload",
-        description:
-          "Aprenda a reconhecer a informação produzida por uma interação e as diferentes representações que ela assume ao atravessar o sistema.",
-        concepts: [
-          "payload",
-          "estados e eventos",
-          "camadas",
-          "representações",
-          "continuidade semântica",
-        ],
-        result: "Você passa a enxergar informação atravessando o sistema.",
-      },
-      {
-        id: "payload-journey",
-        number: "02",
-        title: "Payload Journey",
-        description:
-          "Siga um payload de ponta a ponta e identifique quem o transporta, quem o transforma e onde decisões são tomadas.",
-        concepts: [
-          "origem",
-          "caminho operacional",
-          "fronteiras",
-          "transporte",
-          "transformação",
-          "decisão",
-          "checkpoints",
-        ],
-        result: "Você consegue reconstruir um flow de ponta a ponta.",
-      },
-      {
-        id: "reverse-payload-journey",
-        number: "03",
-        title: "Reverse Payload Journey",
-        description:
-          "Parta de um comportamento observável e reconstrua o caminho em sentido reverso para localizar onde surgiu a divergência.",
-        concepts: [
-          "anomalia observável",
-          "congelamento",
-          "mapping",
-          "checkpoints",
-          "evidências",
-          "divergência",
-        ],
-        result: "Você deixa de adivinhar e começa a investigar.",
-      },
-      {
-        id: "track-to-origin",
-        number: "04",
-        title: "Track to Origin",
-        description:
-          "Conduza a investigação até a primeira decisão técnica, temporal ou semântica relevante.",
-        concepts: ["origem", "autoridade", "modelo", "evidência", "restauração", "validação"],
-        result: "Você consegue explicar onde e por que uma decisão ocorreu.",
-      },
-    ],
-  },
   flowDemo: {
     eyebrow: "Demonstração visual",
     title: "Veja o payload atravessar o sistema",
@@ -363,6 +299,404 @@ export const homepageEntry = {
   },
 } satisfies HomepageEntry;
 
+export const learningPresentation = {
+  hero: {
+    eyebrow: "APRENDER SOFTWARE SYSTEM INVESTIGATION",
+    title: "Começar por um payload. Avançar para o sistema.",
+    description: [
+      "O Payload Journey LAB organiza a aprendizagem em torno de operações concretas. Em vez de começar tentando compreender toda a codebase, o estudante escolhe um flow, identifica o payload e acompanha como a informação é representada, interpretada, validada, persistida e apresentada.",
+      "A proposta é desenvolver progressivamente uma forma investigativa de pensar software, conectando estrutura, domínio, runtime e evidências.",
+    ],
+    primaryCta: {
+      label: "Começar pelo Payload Journey",
+      state: "internal",
+      href: "/payload-journey",
+    },
+    secondaryCta: {
+      label: "Ver o caso HORA.city",
+      state: "internal",
+      href: "/cases",
+    },
+  },
+  flow: {
+    eyebrow: "APRENDER POR FLOW",
+    title: "Uma operação concreta reduz o recorte, não a complexidade",
+    description: [
+      "Escolher um flow cria um ponto de entrada investigável sem apagar as relações do sistema. O recorte permite seguir código e comportamento, comparar responsabilidades e construir um modelo mental progressivo.",
+      "O LAB investiga uma capacidade complementar: compreender como operações reais atravessam o sistema durante a execução.",
+    ],
+    chain: [
+      "intenção ou ocorrência",
+      "evento",
+      "payload",
+      "interpretação",
+      "decisão",
+      "estado",
+      "efeito observável",
+    ],
+    questions:
+      "Cada etapa acrescenta uma pergunta. O que aconteceu? Que representação foi criada? Quem interpretou? Que regra autorizou a decisão? Que estado foi alterado? Que evidência confirma o resultado?",
+  },
+  progression: {
+    eyebrow: "PROGRESSÃO PEDAGÓGICA",
+    title: "Do primeiro evento à investigação estruturada",
+    description:
+      "Os níveis organizam uma progressão possível. Eles não representam domínio automático, currículo completo nem equivalência à experiência profissional.",
+    levels: [
+      {
+        id: "nivel-1-operacao",
+        number: "01",
+        title: "Uma operação concreta",
+        status: "Conteúdo disponível",
+        objective:
+          "Compreender como uma intenção ou ocorrência se transforma em um efeito observável.",
+        elements: [
+          "evento",
+          "payload",
+          "request",
+          "interpretação",
+          "decisão",
+          "estado",
+          "resposta",
+          "efeito",
+        ],
+        capabilities: [
+          "identificar a origem da operação",
+          "reconhecer o payload",
+          "localizar entrada e saída",
+          "explicar o flow básico",
+        ],
+        claim: "O estudante começa a construir um modelo operacional do sistema.",
+        limit: "O nível não representa domínio completo da codebase.",
+      },
+      {
+        id: "nivel-2-camadas",
+        number: "02",
+        title: "Flow entre camadas",
+        status: "Conteúdo disponível",
+        objective:
+          "Compreender como uma operação atravessa responsabilidades e representações diferentes.",
+        elements: [
+          "UI",
+          "application",
+          "interpretation",
+          "domain",
+          "persistence",
+          "projection",
+        ],
+        capabilities: [
+          "distinguir representação de significado",
+          "reconhecer onde a informação muda",
+          "localizar a autoridade de domínio",
+          "comparar decisão e representação final",
+        ],
+        claim:
+          "O bit pode continuar sendo o mesmo, mas o significado muda conforme a camada o interpreta.",
+        limit: "A sequência é um modelo pedagógico e não representa todos os sistemas.",
+      },
+      {
+        id: "nivel-3-investigacao",
+        number: "03",
+        title: "Investigação estruturada",
+        status: "Documentado",
+        objective:
+          "Passar da observação informal para uma investigação orientada por modelo, checkpoints e evidências.",
+        elements: [
+          "modelagem",
+          "comportamento esperado",
+          "invariantes",
+          "Operational Payload Path",
+          "checkpoints",
+          "Freeze Record",
+          "evidências",
+          "divergência",
+          "Detection Report",
+          "restauração",
+          "validação",
+        ],
+        capabilities: [
+          "formular hipóteses",
+          "posicionar checkpoints",
+          "confrontar modelo e runtime",
+          "localizar divergências",
+          "justificar uma restauração",
+        ],
+        claim: "Congelar → Mapear → Detectar → Restaurar",
+        limit:
+          "Os instrumentos e o protocolo estão documentados; eficácia e transferibilidade ainda não foram demonstradas.",
+      },
+      {
+        id: "nivel-4-sistemas-complexos",
+        number: "04",
+        title: "Sistemas complexos",
+        status: "Aprofundamento em construção",
+        objective:
+          "Preparar o tracing de causalidade e estado através de múltiplos componentes.",
+        elements: [
+          "eventos",
+          "concorrência",
+          "mensagens",
+          "filas",
+          "dependências",
+          "estados distribuídos",
+          "falhas parciais",
+          "observabilidade",
+          "tracing distribuído",
+        ],
+        capabilities: [
+          "seguir causalidade entre componentes",
+          "reconhecer perda de contexto",
+          "investigar ordenação",
+          "observar propagação de falhas",
+          "reconstruir estados distribuídos",
+        ],
+        claim: "O LAB prepara esta direção de aprofundamento.",
+        limit:
+          "Não existe formação completa nem aplicação demonstrada neste nível.",
+      },
+      {
+        id: "nivel-5-requisitos",
+        number: "05",
+        title: "Requisitos e sistemas críticos",
+        status: "Direção futura de pesquisa e formação",
+        objective:
+          "Conectar futuramente requisito, modelo, implementação, mensagem e efeito observável.",
+        elements: [
+          "requisitos",
+          "timing",
+          "deadlines",
+          "CAN",
+          "DBC",
+          "SysML/MBSE",
+          "V-Model",
+          "requirements-to-runtime traceability",
+          "safety invariants",
+          "sistemas industriais",
+          "mission-critical",
+        ],
+        capabilities: [
+          "investigar comportamento temporal",
+          "localizar autoridade e responsabilidade",
+          "confrontar execução com safety constraints",
+          "produzir evidências de ponta a ponta",
+        ],
+        claim: "Este nível constitui um horizonte de pesquisa.",
+        limit:
+          "O LAB não declara competência atual, serviço disponível ou aplicação validada nestes contextos.",
+      },
+    ],
+  },
+  effort: {
+    eyebrow: "SEM ATALHOS DE COMPREENSÃO",
+    title: "Investigar exige pensar, observar e confrontar",
+    description: [
+      "Aprender Software System Investigation exige trabalho intelectual e técnico. O LAB não promete eliminar esse esforço.",
+      "A proposta é organizar o esforço, oferecer linguagem e instrumentos e reduzir investigação aleatória.",
+    ],
+    requirements: [
+      "ler código",
+      "compreender arquitetura",
+      "estudar domínio",
+      "formular hipóteses",
+      "executar o sistema",
+      "observar runtime",
+      "posicionar checkpoints",
+      "revisar evidências",
+      "reconhecer incerteza",
+      "documentar conclusões",
+    ],
+    contributions: [
+      "fornecer um ponto de entrada",
+      "organizar onde olhar",
+      "explicitar o que perguntar",
+      "indicar que evidência procurar",
+      "tornar a progressão mais consciente",
+    ],
+    principle:
+      "O método não pensa pelo estudante. Ele organiza onde olhar, o que perguntar e que evidência procurar.",
+  },
+  foundations: {
+    eyebrow: "CONHECIMENTOS FUNDAMENTAIS",
+    title: "Uma capacidade complementar",
+    description: [
+      "Payload Journey e Software System Investigation não substituem os fundamentos de engenharia de software.",
+      "A leitura da codebase mostra estrutura. A arquitetura mostra responsabilidades. Testes verificam comportamentos definidos. Observabilidade oferece sinais. Payload tracing conecta essas perspectivas ao seguir uma operação durante a execução.",
+    ],
+    items: [
+      "programação",
+      "algoritmos",
+      "estruturas de dados",
+      "arquitetura",
+      "bancos de dados",
+      "redes",
+      "sistemas operacionais",
+      "testes",
+      "segurança",
+      "observabilidade",
+      "conhecimento de domínio",
+    ],
+  },
+  available: {
+    eyebrow: "CONTEÚDO DISPONÍVEL",
+    title: "O que já pode orientar a aprendizagem",
+    description:
+      "A lista apresenta somente conteúdo e destinos localizados no repositório. O estado descreve a evidência disponível, não eficácia pedagógica.",
+    items: [
+      {
+        title: "Payload Journey",
+        description:
+          "Método para seguir uma operação através de representações, camadas, decisões, estados e efeitos.",
+        learning: "Criar o primeiro recorte operacional.",
+        href: "/payload-journey",
+        status: "Documentado",
+      },
+      {
+        title: "USMT",
+        description:
+          "Instrumento para explicitar estados, eventos, transições, regras, invariantes e limites esperados.",
+        learning: "Tornar o comportamento esperado confrontável.",
+        href: "/usmt",
+        status: "Documentado",
+      },
+      {
+        title: "Métodos investigativos",
+        description:
+          "Catálogo com Payload Journey, Reverse Payload Journey, Operational Payload Path, Track to Origin e instrumentos relacionados.",
+        learning: "Escolher a pergunta e o instrumento adequados.",
+        href: "/method",
+        status: "Documentado",
+      },
+      {
+        title: "Protocolo de investigação",
+        description:
+          "Sequência Congelar, Mapear, Detectar e Restaurar, apoiada por checkpoints e evidências.",
+        learning: "Organizar uma investigação estruturada.",
+        href: "/protocol",
+        status: "Documentado",
+      },
+      {
+        title: "HORA.city",
+        description:
+          "Caso real acompanhado pelo LAB, com fatos, limites e estado ainda aberto.",
+        learning: "Observar como um caso delimita claims e perguntas.",
+        href: "/cases",
+        status: "Investigação em andamento",
+      },
+      {
+        title: "Formação beta",
+        description:
+          "Curso configurado como canal externo de introdução a Payload Tracing.",
+        learning: "Aprofundar fundamentos e estratégia de entrada.",
+        href: "/learn#formacao",
+        status: "Conteúdo disponível",
+      },
+      {
+        title: "LabLog",
+        description:
+          "Rota e canal configurados para acompanhar temas e desenvolvimento público do LAB.",
+        learning: "Acompanhar registros e limites do trabalho em andamento.",
+        href: "/lablog",
+        status: "Conteúdo disponível",
+      },
+    ],
+  },
+  initialPath: {
+    eyebrow: "PERCURSO INICIAL",
+    title: "Seis passos possíveis para começar",
+    description:
+      "O percurso orienta uma sequência inicial, mas não obriga todas as pessoas a seguir a mesma ordem.",
+    steps: [
+      {
+        number: "01",
+        title: "Ver o flow",
+        description: "Aprender Payload Journey.",
+        href: "/payload-journey",
+      },
+      {
+        number: "02",
+        title: "Explicitar o esperado",
+        description: "Conhecer USMT.",
+        href: "/usmt",
+      },
+      {
+        number: "03",
+        title: "Entender os instrumentos",
+        description: "Conhecer os métodos.",
+        href: "/method",
+      },
+      {
+        number: "04",
+        title: "Investigar com procedimento",
+        description: "Conhecer o protocolo.",
+        href: "/protocol",
+      },
+      {
+        number: "05",
+        title: "Observar um caso real",
+        description: "Analisar HORA.city como investigação em andamento.",
+        href: "/cases",
+      },
+      {
+        number: "06",
+        title: "Aprofundar a formação",
+        description: "Acessar o curso e os conteúdos disponíveis.",
+        href: "#formacao",
+      },
+    ],
+  },
+  cases: {
+    eyebrow: "CASOS COMO APRENDIZAGEM",
+    title: "Um caso serve para praticar perguntas e limites",
+    description: [
+      "Casos não são apenas demonstrações. Eles ajudam a praticar delimitação, modelagem, seleção de checkpoints, observação de runtime e revisão de conclusões.",
+      "HORA.city é um caso real em investigação. Sua existência demonstra aplicação documentada no repositório, não eficácia geral dos métodos.",
+    ],
+    practices: [
+      "delimitar uma operação",
+      "construir modelos",
+      "identificar flows",
+      "escolher checkpoints",
+      "observar runtime",
+      "registrar evidências",
+      "reconhecer limitações",
+      "revisar conclusões",
+    ],
+    status: "Investigação em andamento",
+    cta: {
+      label: "Estudar o caso HORA.city",
+      state: "internal",
+      href: "/cases",
+    },
+  },
+  evidence: {
+    eyebrow: "EVIDÊNCIA PEDAGÓGICA",
+    title: "Ensinar também é investigar",
+    description:
+      "O LAB não presume que um método é eficaz apenas porque foi criado. A proposta pedagógica precisa ser observada em uso, documentada e confrontada com resultados reais.",
+    demonstrated: [
+      "existência dos métodos e documentos no repositório",
+      "aplicação documentada no caso HORA.city em andamento",
+      "existência da rota de formação e do destino externo configurado",
+      "presença documentada de checkpoints no protocolo e no caso",
+    ],
+    investigate: [
+      "aprendizagem por terceiros",
+      "redução do tempo de compreensão",
+      "aumento de autonomia",
+      "transferibilidade",
+      "aplicação em codebases externas",
+      "progressão para sistemas distribuídos",
+      "impacto em equipes",
+    ],
+  },
+  continuation: [
+    { label: "Começar pelo Payload Journey", href: "/payload-journey" },
+    { label: "Conhecer os métodos", href: "/method" },
+    { label: "Estudar o caso", href: "/cases" },
+    { label: "Acompanhar o LabLog", href: "/lablog" },
+  ],
+} as const satisfies LearningPresentation;
+
 export const siteContent = {
   brand: {
     name: siteIdentity.name,
@@ -375,201 +709,293 @@ export const siteContent = {
     subtitle: siteIdentity.tagline,
     intro: siteIdentity.shortDescription,
     primaryAction: siteCtas.heroTraining,
-    secondaryAction: labLogContent.action,
+    secondaryAction: {
+      label: "Acompanhar o LabLog",
+      state: "internal",
+      href: "/lablog",
+    },
   },
   lab: {
-    eyebrow: "Ensino",
-    title: "Criado para ensinar a compreender sistemas",
-    description:
-      "O Payload Journey LAB desenvolve maneiras de ensinar, modelar e investigar software seguindo o fluxo da informação.",
-    originPresentation: {
-      eyebrow: "Sobre",
-      title: "Origem, visão e autoria",
-      description:
-        "A origem do Payload Journey LAB, sua motivação e as informações confirmadas sobre sua fundadora.",
+    hero: {
+      eyebrow: "PAYLOAD JOURNEY LAB",
+      title: "Um laboratório para investigar como sistemas realmente funcionam",
+      description: [
+        "O Payload Journey LAB é um laboratório autoral de formação, pesquisa metodológica e investigação aplicada em sistemas de software.",
+        "Ele surgiu de uma experiência localizada: uma codebase expandida com agentes de inteligência artificial cresceu mais rapidamente do que sua própria capacidade humana de ser explicada. Essa perda de compreensão transformou-se em pergunta investigativa, métodos e laboratório.",
+      ],
+      primaryCta: { label: "Conhecer os métodos", href: "/method", state: "internal" },
+      secondaryCta: { label: "Ver o caso HORA.city", href: "/cases", state: "internal" },
     },
-    origin:
-      "Sistemas podem crescer mais rapidamente do que a nossa capacidade de explicá-los. O LAB nasce da necessidade de recuperar visão estrutural, rastreabilidade e confiança antes de modificar software complexo.",
-    motivatingProblem:
-      "Quando a produção de código avança sem compreensão estrutural equivalente, torna-se mais difícil preservar rastreabilidade, autoridade, observabilidade e capacidade de decisão.",
-    mission:
-      "O LAB conecta educação, desenvolvimento metodológico, investigação de sistemas, aplicação em casos reais e possibilidades de colaboração.",
-    principle:
-      "Compreender antes de modificar: seguir o flow, produzir evidências e tornar as decisões do sistema visíveis.",
-    vision:
-      "O Payload Journey LAB trabalha para tornar investigação de sistemas uma capacidade ensinável, praticável e documentável.",
-    connectionToInvestigativePractice:
-      "A prática que você acabou de conhecer faz parte de um laboratório dedicado a desenvolver formação, métodos e investigação aplicada.",
-    values: [
-      "Seguir o flow",
-      "Compreender antes de modificar",
-      "Produzir evidência",
-      "Tornar decisões visíveis",
-      "Desenvolver visão estrutural",
-      "Compartilhar métodos",
-    ],
+    mission: {
+      eyebrow: "MISSÃO",
+      title: "Recuperar compreensão e autoridade sobre o sistema",
+      thesis: [
+        "À medida que agentes de inteligência artificial aceleram a produção e a modificação de código, a compreensão do sistema pode tornar-se um dos principais gargalos da engenharia de software.",
+        "O Payload Journey LAB investiga se — e até que ponto — métodos baseados em flow, payload tracing, causalidade, modelagem, checkpoints e evidências de runtime podem ajudar estudantes de Engenharia de Software e developers a desenvolver mais cedo a capacidade de compreender codebases grandes, complexas ou pouco conhecidas.",
+      ],
+      description: [
+        "A missão do LAB é ensinar estudantes e developers a seguir payloads, localizar causalidade e compreender como uma operação se transforma em decisão, estado e efeito observável.",
+        "A hipótese é que começar esse desenvolvimento mais cedo pode contribuir para entrar em codebases pouco conhecidas com clareza, autonomia progressiva e responsabilidade técnica. Esse benefício ainda está sendo investigado.",
+      ],
+      principle: "Compreender antes de modificar: observar o flow, produzir evidências e tornar as decisões do sistema visíveis.",
+    },
+    origin: {
+      eyebrow: "ORIGEM",
+      title: "Quando produzir ficou mais rápido do que compreender",
+      description: [
+        "O LAB não nasceu de uma teoria abstrata. Nasceu da necessidade de compreender um sistema real que continuava funcionando, crescendo e mudando, mas cujos flows já não podiam ser explicados com segurança apenas pela leitura fragmentada da codebase.",
+        "No desenvolvimento do HORA.city, agentes de IA apoiaram a expansão e a alteração do código. Funcionalidades podiam avançar enquanto se tornava mais difícil explicar onde certas decisões aconteciam, como payloads mudavam de representação e quais estados sustentavam o comportamento observado.",
+        "Essa experiência não significa que toda a codebase se tornou incompreensível ou que o sistema entrou em colapso. Ela localizou um problema: corrigir sintomas sem reconstruir o flow não recuperava a compreensão necessária. Investigar a operação tornou-se o próximo passo.",
+      ],
+    },
+    methods: {
+      eyebrow: "DO PROBLEMA AOS MÉTODOS",
+      title: "Transformar perda de compreensão em método",
+      description:
+        "A experiência foi organizada em instrumentos que respondem a perguntas distintas. Esta página os situa; a definição completa permanece em /method e nas rotas canônicas.",
+      items: [
+        { title: "Payload Journey", question: "Por onde a operação passa?" },
+        { title: "USMT", question: "O que deveria acontecer?" },
+        { title: "Reverse Payload Journey", question: "De onde veio a anomalia?" },
+        { title: "Operational Payload Path", question: "Qual caminho está sendo investigado?" },
+        { title: "Track to Origin", question: "Onde nasce a decisão relevante?" },
+        { title: "Protocolo investigativo", question: "Como investigar sem modificar prematuramente?" },
+        { title: "Evidências", question: "O que sustenta a conclusão?" },
+      ],
+      cta: { label: "Explorar os métodos", href: "/method", state: "internal" },
+    },
+    humanAi: {
+      eyebrow: "HUMAN DIRECTION · AI ASSISTANCE",
+      title: "Uma mulher assessorada pela IA, não substituída por ela",
+      description: [
+        "A inteligência artificial participa da construção do LAB como assessoria técnica, interlocutora metodológica, apoio à exploração de codebases e aceleradora da documentação.",
+        "A direção do trabalho, as perguntas investigativas, os critérios de evidência, a criação dos métodos e a responsabilidade sobre as conclusões permanecem humanas.",
+      ],
+      principle: "A IA deve ampliar a capacidade de compreensão dos engenheiros, não substituir sua autoridade sobre o sistema.",
+    },
     founder: {
+      eyebrow: "FOUNDER",
+      title: "Uma experiência pessoal transformada em campo de investigação",
       name: siteConfig.founder.name,
       biography: [
-        "O Payload Journey LAB nasceu de uma experiência prática.",
-        "Ao trabalhar com sistemas desenvolvidos em alta velocidade com o apoio de agentes de IA, Valéria percebeu que a produção de código podia avançar mais rapidamente do que a compreensão das implementações realizadas. Aos poucos, o sistema tornava-se uma caixa-preta: pequenas alterações passaram a exigir horas de tentativa e erro, porque já não era claro onde as decisões aconteciam, como os dados atravessavam as camadas ou quais regras sustentavam o comportamento observado.",
-        "Para recuperar visão estrutural, Valéria começou a estudar profundamente o payload, a rastreabilidade da informação, os estados, os eventos e as transformações realizadas ao longo do sistema. Esse processo deu origem ao Payload Journey LAB, à Universal System Modeling Template — USMT — e aos métodos de investigação hoje organizados pelo LAB.",
-        "O que começou como uma forma de voltar a compreender sistemas acelerados por IA passou a ser estruturado como formação para estudantes e engenheiros. O objetivo é ajudá-los a entrar em grandes codebases com uma estratégia clara, conquistar autonomia mais rapidamente em equipes modernas de desenvolvimento assistido por IA e desenvolver a capacidade de atuar como Trace Engineers: profissionais capazes de seguir o fluxo, produzir evidências e compreender sistemas antes de modificá-los.",
+        "Valéria dos Santos Reiser é a criadora do Payload Journey LAB e da Universal System Modeling Template — USMT — e responde pela direção investigativa, metodológica e pedagógica do trabalho.",
+        "Como estudante de Engenharia de Software, ela não iniciou o LAB com todas as respostas. Os instrumentos foram sendo formulados enquanto investigava flows, payloads e decisões no HORA.city e procurava recuperar uma explicação tecnicamente sustentada para o comportamento observado.",
+        "O LAB transforma essa necessidade pessoal de compreender sistemas em método, documentação e experiência pedagógica para outras pessoas. A autoria humana inclui a responsabilidade pública pelas hipóteses, pelos critérios e pelas conclusões.",
       ],
-      professionalLink: siteLinks.linkedin,
+      professionalLink: siteLinks.linkedin.personal,
+    },
+    currentState: {
+      eyebrow: "ESTADO ATUAL",
+      title: "Uma visão que já possui instrumentos, caso e conteúdo público",
+      description:
+        "O LAB trabalha com codebases reais, flows, payloads, modelagem, checkpoints, execução observada, evidências e documentação. Este inventário apresenta somente elementos localizados no repositório ou destinos configurados no site; o status descreve o que está verificável agora, não sua eficácia.",
+      items: [
+        {
+          title: "Site institucional",
+          description: "Onze rotas públicas organizam a tese, os métodos, a formação, o caso, o ecossistema e o próprio LAB.",
+          status: "Disponível",
+          evidence: "Rotas, sitemap e verificadores presentes no repositório.",
+        },
+        {
+          title: "USMT e métodos",
+          description: "USMT, Payload Journey, Reverse Payload Journey, Operational Payload Path e Track to Origin possuem definições públicas no site.",
+          status: "Documentado",
+          evidence: "Conteúdo estruturado e rotas /usmt, /payload-journey e /method.",
+        },
+        {
+          title: "Protocolo investigativo",
+          description: "Congelar, Mapear, Detectar e Restaurar está descrito como procedimento do LAB.",
+          status: "Documentado",
+          evidence: "Conteúdo estruturado e rota /protocol.",
+        },
+        {
+          title: "HORA.city",
+          description: "Um caso real documenta contexto, anomalia, flow selecionado, payload, checkpoints narrados e estado atual.",
+          status: "Em investigação",
+          evidence: "Conteúdo do caso e rota /cases; origem e restauração continuam não comprovadas.",
+        },
+        {
+          title: "Formação beta",
+          description: "A trilha de aprendizagem e um destino externo de formação estão configurados no site.",
+          status: "Disponível",
+          evidence: "Rota /learn e link de formação configurado no conteúdo.",
+        },
+        {
+          title: "LabLog",
+          description: "A rota apresenta temas acompanhados e aponta para o canal atualmente configurado, sem inventariar publicações individuais.",
+          status: "Disponível",
+          evidence: "Rota /lablog e destino de canal configurado.",
+        },
+      ],
     },
     construction: {
       eyebrow: "LAB EM CONSTRUÇÃO",
-      title: "Do zero a um piloto de Software System Investigation",
-      introduction: [
-        "O Payload Journey LAB está a ser construído publicamente a partir de uma codebase real, de investigações documentadas e de uma pergunta central: como preservar compreensão, rastreabilidade e autoridade humana quando sistemas passam a crescer mais rapidamente do que conseguimos explicá-los?",
-        "A resposta do LAB é transformar a investigação de sistemas numa capacidade ensinável, praticável, documentável e transferível.",
+      title: "Do método autoral a uma capacidade transferível",
+      description: [
+        "O LAB está consolidando definições, protocolo, instrumentos, casos completos, evidências e experiências de formação.",
+        "Capacidade transferível é um objetivo: ela depende de outras pessoas aplicarem os instrumentos em investigações desconhecidas e produzirem conclusões tecnicamente justificadas.",
       ],
-      currentState: {
-        title: "Mais do que conteúdo: uma unidade de investigação aplicada",
-        description: [
-          "O Payload Journey LAB não é apenas um curso, um canal ou uma coleção de métodos. É um laboratório autoral de formação, pesquisa metodológica e investigação aplicada dedicado a compreender como intenções, payloads, estados, eventos e decisões atravessam sistemas de software.",
-          "Codebases reais funcionam como territórios de investigação. Flows tornam-se recortes observáveis. Anomalias tornam-se casos de estudo. Checkpoints produzem evidências. A documentação transforma descobertas individuais em conhecimento que outras pessoas podem utilizar.",
-          "O payload é o fio condutor porque permite reduzir a complexidade de um sistema a uma operação concreta e investigável, sem exigir que toda a codebase seja compreendida antecipadamente.",
-        ],
-        dimensions: [
-          {
-            number: "01",
-            title: "Campo de estudo",
-            description:
-              "Software System Investigation: investigação estrutural baseada em modelagem, tracing, checkpoints, evidências e reconstrução de decisões.",
-          },
-          {
-            number: "02",
-            title: "Prática profissional",
-            description:
-              "Trace Engineering: capacidade de seguir payloads, interpretar transformações, localizar divergências e rastrear decisões até sua autoridade de origem.",
-          },
-          {
-            number: "03",
-            title: "Ambiente aplicado",
-            description:
-              "Codebases reais, flows operacionais e anomalias observáveis utilizados para testar, documentar e ensinar os métodos do LAB.",
-          },
-        ],
-      },
-      humanAi: {
-        eyebrow: "O PAPEL DA IA NO LAB",
-        title: "Human direction · AI assistance",
-        description: [
-          "A inteligência artificial participa da construção do LAB como assessoria técnica, interlocutora metodológica e instrumento de aceleração. Ela ajuda a explorar codebases, confrontar hipóteses, estruturar documentos, testar formulações e tornar o processo de investigação mais produtivo.",
-          "A visão, direção do trabalho, as perguntas investigativas, os critérios de evidência, a criação dos métodos e a responsabilidade sobre as conclusões permanecem humanas.",
-        ],
-      },
-      earlyFormation: {
-        title: "Por que formar estudantes e developers desde cedo",
-        description: [
-          "A formação tradicional costuma concentrar-se em linguagens, frameworks, features e estruturas estáticas da codebase. Esses conhecimentos permanecem essenciais, mas já não são suficientes para compreender sistemas que crescem rapidamente com a participação de agentes de IA.",
-          "O Payload Journey LAB acrescenta uma capacidade complementar: seguir uma operação durante a execução, reconhecer as representações que ela assume, localizar a autoridade das decisões e explicar o comportamento do sistema com base em checkpoints e evidências.",
-          "Quanto mais cedo estudantes e developers desenvolverem essa percepção, mais preparados estarão para entrar em codebases complexas, investigar comportamentos inesperados e participar de equipas modernas com maior autonomia, clareza e responsabilidade técnica.",
-        ],
-        perspectives: [
-          {
-            label: "Leitura da codebase",
-            description: "Mostra a estrutura estática do software.",
-          },
-          {
-            label: "Arquitectura",
-            description: "Mostra organização, limites e responsabilidades.",
-          },
-          {
-            label: "Observabilidade",
-            description: "Mostra sinais produzidos pelo sistema.",
-          },
-          {
-            label: "Tracing",
-            description: "Reconstrói o flow e a causalidade da execução.",
-          },
-        ],
-        connection:
-          "O LAB conecta essas perspectivas através de operações concretas, checkpoints e evidências, sem apresentar tracing como substituto das demais práticas.",
-      },
-      pilot: {
-        eyebrow: "DO ZERO AO PILOTO",
-        title: "Seis meses para demonstrar que o laboratório existe",
-        description:
-          "O primeiro horizonte do Payload Journey LAB é transformar a visão autoral numa unidade operacional verificável. O objectivo não é declarar prematuramente uma disciplina consolidada, mas produzir evidência suficiente para demonstrar que o LAB possui um objecto de estudo, um método reproduzível, instrumentos próprios, casos reais e capacidade de formar outras pessoas.",
-        commitments: [
-          {
-            number: "01",
-            title: "Definir",
-            description:
-              "Estabelecer uma definição clara de Software System Investigation e da função investigativa do Trace Engineer.",
-          },
-          {
-            number: "02",
-            title: "Formalizar",
-            description:
-              "Consolidar os métodos, o protocolo e o conjunto documental que sustentam uma investigação verificável.",
-          },
-          {
-            number: "03",
-            title: "Aplicar",
-            description:
-              "Executar o protocolo completo num flow de uma codebase real, da delimitação do caso à restauração validada.",
-          },
-          {
-            number: "04",
-            title: "Evidenciar",
-            description:
-              "Produzir checkpoints, registros, mapas operacionais, relatórios de detecção e pacotes de evidência.",
-          },
-          {
-            number: "05",
-            title: "Ensinar",
-            description:
-              "Transformar o conhecimento produzido em formação, vídeos, LabLogs, materiais e experiências pedagógicas.",
-          },
-          {
-            number: "06",
-            title: "Transferir",
-            description:
-              "Permitir que outra pessoa utilize o protocolo para investigar um flow que não conhecia previamente.",
-          },
-        ],
-        test: {
-          title: "O verdadeiro teste do piloto",
-          description: [
-            "O piloto estará demonstrado quando uma pessoa de fora conseguir entrar numa codebase desconhecida, seleccionar uma operação, identificar o payload, posicionar checkpoints, seguir o flow entre as camadas, confrontar comportamento e modelo, detectar uma divergência e explicar o sistema com base em evidências.",
-            "Nesse momento, o LAB terá produzido mais do que uma metodologia pessoal. Terá produzido uma capacidade transferível.",
-          ],
+      items: [
+        {
+          title: "Definições e instrumentos",
+          description: "As definições autorais estão públicas, mas permanecem sujeitas a refinamento por aplicação e evidência.",
+          status: "Evidência parcial",
+          evidence: "Rotas /method, /protocol e /investigation.",
         },
-      },
-      longTerm: {
-        eyebrow: "LONG-TERM VISION",
-        title: "Estabelecer uma capacidade para a engenharia de software contemporânea",
-        description: [
-          "A ambição de longo prazo do Payload Journey LAB é contribuir para que Software System Investigation e Trace Engineering se tornem práticas reconhecíveis de formação e actuação profissional.",
-          "O LAB pretende formar pessoas capazes de investigar sistemas complexos, especialmente sistemas distribuídos, expandidos por agentes de IA ou inseridos em contextos nos quais rastreabilidade, autoridade e confiança são essenciais.",
-          "Essa visão conecta arquitectura, debugging, observabilidade, domínio, requisitos, runtime e evidência, avançando progressivamente em direcção a requirements-to-runtime traceability e aplicações industriais e mission-critical.",
-        ],
-        outcomes: [
-          "Formar Trace Engineers",
-          "Preparar estudantes para entrar em codebases grandes",
-          "Apoiar equipas que perderam visibilidade sobre os próprios sistemas",
-          "Produzir casos de investigação tecnicamente verificáveis",
-          "Desenvolver práticas de requirements-to-runtime traceability",
-          "Conectar modelagem, execução e evidência",
-          "Colaborar com estudantes, educadores, universidades, laboratórios e organizações",
-        ],
-        culturalAmbition:
-          "Existe também uma ambição educacional e cultural: contribuir para que o Brasil desenvolva força e reconhecimento em investigação de sistemas, rastreabilidade, causalidade, observabilidade e compreensão estrutural de software.",
-      },
-      publicCommitment: {
-        eyebrow: "PUBLIC COMMITMENT",
-        title: "Compreender antes de modificar",
-        description: [
-          "O Payload Journey LAB assume publicamente o compromisso de investigar sistemas com rigor, distinguir hipótese de evidência, não ampliar fatos não confirmados e documentar o caminho que sustenta cada conclusão.",
-          "O LAB existe para ensinar pessoas a recuperar autoridade sobre sistemas que se tornaram maiores do que a sua compreensão.",
-        ],
-        closing: "Siga o payload. Encontre a causalidade. Recupere a compreensão.",
+        {
+          title: "Caso completo",
+          description: "HORA.city oferece investigação aplicada, mas ainda não documenta o ciclo completo até uma restauração validada.",
+          status: "Em investigação",
+          evidence: "Estado e omissões explícitas na rota /cases.",
+        },
+        {
+          title: "Conjunto documental de evidências",
+          description: "Registros, mapas, relatórios e pacotes de evidência são objetivos do piloto; ficheiros canônicos desse conjunto não foram localizados.",
+          status: "Em construção",
+        },
+        {
+          title: "Avaliação pedagógica",
+          description: "A formação existe, mas seu efeito sobre compreensão, autonomia ou preparação ainda não foi avaliado.",
+          status: "Ainda não validado",
+        },
+        {
+          title: "Aplicação externa",
+          description: "Nenhuma execução externa documentada do protocolo foi localizada no repositório.",
+          status: "Ainda não validado",
+        },
+      ],
+    },
+    pilot: {
+      eyebrow: "DO ZERO AO PILOTO",
+      title: "Um horizonte inicial de seis meses",
+      description: [
+        "O primeiro horizonte do LAB é consolidar, em seis meses, um piloto verificável. O prazo é um compromisso institucional sem data final inventada e deve ser revisto quando o ciclo correspondente terminar.",
+        "O objetivo não é declarar uma nova disciplina consolidada, mas produzir evidências de que o LAB possui objeto de estudo, métodos, instrumentos, casos e uma proposta de formação avaliável.",
+      ],
+      commitments: [
+        {
+          number: "01",
+          title: "Definir",
+          description: "Estabelecer uma definição clara de Software System Investigation e da função investigativa do Trace Engineer.",
+          status: "Evidência parcial",
+          evidence: "Definições autorais publicadas em /investigation; validação externa ausente.",
+        },
+        {
+          number: "02",
+          title: "Formalizar",
+          description: "Consolidar os métodos, o protocolo e o conjunto documental que sustentam uma investigação verificável.",
+          status: "Evidência parcial",
+          evidence: "Métodos e protocolo documentados; conjunto documental de evidências ainda incompleto.",
+        },
+        {
+          number: "03",
+          title: "Aplicar",
+          description: "Executar o protocolo completo num flow de uma codebase real, da delimitação do caso à restauração validada.",
+          status: "Em investigação",
+          evidence: "HORA.city está em andamento; restauração validada não foi localizada.",
+        },
+        {
+          number: "04",
+          title: "Evidenciar",
+          description: "Produzir checkpoints, registros, mapas operacionais, relatórios de detecção e pacotes de evidência.",
+          status: "Em construção",
+          evidence: "Os tipos de artefato são definidos como objetivo, mas o conjunto canônico não foi localizado.",
+        },
+        {
+          number: "05",
+          title: "Ensinar",
+          description: "Transformar o conhecimento produzido em formação, vídeos, LabLogs, materiais e experiências pedagógicas.",
+          status: "Evidência parcial",
+          evidence: "Trilha, formação e rota LabLog existem; eficácia pedagógica não foi avaliada.",
+        },
+        {
+          number: "06",
+          title: "Transferir",
+          description: "Permitir que outra pessoa utilize o protocolo para investigar um flow que não conhecia previamente.",
+          status: "Ainda não validado",
+          evidence: "Nenhuma aplicação externa documentada foi localizada.",
+        },
+      ],
+      test: {
+        title: "O verdadeiro teste do piloto",
+        description:
+          "O piloto será avaliado quando uma pessoa externa entrar numa codebase desconhecida, selecionar uma operação, identificar o payload, posicionar checkpoints, seguir o flow, confrontar comportamento e modelo e documentar uma explicação ou divergência com base em evidências.",
+        initialEvidence:
+          "Evidência inicial de transferibilidade: uma pessoa externa aplica o protocolo em uma investigação documentada, com registro do nível de assistência recebido.",
+        transferablePilot:
+          "Piloto de capacidade transferível: pelo menos duas pessoas externas, em duas investigações distintas, produzem evidências revisáveis e conclusões tecnicamente justificadas.",
+        status: "Ainda não validado",
       },
     },
+    traceEngineer: {
+      eyebrow: "TRACE ENGINEERING",
+      title: "Uma função investigativa em desenvolvimento",
+      definition:
+        "Trace Engineer é a função investigativa exercida por quem segue operações, payloads, transformações e decisões para compreender e explicar o comportamento de um sistema com base em evidências.",
+      status: "Em construção",
+      caveats: [
+        "Não é profissão consolidada.",
+        "Não é cargo reconhecido pelo mercado.",
+        "Não é certificação oficial.",
+        "É uma função e um perfil em desenvolvimento no universo do LAB.",
+      ],
+      competencies: [
+        "Delimitar operações e seguir payloads",
+        "Identificar transformações e autoridades de decisão",
+        "Observar execução e posicionar checkpoints",
+        "Confrontar modelo e comportamento observado",
+        "Identificar divergências e validar restaurações",
+        "Documentar conclusões sustentadas por evidências",
+      ],
+      cta: { label: "Conhecer Software System Investigation", href: "/investigation", state: "internal" },
+    },
+    longTerm: {
+      eyebrow: "LONG-TERM VISION",
+      title: "Construir uma capacidade para a engenharia de software contemporânea",
+      description: [
+        "A visão de longo prazo é ensinar capacidades para investigar sistemas complexos, apoiar a compreensão de codebases grandes e produzir casos tecnicamente verificáveis.",
+        "O LAB pretende conectar modelagem, arquitetura, observabilidade, domínio, requisitos, execução e evidência, além de explorar colaborações com estudantes, educadores, universidades, equipes e organizações.",
+      ],
+      outcomes: [
+        "Desenvolver capacidades do perfil Trace Engineer",
+        "Investigar estratégias de entrada em codebases grandes",
+        "Produzir casos de investigação tecnicamente verificáveis",
+        "Desenvolver requirements-to-runtime traceability",
+        "Conectar modelagem, execução e evidência",
+        "Contribuir para investigação de sistemas e rastreabilidade no Brasil",
+      ],
+      future: {
+        title: "Da operação concreta aos sistemas críticos",
+        description:
+          "O LAB pretende aprofundar progressivamente sua abordagem em direção a sistemas distribuídos, requisitos, mensagens, timing e contextos industriais ou mission-critical.",
+        status: "Direção futura",
+        topics: [
+          "Concorrência",
+          "Mensagens e estados distribuídos",
+          "Timing",
+          "CAN e DBC",
+          "SysML/MBSE e V-Model",
+          "Requirements-to-runtime traceability",
+          "Safety invariants",
+        ],
+      },
+    },
+    publicCommitment: {
+      eyebrow: "PUBLIC COMMITMENT",
+      title: "Compreender antes de modificar",
+      description: [
+        "O Payload Journey LAB assume o compromisso de investigar sistemas com rigor, distinguir hipótese de evidência, não ampliar fatos não confirmados e documentar o caminho que sustenta cada conclusão.",
+        "O LAB existe para ensinar pessoas a recuperar autoridade sobre sistemas que se tornaram maiores do que sua compreensão inicial. Essa é uma direção pedagógica, não uma garantia de resultado individual.",
+      ],
+      closing: "Siga o payload. Encontre a causalidade. Recupere a compreensão.",
+    },
+    continuation: [
+      { label: "Começar pelo Payload Journey", href: "/payload-journey" },
+      { label: "Explorar os métodos", href: "/method" },
+      { label: "Conhecer a investigação", href: "/investigation" },
+      { label: "Examinar o caso", href: "/cases" },
+      { label: "Ver a trilha de aprendizagem", href: "/learn" },
+    ],
   } satisfies LabPresentation,
   methods: {
     ...methodsSectionContent,

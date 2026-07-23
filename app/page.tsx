@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <>
       <JsonLd data={getHomePageStructuredData(homepageMetadata)} />
-      <SiteHeader />
+      <SiteHeader currentPath="/" />
       <main>
         <HeroSection />
         <HomeWhyNowSection />

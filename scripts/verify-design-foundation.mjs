@@ -17,9 +17,22 @@ const files = {
   roleBadge: path.join(repositoryRoot, "components", "ui", "RoleBadge.tsx"),
   flowNode: path.join(repositoryRoot, "components", "ui", "FlowNode.tsx"),
   learningPath: path.join(repositoryRoot, "components", "sections", "LearningPathSection.tsx"),
+  learningOverview: path.join(
+    repositoryRoot,
+    "components",
+    "sections",
+    "LearningOverviewSection.tsx",
+  ),
+  learningPractice: path.join(
+    repositoryRoot,
+    "components",
+    "sections",
+    "LearningPracticeSection.tsx",
+  ),
   flowDemo: path.join(repositoryRoot, "components", "sections", "PayloadFlowDemoSection.tsx"),
   education: path.join(repositoryRoot, "components", "sections", "EducationSection.tsx"),
   caseStudy: path.join(repositoryRoot, "components", "sections", "CaseStudySection.tsx"),
+  casesPage: path.join(repositoryRoot, "components", "sections", "CasesPageSections.tsx"),
   investigationCycle: path.join(
     repositoryRoot,
     "components",
@@ -40,7 +53,14 @@ const files = {
     "ConceptEcosystemSection.tsx",
   ),
   labOverview: path.join(repositoryRoot, "components", "sections", "LabOverviewSection.tsx"),
+  labConstruction: path.join(
+    repositoryRoot,
+    "components",
+    "sections",
+    "LabConstructionSection.tsx",
+  ),
   labLog: path.join(repositoryRoot, "components", "sections", "LabLogSection.tsx"),
+  labLogPage: path.join(repositoryRoot, "components", "sections", "LabLogPageSections.tsx"),
   finalCta: path.join(repositoryRoot, "components", "sections", "BetaCtaSection.tsx"),
   footer: path.join(repositoryRoot, "components", "layout", "SiteFooter.tsx"),
   usmtSection: path.join(repositoryRoot, "components", "sections", "UsmtSection.tsx"),
@@ -230,11 +250,22 @@ assert(
 for (const component of ["container", "section", "sectionHeader", "button", "card", "badge"]) {
   assert(!sources[component].includes('"use client"'), `${component} must remain a Server Component`);
 }
-for (const component of ["roleBadge", "flowNode", "learningPath", "flowDemo"]) {
+for (const component of [
+  "roleBadge",
+  "flowNode",
+  "learningPath",
+  "learningOverview",
+  "learningPractice",
+  "flowDemo",
+]) {
   assert(!sources[component].includes('"use client"'), `${component} must remain a Server Component`);
   assert(!/#[\da-f]{3,8}/i.test(sources[component]), `${component} must not contain color literals`);
 }
 for (const component of ["education", "caseStudy"]) {
+  assert(!sources[component].includes('"use client"'), `${component} must remain a Server Component`);
+  assert(!/#[\da-f]{3,8}/i.test(sources[component]), `${component} must not contain color literals`);
+}
+for (const component of ["casesPage", "labLogPage"]) {
   assert(!sources[component].includes('"use client"'), `${component} must remain a Server Component`);
   assert(!/#[\da-f]{3,8}/i.test(sources[component]), `${component} must not contain color literals`);
 }
@@ -259,7 +290,7 @@ for (const component of [
   assert(!sources[component].includes('"use client"'), `${component} must remain a Server Component`);
   assert(!/#[\da-f]{3,8}/i.test(sources[component]), `${component} must not contain color literals`);
 }
-for (const component of ["labOverview", "ecosystem", "labLog", "finalCta", "footer"]) {
+for (const component of ["labOverview", "labConstruction", "ecosystem", "labLog", "finalCta", "footer"]) {
   assert(!sources[component].includes('"use client"'), `${component} must remain a Server Component`);
   assert(!/#[\da-f]{3,8}/i.test(sources[component]), `${component} must not contain color literals`);
 }
@@ -296,7 +327,17 @@ const thematicPageFiles = [
 for (const route of thematicPageFiles) {
   const pageSource = await fs.readFile(path.join(repositoryRoot, "app", route, "page.tsx"), "utf8");
   assert(!pageSource.includes('"use client"'), `${route} page must remain a Server Component`);
-  assert(pageSource.includes("<SitePage"), `${route} must reuse the thematic page shell`);
+  if (route === "lab" || route === "learn") {
+    for (const shellElement of ["<SiteHeader", "<JsonLd", "<PageContinuation", "<SiteFooter"]) {
+      assert(pageSource.includes(shellElement), `${route} must preserve shared shell element ${shellElement}`);
+    }
+    assert(
+      !pageSource.includes("<SitePage"),
+      `${route} must use its approved route-specific composition`,
+    );
+  } else {
+    assert(pageSource.includes("<SitePage"), `${route} must reuse the thematic page shell`);
+  }
   assert(pageSource.includes("createPageMetadata"), `${route} must expose route metadata`);
 }
 const nextConfigSource = await fs.readFile(

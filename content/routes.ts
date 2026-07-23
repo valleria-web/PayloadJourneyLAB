@@ -1,5 +1,4 @@
 import { siteConfig } from "@/config/site";
-import { siteLinks } from "@/content/site";
 
 export const thematicRoutes = {
   payloadJourney: {
@@ -11,17 +10,21 @@ export const thematicRoutes = {
   },
   learn: {
     path: "/learn",
-    eyebrow: "Formação",
-    title: "Aprenda a seguir o flow",
+    eyebrow: "Aprender Software System Investigation",
+    title: "Começar por um payload. Avançar para o sistema.",
     description:
-      "Uma progressão de aprendizagem e uma formação prática para compreender sistemas a partir do caminho da informação.",
+      "Uma progressão de aprendizagem para estudantes e developers compreenderem sistemas a partir de operações concretas.",
+    metadataDescription:
+      "Aprenda progressivamente a seguir flows, payloads, decisões e evidências de runtime para compreender sistemas de software, do primeiro evento à investigação estruturada.",
   },
   cases: {
     path: "/cases",
-    eyebrow: "Investigação aplicada",
-    title: "Casos acompanhados pelo LAB",
+    eyebrow: "CASOS E EVIDÊNCIAS",
+    title: "Investigações reais, conclusões proporcionais às evidências",
     description:
-      "Evidências, checkpoints e estado atual de investigações apresentadas somente com fatos confirmados.",
+      "Os casos do Payload Journey LAB mostram como os métodos são aplicados em sistemas reais, separando fatos, hipóteses, desconhecidos, evidências e limites.",
+    metadataDescription:
+      "Explore casos reais do Payload Journey LAB com flows, estados, hipóteses, evidências, limitações e conclusões proporcionais ao que foi observado.",
   },
   usmt: {
     path: "/usmt",
@@ -33,37 +36,38 @@ export const thematicRoutes = {
   method: {
     path: "/method",
     eyebrow: "Métodos do LAB",
-    title: "Métodos diferentes para perguntas diferentes",
+    title: "Instrumentos diferentes para perguntas diferentes",
     description:
-      "Uma visão integrada dos instrumentos usados para observar, modelar, mapear e investigar sistemas.",
+      "Cada instrumento reduz uma parte diferente da incerteza: o modelo esperado, o caminho da operação, a origem da anomalia, a autoridade da decisão ou a evidência necessária.",
+    metadataDescription:
+      "Conheça os instrumentos do Payload Journey LAB, suas perguntas, limites, evidências e estados reais de documentação.",
   },
   protocol: {
     path: "/protocol",
     eyebrow: "Procedimento investigativo",
-    title: "Congelar, Mapear, Detectar e Restaurar",
+    title: "Congelar. Mapear. Detectar. Restaurar.",
     description:
       "O processo operacional do Payload Journey LAB preserva o comportamento, produz evidências, localiza divergências e valida a restauração.",
+    metadataDescription:
+      "Conheça o protocolo Congelar, Mapear, Detectar e Restaurar, suas entradas, fases, evidências, retornos e limites.",
   },
   investigation: {
     path: "/investigation",
     eyebrow: "Prática investigativa",
-    title: "Do Track Mode à investigação de sistemas",
+    title: "Compreender antes de modificar",
     description:
-      "Uma prática própria para observar antes de modificar, produzir evidência e seguir o flow até a autoridade relevante.",
-    introAction: {
-      label: "Aprender sobre payload e tracing",
-      href: siteLinks.udemy.courseWithCoupon,
-      external: true,
-    },
+      "Software System Investigation estrutura perguntas, tracing, checkpoints, runtime e evidências para compreender sistemas antes de intervir.",
+    metadataDescription:
+      "Conheça Software System Investigation, Track Mode, Trace Engineering e o perfil investigativo Trace Engineer em desenvolvimento.",
   },
   lab: {
     path: "/lab",
-    eyebrow: "O LAB",
-    title: "Formação, pesquisa e investigação aplicada",
+    eyebrow: "PAYLOAD JOURNEY LAB",
+    title: "Um laboratório para investigar como sistemas realmente funcionam",
     description:
-      "Conheça a origem, missão e autoria do Payload Journey LAB, um laboratório de formação, pesquisa metodológica e investigação aplicada de sistemas.",
+      "Conheça a missão, a origem e a construção do Payload Journey LAB, um laboratório autoral de formação, pesquisa metodológica e investigação aplicada em sistemas de software.",
     metadataDescription:
-      "Laboratório de formação, pesquisa metodológica e investigação aplicada que desenvolve Software System Investigation e Trace Engineering através de métodos, casos reais e evidências.",
+      "Conheça a missão, a origem e a construção do Payload Journey LAB, um laboratório de formação, pesquisa metodológica e investigação aplicada em sistemas de software.",
   },
   ecosystem: {
     path: "/ecosystem",
@@ -74,10 +78,12 @@ export const thematicRoutes = {
   },
   lablog: {
     path: "/lablog",
-    eyebrow: "Investigação em movimento",
-    title: "Acompanhe o LAB em movimento",
+    eyebrow: "LABLOG",
+    title: "A investigação enquanto acontece",
     description:
-      "Registros públicos de flows, anomalias, decisões, checkpoints, mappings e desenvolvimento dos métodos.",
+      "O LabLog preserva registros datados de decisões, perguntas, checkpoints, evidências, mudanças de hipótese e limites quando essas entradas possuem fonte verificável.",
+    metadataDescription:
+      "Acompanhe registros datados de investigação, checkpoints, hipóteses, decisões e evidências produzidas durante o trabalho do Payload Journey LAB.",
   },
 } as const;
 

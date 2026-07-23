@@ -1,6 +1,8 @@
 import { SitePage } from "@/components/pages/SitePage";
-import { CaseStudySection } from "@/components/sections/CaseStudySection";
+import { CasesPageSections } from "@/components/sections/CasesPageSections";
+import { casesPageContent } from "@/content/cases";
 import { thematicRoutes } from "@/content/routes";
+import { routeContinuations } from "@/content/site";
 import { createPageMetadata } from "@/lib/metadata";
 
 const route = thematicRoutes.cases;
@@ -9,13 +11,15 @@ export const metadata = createPageMetadata(route);
 export default function CasesPage() {
   return (
     <SitePage
-      route={route}
-      continuation={[
-        { label: "Ver a prática investigativa", href: "/investigation" },
-        { label: "Acompanhar o LabLog", href: "/lablog" },
-      ]}
+      route={{
+        ...route,
+        description: casesPageContent.hero.description,
+        introAction: casesPageContent.hero.primaryCta,
+        introSecondaryAction: casesPageContent.hero.secondaryCta,
+      }}
+      continuation={[...routeContinuations["/cases"]]}
     >
-      <CaseStudySection />
+      <CasesPageSections />
     </SitePage>
   );
 }

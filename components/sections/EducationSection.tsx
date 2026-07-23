@@ -36,7 +36,7 @@ export function EducationSection() {
               {training.product.name}
             </h3>
             <p className="mt-5 max-w-3xl text-base font-semibold leading-7 text-ink sm:text-lg sm:leading-8">
-              {training.promise}
+              {training.learningIntent}
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
@@ -58,7 +58,7 @@ export function EducationSection() {
         </div>
       </Card>
 
-      <div className="mt-6 grid gap-4 lg:grid-cols-3">
+      <div className="mt-6 grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
         <Card>
           <h3 className="text-xl font-bold text-ink">Para quem é</h3>
           <ul className="mt-5 grid gap-3 text-sm leading-6 text-text-muted">
@@ -72,7 +72,7 @@ export function EducationSection() {
         </Card>
 
         <Card>
-          <h3 className="text-xl font-bold text-ink">O que você aprenderá</h3>
+          <h3 className="text-xl font-bold text-ink">Conceitos abordados</h3>
           <ul className="mt-5 flex flex-wrap gap-2">
             {training.topics.map((topic) => (
               <li
@@ -86,16 +86,33 @@ export function EducationSection() {
         </Card>
 
         <Card>
-          <h3 className="text-xl font-bold text-ink">Como começar</h3>
-          <p className="mt-5 text-sm leading-6 text-text-muted">
-            A formação está disponível na {training.format.platform} em estado {training.format.state}.
-            Comece pelos fundamentos e use a Trilha como referência para acompanhar sua progressão.
-          </p>
-          <p className="mt-5 border-t border-border-default pt-5 text-sm font-semibold leading-6 text-ink">
-            É aqui que você começa a aprender a seguir o flow.
-          </p>
+          <h3 className="text-xl font-bold text-ink">Resultados pretendidos</h3>
+          <ul className="mt-5 grid gap-3 text-sm leading-6 text-text-muted">
+            {training.intendedOutcomes.map((item) => (
+              <li key={item} className="flex gap-3">
+                <span aria-hidden="true" className="mt-2.5 size-1.5 shrink-0 rounded-full bg-accent-readable" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </Card>
+
+        <Card>
+          <h3 className="text-xl font-bold text-ink">Limites da oferta</h3>
+          <ul className="mt-5 grid gap-3 text-sm leading-6 text-text-muted">
+            {training.limits.map((item) => (
+              <li key={item} className="flex gap-3">
+                <span aria-hidden="true" className="mt-2.5 size-1.5 shrink-0 rounded-full bg-accent-cta" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
         </Card>
       </div>
+
+      <p className="mt-6 max-w-4xl border-l-2 border-accent-readable pl-5 text-sm font-semibold leading-6 text-ink">
+        {training.connection}
+      </p>
     </Section>
   );
 }

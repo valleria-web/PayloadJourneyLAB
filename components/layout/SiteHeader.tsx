@@ -3,9 +3,14 @@ import { MobileNavigation } from "@/components/layout/MobileNavigation";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { siteContent } from "@/content/payload-journey-lab";
-import { siteCtas, siteNavigation } from "@/content/site";
+import { getNavigationArea, siteCtas, siteNavigation } from "@/content/site";
 
-export function SiteHeader() {
+type SiteHeaderProps = {
+  currentPath: string;
+};
+
+export function SiteHeader({ currentPath }: SiteHeaderProps) {
+  const activeArea = getNavigationArea(currentPath);
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur">
       <Container className="relative flex h-16 items-center justify-between gap-5">
@@ -31,7 +36,12 @@ export function SiteHeader() {
             <a
               key={item.href}
               href={item.href}
-              className="rounded-md px-3 py-2 font-medium text-graphite transition-colors duration-200 hover:bg-accent-muted hover:text-ink"
+              aria-current={item.area === activeArea ? "page" : undefined}
+              className={`rounded-md border-b-2 px-3 py-2 font-medium transition-colors duration-200 ${
+                item.area === activeArea
+                  ? "border-accent-cta bg-accent-muted text-ink"
+                  : "border-transparent text-graphite hover:bg-accent-muted hover:text-ink"
+              }`}
             >
               {item.label}
             </a>
@@ -46,7 +56,11 @@ export function SiteHeader() {
             {siteCtas.headerStart.label}
           </Button>
         </div>
-        <MobileNavigation items={siteNavigation} cta={siteCtas.headerStart} />
+        <MobileNavigation
+          items={siteNavigation}
+          cta={siteCtas.headerStart}
+          activeArea={activeArea}
+        />
       </Container>
     </header>
   );

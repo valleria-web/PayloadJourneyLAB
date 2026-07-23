@@ -1,6 +1,7 @@
 import { SitePage } from "@/components/pages/SitePage";
 import { ConceptEcosystemSection } from "@/components/sections/ConceptEcosystemSection";
 import { thematicRoutes } from "@/content/routes";
+import { routeContinuations } from "@/content/site";
 import { createPageMetadata } from "@/lib/metadata";
 
 const route = thematicRoutes.ecosystem;
@@ -10,10 +11,7 @@ export default function EcosystemPage() {
   return (
     <SitePage
       route={route}
-      continuation={[
-        { label: "Conhecer o LAB", href: "/lab" },
-        { label: "Explorar a formação", href: "/learn" },
-      ]}
+      continuation={[...routeContinuations["/ecosystem"]]}
     >
       <ConceptEcosystemSection />
     </SitePage>
