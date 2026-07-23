@@ -1,23 +1,57 @@
-import { SitePage } from "@/components/pages/SitePage";
+import { SiteFooter } from "@/components/layout/SiteFooter";
+import { SiteHeader } from "@/components/layout/SiteHeader";
+import { PageContinuation } from "@/components/pages/PageContinuation";
 import { EducationSection } from "@/components/sections/EducationSection";
 import { LearningPathSection } from "@/components/sections/LearningPathSection";
+import {
+  LearningEffortFoundationsSection,
+  LearningFlowSection,
+  LearningHeroSection,
+} from "@/components/sections/LearningOverviewSection";
+import {
+  LearningAvailableSection,
+  LearningCasesEvidenceSection,
+  LearningInitialPathSection,
+} from "@/components/sections/LearningPracticeSection";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { routeContinuations } from "@/content/site";
 import { thematicRoutes } from "@/content/routes";
 import { createPageMetadata } from "@/lib/metadata";
+import { getThematicPageStructuredData } from "@/lib/structured-data";
 
 const route = thematicRoutes.learn;
-export const metadata = createPageMetadata(route);
+
+export const metadata = createPageMetadata({
+  ...route,
+  description: route.metadataDescription,
+});
 
 export default function LearnPage() {
   return (
-    <SitePage
-      route={route}
-      continuation={[
-        { label: "Explorar o Payload Journey", href: "/payload-journey" },
-        { label: "Acompanhar o LabLog", href: "/lablog" },
-      ]}
-    >
-      <LearningPathSection />
-      <EducationSection />
-    </SitePage>
+    <>
+      <JsonLd
+        data={getThematicPageStructuredData(
+          route.path,
+          route.title,
+          route.metadataDescription,
+        )}
+      />
+      <SiteHeader currentPath={route.path} />
+      <main>
+        <LearningHeroSection />
+        <LearningFlowSection />
+        <LearningPathSection />
+        <LearningEffortFoundationsSection />
+        <LearningAvailableSection />
+        <LearningInitialPathSection />
+        <EducationSection />
+        <LearningCasesEvidenceSection />
+        <PageContinuation
+          title="Escolha o primeiro recorte e continue investigando"
+          items={[...routeContinuations["/learn"]]}
+        />
+      </main>
+      <SiteFooter />
+    </>
   );
 }

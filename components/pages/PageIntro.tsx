@@ -6,15 +6,26 @@ import { TechnicalLabel } from "@/components/ui/TechnicalLabel";
 type PageIntroProps = {
   eyebrow: string;
   title: string;
-  description: string;
+  description: string | readonly string[];
   action?: {
+    label: string;
+    href: string;
+    external?: boolean;
+  };
+  secondaryAction?: {
     label: string;
     href: string;
     external?: boolean;
   };
 };
 
-export function PageIntro({ eyebrow, title, description, action }: PageIntroProps) {
+export function PageIntro({
+  eyebrow,
+  title,
+  description,
+  action,
+  secondaryAction,
+}: PageIntroProps) {
   return (
     <Section id="page-intro" className="border-b border-line py-12 sm:py-16 lg:py-20">
       <div className="max-w-4xl">
@@ -22,10 +33,12 @@ export function PageIntro({ eyebrow, title, description, action }: PageIntroProp
         <h1 className="mt-5 text-4xl font-bold leading-tight text-ink sm:text-5xl lg:text-6xl">
           {title}
         </h1>
-        <p className="mt-6 max-w-3xl text-lg leading-8 text-text-muted sm:text-xl sm:leading-9">
-          {description}
-        </p>
-        <div className="mt-7 flex flex-col items-start gap-2">
+        <div className="mt-6 max-w-3xl space-y-4 text-lg leading-8 text-text-muted sm:text-xl sm:leading-9">
+          {(Array.isArray(description) ? description : [description]).map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+        <div className="mt-7 flex flex-wrap items-center gap-3">
           {action ? (
             <Button
               href={action.href}
@@ -34,6 +47,16 @@ export function PageIntro({ eyebrow, title, description, action }: PageIntroProp
               variant="contrast"
             >
               {action.label}
+            </Button>
+          ) : null}
+          {secondaryAction ? (
+            <Button
+              href={secondaryAction.href}
+              target={secondaryAction.external ? "_blank" : undefined}
+              rel={secondaryAction.external ? "noopener noreferrer" : undefined}
+              variant="secondary"
+            >
+              {secondaryAction.label}
             </Button>
           ) : null}
           <Button href="/" variant="ghost" className="px-0">

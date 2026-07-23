@@ -1,10 +1,26 @@
-import { SitePage } from "@/components/pages/SitePage";
-import { LabOverviewSection } from "@/components/sections/LabOverviewSection";
-import { LabConstructionSection } from "@/components/sections/LabConstructionSection";
+import { SiteFooter } from "@/components/layout/SiteFooter";
+import { SiteHeader } from "@/components/layout/SiteHeader";
+import { PageContinuation } from "@/components/pages/PageContinuation";
+import {
+  LabPublicCommitmentSection,
+  LabPilotSection,
+  LabStateConstructionSection,
+  LabTraceVisionSection,
+} from "@/components/sections/LabConstructionSection";
+import {
+  LabHeroSection,
+  LabHumanFounderSection,
+  LabMethodsBridgeSection,
+  LabMissionOriginSection,
+} from "@/components/sections/LabOverviewSection";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { routeContinuations } from "@/content/site";
 import { thematicRoutes } from "@/content/routes";
 import { createPageMetadata } from "@/lib/metadata";
+import { getThematicPageStructuredData } from "@/lib/structured-data";
 
 const route = thematicRoutes.lab;
+
 export const metadata = createPageMetadata({
   ...route,
   description: route.metadataDescription,
@@ -12,16 +28,27 @@ export const metadata = createPageMetadata({
 
 export default function LabPage() {
   return (
-    <SitePage
-      route={route}
-      continuation={[
-        { label: "Explorar a USMT", href: "/usmt" },
-        { label: "Conhecer o método", href: "/method" },
-        { label: "Ver a investigação aplicada", href: "/cases" },
-      ]}
-    >
-      <LabOverviewSection />
-      <LabConstructionSection />
-    </SitePage>
+    <>
+      <JsonLd
+        data={getThematicPageStructuredData(
+          route.path,
+          route.title,
+          route.metadataDescription,
+        )}
+      />
+      <SiteHeader currentPath={route.path} />
+      <main>
+        <LabHeroSection />
+        <LabMissionOriginSection />
+        <LabMethodsBridgeSection />
+        <LabHumanFounderSection />
+        <LabStateConstructionSection />
+        <LabPilotSection />
+        <LabTraceVisionSection />
+        <LabPublicCommitmentSection />
+        <PageContinuation items={[...routeContinuations["/lab"]]} />
+      </main>
+      <SiteFooter />
+    </>
   );
 }

@@ -1,10 +1,13 @@
 import type {
   CampaignConfig,
   CtaItem,
+  ExternalChannel,
   FooterPresentation,
   HomepageAnchors,
   LabLogPresentation,
-  NavItem,
+  NavigationArea,
+  PrimaryNavigationItem,
+  RouteContinuationMap,
   SiteIdentity,
   SiteLinks,
   TrainingPresentation,
@@ -52,7 +55,10 @@ export const siteLinks = {
     canonical: null,
     resolutionStatus: "unresolved",
   },
-  linkedin: null,
+  linkedin: {
+    personal: null,
+    institutional: null,
+  },
   contact: null,
   email: null,
 } as const satisfies SiteLinks;
@@ -73,17 +79,33 @@ export const campaignConfig = {
 } as const satisfies CampaignConfig;
 
 export const siteNavigation = [
-  { label: "Método", href: "/method" },
-  { label: "Aprender", href: "/learn" },
-  { label: "Casos", href: "/cases" },
-  { label: "O LAB", href: "/lab" },
-] satisfies NavItem[];
+  { label: "Início", href: "/", area: "home" },
+  { label: "Aprender", href: "/learn", area: "learn" },
+  { label: "Métodos", href: "/method", area: "methods" },
+  { label: "Casos", href: "/cases", area: "cases" },
+  { label: "LAB", href: "/lab", area: "lab" },
+] as const satisfies readonly PrimaryNavigationItem[];
+
+export const navigationAreas = {
+  home: ["/"],
+  learn: ["/payload-journey", "/learn"],
+  methods: ["/method", "/protocol", "/investigation", "/usmt"],
+  cases: ["/cases", "/lablog"],
+  lab: ["/lab", "/ecosystem"],
+} as const satisfies Record<NavigationArea, readonly string[]>;
+
+export function getNavigationArea(currentPath: string): NavigationArea | null {
+  const match = Object.entries(navigationAreas).find(([, paths]) =>
+    (paths as readonly string[]).includes(currentPath),
+  );
+  return (match?.[0] as NavigationArea | undefined) ?? null;
+}
 
 export const siteCtas = {
   headerStart: {
     label: "Começar",
     state: "internal",
-    href: "/learn",
+    href: "/payload-journey",
   },
   headerTraining: {
     label: "Entrar no LAB",
@@ -111,7 +133,7 @@ export const siteCtas = {
 export const trainingContent = {
   name: "Formação Beta na Udemy",
   description:
-    "A primeira formação do Payload Journey LAB já está disponível na Udemy. Aprenda a seguir o payload através das camadas e desenvolva a visão estrutural necessária para pensar como Trace Engineer.",
+    "A primeira formação do Payload Journey LAB está configurada na Udemy como uma introdução prática a payload, flow e tracing.",
   audience: "estudantes, desenvolvedores e pessoas interessadas em compreender sistemas como fluxo",
   state: "beta",
   renderedAction: siteCtas.educationTraining,
@@ -125,15 +147,15 @@ export const trainingContent = {
 export const trainingPresentation = {
   id: homepageAnchors.training,
   eyebrow: "Formação fundamental",
-  title: "Comece a aprender Payload Tracing",
+  title: "Curso beta como canal de aprofundamento",
   description:
-    "Uma entrada prática para estudantes e developers que precisam de uma estratégia para compreender codebases grandes através do fluxo da informação.",
+    "A Udemy integra a oferta formativa do LAB sem substituir a progressão, os métodos, o protocolo ou os casos.",
   product: {
     name: "Payload Journey LAB: Siga o flow, entenda o sistema",
     historicalLabel: trainingContent.name,
   },
-  promise:
-    "Aprenda a escolher um flow, encontrar o payload, acompanhar suas transformações e localizar onde o sistema toma decisões.",
+  learningIntent:
+    "A formação introduz uma estratégia para escolher um flow, encontrar o payload, acompanhar transformações e procurar decisões.",
   audience: [
     "Estudantes de Engenharia de Software",
     "Developers junior",
@@ -150,12 +172,26 @@ export const trainingPresentation = {
     "Visão estrutural",
     "Tracing de flows",
   ],
+  intendedOutcomes: [
+    "reconhecer payloads e representações",
+    "delimitar uma operação concreta",
+    "seguir um flow entre camadas",
+    "formular perguntas investigativas iniciais",
+  ],
+  limits: [
+    "não representa formação profissional concluída",
+    "não certifica domínio de tracing",
+    "não promete autonomia imediata ou empregabilidade",
+    "não cobre sistemas distribuídos ou mission-critical como competência validada",
+  ],
+  connection:
+    "O curso oferece uma entrada prática. Os métodos aprofundam instrumentos, o protocolo organiza a investigação e os casos mostram como claims e evidências são delimitados.",
   format: {
     platform: "Udemy",
     state: trainingContent.state,
   },
   primaryCta: {
-    label: "Entrar na formação",
+    label: "Conhecer o curso",
     state: "external",
     href: siteLinks.udemy.courseWithCoupon,
   },
@@ -188,11 +224,6 @@ export const labLogContent = {
     "Investigação de sistemas",
     "Formação",
   ],
-  action: {
-    label: "Assistir ao LabLog",
-    state: "external",
-    href: siteLinks.youtube.labLogCurrent,
-  },
   editorialStatus: "current",
   youtubeResolution: {
     canonical: siteLinks.youtube.canonical,
@@ -215,23 +246,141 @@ export const footerContent = {
     description:
       "Formação, pesquisa metodológica e investigação aplicada para compreender sistemas seguindo o fluxo da informação.",
   },
-  headings: {
-    navigation: "Navegação",
-    channels: "Canais",
-  },
-  navigation: [
-    { label: "O LAB", href: "/lab" },
-    { label: "Métodos", href: "/method" },
-    { label: "Study Case", href: "/cases" },
-    { label: "Formação", href: "/learn" },
-    { label: "LabLog", href: "/lablog" },
-  ] satisfies NavItem[],
-  channels: [
-    { label: "Udemy", href: siteLinks.udemy.courseWithCoupon, external: true },
-    { label: "YouTube", href: siteLinks.youtube.footerCurrent, external: true },
+  groups: [
+    {
+      title: "Começar",
+      links: [
+        { label: "Payload Journey", href: "/payload-journey" },
+        { label: "Aprender", href: "/learn" },
+      ],
+    },
+    {
+      title: "Investigar",
+      links: [
+        { label: "Métodos", href: "/method" },
+        { label: "Protocolo", href: "/protocol" },
+        { label: "Software System Investigation", href: "/investigation" },
+        { label: "USMT", href: "/usmt" },
+      ],
+    },
+    {
+      title: "Evidências",
+      links: [
+        { label: "Casos", href: "/cases" },
+        { label: "LabLog", href: "/lablog" },
+      ],
+    },
+    {
+      title: "LAB",
+      links: [
+        { label: "Sobre o LAB", href: "/lab" },
+        { label: "Ecossistema", href: "/ecosystem" },
+      ],
+    },
+    {
+      title: "Canais",
+      links: [
+        {
+          label: "Formação na Udemy",
+          href: siteLinks.udemy.courseWithCoupon,
+          external: true,
+        },
+      ],
+    },
   ],
   legalNotice: "Informações institucionais e canais confirmados do Payload Journey LAB.",
   copyrightSuffix: "Todos os direitos reservados.",
   historicalPolicies: ["Política de privacidade", "Termos de uso"],
   missingLegalRoutes: ["privacy-policy", "terms-of-use"],
 } as const satisfies FooterPresentation;
+
+export const externalChannels = [
+  {
+    id: "udemy",
+    label: "Udemy",
+    role: "formative-secondary",
+    status: "confirmed",
+    publicHref: siteLinks.udemy.courseWithCoupon,
+  },
+  {
+    id: "youtube",
+    label: "YouTube",
+    role: "editorial",
+    status: "unresolved",
+    publicHref: null,
+    candidates: [
+      siteLinks.youtube.labLogCurrent,
+      siteLinks.youtube.footerCurrent,
+    ],
+  },
+  {
+    id: "linkedin-personal",
+    label: "LinkedIn pessoal",
+    role: "personal",
+    status: "not-configured",
+    publicHref: siteLinks.linkedin.personal,
+  },
+  {
+    id: "linkedin-institutional",
+    label: "LinkedIn institucional",
+    role: "institutional",
+    status: "not-configured",
+    publicHref: siteLinks.linkedin.institutional,
+  },
+] as const satisfies readonly ExternalChannel[];
+
+export const routeContinuations = {
+  "/payload-journey": [
+    { label: "Compreender a USMT", href: "/usmt" },
+    { label: "Conhecer os métodos", href: "/method" },
+    { label: "Começar a aprender", href: "/learn" },
+  ],
+  "/learn": [
+    { label: "Começar pelo Payload Journey", href: "/payload-journey" },
+    { label: "Ver o caso HORA.city", href: "/cases" },
+    { label: "Conhecer os métodos", href: "/method" },
+  ],
+  "/method": [
+    { label: "Executar o protocolo", href: "/protocol" },
+    { label: "Conhecer Software System Investigation", href: "/investigation" },
+    { label: "Começar pelo Payload Journey", href: "/payload-journey" },
+    { label: "Compreender a USMT", href: "/usmt" },
+  ],
+  "/protocol": [
+    { label: "Conhecer os métodos", href: "/method" },
+    { label: "Conhecer Software System Investigation", href: "/investigation" },
+    { label: "Ver o caso HORA.city", href: "/cases" },
+  ],
+  "/investigation": [
+    { label: "Conhecer os métodos", href: "/method" },
+    { label: "Executar o protocolo", href: "/protocol" },
+    { label: "Começar a aprender", href: "/learn" },
+    { label: "Ver o caso HORA.city", href: "/cases" },
+  ],
+  "/usmt": [
+    { label: "Começar pelo Payload Journey", href: "/payload-journey" },
+    { label: "Executar o protocolo", href: "/protocol" },
+    { label: "Conhecer os métodos", href: "/method" },
+  ],
+  "/cases": [
+    { label: "Acompanhar os LabLogs", href: "/lablog" },
+    { label: "Conhecer os métodos", href: "/method" },
+    { label: "Executar o protocolo", href: "/protocol" },
+  ],
+  "/lablog": [
+    { label: "Ver o caso HORA.city", href: "/cases" },
+    { label: "Conhecer o LAB", href: "/lab" },
+    { label: "Executar o protocolo", href: "/protocol" },
+  ],
+  "/lab": [
+    { label: "Conhecer os métodos", href: "/method" },
+    { label: "Conhecer Software System Investigation", href: "/investigation" },
+    { label: "Ver o caso HORA.city", href: "/cases" },
+    { label: "Começar a aprender", href: "/learn" },
+  ],
+  "/ecosystem": [
+    { label: "Começar a aprender", href: "/learn" },
+    { label: "Ver o caso HORA.city", href: "/cases" },
+    { label: "Conhecer o LAB", href: "/lab" },
+  ],
+} as const satisfies RouteContinuationMap;

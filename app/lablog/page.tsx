@@ -1,6 +1,8 @@
 import { SitePage } from "@/components/pages/SitePage";
-import { LabLogSection } from "@/components/sections/LabLogSection";
+import { LabLogPageSections } from "@/components/sections/LabLogPageSections";
+import { labLogPageContent } from "@/content/cases";
 import { thematicRoutes } from "@/content/routes";
+import { routeContinuations } from "@/content/site";
 import { createPageMetadata } from "@/lib/metadata";
 
 const route = thematicRoutes.lablog;
@@ -9,13 +11,15 @@ export const metadata = createPageMetadata(route);
 export default function LabLogPage() {
   return (
     <SitePage
-      route={route}
-      continuation={[
-        { label: "Conhecer os casos", href: "/cases" },
-        { label: "Explorar a formação", href: "/learn" },
-      ]}
+      route={{
+        ...route,
+        description: labLogPageContent.hero.description,
+        introAction: labLogPageContent.hero.primaryCta,
+        introSecondaryAction: labLogPageContent.hero.secondaryCta,
+      }}
+      continuation={[...routeContinuations["/lablog"]]}
     >
-      <LabLogSection />
+      <LabLogPageSections />
     </SitePage>
   );
 }

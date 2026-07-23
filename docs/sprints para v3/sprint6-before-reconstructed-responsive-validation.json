@@ -1,0 +1,675 @@
+{
+  "phase": "before-reconstructed",
+  "mode": "dev",
+  "combinations": 55,
+  "routes": 11,
+  "widths": [
+    320,
+    375,
+    768,
+    1024,
+    1440
+  ],
+  "results": [
+    {
+      "route": "/",
+      "width": 320,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": {
+        "firstFocus": "",
+        "returned": true,
+        "destination": "/method",
+        "closedAfterNavigation": true
+      }
+    },
+    {
+      "route": "/",
+      "width": 375,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": {
+        "firstFocus": "",
+        "returned": true,
+        "destination": "/method",
+        "closedAfterNavigation": true
+      }
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/",
+      "width": 1024,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/payload-journey",
+      "width": 320,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": {
+        "firstFocus": "",
+        "returned": true,
+        "destination": "/method",
+        "closedAfterNavigation": true
+      }
+    },
+    {
+      "route": "/payload-journey",
+      "width": 375,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": {
+        "firstFocus": "",
+        "returned": true,
+        "destination": "/method",
+        "closedAfterNavigation": true
+      }
+    },
+    {
+      "route": "/payload-journey",
+      "width": 768,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/payload-journey",
+      "width": 1024,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/payload-journey",
+      "width": 1440,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/learn",
+      "width": 320,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": {
+        "firstFocus": "",
+        "returned": true,
+        "destination": "/method",
+        "closedAfterNavigation": true
+      }
+    },
+    {
+      "route": "/learn",
+      "width": 375,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": {
+        "firstFocus": "",
+        "returned": true,
+        "destination": "/method",
+        "closedAfterNavigation": true
+      }
+    },
+    {
+      "route": "/learn",
+      "width": 768,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/learn",
+      "width": 1024,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/learn",
+      "width": 1440,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/cases",
+      "width": 320,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": {
+        "firstFocus": "",
+        "returned": true,
+        "destination": "/method",
+        "closedAfterNavigation": true
+      }
+    },
+    {
+      "route": "/cases",
+      "width": 375,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": {
+        "firstFocus": "",
+        "returned": true,
+        "destination": "/method",
+        "closedAfterNavigation": true
+      }
+    },
+    {
+      "route": "/cases",
+      "width": 768,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/cases",
+      "width": 1024,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/cases",
+      "width": 1440,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/usmt",
+      "width": 320,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": {
+        "firstFocus": "",
+        "returned": true,
+        "destination": "/method",
+        "closedAfterNavigation": true
+      }
+    },
+    {
+      "route": "/usmt",
+      "width": 375,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": {
+        "firstFocus": "",
+        "returned": true,
+        "destination": "/method",
+        "closedAfterNavigation": true
+      }
+    },
+    {
+      "route": "/usmt",
+      "width": 768,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/usmt",
+      "width": 1024,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/usmt",
+      "width": 1440,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/method",
+      "width": 320,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": {
+        "firstFocus": "",
+        "returned": true,
+        "destination": "/method",
+        "closedAfterNavigation": true
+      }
+    },
+    {
+      "route": "/method",
+      "width": 375,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": {
+        "firstFocus": "",
+        "returned": true,
+        "destination": "/method",
+        "closedAfterNavigation": true
+      }
+    },
+    {
+      "route": "/method",
+      "width": 768,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/method",
+      "width": 1024,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/method",
+      "width": 1440,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/protocol",
+      "width": 320,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": {
+        "firstFocus": "",
+        "returned": true,
+        "destination": "/method",
+        "closedAfterNavigation": true
+      }
+    },
+    {
+      "route": "/protocol",
+      "width": 375,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": {
+        "firstFocus": "",
+        "returned": true,
+        "destination": "/method",
+        "closedAfterNavigation": true
+      }
+    },
+    {
+      "route": "/protocol",
+      "width": 768,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/protocol",
+      "width": 1024,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/protocol",
+      "width": 1440,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/investigation",
+      "width": 320,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": {
+        "firstFocus": "",
+        "returned": true,
+        "destination": "/method",
+        "closedAfterNavigation": true
+      }
+    },
+    {
+      "route": "/investigation",
+      "width": 375,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": {
+        "firstFocus": "",
+        "returned": true,
+        "destination": "/method",
+        "closedAfterNavigation": true
+      }
+    },
+    {
+      "route": "/investigation",
+      "width": 768,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/investigation",
+      "width": 1024,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/investigation",
+      "width": 1440,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/lab",
+      "width": 320,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": {
+        "firstFocus": "",
+        "returned": true,
+        "destination": "/method",
+        "closedAfterNavigation": true
+      }
+    },
+    {
+      "route": "/lab",
+      "width": 375,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": {
+        "firstFocus": "",
+        "returned": true,
+        "destination": "/method",
+        "closedAfterNavigation": true
+      }
+    },
+    {
+      "route": "/lab",
+      "width": 768,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/lab",
+      "width": 1024,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/lab",
+      "width": 1440,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/ecosystem",
+      "width": 320,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": {
+        "firstFocus": "",
+        "returned": true,
+        "destination": "/method",
+        "closedAfterNavigation": true
+      }
+    },
+    {
+      "route": "/ecosystem",
+      "width": 375,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": {
+        "firstFocus": "",
+        "returned": true,
+        "destination": "/method",
+        "closedAfterNavigation": true
+      }
+    },
+    {
+      "route": "/ecosystem",
+      "width": 768,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/ecosystem",
+      "width": 1024,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/ecosystem",
+      "width": 1440,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/lablog",
+      "width": 320,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": {
+        "firstFocus": "",
+        "returned": true,
+        "destination": "/method",
+        "closedAfterNavigation": true
+      }
+    },
+    {
+      "route": "/lablog",
+      "width": 375,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": {
+        "firstFocus": "",
+        "returned": true,
+        "destination": "/method",
+        "closedAfterNavigation": true
+      }
+    },
+    {
+      "route": "/lablog",
+      "width": 768,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/lablog",
+      "width": 1024,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    },
+    {
+      "route": "/lablog",
+      "width": 1440,
+      "overflow": 0,
+      "active": [],
+      "footerGroups": 1,
+      "headerLinks": 6,
+      "footerLinks": 7,
+      "mobileInteraction": null
+    }
+  ]
+}

@@ -8,8 +8,13 @@
     "start": "next start",
     "lint": "next lint",
     "verify:homepage": "node scripts/verify-homepage.mjs",
+    "verify:lab": "node scripts/verify-lab.mjs",
+    "verify:learn": "node scripts/verify-learn.mjs",
     "verify:foundation": "node scripts/verify-design-foundation.mjs",
-    "verify:ai-readiness": "node scripts/verify-ai-readiness.mjs"
+    "verify:ai-readiness": "node scripts/verify-ai-readiness.mjs",
+    "verify:method-practice": "node scripts/verify-method-practice.mjs",
+    "verify:cases-evidence": "node scripts/verify-cases-evidence.mjs",
+    "verify:navigation-discovery": "node scripts/verify-navigation-discovery.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

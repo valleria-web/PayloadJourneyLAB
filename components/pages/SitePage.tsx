@@ -10,9 +10,14 @@ type RoutePresentation = {
   path: string;
   eyebrow: string;
   title: string;
-  description: string;
+  description: string | readonly string[];
   metadataDescription?: string;
   introAction?: {
+    label: string;
+    href: string;
+    external?: boolean;
+  };
+  introSecondaryAction?: {
     label: string;
     href: string;
     external?: boolean;
@@ -32,16 +37,20 @@ export function SitePage({ route, children, continuation }: SitePageProps) {
         data={getThematicPageStructuredData(
           route.path,
           route.title,
-          route.metadataDescription ?? route.description,
+          route.metadataDescription ??
+            (typeof route.description === "string"
+              ? route.description
+              : route.description.join(" ")),
         )}
       />
-      <SiteHeader />
+      <SiteHeader currentPath={route.path} />
       <main>
         <PageIntro
           eyebrow={route.eyebrow}
           title={route.title}
           description={route.description}
           action={route.introAction}
+          secondaryAction={route.introSecondaryAction}
         />
         {children}
         <PageContinuation items={continuation} />
