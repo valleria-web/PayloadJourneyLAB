@@ -176,7 +176,12 @@ export function LabTraceVisionSection() {
                 <h3 className="text-2xl font-bold text-ink">{longTerm.future.title}</h3>
                 <p className="mt-4 max-w-4xl text-base leading-7 text-graphite">{longTerm.future.description}</p>
               </div>
-              <Badge className="shrink-0" variant="neutral">Direção futura de pesquisa e formação</Badge>
+              <Badge
+                className="max-w-full whitespace-normal text-center sm:max-w-[18rem] sm:shrink-0"
+                variant="neutral"
+              >
+                Direção futura de pesquisa e formação
+              </Badge>
             </div>
             <ul className="mt-6 flex flex-wrap gap-2" aria-label="Tópicos futuros de pesquisa e formação">
               {longTerm.future.topics.map((topic) => <li key={topic}><Badge variant="neutral">{topic}</Badge></li>)}

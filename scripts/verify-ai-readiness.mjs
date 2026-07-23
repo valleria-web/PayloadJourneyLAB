@@ -197,11 +197,11 @@ try {
 
   const publicCorpus = [...pages.values()].map(({ html }) => html).join("\n");
   assert(!publicCorpus.includes(incorrectUsmtName), "An incorrect USMT expansion remains public");
-  const homeDescription = "Laboratório de Software System Investigation que pesquisa como flow, payload tracing, modelagem, checkpoints e evidências de runtime podem ajudar estudantes e developers a compreender codebases complexas mais cedo.";
+  const homeDescription = "Laboratório de Software System Investigation que pesquisa como flow, payload tracing, modelagem, checkpoints e evidências de runtime podem ajudar estudantes e developers a compreender codebases complexas.";
   assert(getMetaContent(pages.get("/").html, "name", "description") === homeDescription, "Homepage metadata must preserve the approved research positioning");
   assert(JSON.stringify(pages.get("/").graph).includes(homeDescription), "Homepage JSON-LD must match homepage metadata");
   const learnDescription =
-    "Aprenda progressivamente a seguir flows, payloads, decisões e evidências de runtime para compreender sistemas de software, do primeiro evento à investigação estruturada.";
+    "Aprenda progressivamente a seguir flows, payloads, decisões e evidências de runtime, do primeiro evento à investigação estruturada de sistemas de software.";
   assert(
     getMetaContent(pages.get("/learn").html, "name", "description") === learnDescription,
     "/learn metadata must describe progressive learning without efficacy claims",

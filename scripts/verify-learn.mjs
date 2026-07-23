@@ -173,7 +173,7 @@ try {
   }
 
   const metadataDescription =
-    "Aprenda progressivamente a seguir flows, payloads, decisões e evidências de runtime para compreender sistemas de software, do primeiro evento à investigação estruturada.";
+    "Aprenda progressivamente a seguir flows, payloads, decisões e evidências de runtime, do primeiro evento à investigação estruturada de sistemas de software.";
   assert(
     html.includes(`content="${metadataDescription}"`),
     "/learn metadata description is not approved",

@@ -1,9 +1,9 @@
 export const siteConfig = {
   name: "Payload Journey LAB",
   tagline: "Siga o flow. Entenda o sistema.",
-  title: "Payload Journey LAB — Siga o flow. Entenda o sistema.",
+  title: "Payload Journey LAB — Compreender sistemas pelo flow",
   description:
-    "Laboratório de formação, pesquisa e investigação aplicada dedicado a compreender como payloads, estados, eventos e decisões atravessam sistemas complexos.",
+    "Laboratório de Software System Investigation que pesquisa como flow, payload tracing, modelagem, checkpoints e evidências de runtime podem ajudar estudantes e developers a compreender codebases complexas.",
   origin: "https://www.payloadjourneylab.com",
   language: "pt-BR",
   locale: "pt_BR",
