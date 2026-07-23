@@ -7,6 +7,9 @@ export const thematicRoutes = {
     title: "Siga a informação através do sistema",
     description:
       "Aprenda a escolher um flow, encontrar o payload, acompanhar suas transformações e localizar onde decisões acontecem.",
+    metadataTitle: "Payload Journey — Siga o payload, entenda o sistema",
+    metadataDescription:
+      "Aprenda a seguir uma operação por eventos, payloads, camadas, decisões, estados e efeitos observáveis para construir uma compreensão progressiva do sistema.",
   },
   learn: {
     path: "/learn",
@@ -15,7 +18,9 @@ export const thematicRoutes = {
     description:
       "Uma progressão de aprendizagem para estudantes e developers compreenderem sistemas a partir de operações concretas.",
     metadataDescription:
-      "Aprenda progressivamente a seguir flows, payloads, decisões e evidências de runtime para compreender sistemas de software, do primeiro evento à investigação estruturada.",
+      "Aprenda progressivamente a seguir flows, payloads, decisões e evidências de runtime, do primeiro evento à investigação estruturada de sistemas de software.",
+    metadataTitle:
+      "Aprender Software System Investigation — Payload Journey LAB",
   },
   cases: {
     path: "/cases",
@@ -24,7 +29,8 @@ export const thematicRoutes = {
     description:
       "Os casos do Payload Journey LAB mostram como os métodos são aplicados em sistemas reais, separando fatos, hipóteses, desconhecidos, evidências e limites.",
     metadataDescription:
-      "Explore casos reais do Payload Journey LAB com flows, estados, hipóteses, evidências, limitações e conclusões proporcionais ao que foi observado.",
+      "Explore o caso HORA.city com flows, estados, hipóteses, evidências, limitações e conclusões proporcionais ao que foi observado.",
+    metadataTitle: "Casos e Evidências — Payload Journey LAB",
   },
   usmt: {
     path: "/usmt",
@@ -32,6 +38,9 @@ export const thematicRoutes = {
     title: `${siteConfig.usmt.alternateName} — ${siteConfig.usmt.name}`,
     description:
       "Um modelo estrutural para explicitar estados, eventos, regras, invariantes, camadas e limites verificáveis.",
+    metadataTitle: "USMT — Modelo esperado de sistemas de software",
+    metadataDescription:
+      "Use a USMT para explicitar estados, eventos, transições, regras, invariantes e limites e confrontar o modelo esperado com o comportamento observado.",
   },
   method: {
     path: "/method",
@@ -40,7 +49,8 @@ export const thematicRoutes = {
     description:
       "Cada instrumento reduz uma parte diferente da incerteza: o modelo esperado, o caminho da operação, a origem da anomalia, a autoridade da decisão ou a evidência necessária.",
     metadataDescription:
-      "Conheça os instrumentos do Payload Journey LAB, suas perguntas, limites, evidências e estados reais de documentação.",
+      "Conheça os instrumentos do LAB e as perguntas que Payload Journey, USMT, Reverse Payload Journey, Operational Payload Path e Track to Origin ajudam a investigar.",
+    metadataTitle: "Métodos do Payload Journey LAB",
   },
   protocol: {
     path: "/protocol",
@@ -49,7 +59,8 @@ export const thematicRoutes = {
     description:
       "O processo operacional do Payload Journey LAB preserva o comportamento, produz evidências, localiza divergências e valida a restauração.",
     metadataDescription:
-      "Conheça o protocolo Congelar, Mapear, Detectar e Restaurar, suas entradas, fases, evidências, retornos e limites.",
+      "Conheça o protocolo do LAB para delimitar flows, preservar comportamentos, produzir evidências, localizar divergências e validar restaurações.",
+    metadataTitle: "Congelar, Mapear, Detectar e Restaurar",
   },
   investigation: {
     path: "/investigation",
@@ -58,7 +69,8 @@ export const thematicRoutes = {
     description:
       "Software System Investigation estrutura perguntas, tracing, checkpoints, runtime e evidências para compreender sistemas antes de intervir.",
     metadataDescription:
-      "Conheça Software System Investigation, Track Mode, Trace Engineering e o perfil investigativo Trace Engineer em desenvolvimento.",
+      "Compreenda a prática que combina modelagem, payload tracing, checkpoints, runtime e evidências para explicar como operações se transformam em decisões e estados.",
+    metadataTitle: "Software System Investigation e Trace Engineering",
   },
   lab: {
     path: "/lab",
@@ -68,6 +80,7 @@ export const thematicRoutes = {
       "Conheça a missão, a origem e a construção do Payload Journey LAB, um laboratório autoral de formação, pesquisa metodológica e investigação aplicada em sistemas de software.",
     metadataDescription:
       "Conheça a missão, a origem e a construção do Payload Journey LAB, um laboratório de formação, pesquisa metodológica e investigação aplicada em sistemas de software.",
+    metadataTitle: "Sobre o Payload Journey LAB",
   },
   ecosystem: {
     path: "/ecosystem",
@@ -75,6 +88,9 @@ export const thematicRoutes = {
     title: "Quatro áreas conectadas pelo mesmo propósito",
     description:
       "Formação, pesquisa metodológica, investigação aplicada e colaboração como possibilidades do ecossistema do LAB.",
+    metadataTitle: "Ecossistema do Payload Journey LAB",
+    metadataDescription:
+      "Conheça como o LAB conecta formação, pesquisa metodológica, investigação aplicada, casos e futuras possibilidades de colaboração.",
   },
   lablog: {
     path: "/lablog",
@@ -83,7 +99,8 @@ export const thematicRoutes = {
     description:
       "O LabLog preserva registros datados de decisões, perguntas, checkpoints, evidências, mudanças de hipótese e limites quando essas entradas possuem fonte verificável.",
     metadataDescription:
-      "Acompanhe registros datados de investigação, checkpoints, hipóteses, decisões e evidências produzidas durante o trabalho do Payload Journey LAB.",
+      "Conheça o espaço destinado a registros datados de investigação, checkpoints, hipóteses, decisões e evidências do Payload Journey LAB.",
+    metadataTitle: "LabLog — Investigação em andamento",
   },
 } as const;
 
@@ -233,9 +250,9 @@ export const homepageSummaries = {
 
 export const homepageMetadata = {
   path: "/",
-  title: "Payload Journey LAB — O código acelera. A compreensão precisa acompanhar.",
+  title: "Payload Journey LAB — Compreender sistemas pelo flow",
   description:
-    "Laboratório de Software System Investigation que pesquisa como flow, payload tracing, modelagem, checkpoints e evidências de runtime podem ajudar estudantes e developers a compreender codebases complexas mais cedo.",
+    "Laboratório de Software System Investigation que pesquisa como flow, payload tracing, modelagem, checkpoints e evidências de runtime podem ajudar estudantes e developers a compreender codebases complexas.",
 } as const;
 
 export const publicRoutePaths = [

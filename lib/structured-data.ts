@@ -43,7 +43,7 @@ function getUsmtNode(): JsonLdValue {
 }
 
 function getWebPageNode(path: string, name: string, description: string): Record<string, JsonLdValue> {
-  const url = absoluteSiteUrl(path);
+  const url = path === "/" ? siteConfig.origin : absoluteSiteUrl(path);
 
   return {
     "@type": "WebPage",

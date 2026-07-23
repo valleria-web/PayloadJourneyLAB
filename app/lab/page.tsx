@@ -21,10 +21,7 @@ import { getThematicPageStructuredData } from "@/lib/structured-data";
 
 const route = thematicRoutes.lab;
 
-export const metadata = createPageMetadata({
-  ...route,
-  description: route.metadataDescription,
-});
+export const metadata = createPageMetadata(route);
 
 export default function LabPage() {
   return (
@@ -32,7 +29,7 @@ export default function LabPage() {
       <JsonLd
         data={getThematicPageStructuredData(
           route.path,
-          route.title,
+          route.metadataTitle,
           route.metadataDescription,
         )}
       />

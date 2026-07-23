@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { siteConfig } from "@/config/site";
+import { siteSocialImage } from "@/lib/metadata";
 import "./globals.css";
 
 const googleAnalyticsId = "G-8HW6J5BBY2";
@@ -16,20 +17,22 @@ export const metadata: Metadata = {
   creator: siteConfig.founder.name,
   publisher: siteConfig.name,
   alternates: {
-    canonical: "/",
+    canonical: siteConfig.origin,
   },
   openGraph: {
     type: "website",
     locale: siteConfig.locale,
-    url: "/",
+    url: siteConfig.origin,
     siteName: siteConfig.name,
     title: siteConfig.title,
     description: siteConfig.description,
+    images: [siteSocialImage],
   },
   twitter: {
     card: "summary",
     title: siteConfig.title,
     description: siteConfig.description,
+    images: [siteSocialImage.url],
   },
   robots: {
     index: true,

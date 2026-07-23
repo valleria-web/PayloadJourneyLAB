@@ -8,12 +8,14 @@ const edge = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
 const outputDirectory = process.env.NAV_VISUAL_OUTPUT_DIRECTORY ??
   path.join(root, "docs", "sprints para v3");
 const phase = process.env.NAV_VISUAL_PHASE ?? "after";
+const artifactPrefix = process.env.NAV_VISUAL_ARTIFACT_PREFIX ?? `sprint6-${phase}`;
+const captureEnabled = process.env.NAV_VISUAL_CAPTURE !== "0";
 const mode = process.env.NAV_VISUAL_MODE ?? "dev";
 const port = process.env.NAV_VISUAL_PORT ?? "3227";
 const debuggingPort = process.env.NAV_VISUAL_DEBUG_PORT ?? "9238";
 const origin = `http://127.0.0.1:${port}`;
 const devtoolsUrl = `http://127.0.0.1:${debuggingPort}`;
-const routes = [
+const allRoutes = [
   "/",
   "/payload-journey",
   "/learn",
@@ -26,6 +28,10 @@ const routes = [
   "/ecosystem",
   "/lablog",
 ];
+const requestedRoutes = process.env.NAV_VISUAL_ROUTES?.split(",").filter(Boolean) ?? [];
+const routes = requestedRoutes.length > 0
+  ? allRoutes.filter((route) => requestedRoutes.includes(route))
+  : allRoutes;
 const sizes = [
   [320, 900],
   [375, 900],
@@ -33,7 +39,14 @@ const sizes = [
   [1024, 1000],
   [1440, 1000],
 ];
-const intermediateSamples = new Set(["/", "/method", "/cases", "/ecosystem"]);
+const intermediateSamples = new Set([
+  "/",
+  "/learn",
+  "/cases",
+  "/method",
+  "/lab",
+  "/lablog",
+]);
 const expectedActive = new Map([
   ["/", "Início"],
   ["/payload-journey", "Aprender"],
@@ -218,7 +231,7 @@ try {
 
       const shouldCapture = width === 320 || width === 1440 ||
         (intermediateSamples.has(route) && [375, 768, 1024].includes(width));
-      if (shouldCapture) {
+      if (shouldCapture && captureEnabled) {
         await protocol.call("Page.navigate", { url: `${origin}${route}` });
         await new Promise((resolve) => setTimeout(resolve, 250));
         const screenshot = await protocol.call("Page.captureScreenshot", {
@@ -227,7 +240,7 @@ try {
           fromSurface: true,
         });
         await fs.writeFile(
-          path.join(outputDirectory, `sprint6-${phase}-${safeRouteName(route)}-${width}.png`),
+          path.join(outputDirectory, `${artifactPrefix}-${safeRouteName(route)}-${width}.png`),
           Buffer.from(screenshot.data, "base64"),
         );
       }
@@ -245,8 +258,8 @@ try {
     }
   }
 
-  if (phase === "after") {
-    for (const route of intermediateSamples) {
+  if (phase !== "before-reconstructed") {
+    for (const route of [...intermediateSamples].filter((item) => routes.includes(item))) {
       await protocol.call("Emulation.setDeviceMetricsOverride", {
         width: 720,
         height: 1000,
@@ -260,12 +273,30 @@ try {
         scrollWidth: document.documentElement.scrollWidth,
         h1: document.querySelectorAll('h1').length,
         menuTrigger: Boolean(document.querySelector('button[aria-controls="mobile-navigation"]')),
-        footer: Boolean(document.querySelector('footer'))
+        footer: Boolean(document.querySelector('footer')),
+        offenders: [...document.querySelectorAll('body *')]
+          .map((node) => {
+            const rect = node.getBoundingClientRect();
+            return {
+              tag: node.tagName.toLowerCase(),
+              id: node.id,
+              className: typeof node.className === 'string' ? node.className : '',
+              left: Math.round(rect.left),
+              right: Math.round(rect.right),
+              width: Math.round(rect.width),
+              text: node.textContent?.trim().slice(0, 80)
+            };
+          })
+          .filter((item) => item.right > document.documentElement.clientWidth + 1 || item.left < -1)
+          .slice(0, 12)
       })`);
       assert(zoomMetrics.h1 === 1, `${route}: H1 no equivalente a 200%`);
       assert(zoomMetrics.menuTrigger, `${route}: navegação indisponível no equivalente a 200%`);
       assert(zoomMetrics.footer, `${route}: Footer indisponível no equivalente a 200%`);
-      assert(zoomMetrics.scrollWidth <= zoomMetrics.clientWidth + 1, `${route}: overflow no equivalente a 200%`);
+      assert(
+        zoomMetrics.scrollWidth <= zoomMetrics.clientWidth + 1,
+        `${route}: overflow no equivalente a 200% — ${JSON.stringify(zoomMetrics)}`,
+      );
       zoomEquivalentResults.push({
         route,
         physicalReferenceWidth: 1440,
@@ -277,7 +308,7 @@ try {
   }
 
   await fs.writeFile(
-    path.join(outputDirectory, `sprint6-${phase}-responsive-validation.json`),
+    path.join(outputDirectory, `${artifactPrefix}-responsive-validation.json`),
     `${JSON.stringify({
       phase,
       mode,
@@ -293,9 +324,11 @@ try {
     phase,
     mode,
     combinations: results.length,
-    screenshots: results.filter(({ route, width }) =>
-      width === 320 || width === 1440 ||
-      (intermediateSamples.has(route) && [375, 768, 1024].includes(width))).length,
+    screenshots: captureEnabled
+      ? results.filter(({ route, width }) =>
+        width === 320 || width === 1440 ||
+        (intermediateSamples.has(route) && [375, 768, 1024].includes(width))).length
+      : 0,
     mobileInteractions: results.filter(({ width }) => width === 320 || width === 375).length,
     overflowFailures: results.filter(({ overflow }) => overflow > 1).length,
     zoomEquivalentChecks: zoomEquivalentResults.length,

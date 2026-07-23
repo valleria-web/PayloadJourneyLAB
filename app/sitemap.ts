@@ -5,6 +5,5 @@ import { publicRoutePaths } from "@/content/routes";
 export default function sitemap(): MetadataRoute.Sitemap {
   return publicRoutePaths.map((path) => ({
     url: absoluteSiteUrl(path),
-    priority: path === "/" ? 1 : 0.8,
   }));
 }

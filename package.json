@@ -14,7 +14,8 @@
     "verify:ai-readiness": "node scripts/verify-ai-readiness.mjs",
     "verify:method-practice": "node scripts/verify-method-practice.mjs",
     "verify:cases-evidence": "node scripts/verify-cases-evidence.mjs",
-    "verify:navigation-discovery": "node scripts/verify-navigation-discovery.mjs"
+    "verify:navigation-discovery": "node scripts/verify-navigation-discovery.mjs",
+    "verify:refactor-v3": "node scripts/verify-refactor-v3.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

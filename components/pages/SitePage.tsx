@@ -12,6 +12,7 @@ type RoutePresentation = {
   title: string;
   description: string | readonly string[];
   metadataDescription?: string;
+  metadataTitle?: string;
   introAction?: {
     label: string;
     href: string;
@@ -36,7 +37,7 @@ export function SitePage({ route, children, continuation }: SitePageProps) {
       <JsonLd
         data={getThematicPageStructuredData(
           route.path,
-          route.title,
+          route.metadataTitle ?? route.title,
           route.metadataDescription ??
             (typeof route.description === "string"
               ? route.description
