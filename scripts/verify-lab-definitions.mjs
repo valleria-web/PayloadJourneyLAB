@@ -8,7 +8,7 @@ const port = process.env.LAB_DEFINITIONS_VERIFY_PORT ?? "3218";
 const origin = configuredUrl ?? `http://127.0.0.1:${port}`;
 const route = "/lab-definitions";
 const expectedMetadataDescription =
-  "Definições oficiais de Software Engineering, sistema, caminho, payload, Payload Journey, tracing, Trace Engineering, Trace Engineer, compreensão, decisão e evidência utilizadas pelo Payload Journey LAB.";
+  "Definições oficiais de Software Engineering, sistema, operação, caminho, payload, Payload Journey, tracing, Trace Engineering, Trace Engineer, compreensão, decisão e evidência utilizadas pelo Payload Journey LAB.";
 const definitionIds = [
   "software",
   "software-engineering",
@@ -16,6 +16,7 @@ const definitionIds = [
   "caminho",
   "intencao",
   "expectativa",
+  "operacao",
   "payload",
   "significado-operacional",
   "payload-journey",
@@ -129,6 +130,40 @@ try {
     occurrences(page, /id="definition-[^"]+"/g) === definitionIds.length,
     `${route}: quantidade de definições divergente`,
   );
+  assert(definitionIds.length === 21, `${route}: devem existir 21 definições completas`);
+  const expectationIndex = page.indexOf('id="definition-expectativa"');
+  const operationIndex = page.indexOf('id="definition-operacao"');
+  const payloadIndex = page.indexOf('id="definition-payload"');
+  assert(
+    expectationIndex > -1 &&
+      operationIndex > expectationIndex &&
+      payloadIndex > operationIndex,
+    `${route}: Operação deve ficar depois de Expectativa e antes de Payload`,
+  );
+  const operationDefinition = page.slice(operationIndex, payloadIndex);
+  assert(
+    operationDefinition.includes(
+      "A operação é a unidade causal completa que liga uma origem a um resultado",
+    ),
+    `${route}: unidade causal de Operação ausente`,
+  );
+  assert(
+    operationDefinition.includes("Operação não é payload") &&
+      page.includes("O payload representa partes da operação; não é a operação completa"),
+    `${route}: distinção entre Operação e Payload ausente`,
+  );
+  assert(
+    operationDefinition.includes(
+      "Uma mesma operação pode produzir e consumir vários payloads enquanto atravessa o sistema",
+    ),
+    `${route}: multiplicidade de payloads da Operação ausente`,
+  );
+  assert(
+    operationDefinition.includes("No modelo esperado do HORA.city") &&
+      operationDefinition.includes("Como exemplo conceptual") &&
+      operationDefinition.includes("O tracing da codebase real deverá verificar"),
+    `${route}: Create/Join não está qualificado dentro de Operação`,
+  );
   assert(
     homeDefinitions.includes(
       "o runtime e os mecanismos de transporte tornam a sua travessia efectiva",
@@ -136,6 +171,7 @@ try {
     "Homepage: definição breve de Sistema não inclui runtime e transporte",
   );
   for (const systemRequirement of [
+    "permite que operações sejam recebidas, executadas, transportadas, decididas, persistidas e apresentadas",
     "ambiente operacional formado por runtime, memória, sistema operativo, processos, rede",
     "devem ser considerados sempre que participem causalmente da execução",
     "O payload não se transporta sozinho.",
@@ -145,6 +181,25 @@ try {
     assert(
       page.includes(systemRequirement),
       `${route}: precisão de Sistema ausente — ${systemRequirement}`,
+    );
+  }
+  for (const semanticRequirement of [
+    "O payload é uma representação operacional produzida, transportada ou transformada durante a execução de uma operação.",
+    "Uma mesma operação pode produzir e consumir diferentes payloads enquanto atravessa o sistema.",
+    "Um caminho é a sequência percorrida por uma operação dentro de um sistema.",
+    "Payload Journey é a jornada observável de uma operação através dos payloads, componentes, boundaries, estados, regras e decisões",
+    "Tracing é o acto de seguir e reconstruir uma operação concreta durante a sua execução.",
+    "correlaciona as diferentes representações e verifica a continuidade causal, semântica e temporal da operação",
+    "É reconstruir uma operação completa entre a sua origem e o seu resultado",
+    "Uma evidência isolada representa um ponto da operação; um conjunto de evidências causalmente conectado permite reconstruí-la.",
+    "A operação é a unidade causal completa que liga origem e resultado.",
+    "O payload representa partes da operação. O tracing reconstrói a operação completa.",
+    "A expectativa descreve o comportamento que deveria acontecer.",
+    "A Trace Engineering acompanha, reconstrói e verifica a operação entre a sua origem e o seu resultado.",
+  ]) {
+    assert(
+      page.includes(semanticRequirement),
+      `${route}: integração semântica de Operação ausente — ${semanticRequirement}`,
     );
   }
   assert(page.includes("Trace Engineering é a prática sistemática"), `${route}: definição canónica de Trace Engineering ausente`);
@@ -201,6 +256,10 @@ try {
     checks: {
       homepageDefinitions: 6,
       fullDefinitions: definitionIds.length,
+      operationPosition: "expectativa -> operacao -> payload",
+      operationIsCompleteCausalUnit: true,
+      operationPayloadDistinction: true,
+      operationSupportsMultiplePayloads: true,
       homepagePosition: "proposal -> lab-definitions -> demo",
       canonicalTerm: "Trace Engineering",
       traceEngineerProfessionalClaim: false,

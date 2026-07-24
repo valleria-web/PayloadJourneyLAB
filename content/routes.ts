@@ -80,7 +80,7 @@ export const thematicRoutes = {
       "O Payload Journey LAB utiliza um vocabulário preciso para investigar como operações atravessam sistemas de software.",
     metadataTitle: "LAB Definitions | Payload Journey LAB",
     metadataDescription:
-      "Definições oficiais de Software Engineering, sistema, caminho, payload, Payload Journey, tracing, Trace Engineering, Trace Engineer, compreensão, decisão e evidência utilizadas pelo Payload Journey LAB.",
+      "Definições oficiais de Software Engineering, sistema, operação, caminho, payload, Payload Journey, tracing, Trace Engineering, Trace Engineer, compreensão, decisão e evidência utilizadas pelo Payload Journey LAB.",
   },
   lab: {
     path: "/lab",

@@ -40,7 +40,7 @@ export function HomeLabDefinitionsSection() {
         eyebrow="Definições do LAB"
         eyebrowTone="readable"
         title="LAB Definitions"
-        description="O Payload Journey LAB utiliza um vocabulário preciso para investigar como operações atravessam sistemas de software. Estas definições estabelecem o significado de sistema, caminho, payload, tracing, compreensão e decisão dentro do LAB."
+        description="O Payload Journey LAB utiliza um vocabulário preciso para investigar como operações atravessam sistemas de software. Estas definições estabelecem o significado de sistema, operação, caminho, payload, tracing, compreensão e decisão dentro do LAB."
       />
       <dl className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {homepageLabDefinitions.map((definition) => (
