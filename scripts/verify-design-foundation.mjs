@@ -211,7 +211,7 @@ for (const [role, ratio] of Object.entries(operationalRoleContrasts)) {
   assert(ratio >= 4.5, `Operational role ${role} must meet WCAG AA`);
 }
 assert(
-  sources.button.includes('primary:\n    "border-accent-cta bg-accent-cta text-white'),
+  /primary:\r?\n\s+"border-accent-cta bg-accent-cta text-white/.test(sources.button),
   "The preexisting primary Button variant must remain unchanged",
 );
 assert(
