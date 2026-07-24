@@ -129,6 +129,24 @@ try {
     occurrences(page, /id="definition-[^"]+"/g) === definitionIds.length,
     `${route}: quantidade de definições divergente`,
   );
+  assert(
+    homeDefinitions.includes(
+      "o runtime e os mecanismos de transporte tornam a sua travessia efectiva",
+    ),
+    "Homepage: definição breve de Sistema não inclui runtime e transporte",
+  );
+  for (const systemRequirement of [
+    "ambiente operacional formado por runtime, memória, sistema operativo, processos, rede",
+    "devem ser considerados sempre que participem causalmente da execução",
+    "O payload não se transporta sozinho.",
+    "O runtime torna a travessia executável.",
+    "Os componentes dão estrutura e responsabilidade à operação; o runtime e os mecanismos de transporte tornam a travessia efectiva.",
+  ]) {
+    assert(
+      page.includes(systemRequirement),
+      `${route}: precisão de Sistema ausente — ${systemRequirement}`,
+    );
+  }
   assert(page.includes("Trace Engineering é a prática sistemática"), `${route}: definição canónica de Trace Engineering ausente`);
   assert(!page.includes("Tracing Engineering"), `${route}: nome não canónico Tracing Engineering exposto`);
   assert(
@@ -187,6 +205,8 @@ try {
       canonicalTerm: "Trace Engineering",
       traceEngineerProfessionalClaim: false,
       horaCityExamplesQualified: true,
+      systemIncludesRuntimeAndOperationalEnvironment: true,
+      payloadTransportMechanismsExplicit: true,
       canonicalMetadata: true,
       sitemapEntry: true,
       activeArea: "LAB",
