@@ -36,10 +36,6 @@ export function HomeAppliedInvestigationSection() {
           {content.cta}
           <ArrowRight aria-hidden="true" className="size-4" />
         </Button>
-        <Button href={content.secondaryHref} variant="secondary" className="w-full sm:w-fit">
-          {content.secondaryCta}
-          <ArrowRight aria-hidden="true" className="size-4" />
-        </Button>
       </div>
     </Section>
   );

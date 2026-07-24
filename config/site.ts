@@ -7,6 +7,12 @@ export const siteConfig = {
   origin: "https://www.payloadjourneylab.com",
   language: "pt-BR",
   locale: "pt_BR",
+  featureFlags: {
+    labLogPublic: false,
+  },
+  channels: {
+    youtube: "https://www.youtube.com/@PayloadJourneyLAB",
+  },
   founder: {
     name: "Valéria dos Santos Reiser",
     idPath: "/lab#founder",

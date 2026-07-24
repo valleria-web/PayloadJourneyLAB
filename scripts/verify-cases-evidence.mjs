@@ -8,7 +8,7 @@ const configuredUrl = process.env.CASES_EVIDENCE_VERIFY_URL;
 const port = process.env.CASES_EVIDENCE_VERIFY_PORT ?? "3215";
 const origin = configuredUrl ?? `http://127.0.0.1:${port}`;
 const canonicalOrigin = "https://www.payloadjourneylab.com";
-const routes = ["/cases", "/lablog"];
+const routes = ["/cases"];
 let server;
 let output = "";
 
@@ -90,7 +90,7 @@ try {
     "Hipóteses",
     "Desconhecidos",
     "Limitações do caso",
-    "Fontes documentais localizadas; artefatos técnicos ainda ausentes",
+    "Fontes públicas localizadas; materiais internos permanecem restritos",
     "Cronologia pública ainda não localizada",
     "0 marcos públicos datados",
     "Conclusões autorizadas",
@@ -108,31 +108,16 @@ try {
     'id="case-timeline"',
     'id="case-conclusions"',
   ], "/cases");
-  for (const destination of ["/lablog", "/method", "/protocol", "/investigation", "/learn"]) {
+  for (const destination of ["/method", "/protocol", "/investigation", "/learn"]) {
     assert(cases.includes(`href="${destination}"`), `/cases: link ausente — ${destination}`);
   }
+  assert(!cases.includes('href="/lablog"'), "/cases: LabLog oculto ainda possui link");
+  assert(cases.includes("Os templates e documentos internos do protocolo foram produzidos"), "/cases: existência documental interna ausente");
 
-  const lablog = pages.get("/lablog");
-  for (const text of [
-    "A investigação enquanto acontece",
-    "Um registro datado, não um caso completo",
-    "Nenhuma entrada estruturada foi localizada",
-    "0 entradas publicadas",
-    "Não há entradas para apresentar.",
-    "O caso mostra o conjunto da investigação. O LabLog preserva como ela evoluiu no tempo.",
-    "Responsabilidade humana permanece explícita",
-    "canal de YouTube permanece oculto enquanto os dois destinos localizados não possuem decisão canônica",
-  ]) assert(lablog.includes(text), `/lablog: conteúdo ausente — ${text}`);
-  assert(!/<article\b/i.test(lablog), "/lablog: entrada não localizada foi renderizada");
-  ordered(lablog, [
-    'id="lablog-guide"',
-    'id="lablog-inventory"',
-    'id="lablog-case-relation"',
-    'id="lablog-provenance"',
-  ], "/lablog");
-  for (const destination of ["/cases", "/method", "/protocol", "/learn", "/lab"]) {
-    assert(lablog.includes(`href="${destination}"`), `/lablog: link ausente — ${destination}`);
-  }
+  const lablogResponse = await fetch(`${origin}/lablog`);
+  const lablog = await lablogResponse.text();
+  assert(lablogResponse.status === 404, `/lablog: esperado 404, recebido ${lablogResponse.status}`);
+  assert(/name="robots" content="noindex"/.test(lablog), "/lablog: noindex ausente na resposta 404");
 
   const source = await fs.readFile(path.join(root, "content", "cases.ts"), "utf8");
   assert(source.includes("export const labLogEntries = []"), "Fonte deve preservar zero entradas LabLog");
@@ -161,6 +146,7 @@ try {
     result: "pass",
     checks: {
       routes: routes.length,
+      hiddenLabLogStatus: 404,
       publishedCases: 1,
       locatedDocumentarySources: 2,
       publishedTechnicalArtifacts: 0,

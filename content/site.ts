@@ -50,10 +50,7 @@ export const siteLinks = {
     courseWithCoupon: udemyCourseWithCouponUrl,
   },
   youtube: {
-    labLogCurrent: "https://www.youtube.com/@PayloadJourneyLAB",
-    footerCurrent: "https://www.youtube.com/@Lab-Log",
-    canonical: null,
-    resolutionStatus: "unresolved",
+    canonical: siteConfig.channels.youtube,
   },
   linkedin: {
     personal: null,
@@ -225,12 +222,7 @@ export const labLogContent = {
     "Formação",
   ],
   editorialStatus: "current",
-  youtubeResolution: {
-    canonical: siteLinks.youtube.canonical,
-    status: siteLinks.youtube.resolutionStatus,
-    currentHomepageDestination: siteLinks.youtube.labLogCurrent,
-    currentFooterDestination: siteLinks.youtube.footerCurrent,
-  },
+  youtubeChannel: siteLinks.youtube.canonical,
   historicalPresentation: {
     eyebrow: "LABLOG / YOUTUBE",
     title: "LabLog",
@@ -267,7 +259,9 @@ export const footerContent = {
       title: "Evidências",
       links: [
         { label: "Casos", href: "/cases" },
-        { label: "LabLog", href: "/lablog" },
+        ...(siteConfig.featureFlags.labLogPublic
+          ? [{ label: "LabLog", href: "/lablog" }]
+          : []),
       ],
     },
     {
@@ -284,6 +278,12 @@ export const footerContent = {
           label: "Formação na Udemy",
           href: siteLinks.udemy.courseWithCoupon,
           external: true,
+        },
+        {
+          label: "YouTube · LAB Log",
+          href: siteLinks.youtube.canonical,
+          external: true,
+          ariaLabel: "Canal oficial do Payload Journey LAB no YouTube",
         },
       ],
     },
@@ -304,14 +304,10 @@ export const externalChannels = [
   },
   {
     id: "youtube",
-    label: "YouTube",
+    label: "YouTube · LAB Log",
     role: "editorial",
-    status: "unresolved",
-    publicHref: null,
-    candidates: [
-      siteLinks.youtube.labLogCurrent,
-      siteLinks.youtube.footerCurrent,
-    ],
+    status: "confirmed",
+    publicHref: siteLinks.youtube.canonical,
   },
   {
     id: "linkedin-personal",
@@ -363,7 +359,9 @@ export const routeContinuations = {
     { label: "Conhecer os métodos", href: "/method" },
   ],
   "/cases": [
-    { label: "Acompanhar os LabLogs", href: "/lablog" },
+    ...(siteConfig.featureFlags.labLogPublic
+      ? [{ label: "Acompanhar os LabLogs", href: "/lablog" }]
+      : []),
     { label: "Conhecer os métodos", href: "/method" },
     { label: "Executar o protocolo", href: "/protocol" },
   ],

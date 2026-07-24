@@ -15,7 +15,6 @@ export default function CasesPage() {
         ...route,
         description: casesPageContent.hero.description,
         introAction: casesPageContent.hero.primaryCta,
-        introSecondaryAction: casesPageContent.hero.secondaryCta,
       }}
       continuation={[...routeContinuations["/cases"]]}
     >

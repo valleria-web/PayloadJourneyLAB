@@ -26,7 +26,6 @@ const allRoutes = [
   "/investigation",
   "/lab",
   "/ecosystem",
-  "/lablog",
 ];
 const requestedRoutes = process.env.NAV_VISUAL_ROUTES?.split(",").filter(Boolean) ?? [];
 const routes = requestedRoutes.length > 0
@@ -45,7 +44,6 @@ const intermediateSamples = new Set([
   "/cases",
   "/method",
   "/lab",
-  "/lablog",
 ]);
 const expectedActive = new Map([
   ["/", "Início"],
@@ -56,7 +54,6 @@ const expectedActive = new Map([
   ["/investigation", "Métodos"],
   ["/usmt", "Métodos"],
   ["/cases", "Casos"],
-  ["/lablog", "Casos"],
   ["/lab", "LAB"],
   ["/ecosystem", "LAB"],
 ]);

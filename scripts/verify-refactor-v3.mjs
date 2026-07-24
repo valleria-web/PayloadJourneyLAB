@@ -60,14 +60,9 @@ const routeMetadata = new Map([
     title: "Ecossistema do Payload Journey LAB",
     description: "Conheça como o LAB conecta formação, pesquisa metodológica, investigação aplicada, casos e futuras possibilidades de colaboração.",
   }],
-  ["/lablog", {
-    title: "LabLog — Investigação em andamento",
-    description: "Conheça o espaço destinado a registros datados de investigação, checkpoints, hipóteses, decisões e evidências do Payload Journey LAB.",
-  }],
 ]);
-const allowedJsonLdTypes = new Set(["WebSite", "WebPage", "Person", "CreativeWork"]);
+const allowedJsonLdTypes = new Set(["Organization", "WebSite", "WebPage", "Person", "CreativeWork"]);
 const forbiddenJsonLdTypes = new Set([
-  "Organization",
   "Course",
   "Article",
   "BlogPosting",
@@ -75,10 +70,8 @@ const forbiddenJsonLdTypes = new Set([
   "SearchAction",
   "ItemList",
 ]);
-const youtubeCandidates = [
-  "https://www.youtube.com/@PayloadJourneyLAB",
-  "https://www.youtube.com/@Lab-Log",
-];
+const officialYoutube = "https://www.youtube.com/@PayloadJourneyLAB";
+const alternateYoutube = "https://www.youtube.com/@Lab-Log";
 const childResults = [];
 let server;
 let serverOutput = "";
@@ -257,12 +250,19 @@ try {
         assert(allowedJsonLdTypes.has(type), `${route}: tipo JSON-LD não autorizado — ${type}`);
         assert(!forbiddenJsonLdTypes.has(type), `${route}: tipo JSON-LD proibido — ${type}`);
       }
-      assert(!("sameAs" in node), `${route}: sameAs não confirmado`);
+      if (node["@type"] === "Organization") {
+        assert(
+          Array.isArray(node.sameAs) && node.sameAs.length === 1 && node.sameAs[0] === officialYoutube,
+          `${route}: sameAs institucional incorreto`,
+        );
+      } else {
+        assert(!("sameAs" in node), `${route}: sameAs fora da entidade institucional`);
+      }
     }
 
-    for (const youtube of youtubeCandidates) {
-      assert(!html.includes(youtube), `${route}: YouTube não resolvido exposto`);
-    }
+    assert(html.includes(officialYoutube), `${route}: canal oficial do YouTube ausente`);
+    assert(!html.includes(alternateYoutube), `${route}: canal alternativo do YouTube exposto`);
+    assert(!html.includes('href="/lablog"'), `${route}: LabLog oculto possui link público`);
     assert(!/[A-Z]:\\(?:Users|Documents|Desktop)\\/i.test(html), `${route}: path Windows exposto`);
     assert(!/\/Users\//i.test(html), `${route}: path macOS exposto`);
     assert(!/file:\/\//i.test(html), `${route}: file URI exposta`);
@@ -271,6 +271,10 @@ try {
     pages.set(route, html);
   }
 
+  const hiddenLabLog = await fetch(`${origin}/lablog`);
+  assert(hiddenLabLog.status === 404, `/lablog deve retornar 404`);
+
+  assert(seenTypes.has("Organization"), "Organization institucional ausente");
   assert(seenTypes.has("Person"), "Person da fundadora ausente");
   assert(seenTypes.has("CreativeWork"), "CreativeWork da USMT ausente");
   for (const forbidden of forbiddenJsonLdTypes) {
@@ -293,12 +297,12 @@ try {
   assert(publicCorpus.includes("não constitui evidência externa"), "Limite de evidência externa ausente");
   assert(publicCorpus.includes("Caso interno conduzido pela criadora do método"), "HORA.city perdeu contexto interno");
   assert(publicCorpus.includes("Formação na Udemy"), "Udemy secundária ausente");
-  assert(!publicCorpus.includes(">YouTube<"), "YouTube renderizado");
+  assert(publicCorpus.includes(">YouTube · LAB Log</a>"), "YouTube oficial ausente");
   assert(!publicCorpus.includes(">LinkedIn"), "LinkedIn não confirmado renderizado");
 
   const sitemap = await (await fetch(`${origin}/sitemap.xml`)).text();
   const sitemapLocations = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-  assert(sitemapLocations.length === routeMetadata.size, "Sitemap deve conter 11 URLs");
+  assert(sitemapLocations.length === routeMetadata.size, "Sitemap deve conter somente URLs públicas");
   assert(new Set(sitemapLocations).size === routeMetadata.size, "Sitemap contém URL duplicada");
   for (const route of routeMetadata.keys()) {
     const canonical = `${canonicalOrigin}${route === "/" ? "/" : route}`;
@@ -306,6 +310,7 @@ try {
   }
   assert(!/<priority>|<changefreq>|<lastmod>/i.test(sitemap), "Sitemap contém sinal sem fonte");
   assert(!sitemap.includes("/about"), "Sitemap contém redirect");
+  assert(!sitemap.includes("/lablog"), "Sitemap contém LabLog oculto");
 
   const robots = await (await fetch(`${origin}/robots.txt`)).text();
   for (const directive of [
@@ -375,7 +380,7 @@ try {
       twitterRoutes: routeMetadata.size,
       socialImage: "/brand/logo.png",
       structuredDataTypes: [...seenTypes].sort(),
-      organizationOmitted: true,
+      organizationPublished: true,
       courseOmitted: true,
       articleTypesOmitted: true,
       labLogItemListOmitted: true,
@@ -383,7 +388,7 @@ try {
       sitemapSignalsWithoutSource: 0,
       crawlerPolicyPreserved: true,
       redirects: 3,
-      youtubePublicLinks: 0,
+      youtubeCanonical: officialYoutube,
       linkedinPublicLinks: 0,
       collaborationCta: false,
       localPathsExposed: 0,

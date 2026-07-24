@@ -20,9 +20,9 @@ const indexableRoutes = [
   "/investigation",
   "/lab",
   "/ecosystem",
-  "/lablog",
 ];
 const forbiddenRoutes = [
+  "/lablog",
   "/mapping",
   "/reverse-payload-journey",
   "/resources",
@@ -151,7 +151,7 @@ try {
     ],
     "Synthetic homepage",
   );
-  for (const destination of ["/usmt", "/payload-journey", "/protocol", "/cases", "/ecosystem", "/learn", "/lablog", "/lab"]) {
+  for (const destination of ["/usmt", "/payload-journey", "/protocol", "/cases", "/ecosystem", "/learn", "/lab"]) {
     assert(home.includes(`href="${destination}"`), `Homepage is missing real CTA ${destination}`);
   }
   for (const requirement of [
@@ -322,13 +322,6 @@ try {
       "Colaboração",
       "Estas são possibilidades de colaboração",
     ],
-    "/lablog": [
-      "A investigação enquanto acontece",
-      "Um registro datado, não um caso completo",
-      "Nenhuma entrada estruturada foi localizada",
-      "0 entradas publicadas",
-      "Responsabilidade humana permanece explícita",
-    ],
   };
   for (const [route, requirements] of Object.entries(routeRequirements)) {
     const html = pages.get(route);
@@ -359,7 +352,6 @@ try {
     "Learning architecture",
   );
   assertOrderedIds(pages.get("/cases"), ["case-reading-guide", "case-registry", "case-hora-city", "case-evidence", "case-timeline", "case-conclusions"], "HORA.city evidence registry");
-  assertOrderedIds(pages.get("/lablog"), ["lablog-guide", "lablog-inventory", "lablog-case-relation", "lablog-provenance"], "LabLog evidence registry");
   assertOrderedIds(pages.get("/protocol"), ["freeze", "map", "detect", "restore"], "Protocol");
   assertOrderedIds(pages.get("/method"), ["method-payload-journey", "method-usmt", "method-reverse-payload-journey", "method-operational-payload-path", "method-track-to-origin"], "Methods");
   assertOrderedIds(pages.get("/investigation"), ["investigation-characteristics", "investigation-practice", "track-mode", "trace-engineering", "trace-engineer", "investigation-questions", "investigation-relations", "investigation-authority", "investigation-limits"], "Investigative practice");
@@ -384,12 +376,9 @@ try {
   ]) {
     assert(normalizedCorpus.includes(destination), `Missing preserved external link: ${destination}`);
   }
-  for (const unresolvedDestination of [
-    "https://www.youtube.com/@PayloadJourneyLAB",
-    "https://www.youtube.com/@Lab-Log",
-  ]) {
-    assert(!normalizedCorpus.includes(unresolvedDestination), `Unresolved YouTube link rendered: ${unresolvedDestination}`);
-  }
+  assert(normalizedCorpus.includes("https://www.youtube.com/@PayloadJourneyLAB"), "Official YouTube link is missing");
+  assert(!normalizedCorpus.includes("https://www.youtube.com/@Lab-Log"), "Alternate YouTube link is rendered");
+  assert(!corpus.includes('href="/lablog"'), "Hidden LabLog remains publicly linked");
   assert(!/Política de privacidade|Termos de uso|Impressum/.test(corpus), "Nonexistent legal pages must not be rendered");
   assert(!/parcerias ativas|pilotos ativos|contratos ativos/i.test(corpus), "Unconfirmed collaboration claims must not render");
   assert(!/profissão reconhecida|cargo padronizado|standard externo/i.test(corpus), "External recognition claims must not render");
@@ -403,6 +392,7 @@ try {
   assert(sitemapResponse.status === 200, `/sitemap.xml returned HTTP ${sitemapResponse.status}`);
   assert(sitemap.includes("https://www.payloadjourneylab.com/lab"), "Sitemap must include canonical /lab");
   assert(!sitemap.includes("https://www.payloadjourneylab.com/about"), "Sitemap must exclude /about");
+  assert(!sitemap.includes("https://www.payloadjourneylab.com/lablog"), "Sitemap must exclude hidden /lablog");
 
   for (const [route, html] of pages) {
     const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
@@ -430,7 +420,7 @@ try {
   const payloadJourneyLabSource = sources[2];
   const canonicalSource = sources.join("\n");
   assert(canonicalSource.includes('editorialResolution: "unresolved"'), "HORA.city must remain unresolved");
-  assert(canonicalSource.includes('resolutionStatus: "unresolved"'), "YouTube must remain unresolved");
+  assert(canonicalSource.includes("siteConfig.channels.youtube"), "YouTube must use the canonical site configuration");
   assert(canonicalSource.includes("expiration: null"), "Coupon expiration must remain null");
   assert(canonicalSource.includes('historicalPolicies: ["Política de privacidade", "Termos de uso"]'), "Historical legal labels must remain server-side");
   assert(canonicalSource.includes('professionalLink: siteLinks.linkedin.personal') && canonicalSource.includes('personal: null') && canonicalSource.includes('institutional: null'), "Personal and institutional LinkedIn links must remain distinct and null");
@@ -447,7 +437,7 @@ try {
   const footerSource = await fs.readFile(path.join(repositoryRoot, "components/layout/SiteFooter.tsx"), "utf8");
   const siteSource = await fs.readFile(path.join(repositoryRoot, "content/site.ts"), "utf8");
   assert(footerSource.includes("footerContent.groups") && !footerSource.includes("siteNavigation"), "Footer navigation must remain independent");
-  assert(siteSource.includes('labLogCurrent: "https://www.youtube.com/@PayloadJourneyLAB"') && siteSource.includes('footerCurrent: "https://www.youtube.com/@Lab-Log"'), "Both YouTube destinations must remain distinct");
+  assert(siteSource.includes("YouTube · LAB Log") && !siteSource.includes("@Lab-Log"), "Footer must expose only the official YouTube channel");
 
   const sourceRoots = ["app", "components", "content", "lib"];
   const sourceFiles = (await Promise.all(sourceRoots.map((root) => listSourceFiles(path.join(repositoryRoot, root))))).flat();
@@ -469,10 +459,10 @@ try {
       demoSharedRoutes: 2,
       flowNodes: flowIds.length,
       internalLinksValidated: true,
-      externalDestinations: 1,
+      externalDestinations: 2,
       clientComponentBoundaries: clientDirectives,
       footerNavigationIndependent: true,
-      unresolvedEditorialDecisionsProtected: true,
+      canonicalChannelsResolved: true,
       nonexistentLegalPagesOmitted: true,
       publicContentPreservationGuarded: true,
     },

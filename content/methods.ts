@@ -3,6 +3,7 @@ import type {
   InvestigationStep,
   LearningMethod,
   MethodPagePresentation,
+  ProtocolDocument,
   ProtocolPagePresentation,
 } from "@/types/content";
 
@@ -146,7 +147,7 @@ export const methodsContent = [
     status: "Documentado",
     limits: [
       "Um caminho provável não deve ser apresentado como confirmado.",
-      "Nenhum ficheiro canônico de OPP produzido foi localizado no repositório.",
+      "O template interno não equivale a um caminho operacional confirmado de um caso público.",
     ],
     evidence: "Definição estruturada em content/methods.ts.",
     claimKind: "Estado documentado",
@@ -244,7 +245,7 @@ export const methodPagePresentation = {
     eyebrow: "OBSERVAÇÃO E REGISTRO",
     title: "Checkpoints e documentos de investigação",
     description:
-      "Os conceitos são documentados; a existência de um nome na metodologia não significa que um ficheiro canônico esteja disponível.",
+      "Os conceitos e o conjunto documental existem, mas os materiais operacionais permanecem sob validação controlada e acesso restrito.",
     items: [
       {
         title: "Checkpoints",
@@ -256,10 +257,10 @@ export const methodPagePresentation = {
       {
         title: "Documentos de investigação",
         question: "Como preservar, confrontar e comunicar o que foi observado?",
-        result: "Registros, planos e relatórios pretendidos para organizar evidências.",
-        status: "Não localizado",
+        result: "Registros, planos, templates e relatórios internos para organizar evidências.",
+        status: "Produzido · Acesso restrito",
         evidence:
-          "Case Brief, Checkpoint Plan, Freeze Record, Detection Report e pacotes de evidência aparecem como termos, não como ficheiros canônicos.",
+          "O conjunto documental foi produzido e encontra-se sob aplicação e validação controladas, sem download público.",
       },
     ],
   },
@@ -464,6 +465,88 @@ export const investigationCycleSectionContent = {
     "O protocolo organiza a sequência. Os instrumentos apoiam cada fase. A evidência pode obrigar a investigação a retornar e rever o recorte.",
 } as const;
 
+const restrictedDocumentState = {
+  existence: "produced",
+  validation: "internal-validation",
+  visibility: "restricted",
+  downloadable: false,
+} as const;
+
+export const protocolDocuments = [
+  {
+    title: "Arquitectura Oficial do Conjunto Documental",
+    description: "Arquitetura que organiza os documentos, registros e relações do protocolo.",
+    category: "Arquitetura e protocolos",
+    ...restrictedDocumentState,
+  },
+  {
+    title: "Protocolo Oficial do Trace Engineer",
+    description: "Documento oficial que estrutura a atuação investigativa do Trace Engineer.",
+    category: "Arquitetura e protocolos",
+    ...restrictedDocumentState,
+  },
+  {
+    title: "Protocolo Geral do Trace Engineer",
+    description: "Protocolo geral para condução e registro de investigações.",
+    category: "Arquitetura e protocolos",
+    ...restrictedDocumentState,
+  },
+  {
+    title: "Protocolo Geral do Trace Engineer — HORA.city",
+    description: "Aplicação controlada do protocolo geral ao contexto HORA.city.",
+    category: "Arquitetura e protocolos",
+    ...restrictedDocumentState,
+  },
+  {
+    title: "Freeze Record",
+    description: "Registro do contexto, estado e comportamento preservados no início da investigação.",
+    category: "Registros e evidências",
+    ...restrictedDocumentState,
+  },
+  {
+    title: "Checkpoint Plan",
+    description: "Plano para posicionamento e propósito dos checkpoints de observação.",
+    category: "Registros e evidências",
+    ...restrictedDocumentState,
+  },
+  {
+    title: "Trace Evidence Record",
+    description: "Registro estruturado de uma evidência produzida durante o tracing.",
+    category: "Registros e evidências",
+    ...restrictedDocumentState,
+  },
+  {
+    title: "Trace Evidence Package",
+    description: "Pacote de evidências revisáveis reunidas para uma investigação.",
+    category: "Registros e evidências",
+    ...restrictedDocumentState,
+  },
+  {
+    title: "Detection Report",
+    description: "Relatório de divergências, hipóteses confrontadas e limites observados.",
+    category: "Registros e evidências",
+    ...restrictedDocumentState,
+  },
+  {
+    title: "USMT Draft — template",
+    description: "Template interno para elaboração inicial do modelo esperado.",
+    category: "Modelagem e alinhamento",
+    ...restrictedDocumentState,
+  },
+  {
+    title: "Operational Payload Path Draft — template",
+    description: "Template interno para representar o caminho operacional sob investigação.",
+    category: "Modelagem e alinhamento",
+    ...restrictedDocumentState,
+  },
+  {
+    title: "USMT Evidence-Aligned",
+    description: "Documento que confronta o modelo esperado com as evidências observadas.",
+    category: "Modelagem e alinhamento",
+    ...restrictedDocumentState,
+  },
+] satisfies ProtocolDocument[];
+
 export const protocolPagePresentation = {
   hero: {
     id: "protocol",
@@ -515,65 +598,12 @@ export const protocolPagePresentation = {
   },
   artifacts: {
     eyebrow: "ARTEFATOS E ESTADOS REAIS",
-    title: "Nomear um artefato não significa que ele já esteja disponível",
+    title: "Conjunto documental produzido, com acesso restrito",
     description:
-      "O inventário separa conceitos documentados, registros públicos do caso e ficheiros canônicos não localizados.",
-    items: [
-      {
-        title: "Operational Payload Path",
-        description: "Instrumento para representar o caminho operacional provável ou confirmado.",
-        status: "Documentado",
-        evidence: "Definição em content/methods.ts; nenhum OPP produzido foi localizado.",
-      },
-      {
-        title: "Checkpoints",
-        description: "Pontos deliberados de observação e coleta de evidência.",
-        status: "Documentado",
-        evidence: "Definições no protocolo, formação e narrativa do HORA.city.",
-      },
-      {
-        title: "Evidências públicas do HORA.city",
-        description: "Fatos e estado documental apresentados na rota de casos.",
-        status: "Em uso no caso",
-        evidence: "content/hora-city.ts e rota /cases.",
-      },
-      {
-        title: "Case Brief",
-        description: "Registro pretendido para delimitação do caso.",
-        status: "Não localizado",
-        evidence: "Menções documentais; nenhum ficheiro canônico localizado.",
-      },
-      {
-        title: "Checkpoint Plan",
-        description: "Plano pretendido para posicionamento de checkpoints.",
-        status: "Não localizado",
-        evidence: "Menções documentais; nenhum ficheiro canônico localizado.",
-      },
-      {
-        title: "Freeze Record",
-        description: "Registro pretendido do estado congelado.",
-        status: "Não localizado",
-        evidence: "Menções documentais; nenhum ficheiro canônico localizado.",
-      },
-      {
-        title: "Detection Report",
-        description: "Relatório pretendido para comunicar divergências e evidências.",
-        status: "Não localizado",
-        evidence: "Menções documentais; nenhum ficheiro canônico localizado.",
-      },
-      {
-        title: "Trace Evidence Record / Package",
-        description: "Registros e pacote pretendidos para preservar evidências revisáveis.",
-        status: "Não localizado",
-        evidence: "Menções documentais; nenhum ficheiro canônico localizado.",
-      },
-      {
-        title: "USMT Evidence-Aligned",
-        description: "Artefato pretendido para alinhar modelo e evidência.",
-        status: "Não localizado",
-        evidence: "Menções documentais; nenhum ficheiro canônico localizado.",
-      },
-    ],
+      "Os títulos tornam a arquitetura documental reconhecível sem expor o conteúdo interno. Título público não significa conteúdo público; documento produzido não significa documento disponível.",
+    accessNotice:
+      "O conjunto documental do Protocolo Oficial do Trace Engineer foi produzido e encontra-se sob aplicação e validação controladas. O acesso está restrito aos grupos de formação, pilotos e investigadores autorizados. Os materiais não estão disponíveis para download público.",
+    items: protocolDocuments,
   },
   limits: {
     eyebrow: "LIMITES DO PROTOCOLO",

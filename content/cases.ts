@@ -138,7 +138,6 @@ export const casesPageContent = {
       "Um caso demonstra o trabalho realizado naquele contexto. Não demonstra automaticamente eficácia geral, transferibilidade ou validade universal.",
     ],
     primaryCta: { label: "Explorar o caso HORA.city", href: "#case-hora-city" },
-    secondaryCta: { label: "Acompanhar os LabLogs", href: "/lablog" },
   },
   readingGuide: {
     eyebrow: "COMO LER UM CASO",
@@ -162,9 +161,9 @@ export const casesPageContent = {
   },
   evidence: {
     eyebrow: "EVIDÊNCIAS DISPONÍVEIS",
-    title: "Fontes documentais localizadas; artefatos técnicos ainda ausentes",
+    title: "Fontes públicas localizadas; materiais internos permanecem restritos",
     description:
-      "As duas fontes abaixo sustentam a existência e o estado documental do caso. Elas não substituem logs, traces, checkpoints ou execução observada.",
+      "As duas fontes abaixo sustentam a existência e o estado público do caso. O conjunto documental interno do protocolo existe, mas não substitui a publicação de evidências específicas desta investigação.",
   },
   timeline: {
     eyebrow: "LINHA DE INVESTIGAÇÃO",
@@ -175,7 +174,6 @@ export const casesPageContent = {
   future:
     "Próximos casos dependerão de novas investigações documentadas.",
   continuation: [
-    { label: "Acompanhar o LabLog", href: "/lablog" },
     { label: "Conhecer os métodos", href: "/method" },
     { label: "Executar o protocolo", href: "/protocol" },
     { label: "Ver a prática", href: "/investigation" },
@@ -200,9 +198,9 @@ export const labLogPageContent = {
   },
   inventory: {
     eyebrow: "INVENTÁRIO REAL",
-    title: "Nenhuma entrada estruturada foi localizada",
+    title: "Nenhuma entrada pública foi autorizada",
     description:
-      "A rota e os temas existem, mas não foi localizado um conjunto de entradas que satisfaça o contrato mínimo. Nenhum histórico foi criado para preencher essa ausência.",
+      "O LabLog ainda não possui uma publicação que satisfaça o contrato editorial e a autorização pública. Isso não significa ausência de documentação interna, que sustenta o trabalho investigativo sem se tornar automaticamente uma publicação.",
     status: "0 entradas publicadas",
   },
   relation: {
@@ -226,7 +224,7 @@ export const labLogPageContent = {
   themes: labLogContent.themes,
   channel: {
     status:
-      "O canal de YouTube permanece oculto enquanto os dois destinos localizados não possuem decisão canônica.",
+      "O canal oficial no YouTube é https://www.youtube.com/@PayloadJourneyLAB. Um vídeo pode acompanhar uma publicação, mas não substitui os critérios editoriais de uma entrada do LabLog.",
   },
   continuation: [
     { label: "Ver os casos", href: "/cases" },

@@ -37,11 +37,11 @@ export function LabLogPageSections() {
           <Badge variant="neutral">{content.inventory.status}</Badge>
           <p className="mt-5 text-base font-semibold leading-7 text-ink">
             {labLogEntries.length === 0
-              ? "Não há entradas para apresentar. A ausência é parte do estado documental atual."
+              ? "Não há entradas públicas autorizadas para apresentar."
               : `${labLogEntries.length} entradas localizadas.`}
           </p>
           <p className="mt-4 text-sm leading-6 text-text-muted">
-            Documentos de sprint, temas e um canal configurado não foram convertidos automaticamente em entradas.
+            Documentos internos sustentam a investigação, mas não são publicações. Somente um Case File, paper, nota metodológica ou registro autorizado pode tornar-se uma entrada.
           </p>
         </Card>
 
@@ -63,7 +63,7 @@ export function LabLogPageSections() {
       <Section id="lablog-case-relation" className="border-b border-line">
         <SectionHeader {...content.relation} />
         <p className="mt-7 max-w-3xl rounded-foundation-card border border-border-default bg-accent-muted p-5 text-lg font-bold leading-8 text-ink">
-          Nenhuma entrada está ligada ao caso HORA.city porque nenhuma entrada estruturada foi localizada.
+          Nenhuma entrada pública está ligada ao caso HORA.city porque a investigação em curso ainda não foi autorizada como Case File ou publicação.
         </p>
       </Section>
 
