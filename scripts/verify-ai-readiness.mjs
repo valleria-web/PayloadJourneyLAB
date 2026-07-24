@@ -21,6 +21,7 @@ const indexableRoutes = [
   "/method",
   "/protocol",
   "/investigation",
+  "/lab-definitions",
   "/lab",
   "/ecosystem",
 ];
@@ -176,6 +177,12 @@ try {
       "Compreender antes de modificar",
       "Função e perfil investigativo em desenvolvimento",
       "Direção futura de pesquisa e formação",
+    ],
+    "/lab-definitions": [
+      "LAB Definitions",
+      "Trace Engineering é a prática sistemática",
+      "Trace Engineer é uma função e um perfil investigativo em desenvolvimento",
+      "No modelo esperado do HORA.city",
     ],
     "/learn": [
       "Começar por um payload. Avançar para o sistema.",

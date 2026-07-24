@@ -88,7 +88,7 @@ export const navigationAreas = {
   learn: ["/payload-journey", "/learn"],
   methods: ["/method", "/protocol", "/investigation", "/usmt"],
   cases: ["/cases", "/lablog"],
-  lab: ["/lab", "/ecosystem"],
+  lab: ["/lab", "/ecosystem", "/lab-definitions"],
 } as const satisfies Record<NavigationArea, readonly string[]>;
 
 export function getNavigationArea(currentPath: string): NavigationArea | null {
@@ -269,6 +269,7 @@ export const footerContent = {
       links: [
         { label: "Sobre o LAB", href: "/lab" },
         { label: "Ecossistema", href: "/ecosystem" },
+        { label: "LAB Definitions", href: "/lab-definitions" },
       ],
     },
     {
@@ -375,6 +376,11 @@ export const routeContinuations = {
     { label: "Conhecer Software System Investigation", href: "/investigation" },
     { label: "Ver o caso HORA.city", href: "/cases" },
     { label: "Começar a aprender", href: "/learn" },
+  ],
+  "/lab-definitions": [
+    { label: "Voltar ao início", href: "/" },
+    { label: "Conhecer o LAB", href: "/lab" },
+    { label: "Conhecer os métodos", href: "/method" },
   ],
   "/ecosystem": [
     { label: "Começar a aprender", href: "/learn" },

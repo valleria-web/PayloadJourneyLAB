@@ -13,6 +13,7 @@ import {
   HomeLabSection,
 } from "@/components/sections/HomePathwaysSections";
 import { PayloadFlowDemoSection } from "@/components/sections/PayloadFlowDemoSection";
+import { HomeLabDefinitionsSection } from "@/components/sections/LabDefinitionsSections";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -32,6 +33,7 @@ export default function Home() {
         <HomeWhyNowSection />
         <HomeLabConstructionSection />
         <HomeProposalSection />
+        <HomeLabDefinitionsSection />
         <PayloadFlowDemoSection homepagePresentation />
         <HomeMethodOverviewSection />
         <HomeAppliedInvestigationSection />
