@@ -55,7 +55,7 @@ const routeMetadata = new Map([
   }],
   ["/lab-definitions", {
     title: "LAB Definitions | Payload Journey LAB",
-    description: "Definições oficiais de Software Engineering, sistema, caminho, payload, Payload Journey, tracing, Trace Engineering, Trace Engineer, compreensão, decisão e evidência utilizadas pelo Payload Journey LAB.",
+    description: "Definições oficiais de Software Engineering, sistema, operação, caminho, payload, Payload Journey, tracing, Trace Engineering, Trace Engineer, compreensão, decisão e evidência utilizadas pelo Payload Journey LAB.",
   }],
   ["/lab", {
     title: "Sobre o Payload Journey LAB",

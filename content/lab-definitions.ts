@@ -10,7 +10,7 @@ export type LabDefinition = {
 
 export const labDefinitionsIntroduction = [
   "O Payload Journey LAB utiliza um vocabulário preciso para investigar como operações atravessam sistemas de software.",
-  "Estas definições estabelecem o significado de software, sistema, caminho, payload, tracing, compreensão, decisão e evidência dentro do LAB.",
+  "Estas definições estabelecem o significado de software, sistema, operação, caminho, payload, tracing, compreensão, decisão e evidência dentro do LAB.",
 ] as const;
 
 export const labDefinitions = [
@@ -48,6 +48,7 @@ export const labDefinitions = [
     blocks: [
       "Um sistema de software é uma estrutura organizada de componentes, responsabilidades, estados, eventos, regras, contratos, interfaces, boundaries e mecanismos de execução, comunicação e transporte.",
       "O sistema é a estrutura completa que torna possível transformar uma intenção, entrada ou acontecimento numa operação executável e num resultado observável.",
+      "O sistema é a estrutura completa que permite que operações sejam recebidas, executadas, transportadas, decididas, persistidas e apresentadas.",
       "Ele não é apenas uma sequência de chamadas, um conjunto de ficheiros ou a lógica escrita pela aplicação.",
       "Um sistema em execução também depende de um ambiente operacional formado por runtime, memória, sistema operativo, processos, rede, protocolos, drivers, filas, bases de dados e outros mecanismos de infraestrutura.",
       "O runtime, o sistema operativo e a rede podem estar dentro do limite do sistema investigado ou fazer parte do seu ambiente operacional. Para o LAB, devem ser considerados sempre que participem causalmente da execução.",
@@ -121,13 +122,65 @@ export const labDefinitions = [
     ],
   },
   {
+    id: "operacao",
+    title: "Operação",
+    summary:
+      "A operação é a unidade causal completa que liga uma origem a um resultado dentro de um sistema de software.",
+    homepage: false,
+    blocks: [
+      "Uma operação é uma execução concreta iniciada para realizar uma intenção, responder a um evento ou produzir um resultado dentro de um sistema de software.",
+      "A operação é a unidade causal completa que liga uma origem a um resultado.",
+      "Ela começa quando o sistema reconhece uma intenção, uma solicitação, um evento ou outra condição de activação.",
+      "Durante a sua execução, a operação pode atravessar componentes, interfaces, boundaries, runtimes, processos e mecanismos de transporte.",
+      "Ela pode mudar de representação, consultar estados, activar regras, produzir decisões, alterar dados e gerar efeitos observáveis.",
+      "A operação não é um único payload, uma única função, uma única request ou uma única chamada.",
+      "Funções e componentes executam partes de uma operação.",
+      "Requests, DTOs, commands, eventos, documentos persistidos, responses e projections podem representar diferentes momentos da mesma operação.",
+      "Uma mesma operação pode produzir e consumir vários payloads enquanto atravessa o sistema.",
+      "O que conecta essas representações é a continuidade causal, semântica e temporal da operação.",
+      "A intenção explica por que a operação começa.",
+      "O sistema fornece a estrutura, os componentes, as regras, o runtime e os mecanismos de execução e transporte.",
+      "O caminho indica a sequência percorrida.",
+      "O payload transporta uma representação operacional durante a travessia.",
+      "A decisão resulta da aplicação de regras aos dados e estados encontrados.",
+      "O resultado é o efeito ou estado produzido ao final da execução.",
+      "No modelo esperado do HORA.city, Send Heart é uma operação.",
+      "Como exemplo conceptual, ela começa com uma intenção de envio, recebe os dados necessários, atravessa os caminhos do sistema, consulta o estado actual, encontra uma decisão entre Create e Join e termina num resultado observável.",
+      "O tracing da codebase real deverá verificar o percurso efectivamente executado antes que essa sequência seja apresentada como descrição confirmada da implementação actual.",
+      "Compreender uma operação significa conseguir explicar:",
+      [
+        "onde começou",
+        "o que a activou",
+        "qual identidade a acompanha",
+        "que payloads foram produzidos",
+        "por quais componentes passou",
+        "que boundaries atravessou",
+        "que mecanismos realizaram o transporte",
+        "que estados consultou",
+        "que regras activou",
+        "onde ocorreu a decisão",
+        "que estado foi alterado",
+        "que resultado foi produzido",
+      ],
+      "Operação não é payload: o payload é uma representação transportável utilizada durante a operação, que é mais ampla e pode incluir vários payloads.",
+      "Operação não é função: uma função pode executar uma parte da operação, que pode atravessar diversas funções, componentes, processos e contextos de execução.",
+      "Operação não é request: uma request é uma representação ou mecanismo de entrada utilizado num trecho do caminho; a operação pode começar antes da request e continuar depois da response.",
+      "Operação não é evento: um evento regista que algo aconteceu, enquanto uma operação é a execução causal completa iniciada ou influenciada por esse acontecimento.",
+      "Operação não é command: um command representa uma solicitação interpretada para executar uma acção, enquanto a operação é a execução completa desencadeada ou coordenada a partir dessa solicitação.",
+      "Operação não é decisão: a decisão acontece dentro da operação quando uma regra é aplicada a dados e estados concretos.",
+      "Operação não é resultado: o resultado é o estado ou efeito produzido pela operação.",
+    ],
+  },
+  {
     id: "payload",
     title: "Payload",
     summary:
       "O payload é a representação operacional que permite que uma intenção, um evento ou uma operação atravesse os caminhos do sistema.",
     homepage: true,
     blocks: [
-      "Payload é a representação operacional que permite que uma intenção, um evento, um estado ou uma operação atravesse os caminhos de um sistema.",
+      "O payload é uma representação operacional produzida, transportada ou transformada durante a execução de uma operação.",
+      "Uma mesma operação pode produzir e consumir diferentes payloads enquanto atravessa o sistema.",
+      "O payload representa partes da operação; não é a operação completa.",
       "O payload é deliberadamente projectado pela Engenharia de Software.",
       "A Engenharia de Software define quais dados precisam de circular, como serão estruturados, que nomes e tipos terão, quais campos serão obrigatórios, que contratos os componentes aceitarão e como cada representação poderá ser transformada.",
       "Durante a execução, o sistema instancia essas representações com os valores concretos de cada operação.",
@@ -170,7 +223,8 @@ export const labDefinitions = [
       "Payload Journey acompanha uma operação através de representações, componentes, camadas, estados e decisões.",
     homepage: false,
     blocks: [
-      "Payload Journey é o caminho percorrido por uma operação através das suas diferentes representações, componentes, camadas, estados e decisões.",
+      "Payload Journey é a jornada observável de uma operação através dos payloads, componentes, boundaries, estados, regras e decisões que participam da sua execução.",
+      "Ele acompanha a operação através das suas sucessivas representações.",
       "A jornada pode começar num clique, num sensor, numa integração, num processo automático ou noutro sistema.",
       "Ela continua enquanto a operação é capturada, estruturada, validada, interpretada, decidida, persistida e apresentada.",
       "O Payload Journey não observa apenas onde os dados passaram.",
@@ -184,7 +238,7 @@ export const labDefinitions = [
       "Tracing é o acto de seguir uma operação e construir uma explicação causal sustentada por evidências.",
     homepage: false,
     blocks: [
-      "Tracing é o acto de seguir uma operação durante a sua execução.",
+      "Tracing é o acto de seguir e reconstruir uma operação concreta durante a sua execução.",
       "O tracing procura reconstruir:",
       [
         "onde a operação começou",
@@ -212,6 +266,7 @@ export const labDefinitions = [
     blocks: [
       "Trace Engineering é a prática sistemática de tornar operações de software observáveis, reconstruíveis e verificáveis.",
       "Ela adopta a perspectiva interna da execução, acompanha uma operação através dos caminhos do sistema e compara o percurso esperado com o percurso realmente executado.",
+      "Ela conhece o percurso esperado, observa o percurso executado, correlaciona as diferentes representações e verifica a continuidade causal, semântica e temporal da operação.",
       "Ela combina modelação, identidade de tracing, checkpoints, instrumentação, observação de estados, captura de evidências e análise causal.",
       "A sua função é verificar se a intenção atravessou correctamente a estrutura construída, se as transformações foram válidas, se o significado operacional foi preservado, se a regra correcta foi aplicada e se o resultado final permaneceu ligado à origem da operação.",
       "A Software Engineering constrói o sistema e define como uma operação poderá atravessá-lo.",
@@ -259,7 +314,8 @@ export const labDefinitions = [
         "onde esse resultado é decidido",
       ],
       "Compreensão não é apenas reconhecer ficheiros, funções, classes ou componentes.",
-      "É reconstruir a relação entre intenção, execução, representação, regra, decisão, estado e efeito.",
+      "É reconstruir uma operação completa entre a sua origem e o seu resultado, relacionando intenção, execução, representação, regra, decisão, estado e efeito.",
+      "Compreender é explicar o que o software faz, por que faz e onde decide.",
       "Uma explicação sem ligação com a execução real é apenas uma descrição ou hipótese.",
       "Uma explicação conectada por evidências é compreensão verificável.",
     ],
@@ -360,7 +416,7 @@ export const labDefinitions = [
         "o resultado apresentado",
       ],
       "Uma evidência isolada mostra apenas um ponto.",
-      "Um conjunto de evidências causalmente conectado permite reconstruir a travessia.",
+      "Uma evidência isolada representa um ponto da operação; um conjunto de evidências causalmente conectado permite reconstruí-la.",
     ],
   },
   {
@@ -384,6 +440,8 @@ export const homepageLabDefinitions = labDefinitions.filter(
 
 export const labDefinitionsHighlights = [
   "A Engenharia de Software constrói sistemas de software completos.",
+  "A operação é a unidade causal completa que liga origem e resultado.",
+  "O payload representa partes da operação. O tracing reconstrói a operação completa.",
   "Os componentes dão estrutura e responsabilidade à operação; o runtime e os mecanismos de transporte tornam a travessia efectiva.",
   "As pontes são a metáfora dos caminhos de travessia dentro desses sistemas.",
   "O payload transporta uma representação operacional através desses caminhos.",
@@ -395,18 +453,19 @@ export const labDefinitionsHighlights = [
 
 export const labDefinitionsSynthesis = [
   "Uma intenção origina uma operação.",
-  "A Engenharia de Software constrói o sistema completo.",
-  "Dentro do sistema, ela define componentes, regras, estados, contratos e caminhos operacionais.",
-  "O runtime executa as instruções e os mecanismos de transporte realizam a passagem efectiva entre boundaries.",
-  "As pontes representam esses caminhos de travessia.",
-  "O payload transporta uma representação operacional através dos caminhos.",
-  "Os componentes interpretam e transformam essa representação.",
-  "O domínio aplica regras ao payload e ao estado actual.",
+  "A expectativa descreve o comportamento que deveria acontecer.",
+  "A Engenharia de Software constrói o sistema completo e torna a operação executável.",
+  "O sistema fornece componentes, responsabilidades, regras, estados, contratos, runtimes e mecanismos de transporte.",
+  "O caminho é a sequência percorrida pela operação.",
+  "As pontes representam os caminhos dessa travessia.",
+  "O payload representa e transporta partes da operação através desse caminho.",
+  "Os componentes interpretam e transformam essas representações.",
+  "O domínio aplica regras aos dados e estados encontrados.",
   "A decisão produz uma alteração de estado.",
   "O sistema devolve e apresenta o resultado.",
-  "A Trace Engineering acompanha, reconstrói e verifica essa travessia.",
+  "A Trace Engineering acompanha, reconstrói e verifica a operação entre a sua origem e o seu resultado.",
   "O Trace Engineer entra no flow sem perder de vista o sistema.",
-  "Compreender o sistema é conseguir explicar o que ele fez, por que fez e onde decidiu.",
+  "Compreender o sistema é conseguir explicar o que a operação fez, por que produziu determinado resultado e onde ocorreu a decisão.",
 ] as const;
 
 export const labDefinitionsPageContent = {
@@ -415,7 +474,7 @@ export const labDefinitionsPageContent = {
   description: labDefinitionsIntroduction,
   metadataTitle: "LAB Definitions | Payload Journey LAB",
   metadataDescription:
-    "Definições oficiais de Software Engineering, sistema, caminho, payload, Payload Journey, tracing, Trace Engineering, Trace Engineer, compreensão, decisão e evidência utilizadas pelo Payload Journey LAB.",
+    "Definições oficiais de Software Engineering, sistema, operação, caminho, payload, Payload Journey, tracing, Trace Engineering, Trace Engineer, compreensão, decisão e evidência utilizadas pelo Payload Journey LAB.",
   glossary: {
     eyebrow: "Vocabulário oficial",
     title: "Definições para investigar operações através do sistema",
