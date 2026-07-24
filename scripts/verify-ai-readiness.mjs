@@ -23,7 +23,6 @@ const indexableRoutes = [
   "/investigation",
   "/lab",
   "/ecosystem",
-  "/lablog",
 ];
 
 let serverProcess;
@@ -124,9 +123,17 @@ try {
     const ids = graph.map((node) => node["@id"]).filter(Boolean);
     assert(new Set(ids).size === ids.length, `${route} JSON-LD contains duplicate @id values`);
     assert(graph.every((node) => !JSON.stringify(node).includes(apexOrigin)), `${route} JSON-LD leaks apex URLs`);
-    assert(graph.every((node) => node["@type"] !== "Organization"), `${route} must not imply an Organization entity`);
+    const organization = graph.find((node) => node["@type"] === "Organization");
+    assert(organization, `${route} must identify the LAB organization`);
+    assert(
+      organization.sameAs?.includes("https://www.youtube.com/@PayloadJourneyLAB"),
+      `${route} organization must expose the official YouTube channel`,
+    );
     pages.set(route, { html, graph });
   }
+
+  const hiddenLabLog = await fetch(`${targetUrl}/lablog`);
+  assert(hiddenLabLog.status === 404, `/lablog must return 404 while unpublished`);
 
   const labTypes = pages.get("/lab").graph.map((node) => node["@type"]);
   assert(labTypes.includes("Person"), "/lab JSON-LD must identify the founder as Person");
@@ -164,7 +171,7 @@ try {
     ],
     "/usmt": ["A USMT é um template metodológico autoral desenvolvido no Payload Journey LAB"],
     "/method": ["Instrumentos diferentes para perguntas diferentes", "Página canônica disponível"],
-    "/protocol": ["Nomear um artefato não significa que ele já esteja disponível", "Não localizado"],
+    "/protocol": ["Conjunto documental produzido, com acesso restrito", "Não publicado para download público"],
     "/investigation": [
       "Compreender antes de modificar",
       "Função e perfil investigativo em desenvolvimento",
@@ -183,11 +190,6 @@ try {
       "Caso interno conduzido pela criadora do método",
       "não constitui evidência externa",
     ],
-    "/lablog": [
-      "Nenhuma entrada estruturada foi localizada",
-      "0 entradas publicadas",
-      "responsabilidade humana",
-    ],
   };
   for (const [route, requirements] of Object.entries(visibleRequirements)) {
     for (const requirement of requirements) {
@@ -196,6 +198,8 @@ try {
   }
 
   const publicCorpus = [...pages.values()].map(({ html }) => html).join("\n");
+  assert(!publicCorpus.includes("https://www.youtube.com/@Lab-Log"), "Alternate YouTube channel remains public");
+  assert(!publicCorpus.includes('href="/lablog"'), "Hidden LabLog remains publicly linked");
   assert(!publicCorpus.includes(incorrectUsmtName), "An incorrect USMT expansion remains public");
   const homeDescription = "Laboratório de Software System Investigation que pesquisa como flow, payload tracing, modelagem, checkpoints e evidências de runtime podem ajudar estudantes e developers a compreender codebases complexas.";
   assert(getMetaContent(pages.get("/").html, "name", "description") === homeDescription, "Homepage metadata must preserve the approved research positioning");
@@ -222,7 +226,8 @@ try {
   const sitemapResponse = await fetch(`${targetUrl}/sitemap.xml`);
   const sitemap = await sitemapResponse.text();
   assert(sitemapResponse.status === 200, "Sitemap must return 200");
-  assert(occurrences(sitemap, /<loc>/g) === indexableRoutes.length, "Sitemap must contain 11 canonical routes");
+  assert(occurrences(sitemap, /<loc>/g) === indexableRoutes.length, "Sitemap must contain the public canonical routes");
+  assert(!sitemap.includes("/lablog"), "Sitemap must exclude hidden LabLog");
   assert(!sitemap.includes(apexOrigin), "Sitemap leaks apex URLs");
   assert(!sitemap.includes("/about"), "Sitemap must exclude /about");
 

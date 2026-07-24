@@ -30,6 +30,7 @@ export type FooterLink = {
   label: string;
   href: string;
   external?: boolean;
+  ariaLabel?: string;
 };
 
 export type FooterGroup = {
@@ -223,12 +224,7 @@ export type LabLogPresentation = {
   }>;
   action?: CtaItem & { state: "external"; href: string };
   editorialStatus: "current";
-  youtubeResolution: {
-    canonical: string | null;
-    status: "unresolved" | "resolved";
-    currentHomepageDestination: string;
-    currentFooterDestination: string;
-  };
+  youtubeChannel: string;
   historicalPresentation: {
     eyebrow: string;
     title: string;
@@ -522,10 +518,7 @@ export type SiteIdentity = {
 };
 
 export type YouTubeLinks = {
-  labLogCurrent: string;
-  footerCurrent: string;
-  canonical: string | null;
-  resolutionStatus: "unresolved" | "resolved";
+  canonical: string;
 };
 
 export type SiteLinks = {
@@ -746,7 +739,7 @@ export type MethodPagePresentation = {
       title: string;
       question: string;
       result: string;
-      status: "Documentado" | "Não localizado";
+      status: "Documentado" | "Produzido · Acesso restrito";
       evidence: string;
     }>;
   };
@@ -764,11 +757,27 @@ export type MethodPagePresentation = {
   continuation: Array<{ label: string; href: string }>;
 };
 
-export type ProtocolArtifactStatus =
-  | "Documentado"
-  | "Em uso no caso"
-  | "Em construção"
-  | "Não localizado";
+export type DocumentExistence = "planned" | "produced";
+export type DocumentValidation =
+  | "not-started"
+  | "internal-validation"
+  | "applied-validation"
+  | "validated";
+export type DocumentVisibility = "public" | "restricted";
+export type ProtocolDocumentCategory =
+  | "Arquitetura e protocolos"
+  | "Registros e evidências"
+  | "Modelagem e alinhamento";
+
+export type ProtocolDocument = {
+  title: string;
+  description: string;
+  category: ProtocolDocumentCategory;
+  existence: DocumentExistence;
+  validation: DocumentValidation;
+  visibility: DocumentVisibility;
+  downloadable: boolean;
+};
 
 export type ProtocolPagePresentation = {
   hero: MethodPracticeHero;
@@ -788,12 +797,8 @@ export type ProtocolPagePresentation = {
     eyebrow: string;
     title: string;
     description: string;
-    items: Array<{
-      title: string;
-      description: string;
-      status: ProtocolArtifactStatus;
-      evidence: string;
-    }>;
+    accessNotice: string;
+    items: ProtocolDocument[];
   };
   limits: {
     eyebrow: string;

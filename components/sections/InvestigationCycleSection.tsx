@@ -14,6 +14,11 @@ function List({ items }: { items: readonly string[] }) {
 
 export function InvestigationCycleSection() {
   const page = protocolPagePresentation;
+  const documentCategories = [
+    "Arquitetura e protocolos",
+    "Registros e evidências",
+    "Modelagem e alinhamento",
+  ] as const;
   return (
     <>
       <Section id="protocol-inputs" className="border-b border-line">
@@ -53,7 +58,38 @@ export function InvestigationCycleSection() {
       </Section>
       <Section id="protocol-artifacts" variant="soft" className="border-b border-line">
         <SectionHeader {...page.artifacts} />
-        <div className="mt-10 grid gap-4 lg:grid-cols-3">{page.artifacts.items.map((item) => <Card key={item.title}><div className="flex flex-wrap items-start justify-between gap-3"><h3 className="font-bold text-ink">{item.title}</h3><Badge variant="neutral">{item.status}</Badge></div><p className="mt-4 text-sm leading-6 text-text-muted">{item.description}</p><p className="mt-3 text-sm leading-6 text-text-muted"><strong className="text-ink">Evidência:</strong> {item.evidence}</p></Card>)}</div>
+        <p className="mt-7 max-w-5xl rounded-foundation-card border border-border-default bg-surface-card p-5 font-semibold leading-7 text-ink">
+          {page.artifacts.accessNotice}
+        </p>
+        <div className="mt-10 space-y-10">
+          {documentCategories.map((category, categoryIndex) => (
+            <section key={category} aria-labelledby={`document-category-${categoryIndex + 1}`}>
+              <h3
+                id={`document-category-${categoryIndex + 1}`}
+                className="text-xl font-bold text-ink"
+              >
+                {category}
+              </h3>
+              <div className="mt-5 grid gap-4 lg:grid-cols-3">
+                {page.artifacts.items
+                  .filter((item) => item.category === category)
+                  .map((item) => (
+                    <Card key={item.title}>
+                      <h4 className="font-bold text-ink">{item.title}</h4>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        <Badge variant="neutral">Produzido</Badge>
+                        <Badge variant="neutral">Acesso restrito</Badge>
+                      </div>
+                      <p className="mt-4 text-sm leading-6 text-text-muted">{item.description}</p>
+                      <p className="mt-3 text-sm font-semibold leading-6 text-ink">
+                        Não publicado para download público
+                      </p>
+                    </Card>
+                  ))}
+              </div>
+            </section>
+          ))}
+        </div>
       </Section>
       <Section id="protocol-limits" className="border-b border-line">
         <SectionHeader eyebrow={page.limits.eyebrow} title={page.limits.title} />

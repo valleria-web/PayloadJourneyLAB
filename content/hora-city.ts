@@ -1,4 +1,5 @@
 import { homepageAnchors } from "@/content/site";
+import { siteConfig } from "@/config/site";
 import type { CtaItem, HoraCityCase } from "@/types/content";
 
 const futureCta = (label: string, status: string): CtaItem => ({
@@ -127,11 +128,17 @@ export const horaCityCase = {
       { label: "Missão", value: horaCityFacts.mission },
       { label: "Status", value: "Investigação em andamento" },
     ],
-    primaryCta: {
-      label: "Acompanhar o caso no LabLog",
-      state: "internal",
-      href: `/lablog#${homepageAnchors.labLog}`,
-    },
+    primaryCta: siteConfig.featureFlags.labLogPublic
+      ? {
+          label: "Acompanhar o caso no LabLog",
+          state: "internal",
+          href: `/lablog#${homepageAnchors.labLog}`,
+        }
+      : {
+          label: "Ver o estado público do caso",
+          state: "internal",
+          href: "/cases",
+        },
     secondaryCta: {
       label: "Rever o flow",
       state: "internal",
@@ -200,14 +207,18 @@ export const horaCityCase = {
       state: "anchor",
       href: `#${homepageAnchors.caseStudy}`,
     },
-    {
-      label: "Acompanhar no LabLog",
-      state: "anchor",
-      href: `#${homepageAnchors.labLog}`,
-    },
+    ...(siteConfig.featureFlags.labLogPublic
+      ? [{
+          label: "Acompanhar no LabLog",
+          state: "anchor" as const,
+          href: `#${homepageAnchors.labLog}`,
+        }]
+      : []),
   ],
   futureActions: [
     futureCta("Explorar o Study Case", "Em preparação"),
-    futureCta("Assistir ao LabLog", "Em preparação"),
+    ...(siteConfig.featureFlags.labLogPublic
+      ? [futureCta("Assistir ao LabLog", "Em preparação")]
+      : []),
   ],
 } as const satisfies HoraCityCase;

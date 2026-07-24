@@ -590,14 +590,16 @@ export const learningPresentation = {
         href: "/learn#formacao",
         status: "Conteúdo disponível",
       },
-      {
-        title: "LabLog",
-        description:
-          "Rota e canal configurados para acompanhar temas e desenvolvimento público do LAB.",
-        learning: "Acompanhar registros e limites do trabalho em andamento.",
-        href: "/lablog",
-        status: "Conteúdo disponível",
-      },
+      ...(siteConfig.featureFlags.labLogPublic
+        ? [{
+            title: "LabLog",
+            description:
+              "Case Files, papers, notas e registros públicos autorizados do LAB.",
+            learning: "Acompanhar publicações e limites declarados.",
+            href: "/lablog",
+            status: "Conteúdo disponível" as const,
+          }]
+        : []),
     ],
   },
   initialPath: {
@@ -693,7 +695,9 @@ export const learningPresentation = {
     { label: "Começar pelo Payload Journey", href: "/payload-journey" },
     { label: "Conhecer os métodos", href: "/method" },
     { label: "Estudar o caso", href: "/cases" },
-    { label: "Acompanhar o LabLog", href: "/lablog" },
+    ...(siteConfig.featureFlags.labLogPublic
+      ? [{ label: "Acompanhar o LabLog", href: "/lablog" }]
+      : []),
   ],
 } as const satisfies LearningPresentation;
 
@@ -710,9 +714,9 @@ export const siteContent = {
     intro: siteIdentity.shortDescription,
     primaryAction: siteCtas.heroTraining,
     secondaryAction: {
-      label: "Acompanhar o LabLog",
+      label: "Examinar o caso HORA.city",
       state: "internal",
-      href: "/lablog",
+      href: "/cases",
     },
   },
   lab: {
@@ -820,12 +824,14 @@ export const siteContent = {
           status: "Disponível",
           evidence: "Rota /learn e link de formação configurado no conteúdo.",
         },
-        {
-          title: "LabLog",
-          description: "A rota apresenta temas acompanhados e aponta para o canal atualmente configurado, sem inventariar publicações individuais.",
-          status: "Disponível",
-          evidence: "Rota /lablog e destino de canal configurado.",
-        },
+        ...(siteConfig.featureFlags.labLogPublic
+          ? [{
+              title: "LabLog",
+              description: "Publicações autorizadas apresentam Case Files, papers, notas e registros públicos.",
+              status: "Disponível" as const,
+              evidence: "Rota pública /lablog.",
+            }]
+          : []),
       ],
     },
     construction: {
@@ -850,8 +856,8 @@ export const siteContent = {
         },
         {
           title: "Conjunto documental de evidências",
-          description: "Registros, mapas, relatórios e pacotes de evidência são objetivos do piloto; ficheiros canônicos desse conjunto não foram localizados.",
-          status: "Em construção",
+          description: "O conjunto documental foi produzido e está sob aplicação e validação controladas, com acesso restrito.",
+          status: "Evidência parcial",
         },
         {
           title: "Avaliação pedagógica",
@@ -885,7 +891,7 @@ export const siteContent = {
           title: "Formalizar",
           description: "Consolidar os métodos, o protocolo e o conjunto documental que sustentam uma investigação verificável.",
           status: "Evidência parcial",
-          evidence: "Métodos e protocolo documentados; conjunto documental de evidências ainda incompleto.",
+          evidence: "Métodos, protocolo e conjunto documental produzidos; aplicação e validação controladas permanecem em andamento.",
         },
         {
           number: "03",
@@ -898,15 +904,15 @@ export const siteContent = {
           number: "04",
           title: "Evidenciar",
           description: "Produzir checkpoints, registros, mapas operacionais, relatórios de detecção e pacotes de evidência.",
-          status: "Em construção",
-          evidence: "Os tipos de artefato são definidos como objetivo, mas o conjunto canônico não foi localizado.",
+          status: "Evidência parcial",
+          evidence: "O conjunto documental foi produzido e permanece restrito enquanto é aplicado e validado em contextos controlados.",
         },
         {
           number: "05",
           title: "Ensinar",
-          description: "Transformar o conhecimento produzido em formação, vídeos, LabLogs, materiais e experiências pedagógicas.",
+          description: "Transformar o conhecimento produzido em formação, vídeos, materiais autorizados e experiências pedagógicas.",
           status: "Evidência parcial",
-          evidence: "Trilha, formação e rota LabLog existem; eficácia pedagógica não foi avaliada.",
+          evidence: "Trilha, formação e canal oficial no YouTube existem; eficácia pedagógica não foi avaliada.",
         },
         {
           number: "06",
@@ -1237,7 +1243,7 @@ export const siteContent = {
       {
         title: "Aprender",
         description:
-          "Cursos, vídeos, LabLogs e experiências pedagógicas para desenvolver visão estrutural e capacidade de tracing.",
+          "Cursos, vídeos e experiências pedagógicas para desenvolver visão estrutural e capacidade de tracing.",
       },
       {
         title: "Investigar",
@@ -1250,7 +1256,7 @@ export const siteContent = {
           "Pilotos acadêmicos, estudos, pesquisa aplicada e parcerias com estudantes, universidades, laboratórios e organizações.",
       },
     ] satisfies CardItem[],
-    links: ["Curso", "LabLogs", "Workshops", "Programa Trace Engineer", "Pilotos acadêmicos"],
+    links: ["Curso", "YouTube", "Workshops", "Programa Trace Engineer", "Pilotos acadêmicos"],
   },
   betaCta: {
     eyebrow: "Formação",
@@ -1317,7 +1323,12 @@ export const siteContent = {
     action: futureCta("Contato em configuração", "Contato em configuração"),
     channels: [
       futureCta("LinkedIn", "Canal em configuração"),
-      futureCta("YouTube", "Canal em configuração"),
+      {
+        label: "YouTube",
+        state: "external",
+        href: siteLinks.youtube.canonical,
+        status: "Canal oficial",
+      },
       futureCta("GitHub", "Canal em configuração"),
     ] satisfies CtaItem[],
   },

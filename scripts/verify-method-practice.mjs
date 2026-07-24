@@ -89,7 +89,7 @@ try {
     "Track to Origin",
     "Checkpoints",
     "Documentos de investigação",
-    "Não localizado",
+    "Produzido · Acesso restrito",
     "Uma sequência possível, não uma receita única",
   ]) assert(method.includes(text), `/method: conteúdo ausente — ${text}`);
   assert(method.includes('href="/payload-journey"') && method.includes('href="/usmt"'), "/method: páginas canônicas sem links");
@@ -104,10 +104,26 @@ try {
     "Evidências possíveis",
     "Critério de saída:",
     "quando os checkpoints revelam que o caminho estava incompleto",
-    "Nomear um artefato não significa que ele já esteja disponível",
-    "Não localizado",
+    "Conjunto documental produzido, com acesso restrito",
+    "Não publicado para download público",
     "não garante causa raiz",
   ]) assert(protocol.toLowerCase().includes(text.toLowerCase()), `/protocol: conteúdo ausente — ${text}`);
+  for (const title of [
+    "Arquitectura Oficial do Conjunto Documental",
+    "Protocolo Oficial do Trace Engineer",
+    "Protocolo Geral do Trace Engineer",
+    "Protocolo Geral do Trace Engineer — HORA.city",
+    "Freeze Record",
+    "Checkpoint Plan",
+    "Trace Evidence Record",
+    "Trace Evidence Package",
+    "Detection Report",
+    "USMT Draft — template",
+    "Operational Payload Path Draft — template",
+    "USMT Evidence-Aligned",
+  ]) assert(protocol.includes(title), `/protocol: documento ausente — ${title}`);
+  const artifactSection = protocol.slice(protocol.indexOf('id="protocol-artifacts"'), protocol.indexOf('id="protocol-limits"'));
+  assert(!artifactSection.includes("<a "), "/protocol: documento restrito não pode possuir link");
 
   const investigation = pages.get("/investigation");
   for (const text of [

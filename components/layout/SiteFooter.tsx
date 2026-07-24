@@ -36,6 +36,7 @@ export function SiteFooter() {
                   <a
                     key={item.href}
                     href={item.href}
+                    aria-label={"ariaLabel" in item ? item.ariaLabel : undefined}
                     target={"external" in item && item.external ? "_blank" : undefined}
                     rel={"external" in item && item.external ? "noopener noreferrer" : undefined}
                     className="w-fit py-1 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal"

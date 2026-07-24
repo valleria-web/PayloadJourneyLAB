@@ -175,7 +175,7 @@ export const homepageSummaries = {
     confirmed: [
       "Métodos e instrumentos descritos publicamente",
       "Um caso real, HORA.city, com fatos confirmados e estado atual documentado",
-      "Uma trilha de aprendizagem e registros públicos no LabLog",
+      "Uma trilha de aprendizagem e um canal oficial no YouTube",
     ],
     investigating: [
       "Se flow e payload tracing ajudam a construir compreensão mais cedo",
@@ -184,8 +184,6 @@ export const homepageSummaries = {
     ],
     href: "/cases",
     cta: "Examinar o caso HORA.city",
-    secondaryHref: "/lablog",
-    secondaryCta: "Acompanhar o LabLog",
   },
   ecosystem: {
     eyebrow: "Ecossistema do LAB",
@@ -201,7 +199,6 @@ export const homepageSummaries = {
     description: [
       "O LAB está sendo construído prioritariamente para estudantes de Engenharia de Software, developers em início de carreira e pessoas diante de codebases desconhecidas, legadas ou complexas.",
       "A hipótese investigada é que flow, payload tracing, causalidade, checkpoints e evidências de execução observada podem ajudar esse público a formar mais cedo um modelo mental verificável do sistema.",
-      "Isso ainda não é apresentado como resultado comprovado. O LAB documenta métodos, casos e critérios para avaliar a hipótese sem prometer empregabilidade, onboarding mais rápido ou autonomia garantida.",
     ],
     closing:
       "A ambição pedagógica é tornar a investigação de sistemas uma capacidade ensinável, praticável e documentável.",
@@ -230,12 +227,11 @@ export const homepageSummaries = {
   },
   learning: {
     eyebrow: "Formação e conteúdo",
-    title: "Comece pela trilha e acompanhe o LabLog",
+    title: "Comece pela trilha e acompanhe os canais oficiais",
     description:
-      "A formação oferece uma entrada prática; o LabLog acompanha flows, anomalias e o desenvolvimento público dos métodos.",
+      "A formação oferece uma entrada prática e o canal oficial no YouTube compartilha conteúdos autorizados do LAB.",
     items: [
       { label: "Formação", href: "/learn", cta: "Explorar a formação" },
-      { label: "LabLog", href: "/lablog", cta: "Acompanhar o LabLog" },
     ],
   },
   lab: {
@@ -257,5 +253,7 @@ export const homepageMetadata = {
 
 export const publicRoutePaths = [
   "/",
-  ...Object.values(thematicRoutes).map((route) => route.path),
+  ...Object.values(thematicRoutes)
+    .map((route) => route.path)
+    .filter((path) => siteConfig.featureFlags.labLogPublic || path !== "/lablog"),
 ] as const;

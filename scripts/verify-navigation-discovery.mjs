@@ -18,7 +18,6 @@ const routes = [
   "/investigation",
   "/lab",
   "/ecosystem",
-  "/lablog",
 ];
 const expectedAreas = new Map([
   ["/", "Início"],
@@ -29,14 +28,11 @@ const expectedAreas = new Map([
   ["/investigation", "Métodos"],
   ["/usmt", "Métodos"],
   ["/cases", "Casos"],
-  ["/lablog", "Casos"],
   ["/lab", "LAB"],
   ["/ecosystem", "LAB"],
 ]);
-const youtubeCandidates = [
-  "https://www.youtube.com/@PayloadJourneyLAB",
-  "https://www.youtube.com/@Lab-Log",
-];
+const officialYoutube = "https://www.youtube.com/@PayloadJourneyLAB";
+const alternateYoutube = "https://www.youtube.com/@Lab-Log";
 let server;
 let serverOutput = "";
 
@@ -109,15 +105,20 @@ try {
     assert(!/[A-Z]:\\(?:Users|Documents|Desktop)\\/i.test(html), `${route}: path local exposto`);
     assert(!/file:\/\//i.test(html), `${route}: URI local exposta`);
     assert(!/(?:api[_-]?key|client[_-]?secret|access[_-]?token)\s*[=:]\s*["'][^"']+/i.test(html), `${route}: segredo exposto`);
-    for (const candidate of youtubeCandidates) {
-      assert(!html.includes(candidate), `${route}: YouTube não canônico exposto`);
-    }
+    assert(html.includes(officialYoutube), `${route}: canal oficial do YouTube ausente`);
+    assert(!html.includes(alternateYoutube), `${route}: canal alternativo do YouTube exposto`);
+    assert(!html.includes('href="/lablog"'), `${route}: LabLog oculto ainda possui link público`);
     const activeLabels = [...html.matchAll(/<a[^>]*aria-current="page"[^>]*>([\s\S]*?)<\/a>/g)]
       .map((match) => match[1].replace(/<[^>]+>/g, "").trim());
     assert(activeLabels.includes(expectedAreas.get(route)), `${route}: área ativa incorreta`);
     pages.set(route, html);
     graph.set(route, [...new Set(internalLinks(html))]);
   }
+
+  const hiddenLabLog = await fetch(`${origin}/lablog`);
+  const hiddenLabLogHtml = await hiddenLabLog.text();
+  assert(hiddenLabLog.status === 404, `/lablog: esperado 404, recebido ${hiddenLabLog.status}`);
+  assert(/name="robots" content="noindex"/.test(hiddenLabLogHtml), "/lablog: noindex gerado por notFound ausente");
 
   const home = pages.get("/");
   const headerOrder = ["Início", "Aprender", "Métodos", "Casos", "LAB"];
@@ -135,7 +136,8 @@ try {
     assert(home.includes(`href="${route}"`), `Footer: rota ausente — ${route}`);
   }
   assert(home.includes("Formação na Udemy"), "Footer: Udemy ausente");
-  assert(!home.includes(">YouTube<"), "Footer: YouTube não resolvido exposto");
+  assert(home.includes(">YouTube · LAB Log</a>"), "Footer: canal oficial do YouTube ausente");
+  assert(home.includes('aria-label="Canal oficial do Payload Journey LAB no YouTube"'), "Footer: aria-label do YouTube ausente");
   assert(!home.includes(">LinkedIn"), "Footer: LinkedIn não configurado exposto");
 
   const redirect = await fetch(`${origin}/about`, { redirect: "manual" });
@@ -146,6 +148,7 @@ try {
   const sitemap = await (await fetch(`${origin}/sitemap.xml`)).text();
   const sitemapLocations = [...sitemap.matchAll(/<loc>[^<]+<\/loc>/g)];
   assert(sitemapLocations.length === routes.length, "Sitemap: quantidade de rotas incorreta");
+  assert(!sitemap.includes("/lablog</loc>"), "Sitemap: LabLog oculto não deve ser publicado");
   assert(!sitemap.includes("/about</loc>"), "Sitemap: redirect legado não deve ser canônico");
 
   const distances = shortestDistances(graph, "/");
@@ -155,14 +158,16 @@ try {
   }
 
   const source = await fs.readFile(path.join(root, "content", "site.ts"), "utf8");
+  const configSource = await fs.readFile(path.join(root, "config", "site.ts"), "utf8");
   const mobileSource = await fs.readFile(path.join(root, "components", "layout", "MobileNavigation.tsx"), "utf8");
   const appEntries = (await fs.readdir(path.join(root, "app"), { withFileTypes: true }))
     .filter((entry) => entry.isDirectory() && !entry.name.startsWith("_"))
     .map((entry) => entry.name)
     .filter((entry) => entry !== "icon.svg");
 
-  assert(source.includes('canonical: null'), "YouTube: canonical deve permanecer null");
-  assert(source.includes('resolutionStatus: "unresolved"'), "YouTube: estado unresolved ausente");
+  assert(configSource.includes('labLogPublic: false'), "LabLog: feature flag desativada ausente");
+  assert(configSource.includes(officialYoutube), "YouTube: configuração canônica ausente");
+  assert(!source.includes(alternateYoutube), "YouTube: canal alternativo permanece na configuração");
   assert(source.includes('"linkedin-personal"') && source.includes('"linkedin-institutional"'), "LinkedIn: contextos não separados");
   assert(source.includes('role: "formative-secondary"'), "Udemy: papel secundário ausente");
   assert(!source.includes('collaborationCta:'), "Colaboração: CTA sem destino real");
@@ -197,8 +202,9 @@ try {
       sitemapRoutes: sitemapLocations.length,
       primaryNavigationItems: headerOrder.length,
       footerGroups: 5,
-      publicExternalChannels: ["Udemy"],
-      youtubeCanonical: null,
+      publicExternalChannels: ["Udemy", "YouTube"],
+      youtubeCanonical: officialYoutube,
+      labLogPublic: false,
       linkedinContextsSeparated: true,
       collaborationCta: false,
       activeAreas: expectedAreas.size,

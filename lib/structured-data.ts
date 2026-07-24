@@ -4,6 +4,7 @@ type JsonPrimitive = string | number | boolean | null;
 export type JsonLdValue = JsonPrimitive | JsonLdValue[] | { [key: string]: JsonLdValue };
 
 const websiteId = `${siteConfig.origin}/#website`;
+const organizationId = `${siteConfig.origin}/#organization`;
 const founderId = absoluteSiteUrl(siteConfig.founder.idPath);
 const usmtId = absoluteSiteUrl(siteConfig.usmt.idPath);
 
@@ -15,6 +16,18 @@ function getWebsiteNode(): JsonLdValue {
     name: siteConfig.name,
     description: siteConfig.description,
     inLanguage: siteConfig.language,
+    publisher: { "@id": organizationId },
+  };
+}
+
+function getOrganizationNode(): JsonLdValue {
+  return {
+    "@type": "Organization",
+    "@id": organizationId,
+    name: siteConfig.name,
+    url: siteConfig.origin,
+    description: siteConfig.description,
+    sameAs: [siteConfig.channels.youtube],
   };
 }
 
@@ -68,6 +81,7 @@ export function getHomePageStructuredData({
   return {
     "@context": "https://schema.org",
     "@graph": [
+      getOrganizationNode(),
       getWebsiteNode(),
       getWebPageNode("/", title, description),
     ],
@@ -80,7 +94,7 @@ export function getThematicPageStructuredData(
   description: string,
 ): JsonLdValue {
   const page = getWebPageNode(path, name, description);
-  const graph: JsonLdValue[] = [getWebsiteNode(), page];
+  const graph: JsonLdValue[] = [getOrganizationNode(), getWebsiteNode(), page];
 
   if (path === "/lab") {
     page.mentions = { "@id": founderId };

@@ -147,10 +147,10 @@ export function CasesPageSections() {
           ))}
         </div>
         <Card className="mt-6 border-dashed">
-          <Badge variant="neutral">Não localizado</Badge>
+          <Badge variant="neutral">Não publicado</Badge>
           <h3 className="mt-4 text-xl font-bold text-ink">Artefatos técnicos públicos do caso</h3>
           <p className="mt-3 text-sm leading-6 text-text-muted">
-            Logs, traces, payloads observados, checkpoints, OPP produzido, Detection Report e pacote de evidências não foram localizados neste repositório.
+            Os templates e documentos internos do protocolo foram produzidos e têm acesso restrito. Logs, traces, payloads observados, checkpoints, OPP, Detection Report e pacotes de evidência específicos deste caso não estão publicados para acesso público.
           </p>
         </Card>
       </Section>

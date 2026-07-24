@@ -7,7 +7,7 @@ const repositoryRoot = path.resolve(scriptDirectory, "..");
 const configuredUrl = process.env.LEARN_VERIFY_URL;
 const port = process.env.LEARN_VERIFY_PORT ?? "3214";
 const targetUrl = configuredUrl ?? `http://127.0.0.1:${port}`;
-const internalRoutes = ["/payload-journey", "/usmt", "/method", "/protocol", "/cases", "/lablog"];
+const internalRoutes = ["/payload-journey", "/usmt", "/method", "/protocol", "/cases"];
 
 let serverProcess;
 let serverOutput = "";
@@ -182,7 +182,10 @@ try {
     html.includes('rel="canonical" href="https://www.payloadjourneylab.com/learn"'),
     "/learn canonical is missing",
   );
-  assert(!html.includes('"@type":"Organization"'), "/learn must not imply an Organization entity");
+  assert(html.includes('"@type":"Organization"'), "/learn must identify the LAB organization");
+  assert(html.includes("https://www.youtube.com/@PayloadJourneyLAB"), "/learn must expose the official YouTube channel");
+  assert(!html.includes("https://www.youtube.com/@Lab-Log"), "/learn must not expose the alternate YouTube channel");
+  assert(!html.includes('href="/lablog"'), "/learn must not link to hidden LabLog");
 
   const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
   assert(new Set(ids).size === ids.length, "/learn contains duplicate DOM ids");
