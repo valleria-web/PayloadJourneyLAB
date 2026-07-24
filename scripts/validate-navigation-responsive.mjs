@@ -24,6 +24,7 @@ const allRoutes = [
   "/method",
   "/protocol",
   "/investigation",
+  "/lab-definitions",
   "/lab",
   "/ecosystem",
 ];
@@ -43,6 +44,7 @@ const intermediateSamples = new Set([
   "/learn",
   "/cases",
   "/method",
+  "/lab-definitions",
   "/lab",
 ]);
 const expectedActive = new Map([
@@ -54,6 +56,7 @@ const expectedActive = new Map([
   ["/investigation", "Métodos"],
   ["/usmt", "Métodos"],
   ["/cases", "Casos"],
+  ["/lab-definitions", "LAB"],
   ["/lab", "LAB"],
   ["/ecosystem", "LAB"],
 ]);

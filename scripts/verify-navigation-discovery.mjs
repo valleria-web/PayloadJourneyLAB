@@ -16,6 +16,7 @@ const routes = [
   "/method",
   "/protocol",
   "/investigation",
+  "/lab-definitions",
   "/lab",
   "/ecosystem",
 ];
@@ -28,6 +29,7 @@ const expectedAreas = new Map([
   ["/investigation", "Métodos"],
   ["/usmt", "Métodos"],
   ["/cases", "Casos"],
+  ["/lab-definitions", "LAB"],
   ["/lab", "LAB"],
   ["/ecosystem", "LAB"],
 ]);
@@ -181,6 +183,7 @@ try {
     "ecosystem",
     "investigation",
     "lab",
+    "lab-definitions",
     "lablog",
     "learn",
     "method",
@@ -213,7 +216,7 @@ try {
       maximumDiscoveryDepth: Math.max(...distances.values()),
       localPathsExposed: 0,
       sensitivePatternsExposed: 0,
-      newRoutes: 0,
+      newRoutes: 1,
     },
   }, null, 2));
 } catch (error) {

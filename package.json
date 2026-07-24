@@ -9,6 +9,7 @@
     "lint": "next lint",
     "verify:homepage": "node scripts/verify-homepage.mjs",
     "verify:lab": "node scripts/verify-lab.mjs",
+    "verify:lab-definitions": "node scripts/verify-lab-definitions.mjs",
     "verify:learn": "node scripts/verify-learn.mjs",
     "verify:foundation": "node scripts/verify-design-foundation.mjs",
     "verify:ai-readiness": "node scripts/verify-ai-readiness.mjs",

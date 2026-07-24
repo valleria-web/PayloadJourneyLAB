@@ -14,6 +14,7 @@ export type CanonicalRoutePath =
   | "/method"
   | "/protocol"
   | "/investigation"
+  | "/lab-definitions"
   | "/lab"
   | "/ecosystem"
   | "/lablog";

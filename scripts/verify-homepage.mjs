@@ -18,6 +18,7 @@ const indexableRoutes = [
   "/method",
   "/protocol",
   "/investigation",
+  "/lab-definitions",
   "/lab",
   "/ecosystem",
 ];
@@ -141,6 +142,7 @@ try {
       "why-now",
       "audience-investigation",
       "proposal",
+      "lab-definitions",
       "demo",
       "method-overview",
       "evidence-hypothesis",
@@ -315,6 +317,13 @@ try {
       "Compreender antes de modificar",
       "Siga o payload. Encontre a causalidade. Recupere a compreensão.",
     ],
+    "/lab-definitions": [
+      "LAB Definitions",
+      "Vocabulário oficial",
+      "Trace Engineering é a prática sistemática",
+      "Trace Engineer é uma função e um perfil investigativo em desenvolvimento",
+      "Síntese do LAB",
+    ],
     "/ecosystem": [
       "Quatro áreas conectadas pelo mesmo propósito",
       "Pesquisa metodológica",
@@ -384,7 +393,10 @@ try {
   assert(!/profissão reconhecida|cargo padronizado|standard externo/i.test(corpus), "External recognition claims must not render");
   assert(!/piloto (?:foi|está) concluído|protocolo (?:já )?reproduzido por outras pessoas/i.test(corpus), "Unverified pilot results must not render");
   assert(!/estudantes formados pelo LAB (?:já )?são comprovadamente mais valiosos|garantia de empregabilidade|tracing substitui (?:a )?arquitectura/i.test(corpus), "Unverified education claims must not render");
-  assert(!/Send Heart|create\/join|informação não disponível/i.test(corpus), "Unconfirmed HORA.city facts must not render");
+  assert(!/informação não disponível/i.test(corpus), "Unavailable-information placeholder must not render");
+  const definitionsPage = pages.get("/lab-definitions");
+  assert(definitionsPage.includes("No modelo esperado do HORA.city"), "HORA.city examples must be qualified as expected model");
+  assert(!definitionsPage.includes("Actualmente o domínio decide Create ou Join"), "Current HORA.city implementation must not be inferred");
   assert(!corpus.includes('href="/about"'), "Indexable pages must link directly to /lab, never /about");
 
   const sitemapResponse = await fetch(`${targetUrl}/sitemap.xml`);

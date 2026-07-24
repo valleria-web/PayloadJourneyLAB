@@ -72,6 +72,16 @@ export const thematicRoutes = {
       "Compreenda a prática que combina modelagem, payload tracing, checkpoints, runtime e evidências para explicar como operações se transformam em decisões e estados.",
     metadataTitle: "Software System Investigation e Trace Engineering",
   },
+  labDefinitions: {
+    path: "/lab-definitions",
+    eyebrow: "Definições do LAB",
+    title: "LAB Definitions",
+    description:
+      "O Payload Journey LAB utiliza um vocabulário preciso para investigar como operações atravessam sistemas de software.",
+    metadataTitle: "LAB Definitions | Payload Journey LAB",
+    metadataDescription:
+      "Definições oficiais de Software Engineering, sistema, caminho, payload, Payload Journey, tracing, Trace Engineering, Trace Engineer, compreensão, decisão e evidência utilizadas pelo Payload Journey LAB.",
+  },
   lab: {
     path: "/lab",
     eyebrow: "PAYLOAD JOURNEY LAB",

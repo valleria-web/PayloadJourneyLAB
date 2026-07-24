@@ -15,6 +15,7 @@ const canonicalRoutes = [
   "method",
   "protocol",
   "investigation",
+  "lab-definitions",
   "lab",
   "ecosystem",
   "lablog",

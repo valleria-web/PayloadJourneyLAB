@@ -320,6 +320,7 @@ const thematicPageFiles = [
   "method",
   "protocol",
   "investigation",
+  "lab-definitions",
   "lab",
   "ecosystem",
   "lablog",

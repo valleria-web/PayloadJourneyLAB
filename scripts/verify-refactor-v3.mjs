@@ -14,6 +14,7 @@ const inheritedVerifiers = [
   "verify:ai-readiness",
   "verify:homepage",
   "verify:lab",
+  "verify:lab-definitions",
   "verify:learn",
   "verify:method-practice",
   "verify:cases-evidence",
@@ -51,6 +52,10 @@ const routeMetadata = new Map([
   ["/investigation", {
     title: "Software System Investigation e Trace Engineering",
     description: "Compreenda a prática que combina modelagem, payload tracing, checkpoints, runtime e evidências para explicar como operações se transformam em decisões e estados.",
+  }],
+  ["/lab-definitions", {
+    title: "LAB Definitions | Payload Journey LAB",
+    description: "Definições oficiais de Software Engineering, sistema, caminho, payload, Payload Journey, tracing, Trace Engineering, Trace Engineer, compreensão, decisão e evidência utilizadas pelo Payload Journey LAB.",
   }],
   ["/lab", {
     title: "Sobre o Payload Journey LAB",
@@ -344,6 +349,7 @@ try {
     "ecosystem",
     "investigation",
     "lab",
+    "lab-definitions",
     "lablog",
     "learn",
     "method",
@@ -394,7 +400,7 @@ try {
       localPathsExposed: 0,
       sensitivePatternsExposed: 0,
       unauthorizedTemporaryArtifacts: 0,
-      newRoutes: 0,
+      newRoutes: 1,
       newDependencies: 0,
       productionValidation: "pending-deploy",
     },
