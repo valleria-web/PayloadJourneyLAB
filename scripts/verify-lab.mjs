@@ -138,7 +138,7 @@ try {
     ["Definir", "Evidência parcial"],
     ["Formalizar", "Evidência parcial"],
     ["Aplicar", "Em investigação"],
-    ["Evidenciar", "Em construção"],
+    ["Evidenciar", "Evidência parcial"],
     ["Ensinar", "Evidência parcial"],
     ["Transferir", "Ainda não validado"],
   ]) {
@@ -171,7 +171,8 @@ try {
   assert(html.includes('rel="canonical" href="https://www.payloadjourneylab.com/lab"'), "/lab canonical is missing");
   assert(html.includes('"@type":"Person"'), "/lab JSON-LD must identify the founder as Person");
   assert(html.includes('"@id":"https://www.payloadjourneylab.com/lab#founder"'), "/lab founder JSON-LD id is missing");
-  assert(!html.includes('"@type":"Organization"'), "/lab must not imply an Organization entity");
+  assert(html.includes('"@type":"Organization"'), "/lab must identify the LAB organization");
+  assert(html.includes("https://www.youtube.com/@PayloadJourneyLAB"), "/lab must expose the official YouTube channel");
 
   const duplicateIds = [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
   assert(new Set(duplicateIds).size === duplicateIds.length, "/lab contains duplicate DOM ids");
