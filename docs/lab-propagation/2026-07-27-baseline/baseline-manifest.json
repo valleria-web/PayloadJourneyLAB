@@ -1,0 +1,146 @@
+{
+  "schema_version": "1.0",
+  "baseline_id": "PJL-BASELINE-2026-07-27",
+  "repository": {
+    "name": "PayloadJourneyLAB",
+    "root": "C:\\Users\\VdSR2\\Desktop\\PJLAB\\CODE v2",
+    "remote": "https://github.com/valleria-web/PayloadJourneyLAB.git",
+    "branch": "files",
+    "commit_sha": "baf4d959659de7e9824978cd8c240859d2b9b48f",
+    "commit_timestamp": "2026-07-24T19:12:20+02:00",
+    "commit_subject": "definicao de operacao"
+  },
+  "timestamps": {
+    "execution_started_local": "2026-07-27T10:55:39+02:00",
+    "execution_started_utc": "2026-07-27T08:55:39Z",
+    "baseline_date": "2026-07-27",
+    "timezone": "Europe/Berlin",
+    "execution_completed_local": "2026-07-27T11:22:34+02:00",
+    "execution_completed_utc": "2026-07-27T09:22:34Z"
+  },
+  "scope": {
+    "examined_directories": [
+      "app",
+      "components",
+      "config",
+      "content",
+      "docs",
+      "lib",
+      "public",
+      "scripts",
+      "types"
+    ],
+    "examined_root_files": [
+      ".eslintrc.json",
+      ".gitignore",
+      "README.md",
+      "next.config.mjs",
+      "package.json",
+      "package-lock.json",
+      "postcss.config.mjs",
+      "tailwind.config.ts",
+      "tsconfig.json"
+    ],
+    "excluded_directories": [
+      {
+        "path": ".git",
+        "reason": "Git object database is not ecosystem content; repository metadata was queried through git."
+      },
+      {
+        "path": "node_modules",
+        "reason": "Third-party dependencies; excluded from content and semantic analysis."
+      },
+      {
+        "path": ".next",
+        "reason": "Generated build output; used only for build validation, not as a canonical source."
+      },
+      {
+        "path": ".tmp",
+        "reason": "Empty temporary directory."
+      },
+      {
+        "path": ".agents",
+        "reason": "Empty directory."
+      }
+    ]
+  },
+  "file_counts_at_start": {
+    "git_tracked_total": 432,
+    "workspace_files_excluding_git": 22419,
+    "tracked_by_directory": {
+      "app": 17,
+      "components": 51,
+      "config": 1,
+      "content": 8,
+      "docs": 327,
+      "lib": 2,
+      "public": 2,
+      "scripts": 13,
+      "types": 1
+    },
+    "workspace_by_directory_including_generated_and_dependencies": {
+      ".next": 84,
+      "app": 17,
+      "components": 51,
+      "config": 1,
+      "content": 8,
+      "docs": 329,
+      "lib": 2,
+      "node_modules": 21900,
+      "public": 2,
+      "scripts": 13,
+      "types": 1
+    },
+    "docs_by_extension_at_start": {
+      ".md": 91,
+      ".png": 235,
+      ".json": 3
+    }
+  },
+  "tools_used": [
+    "git 2.51.0.windows.1",
+    "ripgrep 15.2.0",
+    "PowerShell",
+    "Node.js 22.19.0",
+    "npm 11.18.0",
+    "Next.js 14.2.35 build and repository verification scripts",
+    "TypeScript compiler",
+    "public web retrieval"
+  ],
+  "deliverable_counts": {
+    "total_files": 22,
+    "markdown_files": 16,
+    "json_files": 2,
+    "csv_files": 1,
+    "text_evidence_files": 3,
+    "total_bytes_before_final_manifest_update": 250711
+  },
+  "validation_summary": {
+    "typescript": "pass",
+    "production_build": "pass",
+    "integrated_verifier": "pass",
+    "integrated_child_suites_passed": 9,
+    "cycle_closure": "pass",
+    "asset_json_valid": true,
+    "manifest_json_valid": true,
+    "asset_records": 45,
+    "asset_fields_per_record": 24,
+    "stable_ids_unique": 45,
+    "json_csv_markdown_id_parity": true,
+    "local_markdown_links_checked": 30,
+    "missing_local_markdown_links": 0,
+    "tracked_production_files_modified": 0,
+    "commit_created": false,
+    "push_performed": false
+  },
+  "known_limitations": [
+    "Only one repository was accessible.",
+    "The accessible repository is the Payload Journey LAB institutional site; the HORA.city application codebase and runtime are not present.",
+    "No Search Console, Bing Webmaster Tools, analytics dashboard, social account, Udemy instructor dashboard or institutional account access was available.",
+    "Public web retrieval verified selected pages and destinations but did not provide authenticated metrics or definitive indexation status.",
+    "robots.txt and sitemap.xml could not be retrieved by the public web tool, so their live contents require independent external verification.",
+    "The deployed site differs from the current branch: /lablog is live while the branch feature flag disables it.",
+    "The pre-existing untracked docs/PropagationBaseline directory was preserved and is outside the generated baseline directory.",
+    "No deployment configuration or workflow was found, so the deployed commit cannot be proven from the repository."
+  ]
+}
