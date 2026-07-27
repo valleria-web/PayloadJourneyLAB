@@ -1,0 +1,56 @@
+Payload Journey LAB baseline — discovery counts
+Baseline date: 2026-07-27
+
+Tracked files: 432
+Workspace files excluding .git: 22,419
+
+Tracked files by examined directory:
+app: 17
+components: 51
+config: 1
+content: 8
+docs: 327
+lib: 2
+public: 2
+scripts: 13
+types: 1
+
+Workspace files at start, including generated/dependency directories:
+.next: 84
+app: 17
+components: 51
+config: 1
+content: 8
+docs: 329
+lib: 2
+node_modules: 21,900
+public: 2
+scripts: 13
+types: 1
+
+Documentation extensions at start:
+Markdown: 91
+PNG: 235
+JSON: 3
+
+Relevant term scan, excluding node_modules, .next and the task/plan folder:
+Payload Journey LAB: 337 case-insensitive matches in 81 files
+Tracing Engineering: 15 matches in 3 files
+Trace Engineering: 87 matches in 25 files
+Trace Engineer: 364 matches in 65 files
+Aura.city: 0 matches
+HORA.city: 520 matches in 89 files
+SMT Core: 0 matches
+USMT: 956 matches in 94 files
+Reverse Payload Journey: 139 matches in 55 files
+Track to Origin: 131 matches in 52 files
+Track Mode: 113 matches in 42 files
+Udemy: 248 matches in 59 files
+LabLog: 759 matches in 96 files
+createdAt: 25 matches in 13 files
+HeartCreated: 34 matches in 14 files
+
+The Payload Journey Lab and Payload Journey LAB case-insensitive values are
+identical by construction. Case-sensitive review found the current public source
+uses the canonical name; all-uppercase uses are presentation labels, not a
+competing entity name.

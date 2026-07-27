@@ -1,0 +1,32 @@
+Payload Journey LAB baseline — initial repository state
+Captured: 2026-07-27T10:55:39+02:00
+
+Command: git status --short
+Result:
+?? docs/PropagationBaseline/
+
+Expanded pre-existing untracked files:
+?? docs/PropagationBaseline/Codex-Task-Payload-Journey-LAB-Propagation-Baseline.md
+?? docs/PropagationBaseline/Plano-de-Execucao-Propagation-Baseline.md
+
+Command: git branch --show-current
+Result:
+files
+
+Command: git rev-parse HEAD
+Result:
+baf4d959659de7e9824978cd8c240859d2b9b48f
+
+Command: git log -1 --date=iso-strict --format
+Result:
+baf4d959659de7e9824978cd8c240859d2b9b48f
+2026-07-24T19:12:20+02:00
+VdSR
+definicao de operacao
+
+Command: git remote -v
+Result:
+origin https://github.com/valleria-web/PayloadJourneyLAB.git (fetch)
+origin https://github.com/valleria-web/PayloadJourneyLAB.git (push)
+
+No reset, clean, checkout, commit or push was performed.

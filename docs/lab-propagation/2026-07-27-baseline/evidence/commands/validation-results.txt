@@ -1,0 +1,93 @@
+Payload Journey LAB baseline — validation results
+Baseline date: 2026-07-27
+
+TypeScript
+Command: npx.cmd tsc --noEmit
+Result: PASS (exit 0)
+
+Production build
+Command: npm.cmd run build
+Result: PASS (exit 0)
+Next.js: 14.2.35
+Static pages generated: 18
+Application outputs include 12 page paths, /robots.txt, /sitemap.xml and /icon.svg.
+Warnings: webpack filesystem cache could not snapshot some resolve dependencies.
+The warnings did not prevent compilation, type checking or static generation.
+
+Integrated verification
+Command: npm.cmd run verify:refactor-v3
+Result: PASS (exit 0)
+
+Child verifier results:
+verify:foundation: pass
+verify:ai-readiness: pass
+verify:homepage: pass
+verify:lab: pass
+verify:lab-definitions: pass
+verify:learn: pass
+verify:method-practice: pass
+verify:cases-evidence: pass
+verify:navigation-discovery: pass
+
+Key integrated checks:
+canonical routes: 11
+unique titles: 11
+unique descriptions: 11
+absolute canonical URLs: 11
+Open Graph routes: 11
+Twitter routes: 11
+sitemap routes: 11
+internal links validated: true
+structured-data types: CreativeWork, Organization, Person, WebPage, WebSite
+published cases: 1
+located documentary sources: 2
+published technical case artifacts: 0
+published LabLog entries: 0
+hidden LabLog response in current branch: 404
+local paths exposed: 0
+sensitive patterns exposed: 0
+new dependencies: 0
+production validation: pending-deploy
+
+Cycle closure
+Command: npm.cmd run verify:cycle-closure
+Result: PASS (exit 0)
+Canonical route directories counted by closure harness: 12, including the
+conditional /lablog source route. Public/indexable canonical route count remains
+11 because the current feature flag hides /lablog.
+
+Inventory validation
+Result: PASS
+asset-inventory.json records: 45
+unique stable IDs: 45
+fields per record: 24
+asset-inventory.csv data rows: 45
+asset-inventory.csv columns: 24
+asset-inventory.md complete records: 45
+JSON -> CSV ID order parity: true
+JSON -> Markdown ID order parity: true
+
+Markdown local-link validation
+Result: PASS
+Markdown files examined: 16
+Local links checked: 30
+Missing local targets: 0
+
+Sensitive-pattern scan
+Result: PASS
+No password assignment, API key assignment, bearer authorization, connection
+string assignment or private-key pattern was found in generated baseline files.
+
+Worktree scope before final response
+Tracked production files modified: 0
+New baseline files: 22
+Pre-existing untracked PropagationBaseline files preserved: 2
+Commit: not created
+Push: not performed
+
+Invalid first attempt, retained for transparency:
+Four development-server verifiers were initially launched in parallel. All write
+to the same .next cache, which produced cache rename collisions and unreliable
+local 404/500 responses. They were not treated as product findings. The build
+then succeeded and the official integrated verifier reran all runtime suites
+sequentially; every suite passed.
