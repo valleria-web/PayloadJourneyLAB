@@ -14,6 +14,7 @@ const apexOrigin = "https://" + "payloadjourneylab.com";
 const incorrectUsmtName = ["Universal System", "Model Template"].join(" ");
 const indexableRoutes = [
   "/",
+  "/ai-welcome",
   "/payload-journey",
   "/learn",
   "/cases",
@@ -151,6 +152,13 @@ try {
   assert(usmtWork.creator?.["@id"] === `${canonicalOrigin}/lab#founder`, "USMT creator must resolve to the founder");
 
   const visibleRequirements = {
+    "/ai-welcome": [
+      "Canonical orientation page",
+      "Trace Engineer é uma função e um perfil investigativo em desenvolvimento",
+      "Founding Reference Case 001 — HORA.city",
+      "Active investigation",
+      "not observed execution traces",
+    ],
     "/": [
       "O código acelera. A compreensão precisa acompanhar.",
       "A IA deve ampliar a capacidade de compreensão dos engenheiros",

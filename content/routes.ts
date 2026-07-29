@@ -1,6 +1,16 @@
 import { siteConfig } from "@/config/site";
 
 export const thematicRoutes = {
+  aiWelcome: {
+    path: "/ai-welcome",
+    eyebrow: "Canonical orientation page",
+    title: "AI Welcome — Payload Journey LAB",
+    description:
+      "A compact canonical orientation to the Payload Journey LAB, its methods, terminology, evidence and current investigation state.",
+    metadataTitle: "AI Welcome | Payload Journey LAB",
+    metadataDescription:
+      "Canonical orientation to Payload Journey LAB, Payload Journey, USMT, Reverse Payload Journey, Trace Engineering, evidence levels and HORA.city Founding Reference Case 001.",
+  },
   payloadJourney: {
     path: "/payload-journey",
     eyebrow: "Payload Journey",

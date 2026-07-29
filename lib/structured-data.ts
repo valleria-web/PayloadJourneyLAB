@@ -1,4 +1,5 @@
 import { absoluteSiteUrl, siteConfig } from "@/config/site";
+import type { AiWelcomeFaqEntry } from "@/types/content";
 
 type JsonPrimitive = string | number | boolean | null;
 export type JsonLdValue = JsonPrimitive | JsonLdValue[] | { [key: string]: JsonLdValue };
@@ -109,5 +110,46 @@ export function getThematicPageStructuredData(
   return {
     "@context": "https://schema.org",
     "@graph": graph,
+  };
+}
+
+export function getAiWelcomeStructuredData(
+  path: string,
+  name: string,
+  description: string,
+  faqEntries: readonly AiWelcomeFaqEntry[],
+): JsonLdValue {
+  const url = absoluteSiteUrl(path);
+  const faqId = `${url}#faq`;
+  const page = getWebPageNode(path, name, description);
+
+  page.publisher = { "@id": organizationId };
+  page.about = { "@id": organizationId };
+  page.mentions = { "@id": founderId };
+  page.mainEntity = { "@id": faqId };
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      getOrganizationNode(),
+      getWebsiteNode(),
+      getFounderNode(),
+      page,
+      {
+        "@type": "FAQPage",
+        "@id": faqId,
+        url,
+        inLanguage: siteConfig.language,
+        isPartOf: { "@id": websiteId },
+        mainEntity: faqEntries.map((entry) => ({
+          "@type": "Question",
+          name: entry.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: entry.answer,
+          },
+        })),
+      },
+    ],
   };
 }

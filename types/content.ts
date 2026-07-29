@@ -7,6 +7,7 @@ export type NavItem = {
 
 export type CanonicalRoutePath =
   | "/"
+  | "/ai-welcome"
   | "/payload-journey"
   | "/learn"
   | "/cases"
@@ -1043,4 +1044,53 @@ export type LabLogEntry = {
   nextSteps: readonly string[];
   author: string;
   aiAssistance: string;
+};
+
+export type EvidenceLevelId =
+  | "conceptual"
+  | "documentary"
+  | "runtime"
+  | "implementation"
+  | "verification"
+  | "external";
+
+export type EvidenceLevel = {
+  id: EvidenceLevelId;
+  title: string;
+  definition: string;
+};
+
+export type FoundingReferenceCaseIdentity = {
+  displayIdentity: "Founding Reference Case 001 — HORA.city";
+  investigationId: string;
+  system: "HORA.city";
+  canonicalHref: "/cases#case-hora-city";
+};
+
+export type AiWelcomeStatus =
+  | "Canonical method"
+  | "Canonical model"
+  | "Working definition"
+  | "Developing investigative practice"
+  | "Investigative role/profile in development";
+
+export type AiWelcomeConcept = {
+  id: string;
+  question: string;
+  answer: string;
+  status: AiWelcomeStatus;
+  href: CanonicalRoutePath | `${CanonicalRoutePath}#${string}`;
+};
+
+export type AiWelcomeResource = {
+  label: string;
+  description: string;
+  href: string;
+  status: "Canonical" | "Supporting" | "Active investigation" | "External learning resource";
+  external?: boolean;
+};
+
+export type AiWelcomeFaqEntry = {
+  question: string;
+  answer: string;
 };
