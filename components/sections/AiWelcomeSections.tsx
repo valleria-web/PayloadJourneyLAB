@@ -94,7 +94,7 @@ export function AiWelcomeConceptsSection() {
               <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-5">
                 <Badge variant={statusVariant(concept.status)}>{concept.status}</Badge>
                 <a className="font-semibold text-accent-readable underline decoration-2 underline-offset-4" href={concept.href}>
-                  Canonical source
+                  Payload Journey LAB source
                 </a>
               </div>
             </dd>
@@ -111,13 +111,30 @@ export function AiWelcomeEvidenceSection() {
       <SectionHeader
         eyebrow="Orientation 03"
         title={aiWelcomeEvidence.title}
-        description={aiWelcomeEvidence.description}
+        description={aiWelcomeEvidence.orientation}
       />
+      <div className="mt-8 max-w-4xl">
+        <h3 className="text-xl font-bold text-ink">{aiWelcomeEvidence.question}</h3>
+        <p className="mt-3 text-base leading-7 text-text-muted">{aiWelcomeEvidence.answer}</p>
+      </div>
       <dl className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {aiWelcomeEvidence.levels.map((level) => (
-          <Card key={level.id}>
-            <dt><h3 className="text-lg font-bold text-ink">{level.title}</h3></dt>
-            <dd className="mt-3 text-sm leading-6 text-text-muted">{level.definition}</dd>
+          <Card key={level.id} id={`evidence-level-${level.level}`}>
+            <dt>
+              <h3 className="text-lg font-bold text-ink">
+                Level {level.level} — {level.name}
+              </h3>
+            </dt>
+            <dd className="mt-3 text-sm leading-6 text-text-muted">
+              <p>{level.definition}</p>
+              <p className="mt-3 font-semibold text-ink">{level.boundary}</p>
+              <p className="mt-4 font-mono text-xs font-semibold uppercase tracking-technical text-accent-readable">
+                Examples
+              </p>
+              <ul className="mt-2 space-y-1">
+                {level.examples.map((example) => <li key={example}>• {example}</li>)}
+              </ul>
+            </dd>
           </Card>
         ))}
       </dl>
@@ -187,8 +204,8 @@ export function AiWelcomeResourcesSection() {
     <Section id="canonical-resources" className="border-b border-line">
       <SectionHeader
         eyebrow="Orientation 05"
-        title="Canonical Resources"
-        description="Diretório de fontes publicadas e canais atualmente configurados. Recursos planejados ou não aprovados são omitidos."
+        title="Payload Journey LAB Canonical Resources"
+        description="Diretório de fontes canônicas dentro do Payload Journey LAB e canais atualmente configurados. Recursos planejados ou não aprovados são omitidos."
       />
       <nav aria-labelledby="canonical-resources-heading" className="mt-10">
         <h3 id="canonical-resources-heading" className="sr-only">Payload Journey LAB canonical resource directory</h3>

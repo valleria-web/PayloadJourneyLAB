@@ -15,7 +15,7 @@ export const canonicalMethodDefinitions = {
   softwareSystemInvestigation:
     "Software System Investigation é a prática estruturada de compreender sistemas por meio de modelagem, tracing, checkpoints, runtime e evidências.",
   traceEngineering:
-    "Trace Engineering é o conjunto de capacidades utilizadas para seguir operações, localizar decisões, confrontar modelo e execução e produzir explicações verificáveis.",
+    "Trace Engineering é uma prática investigativa em desenvolvimento composta por capacidades para rastrear operações, localizar decisões, comparar modelos esperados com a execução e produzir explicações verificáveis.",
   traceEngineer:
     "Trace Engineer é a função investigativa exercida por quem segue operações, payloads, transformações e decisões para compreender e explicar o comportamento de um sistema com base em evidências.",
   usmt:
@@ -42,7 +42,7 @@ export const methodsSectionContent = {
   intro:
     "Definição, pergunta, ponto de partida, resultado esperado, momento de uso, relação, status e limites tornam cada instrumento comparável.",
   distinction:
-    "Software System Investigation é a prática. Trace Engineering reúne capacidades. Trace Engineer é a função investigativa. Os instrumentos respondem perguntas. O protocolo organiza a sequência. Evidências sustentam ou refutam hipóteses.",
+    "Software System Investigation é a prática estruturada mais ampla. Trace Engineering é uma prática investigativa em desenvolvimento composta por capacidades. Trace Engineer é a função e o perfil investigativo em desenvolvimento que pode aplicar essa prática. Os instrumentos respondem perguntas. O protocolo organiza a sequência. Evidências sustentam ou refutam hipóteses.",
   relation:
     "Os instrumentos podem aparecer em ordens diferentes conforme a pergunta e o estado da investigação.",
   traceStack: "trace stack: modelo / operação / evidência / origem",
@@ -216,8 +216,8 @@ export const methodPagePresentation = {
       },
       {
         term: "Trace Engineering",
-        role: "Capacidades",
-        description: "São as capacidades empregadas durante a investigação.",
+        role: "Prática investigativa em desenvolvimento",
+        description: "É composta pelas capacidades empregadas durante a investigação.",
       },
       {
         term: "Trace Engineer",
@@ -714,7 +714,7 @@ export const investigativePracticePresentation = {
     id: "trace-engineering",
     title: "Trace Engineering",
     definition: canonicalMethodDefinitions.traceEngineering,
-    status: "Capacidades em desenvolvimento",
+    status: "Prática investigativa em desenvolvimento",
     capabilities: [
       "delimitação de flows",
       "leitura orientada por operação",

@@ -128,8 +128,9 @@ try {
   const investigation = pages.get("/investigation");
   for (const text of [
     "Software System Investigation é a prática estruturada",
-    "Trace Engineering é o conjunto de capacidades",
+    "Trace Engineering é uma prática investigativa em desenvolvimento composta por capacidades",
     "Track Mode",
+    "Prática investigativa em desenvolvimento",
     "Função e perfil investigativo em desenvolvimento",
     "não é profissão consolidada",
     "Tracing conecta perspectivas; não as substitui.",

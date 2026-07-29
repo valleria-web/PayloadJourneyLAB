@@ -305,7 +305,7 @@ try {
       "Track Mode",
       "Trace Engineer",
       "Software System Investigation",
-      "Capacidades em desenvolvimento",
+      "Prática investigativa em desenvolvimento",
       "Função e perfil investigativo em desenvolvimento",
     ],
     "/lab": [
