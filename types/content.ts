@@ -829,7 +829,7 @@ export type InvestigationPagePresentation = {
     id: "trace-engineering";
     title: "Trace Engineering";
     definition: string;
-    status: "Capacidades em desenvolvimento";
+    status: "Prática investigativa em desenvolvimento";
     capabilities: string[];
   };
   traceEngineer: {
@@ -1054,10 +1054,15 @@ export type EvidenceLevelId =
   | "verification"
   | "external";
 
+export type EvidenceLevelNumber = 1 | 2 | 3 | 4 | 5 | 6;
+
 export type EvidenceLevel = {
+  level: EvidenceLevelNumber;
   id: EvidenceLevelId;
-  title: string;
+  name: string;
   definition: string;
+  boundary: string;
+  examples: readonly string[];
 };
 
 export type FoundingReferenceCaseIdentity = {
@@ -1068,8 +1073,7 @@ export type FoundingReferenceCaseIdentity = {
 };
 
 export type AiWelcomeStatus =
-  | "Canonical method"
-  | "Canonical model"
+  | "Canonical within Payload Journey LAB"
   | "Working definition"
   | "Developing investigative practice"
   | "Investigative role/profile in development";
@@ -1086,7 +1090,11 @@ export type AiWelcomeResource = {
   label: string;
   description: string;
   href: string;
-  status: "Canonical" | "Supporting" | "Active investigation" | "External learning resource";
+  status:
+    | "Canonical within Payload Journey LAB"
+    | "Supporting"
+    | "Active investigation"
+    | "External learning resource";
   external?: boolean;
 };
 

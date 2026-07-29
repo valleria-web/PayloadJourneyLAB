@@ -3,7 +3,7 @@ import { siteConfig } from "@/config/site";
 export const thematicRoutes = {
   aiWelcome: {
     path: "/ai-welcome",
-    eyebrow: "Canonical orientation page",
+    eyebrow: "Canonical within Payload Journey LAB",
     title: "AI Welcome — Payload Journey LAB",
     description:
       "A compact canonical orientation to the Payload Journey LAB, its methods, terminology, evidence and current investigation state.",

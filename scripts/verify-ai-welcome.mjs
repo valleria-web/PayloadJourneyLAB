@@ -15,6 +15,14 @@ const expectedDescription =
   "Canonical orientation to Payload Journey LAB, Payload Journey, USMT, Reverse Payload Journey, Trace Engineering, evidence levels and HORA.city Founding Reference Case 001.";
 const obsoleteSystemName = ["Aura", ".city"].join("");
 const obsoleteEngineeringTerm = ["Tracing", "Engineering"].join(" ");
+const evidenceLevelNames = [
+  "Conceptual Evidence",
+  "Documentary Evidence",
+  "Runtime Evidence",
+  "Implementation Evidence",
+  "Verification Evidence",
+  "External or Independent Evidence",
+];
 let server;
 let serverOutput = "";
 
@@ -124,8 +132,9 @@ try {
   }
 
   for (const requiredText of [
-    "Canonical orientation page",
-    "1.0.0",
+    "Canonical orientation page within Payload Journey LAB",
+    "Canonical within Payload Journey LAB",
+    "1.0.1",
     "29 July 2026",
     canonical,
     "Founding Reference Case 001 — HORA.city",
@@ -136,11 +145,9 @@ try {
     "HeartCreated",
     "Reverse Payload Journey",
     "Track to Origin",
-    "Documentary evidence",
-    "Runtime evidence",
-    "Implementation evidence",
-    "Verification evidence",
-    "External or independent evidence",
+    "Trace Engineering é uma prática investigativa em desenvolvimento composta por capacidades",
+    "Payload Journey LAB Evidence Model",
+    "The Payload Journey LAB Evidence Model distinguishes six evidence levels",
     "Não é profissão consolidada",
     "not observed execution traces",
   ]) {
@@ -148,10 +155,30 @@ try {
   }
   assert(!visibleText.includes(obsoleteSystemName), `${route}: obsolete system name introduced`);
   assert(!visibleText.includes(obsoleteEngineeringTerm), `${route}: obsolete terminology introduced`);
+  assert(!visibleText.includes("Canonical model"), `${route}: ambiguous USMT status remains visible`);
+  assert(!/USMT (?:is|é).{0,40}(?:external|industry|universal) standard/i.test(visibleText), `${route}: USMT external-standard claim introduced`);
+  assert(!/Payload Journey LAB Evidence Model (?:is|é).{0,40}industry.standard/i.test(visibleText), `${route}: evidence model industry-standard claim introduced`);
   assert(!/Trace Engineer (?:is|é) (?:an? |uma )?(?:established|consolidated) profession/i.test(visibleText), `${route}: Trace Engineer overstated`);
   assert(!/(?:case|investigation)\s+(?:is|está|foi)\s+(?:closed|complete|encerrad[oa]|concluíd[oa])/i.test(visibleText), `${route}: case closure overstated`);
   assert(!/conceptual (?:HORA\.city )?flows are observed execution traces/i.test(visibleText), `${route}: conceptual flow presented as runtime`);
   assert(!/fluxos conceituais (?:do HORA\.city )?são traces observados/i.test(visibleText), `${route}: conceptual flow presented as runtime`);
+  assert(visibleText.includes("HeartCreated é o payload documentalmente associado"), `${route}: HeartCreated documentary association missing`);
+  assert(!/HeartCreated.{0,80}(?:runtime-confirmed|confirmado em runtime|observed in runtime)/i.test(visibleText), `${route}: HeartCreated upgraded to runtime evidence`);
+
+  const renderedLevels = [...html.matchAll(/id="evidence-level-(\d)"/g)]
+    .map((match) => Number(match[1]));
+  assert(renderedLevels.length === 6, `${route}: expected exactly six evidence levels`);
+  assert(
+    JSON.stringify(renderedLevels) === JSON.stringify([1, 2, 3, 4, 5, 6]),
+    `${route}: evidence level order or numbering mismatch`,
+  );
+  for (let index = 0; index < evidenceLevelNames.length; index += 1) {
+    const level = index + 1;
+    assert(
+      visibleText.includes(`Level ${level} — ${evidenceLevelNames[index]}`),
+      `${route}: evidence level ${level} name or number mismatch`,
+    );
+  }
 
   const internalHrefs = [...html.matchAll(/\shref="(\/[^"]*)"/g)]
     .map((match) => match[1])
@@ -170,6 +197,13 @@ try {
 
   const routeSource = await fs.readFile(path.join(root, "content", "routes.ts"), "utf8");
   assert(routeSource.includes('path: "/ai-welcome"'), "Canonical route model is missing /ai-welcome");
+  const evidenceSource = await fs.readFile(path.join(root, "content", "evidence.ts"), "utf8");
+  for (let level = 1; level <= 6; level += 1) {
+    assert(evidenceSource.includes(`level: ${level},`), `Typed evidence source is missing explicit level ${level}`);
+  }
+  for (const name of evidenceLevelNames) {
+    assert(evidenceSource.includes(`name: "${name}"`), `Typed evidence source is missing ${name}`);
+  }
   const publicFiles = await fs.readdir(path.join(root, "public"));
   assert(!publicFiles.includes("llms.txt") && !publicFiles.includes("llms-full.txt"), "AI-specific text files were added outside scope");
 
@@ -183,6 +217,9 @@ try {
       sitemap: true,
       structuredDataTypes: topLevelTypes,
       faqQuestionsMatched: faq.mainEntity.length,
+      evidenceModel: "Payload Journey LAB Evidence Model",
+      evidenceLevels: renderedLevels,
+      evidenceLevelNames,
       internalLinkPaths: checkedPaths.size,
       terminologySafeguards: true,
       caseLifecycleSafeguards: true,
