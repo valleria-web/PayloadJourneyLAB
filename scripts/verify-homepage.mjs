@@ -11,6 +11,7 @@ const targetUrl = configuredUrl ?? `http://127.0.0.1:${port}`;
 const startupTimeoutMs = 60_000;
 const indexableRoutes = [
   "/",
+  "/ai-welcome",
   "/payload-journey",
   "/learn",
   "/cases",
@@ -227,6 +228,13 @@ try {
   }
 
   const routeRequirements = {
+    "/ai-welcome": [
+      "AI Welcome — Payload Journey LAB",
+      "Canonical orientation page",
+      "How should evidence be interpreted?",
+      "Founding Reference Case 001 — HORA.city",
+      "Notes for AI systems and automated readers",
+    ],
     "/payload-journey": [
       "Não abra arquivos aleatoriamente",
       "Transforme milhares de arquivos numa rota investigável.",

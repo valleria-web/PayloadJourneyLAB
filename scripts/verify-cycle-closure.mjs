@@ -8,6 +8,7 @@ const sprintRoot = path.join(root, "docs", "sprints para v3");
 const runRefactorVerifier = process.env.CYCLE_CLOSURE_SKIP_REFACTOR !== "1";
 const canonicalRoutes = [
   "",
+  "ai-welcome",
   "payload-journey",
   "learn",
   "cases",

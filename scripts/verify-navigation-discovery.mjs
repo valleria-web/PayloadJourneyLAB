@@ -9,6 +9,7 @@ const port = process.env.NAVIGATION_VERIFY_PORT ?? "3216";
 const origin = configuredUrl ?? `http://127.0.0.1:${port}`;
 const routes = [
   "/",
+  "/ai-welcome",
   "/payload-journey",
   "/learn",
   "/cases",
@@ -22,6 +23,7 @@ const routes = [
 ];
 const expectedAreas = new Map([
   ["/", "Início"],
+  ["/ai-welcome", "LAB"],
   ["/payload-journey", "Aprender"],
   ["/learn", "Aprender"],
   ["/method", "Métodos"],
@@ -179,6 +181,7 @@ try {
   assert(mobileSource.includes("aria-current"), "Mobile: estado ativo ausente");
   const expectedAppEntries = new Set([
     "about",
+    "ai-welcome",
     "cases",
     "ecosystem",
     "investigation",

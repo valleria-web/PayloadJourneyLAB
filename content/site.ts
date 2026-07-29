@@ -88,7 +88,7 @@ export const navigationAreas = {
   learn: ["/payload-journey", "/learn"],
   methods: ["/method", "/protocol", "/investigation", "/usmt"],
   cases: ["/cases", "/lablog"],
-  lab: ["/lab", "/ecosystem", "/lab-definitions"],
+  lab: ["/lab", "/ecosystem", "/lab-definitions", "/ai-welcome"],
 } as const satisfies Record<NavigationArea, readonly string[]>;
 
 export function getNavigationArea(currentPath: string): NavigationArea | null {
@@ -270,6 +270,7 @@ export const footerContent = {
         { label: "Sobre o LAB", href: "/lab" },
         { label: "Ecossistema", href: "/ecosystem" },
         { label: "LAB Definitions", href: "/lab-definitions" },
+        { label: "AI Welcome", href: "/ai-welcome" },
       ],
     },
     {
@@ -327,6 +328,12 @@ export const externalChannels = [
 ] as const satisfies readonly ExternalChannel[];
 
 export const routeContinuations = {
+  "/ai-welcome": [
+    { label: "Consultar LAB Definitions", href: "/lab-definitions" },
+    { label: "Conhecer os métodos", href: "/method" },
+    { label: "Examinar o caso HORA.city", href: "/cases" },
+    { label: "Conhecer o LAB", href: "/lab" },
+  ],
   "/payload-journey": [
     { label: "Compreender a USMT", href: "/usmt" },
     { label: "Conhecer os métodos", href: "/method" },

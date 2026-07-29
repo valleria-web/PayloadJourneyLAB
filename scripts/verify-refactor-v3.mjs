@@ -21,6 +21,10 @@ const inheritedVerifiers = [
   "verify:navigation-discovery",
 ];
 const routeMetadata = new Map([
+  ["/ai-welcome", {
+    title: "AI Welcome | Payload Journey LAB",
+    description: "Canonical orientation to Payload Journey LAB, Payload Journey, USMT, Reverse Payload Journey, Trace Engineering, evidence levels and HORA.city Founding Reference Case 001.",
+  }],
   ["/", {
     title: "Payload Journey LAB — Compreender sistemas pelo flow",
     description: "Laboratório de Software System Investigation que pesquisa como flow, payload tracing, modelagem, checkpoints e evidências de runtime podem ajudar estudantes e developers a compreender codebases complexas.",
@@ -66,7 +70,7 @@ const routeMetadata = new Map([
     description: "Conheça como o LAB conecta formação, pesquisa metodológica, investigação aplicada, casos e futuras possibilidades de colaboração.",
   }],
 ]);
-const allowedJsonLdTypes = new Set(["Organization", "WebSite", "WebPage", "Person", "CreativeWork"]);
+const allowedJsonLdTypes = new Set(["Organization", "WebSite", "WebPage", "Person", "CreativeWork", "FAQPage"]);
 const forbiddenJsonLdTypes = new Set([
   "Course",
   "Article",
@@ -345,6 +349,7 @@ try {
     .sort();
   const expectedAppEntries = [
     "about",
+    "ai-welcome",
     "cases",
     "ecosystem",
     "investigation",
