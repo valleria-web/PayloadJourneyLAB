@@ -4,7 +4,13 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const sprintRoot = path.join(root, "docs", "sprints para v3");
+const sprintRoot = path.join(
+  root,
+  "docs",
+  "archive",
+  "website-evolution",
+  "v3",
+);
 const runRefactorVerifier = process.env.CYCLE_CLOSURE_SKIP_REFACTOR !== "1";
 const canonicalRoutes = [
   "",
@@ -88,19 +94,19 @@ try {
 
   for (const document of requiredDocuments) {
     assert(
-      await exists(path.join("docs", "sprints para v3", document)),
+      await exists(path.join("docs", "archive", "website-evolution", "v3", document)),
       `Documento obrigatório ausente: ${document}`,
     );
   }
   for (const specification of requiredSpecifications) {
     assert(
-      await exists(path.join("docs", "sprints para v3", specification)),
+      await exists(path.join("docs", "archive", "website-evolution", "v3", specification)),
       `Especificação obrigatória ausente: ${specification}`,
     );
   }
   for (const plan of locatedDedicatedPlans) {
     assert(
-      await exists(path.join("docs", "sprints para v3", plan)),
+      await exists(path.join("docs", "archive", "website-evolution", "v3", plan)),
       `Plano aprovado localizado deixou de existir: ${plan}`,
     );
   }

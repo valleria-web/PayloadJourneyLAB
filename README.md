@@ -1,10 +1,12 @@
 # Payload Journey LAB
 
-**Siga o flow. Entenda o sistema.**
+**Follow the flow. Understand the system.**
+
+*Siga o flow. Entenda o sistema.*
 
 https://www.payloadjourneylab.com
 
-Payload Journey LAB is a laboratory for education, research, and applied investigation in software systems.
+Payload Journey LAB is an author-led software system investigation lab created by Valéria dos Santos Reiser. It develops investigative methods, evidence models, case studies, and educational resources for understanding execution before modification.
 
 The LAB develops methods and pedagogical artifacts to understand how payloads, states, events, and decisions move through complex systems, especially in codebases expanded or modified with the assistance of AI agents.
 
@@ -21,7 +23,7 @@ Payload Journey LAB exists to help students, engineers, and organizations follow
 
 ### Payload Journey
 
-A progressive observation method that follows how information is born, crosses layers, assumes different representations, and produces effects inside a system.
+A method that follows an operation through the representations, layers, interpretations, decisions, states, and effects that compose its execution.
 
 ### USMT
 
@@ -29,23 +31,27 @@ A progressive observation method that follows how information is born, crosses l
 
 A structural modeling template for organizing phenomena, states, events, allowed and forbidden transitions, invariants, layers, metrics, and termination conditions.
 
+USMT is canonical within Payload Journey LAB. It is not presented as an external industry standard.
+
 ### Reverse Payload Journey
 
-An investigation method that starts from an observable anomaly and reconstructs, in reverse, the path traveled by a payload.
+An investigation method that begins with an observable anomaly and follows the associated payload backwards through the system to reconstruct its path and locate the first evidence-backed divergence.
 
 ### Operational Payload Path
 
-An operational Mapping instrument that organizes zones, boundaries, components, representations, responsibilities, authorities, and checkpoints across a software operation.
+An investigation artifact representing the bounded path actually investigated for a payload or operation. It distinguishes observed, inferred, expected, and unknown segments.
 
 It transforms abstract architecture into an investigable route.
 
 ### Track to Origin
 
-An investigative process that traces an anomaly back to its technical, semantic, or temporal origin and to the first relevant point of decision.
+An investigative mission that pursues the earliest evidence-supported point at which a relevant value, representation, decision, or authority originates. Origin is not declared before evidence establishes it.
+
+These method domains currently do not have separate, standalone versioned specifications published in the documentation system. Their [method READMEs](docs/methods/README.md) are navigation indexes, not substitute specifications.
 
 ## Conceptual ecosystem
 
-The methods of the LAB are part of a broader practice of structural system investigation.
+The methods and concepts of the LAB have distinct lifecycle states and are part of a broader practice of software system investigation.
 
 The main investigation flow is:
 
@@ -57,40 +63,68 @@ Track Mode
 -> Restoration
 ```
 
+### Trace Engineering
+
+Trace Engineering is a **developing investigative practice** composed of capabilities for tracing operations, locating decisions, comparing expected models with execution, and producing verifiable explanations.
+
+It is not presented as an established engineering discipline, an industry standard, or an externally standardized field.
+
 ### Trace Engineer
 
-A professional role or investigative function dedicated to following payloads, states, events, and decisions across the layers of a system.
+Trace Engineer is a **developing investigative function/profile** applying Trace Engineering capabilities. It is not presented by Payload Journey LAB as an established profession, certification, official job category, or universally recognized occupational role.
 
 ### Track Mode
 
-An operational state in which changes are suspended and the priority becomes observing, delimiting, registering, and understanding.
+An investigative operating practice in which modification-oriented behavior is suspended and the priority becomes observing, delimiting, registering, and understanding.
 
 ### Software System Investigation
 
-A practice of structural investigation based on tracing, modeling, evidence, and reconstruction of decisions.
+A structured practice that investigates observable software phenomena by delimiting systems, following operations, collecting evidence, comparing expected and observed behavior, and producing bounded explanations.
 
-## Case Study: Saving HORA.city
+## Founding Reference Case 001 — HORA.city
 
-HORA.city is a geolocated system used by Payload Journey LAB as a real case study for applied investigation.
+HORA.city is a founder-owned internal reference investigation conducted on a real geolocated software system. It remains active and does not constitute external independent or scientific validation.
 
 After rapid expansion with AI agents, the system grew from approximately 6,000 to 40,000 lines of code and lost part of its structural observability.
 
-The current investigation follows a temporal anomaly in `createdAt`, associated with the `HeartCreated` payload.
+The current investigation concerns an incorrect `createdAt` representation. `HeartCreated` is the payload currently associated with the investigation at the **Documentary Evidence** level. Runtime confirmation of this association has not been established in the public evidence record.
 
 ```text
-Case ID: RPJ-HORA-001
+Case: Founding Reference Case 001 — HORA.city
+Investigation ID: RPJ-HORA-001
 Anomaly: incorrect createdAt
 Associated payload: HeartCreated
+Association evidence: Documentary
 Method: Reverse Payload Journey
 Mission: Track to Origin
-Status: Investigation in progress
+Lifecycle: Active investigation
 ```
 
-The case is used to test and document how Payload Journey LAB methods operate in real systems.
+The investigation has not established causal origin, temporal authority, restoration, a verified fix, final outcome, or closure. Its [active case record](docs/cases/RPJ-HORA-001/README.md) preserves the current boundaries and links separately to historical baseline assessments.
+
+## Payload Journey LAB Evidence Model
+
+The LAB distinguishes six evidence levels—**Conceptual, Documentary, Runtime, Implementation, Verification, and External or Independent Evidence**—to prevent different kinds of claims from being conflated.
+
+The model is canonical within Payload Journey LAB; it is not presented as an external scientific standard. See the [Semantic Identity Charter](docs/governance/semantic-identity/semantic-identity-charter-v1.0.md#8-payload-journey-lab-evidence-model) for the current definitions and guardrails.
+
+## Documentation
+
+The governed [documentation system](docs/README.md) separates:
+
+* current governance;
+* method indexes and future versioned specifications;
+* active cases;
+* research outputs;
+* operational records;
+* product documentation;
+* historical archive.
+
+The [Payload Journey LAB Semantic Identity Charter v1.0](docs/governance/semantic-identity/semantic-identity-charter-v1.0.md) is the current semantic governance source. This repository README is an orientation document and does not override governance.
 
 ## Founder
 
-Valéria dos Santos Reiser is the creator of Payload Journey LAB and of the methods that structure its practice of applied investigation.
+Valéria dos Santos Reiser is the creator of Payload Journey LAB and USMT and provides the LAB's intellectual, methodological, investigative, and pedagogical direction.
 
 Her work develops ways to observe how payloads, states, events, and decisions move through complex systems, especially in codebases expanded by AI agents.
 
@@ -103,7 +137,9 @@ The website presents:
 * the LAB;
 * its methods;
 * its conceptual ecosystem;
-* the HORA.city case study;
+* the HORA.city founding reference case;
+* the investigative protocol and practice;
+* canonical LAB definitions;
 * future white papers;
 * education and collaboration paths.
 
@@ -132,16 +168,17 @@ Current implementation includes:
 * Open Graph and Twitter metadata;
 * `robots.txt`;
 * `sitemap.xml`;
-* JSON-LD for `Organization`, `WebSite`, and `WebPage`;
+* JSON-LD for `Organization`, `WebSite`, `WebPage`, `Person`, and `CreativeWork`, with contextual `FAQPage` data;
+* dedicated routes for AI orientation, methods, USMT, learning, investigation, protocol, LAB definitions, cases, ecosystem, and the LAB;
+* a governed documentation system separating current authority from historical memory;
 * initial visual system;
 * accessibility and responsiveness improvements;
 * minimal institutional favicon.
 
 Future work may include:
 
-* dedicated pages for each method;
-* USMT documentation page;
-* HORA.city case study page;
+* standalone versioned method specifications;
+* expanded live evidence records for `RPJ-HORA-001`;
 * white paper publication pages;
 * official Open Graph image;
 * legal pages;
@@ -186,6 +223,18 @@ Run TypeScript validation:
 
 ```bash
 npx tsc --noEmit
+```
+
+Run documentation-system validation:
+
+```bash
+npm run verify:documentation
+```
+
+Run root README semantic validation:
+
+```bash
+npm run verify:root-readme
 ```
 
 Build the project:

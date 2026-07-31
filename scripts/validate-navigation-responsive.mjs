@@ -6,7 +6,7 @@ const root = process.cwd();
 const nextCli = path.join(root, "node_modules", "next", "dist", "bin", "next");
 const edge = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
 const outputDirectory = process.env.NAV_VISUAL_OUTPUT_DIRECTORY ??
-  path.join(root, "docs", "sprints para v3");
+  path.join(root, "docs", "operations", "publishing", "website-validation");
 const phase = process.env.NAV_VISUAL_PHASE ?? "after";
 const artifactPrefix = process.env.NAV_VISUAL_ARTIFACT_PREFIX ?? `sprint6-${phase}`;
 const captureEnabled = process.env.NAV_VISUAL_CAPTURE !== "0";
@@ -161,6 +161,7 @@ function safeRouteName(route) {
 }
 
 try {
+  await fs.mkdir(outputDirectory, { recursive: true });
   await Promise.all([waitFor(origin), waitFor(`${devtoolsUrl}/json/version`)]);
   const protocol = await openProtocol((await getTarget()).webSocketDebuggerUrl);
   await protocol.call("Page.enable");
