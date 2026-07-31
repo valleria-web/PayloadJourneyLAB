@@ -5,7 +5,13 @@ import path from "node:path";
 const root = process.cwd();
 const nextCli = path.join(root, "node_modules", "next", "dist", "bin", "next");
 const edge = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
-const outputDirectory = path.join(root, "docs", "sprints para v3");
+const outputDirectory = process.env.CAPTURE_OUTPUT_DIRECTORY ?? path.join(
+  root,
+  "docs",
+  "operations",
+  "publishing",
+  "website-validation",
+);
 const route = process.env.CAPTURE_ROUTE ?? "/";
 const outputPrefix = process.env.CAPTURE_PREFIX ?? "sprint1-validated-home";
 const pageUrl = `http://127.0.0.1:3226${route === "/" ? "" : route}`;
@@ -97,6 +103,7 @@ function openProtocol(url) {
 }
 
 try {
+  await fs.mkdir(outputDirectory, { recursive: true });
   await Promise.all([waitFor(pageUrl), waitFor(`${devtoolsUrl}/json/version`)]);
   const target = await getTarget();
   const protocol = await openProtocol(target.webSocketDebuggerUrl);
