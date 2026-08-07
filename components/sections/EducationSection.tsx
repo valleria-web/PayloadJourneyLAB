@@ -27,7 +27,7 @@ export function EducationSection() {
                 {training.format.state}
               </span>
               {training.campaign.state === "active" ? (
-                <span className="rounded-full border border-accent-readable/25 bg-surface-card px-3 py-1 font-mono text-technical-sm font-semibold text-accent-readable">
+                <span className="rounded-full border border-accent-cta bg-accent-cta px-3 py-1 font-mono text-technical-sm font-bold text-white shadow-foundation-button">
                   Cupom: {training.campaign.coupon.code}
                 </span>
               ) : null}
