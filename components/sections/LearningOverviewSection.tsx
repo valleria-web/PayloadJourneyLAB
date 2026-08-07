@@ -116,7 +116,7 @@ export function LearningEffortFoundationsSection() {
             </ul>
           </Card>
         </div>
-        <HighlightPanel variant="dark" className="mt-6 max-w-5xl">
+        <HighlightPanel variant="cta" className="mt-6 max-w-5xl">
           <p className="text-lg font-semibold leading-8">{effort.principle}</p>
         </HighlightPanel>
       </Section>

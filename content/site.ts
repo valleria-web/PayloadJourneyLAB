@@ -14,7 +14,7 @@ import type {
 } from "@/types/content";
 import { siteConfig } from "@/config/site";
 
-const udemyCouponCode = "FOLLOW-THE-FLOW";
+const udemyCouponCode = "SIGA-O-FLOW";
 const udemyCourseWithCouponUrl =
   `https://www.udemy.com/course/payload-journey-lab-siga-o-flow-entenda-o-sistema/?couponCode=${udemyCouponCode}`;
 
