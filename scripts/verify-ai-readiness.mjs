@@ -13,6 +13,7 @@ const canonicalOrigin = "https://www.payloadjourneylab.com";
 const apexOrigin = "https://" + "payloadjourneylab.com";
 const incorrectUsmtName = ["Universal System", "Model Template"].join(" ");
 const indexableRoutes = [
+  "/payload-tracing", "/reverse-payload-journey", "/operational-payload-path", "/track-to-origin", "/trace-engineering", "/cases/rpj-hora-001",
   "/",
   "/ai-welcome",
   "/payload-journey",
@@ -188,7 +189,7 @@ try {
     ],
     "/lab-definitions": [
       "LAB Definitions",
-      "Trace Engineering é a prática sistemática",
+      "Trace Engineering é uma prática investigativa em desenvolvimento composta por capacidades",
       "Trace Engineer é uma função e um perfil investigativo em desenvolvimento",
       "No modelo esperado do HORA.city",
     ],

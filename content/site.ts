@@ -86,8 +86,8 @@ export const siteNavigation = [
 export const navigationAreas = {
   home: ["/"],
   learn: ["/payload-journey", "/learn"],
-  methods: ["/method", "/protocol", "/investigation", "/usmt"],
-  cases: ["/cases", "/lablog"],
+  methods: ["/payload-tracing", "/reverse-payload-journey", "/operational-payload-path", "/track-to-origin", "/trace-engineering", "/method", "/protocol", "/investigation", "/usmt"],
+  cases: ["/cases/rpj-hora-001", "/cases", "/lablog"],
   lab: ["/lab", "/ecosystem", "/lab-definitions", "/ai-welcome"],
 } as const satisfies Record<NavigationArea, readonly string[]>;
 
@@ -345,17 +345,24 @@ export const routeContinuations = {
     { label: "Conhecer os métodos", href: "/method" },
   ],
   "/method": [
+    { label: "Payload Tracing", href: "/payload-tracing" },
+    { label: "Trace Engineering", href: "/trace-engineering" },
+    { label: "Reverse Payload Journey", href: "/reverse-payload-journey" },
+    { label: "Operational Payload Path", href: "/operational-payload-path" },
+    { label: "Track to Origin", href: "/track-to-origin" },
     { label: "Executar o protocolo", href: "/protocol" },
     { label: "Conhecer Software System Investigation", href: "/investigation" },
     { label: "Começar pelo Payload Journey", href: "/payload-journey" },
     { label: "Compreender a USMT", href: "/usmt" },
   ],
   "/protocol": [
+    { label: "Examinar RPJ-HORA-001", href: "/cases/rpj-hora-001" },
     { label: "Conhecer os métodos", href: "/method" },
     { label: "Conhecer Software System Investigation", href: "/investigation" },
     { label: "Ver o caso HORA.city", href: "/cases" },
   ],
   "/investigation": [
+    { label: "Explorar Trace Engineering", href: "/trace-engineering" },
     { label: "Conhecer os métodos", href: "/method" },
     { label: "Executar o protocolo", href: "/protocol" },
     { label: "Começar a aprender", href: "/learn" },
@@ -367,6 +374,7 @@ export const routeContinuations = {
     { label: "Conhecer os métodos", href: "/method" },
   ],
   "/cases": [
+    { label: "Examinar RPJ-HORA-001", href: "/cases/rpj-hora-001" },
     ...(siteConfig.featureFlags.labLogPublic
       ? [{ label: "Acompanhar os LabLogs", href: "/lablog" }]
       : []),

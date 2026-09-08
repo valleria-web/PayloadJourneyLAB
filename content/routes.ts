@@ -1,3 +1,4 @@
+import { createdArchitectureEntities } from "@/content/public-information-architecture";
 import { siteConfig } from "@/config/site";
 
 export const thematicRoutes = {
@@ -272,6 +273,7 @@ export const homepageMetadata = {
 } as const;
 
 export const publicRoutePaths = [
+  ...createdArchitectureEntities.map(entity => entity.canonicalPath),
   "/",
   ...Object.values(thematicRoutes)
     .map((route) => route.path)

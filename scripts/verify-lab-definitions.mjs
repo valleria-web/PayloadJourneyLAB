@@ -202,7 +202,7 @@ try {
       `${route}: integração semântica de Operação ausente — ${semanticRequirement}`,
     );
   }
-  assert(page.includes("Trace Engineering é a prática sistemática"), `${route}: definição canónica de Trace Engineering ausente`);
+  assert(page.includes("Trace Engineering é uma prática investigativa em desenvolvimento composta por capacidades"), `${route}: definição canónica de Trace Engineering ausente`);
   assert(!page.includes("Tracing Engineering"), `${route}: nome não canónico Tracing Engineering exposto`);
   assert(
     page.includes("Trace Engineer é uma função e um perfil investigativo em desenvolvimento"),

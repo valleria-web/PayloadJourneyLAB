@@ -144,8 +144,11 @@ try {
   const appEntries = (await fs.readdir(path.join(root, "app"), { withFileTypes: true }))
     .filter((entry) => entry.isDirectory() && !entry.name.startsWith("_"))
     .map((entry) => entry.name);
-  for (const forbidden of ["mapping", "reverse-payload-journey", "track-to-origin", "trace-engineering"]) {
+  for (const forbidden of ["mapping", "trace-engineer-protocol", "papers"]) {
     assert(!appEntries.includes(forbidden), `Nova rota metodológica proibida: /${forbidden}`);
+  }
+  for (const created of ["payload-tracing", "reverse-payload-journey", "operational-payload-path", "track-to-origin", "trace-engineering"]) {
+    assert(appEntries.includes(created), `Página canônica ausente: /${created}`);
   }
   const changedComponents = [
     "components/pages/PageIntro.tsx",
@@ -170,7 +173,7 @@ try {
       protocolPhases: 4,
       traceEngineerStatusProtected: true,
       futureScopeProtected: true,
-      newMethodRoutes: 0,
+      newMethodRoutes: 5,
       newClientComponents: 0,
     },
   }, null, 2));

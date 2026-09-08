@@ -10,6 +10,12 @@ const port = process.env.HOMEPAGE_VERIFY_PORT ?? "3210";
 const targetUrl = configuredUrl ?? `http://127.0.0.1:${port}`;
 const startupTimeoutMs = 60_000;
 const indexableRoutes = [
+  "/payload-tracing",
+  "/reverse-payload-journey",
+  "/operational-payload-path",
+  "/track-to-origin",
+  "/trace-engineering",
+  "/cases/rpj-hora-001",
   "/",
   "/ai-welcome",
   "/payload-journey",
@@ -26,7 +32,8 @@ const indexableRoutes = [
 const forbiddenRoutes = [
   "/lablog",
   "/mapping",
-  "/reverse-payload-journey",
+  "/trace-engineer-protocol",
+  "/papers",
   "/resources",
   "/privacy-policy",
   "/terms-of-use",
@@ -301,7 +308,7 @@ try {
     "/investigation": [
       "Prática investigativa",
       "Compreender antes de modificar",
-      "Conhecer o protocolo",
+      "Explore Trace Engineering and the investigation protocol",
       "Track Mode",
       "Trace Engineer",
       "Software System Investigation",
@@ -328,7 +335,7 @@ try {
     "/lab-definitions": [
       "LAB Definitions",
       "Vocabulário oficial",
-      "Trace Engineering é a prática sistemática",
+      "Trace Engineering é uma prática investigativa em desenvolvimento composta por capacidades",
       "Trace Engineer é uma função e um perfil investigativo em desenvolvimento",
       "Síntese do LAB",
     ],
@@ -378,8 +385,8 @@ try {
     "/investigation must link to the protocol and methods",
   );
   assert(
-    pages.get("/investigation").indexOf("Conhecer o protocolo") < pages.get("/investigation").indexOf("Voltar à homepage"),
-    "/investigation protocol CTA must render before the homepage return link",
+    pages.get("/investigation").indexOf("Explore Trace Engineering and the investigation protocol") < pages.get("/investigation").indexOf("Voltar à homepage"),
+    "/investigation architecture CTA must render before the homepage return link",
   );
   assertOrderedIds(pages.get("/lab"), ["lab", "sobre", "mission", "principle", "origin", "how-the-lab-works", "human-ai", "founder", "current-state", "lab-construction", "pilot", "trace-engineer", "vision", "long-term-vision", "public-commitment"], "Unified institutional page");
   assertOrderedIds(pages.get("/ecosystem"), ["education", "methodological-research", "applied-investigation", "collaboration"], "Institutional pillars");

@@ -5,5 +5,5 @@ export const foundingReferenceCaseIdentity = {
   displayIdentity: "Founding Reference Case 001 — HORA.city",
   investigationId: horaCityCase.caseId,
   system: horaCityCase.project,
-  canonicalHref: "/cases#case-hora-city",
+  canonicalHref: "/cases/rpj-hora-001",
 } as const satisfies FoundingReferenceCaseIdentity;

@@ -1,3 +1,4 @@
+import { TepOrientation } from "@/components/sections/TepOrientation";
 import { SitePage } from "@/components/pages/SitePage";
 import { InvestigationCycleSection } from "@/components/sections/InvestigationCycleSection";
 import { protocolPagePresentation } from "@/content/methods";
@@ -20,6 +21,7 @@ export default function ProtocolPage() {
       continuation={[...routeContinuations["/protocol"]]}
     >
       <InvestigationCycleSection />
+      <TepOrientation />
     </SitePage>
   );
 }
