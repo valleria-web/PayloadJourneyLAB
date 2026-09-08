@@ -5,6 +5,7 @@ import { PageContinuation } from "@/components/pages/PageContinuation";
 import { PageIntro } from "@/components/pages/PageIntro";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getThematicPageStructuredData } from "@/lib/structured-data";
+import { publicInformationArchitecture } from "@/content/public-information-architecture";
 
 type RoutePresentation = {
   path: string;
@@ -32,6 +33,9 @@ type SitePageProps = {
 };
 
 export function SitePage({ route, children, continuation }: SitePageProps) {
+  const entity = publicInformationArchitecture.find(item => item.canonicalPath === route.path);
+  const architectureAction = entity ? { label: entity.primaryCta, href: entity.primaryCtaHref } : undefined;
+  const useArchitectureAction = ["/investigation", "/protocol", "/cases"].includes(route.path);
   return (
     <>
       <JsonLd
@@ -50,7 +54,7 @@ export function SitePage({ route, children, continuation }: SitePageProps) {
           eyebrow={route.eyebrow}
           title={route.title}
           description={route.description}
-          action={route.introAction}
+          action={useArchitectureAction ? architectureAction : route.introAction ?? architectureAction}
           secondaryAction={route.introSecondaryAction}
         />
         {children}

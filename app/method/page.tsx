@@ -1,3 +1,4 @@
+import { TepOrientation } from "@/components/sections/TepOrientation";
 import { SitePage } from "@/components/pages/SitePage";
 import { MethodsSection } from "@/components/sections/MethodsSection";
 import { methodPagePresentation } from "@/content/methods";
@@ -20,6 +21,7 @@ export default function MethodPage() {
       continuation={[...routeContinuations["/method"]]}
     >
       <MethodsSection />
+      <TepOrientation />
     </SitePage>
   );
 }

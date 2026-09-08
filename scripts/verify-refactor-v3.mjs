@@ -21,6 +21,7 @@ const inheritedVerifiers = [
   "verify:navigation-discovery",
 ];
 const routeMetadata = new Map([
+  ...[["/payload-tracing",{"title":"Payload Tracing | Payload Journey LAB","description":"What is payload tracing and what does following a payload reveal about a software operation?"}],["/reverse-payload-journey",{"title":"Reverse Payload Journey | Payload Journey LAB","description":"How do I investigate from an observable anomaly toward an evidence-supported origin?"}],["/operational-payload-path",{"title":"Operational Payload Path | Payload Journey LAB","description":"What is the probable or confirmed operational path of this payload or operation?"}],["/track-to-origin",{"title":"Track to Origin | Payload Journey LAB","description":"Where does this value or decision originate, and who has authority over it?"}],["/trace-engineering",{"title":"Trace Engineering | Payload Journey LAB","description":"What is Trace Engineering and which capabilities compose it?"}],["/cases/rpj-hora-001",{"title":"Founding Reference Case 001 — HORA.city","description":"Founder-owned internal reference investigation. A pergunta temporal, a associação documental a HeartCreated e os limites públicos de RPJ-HORA-001."}]],
   ["/ai-welcome", {
     title: "AI Welcome | Payload Journey LAB",
     description: "Canonical orientation to Payload Journey LAB, Payload Journey, USMT, Reverse Payload Journey, Trace Engineering, evidence levels and HORA.city Founding Reference Case 001.",
@@ -347,21 +348,7 @@ try {
     .filter((entry) => entry.isDirectory() && !entry.name.startsWith("_"))
     .map((entry) => entry.name)
     .sort();
-  const expectedAppEntries = [
-    "about",
-    "ai-welcome",
-    "cases",
-    "ecosystem",
-    "investigation",
-    "lab",
-    "lab-definitions",
-    "lablog",
-    "learn",
-    "method",
-    "payload-journey",
-    "protocol",
-    "usmt",
-  ];
+  const expectedAppEntries = [...new Set(["about", "lablog", ...[...routeMetadata.keys()].filter(route => route !== "/").map(route => route.split("/")[1])])].sort();
   assert(JSON.stringify(appEntries) === JSON.stringify(expectedAppEntries), "Diretórios de rota divergentes");
 
   const temporaryRoot = path.join(root, ".tmp");
@@ -405,7 +392,7 @@ try {
       localPathsExposed: 0,
       sensitivePatternsExposed: 0,
       unauthorizedTemporaryArtifacts: 0,
-      newRoutes: 1,
+      newRoutes: 6,
       newDependencies: 0,
       productionValidation: "pending-deploy",
     },

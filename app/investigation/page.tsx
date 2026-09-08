@@ -1,3 +1,4 @@
+import { TepOrientation } from "@/components/sections/TepOrientation";
 import { SitePage } from "@/components/pages/SitePage";
 import { InvestigationPracticeSection } from "@/components/sections/InvestigationPracticeSection";
 import { investigativePracticePresentation } from "@/content/methods";
@@ -20,6 +21,7 @@ export default function InvestigationPage() {
       continuation={[...routeContinuations["/investigation"]]}
     >
       <InvestigationPracticeSection />
+      <TepOrientation />
     </SitePage>
   );
 }

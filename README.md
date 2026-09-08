@@ -73,6 +73,10 @@ It is not presented as an established engineering discipline, an industry standa
 
 Trace Engineer is a **developing investigative function/profile** applying Trace Engineering capabilities. It is not presented by Payload Journey LAB as an established profession, certification, official job category, or universally recognized occupational role.
 
+### Trace Engineer Protocol (TEP)
+
+TEP is a developing protocol artifact for structuring investigation progression through explicit states, gates, evidence and validation. Internal materials remain controlled/restricted; the full artifact is not yet public. Public orientation is available through Trace Engineering and the protocol pages.
+
 ### Track Mode
 
 An investigative operating practice in which modification-oriented behavior is suspended and the priority becomes observing, delimiting, registering, and understanding.
@@ -127,6 +131,8 @@ The [Payload Journey LAB Semantic Identity Charter v1.0](docs/governance/semanti
 Valéria dos Santos Reiser is the creator of Payload Journey LAB and USMT and provides the LAB's intellectual, methodological, investigative, and pedagogical direction.
 
 Her work develops ways to observe how payloads, states, events, and decisions move through complex systems, especially in codebases expanded by AI agents.
+
+The [Public Information Architecture v1.0](docs/product/website/information-architecture/public-information-architecture-v1.0.md) records canonical page ownership, lifecycle, contextual links and reserved routes.
 
 ## Website
 

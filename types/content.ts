@@ -684,7 +684,7 @@ export type LearningMethod = CardItem & {
   status: MethodStatus;
   limits: string[];
   evidence: string;
-  canonicalHref?: "/payload-journey" | "/usmt";
+  canonicalHref?: "/payload-journey" | "/usmt" | "/reverse-payload-journey" | "/operational-payload-path" | "/track-to-origin";
   claimKind: MethodClaimKind;
   relatedSteps: InvestigationStepId[];
   relationship: string;
@@ -1069,7 +1069,7 @@ export type FoundingReferenceCaseIdentity = {
   displayIdentity: "Founding Reference Case 001 — HORA.city";
   investigationId: string;
   system: "HORA.city";
-  canonicalHref: "/cases#case-hora-city";
+  canonicalHref: "/cases/rpj-hora-001";
 };
 
 export type AiWelcomeStatus =

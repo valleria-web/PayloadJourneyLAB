@@ -8,6 +8,7 @@ const configuredUrl = process.env.NAVIGATION_VERIFY_URL;
 const port = process.env.NAVIGATION_VERIFY_PORT ?? "3216";
 const origin = configuredUrl ?? `http://127.0.0.1:${port}`;
 const routes = [
+  "/payload-tracing", "/reverse-payload-journey", "/operational-payload-path", "/track-to-origin", "/trace-engineering", "/cases/rpj-hora-001",
   "/",
   "/ai-welcome",
   "/payload-journey",
@@ -22,6 +23,12 @@ const routes = [
   "/ecosystem",
 ];
 const expectedAreas = new Map([
+  ["/payload-tracing", "Métodos"],
+  ["/reverse-payload-journey", "Métodos"],
+  ["/operational-payload-path", "Métodos"],
+  ["/track-to-origin", "Métodos"],
+  ["/trace-engineering", "Métodos"],
+  ["/cases/rpj-hora-001", "Casos"],
   ["/", "Início"],
   ["/ai-welcome", "LAB"],
   ["/payload-journey", "Aprender"],
@@ -136,7 +143,7 @@ try {
   for (const group of ["Começar", "Investigar", "Evidências", "LAB", "Canais"]) {
     assert(home.includes(`>${group}</p>`), `Footer: grupo ausente — ${group}`);
   }
-  for (const route of routes.filter((item) => item !== "/")) {
+  for (const route of routes.filter((item) => item !== "/" && !["/payload-tracing","/reverse-payload-journey","/operational-payload-path","/track-to-origin","/trace-engineering","/cases/rpj-hora-001"].includes(item))) {
     assert(home.includes(`href="${route}"`), `Footer: rota ausente — ${route}`);
   }
   assert(home.includes("Formação na Udemy"), "Footer: Udemy ausente");
@@ -180,6 +187,11 @@ try {
   assert(mobileSource.includes("triggerRef.current?.focus()"), "Mobile: retorno de foco ausente");
   assert(mobileSource.includes("aria-current"), "Mobile: estado ativo ausente");
   const expectedAppEntries = new Set([
+    "payload-tracing",
+    "reverse-payload-journey",
+    "operational-payload-path",
+    "track-to-origin",
+    "trace-engineering",
     "about",
     "ai-welcome",
     "cases",
@@ -215,11 +227,11 @@ try {
       collaborationCta: false,
       activeAreas: expectedAreas.size,
       mobileFocusContract: true,
-      routeContinuationsMaximum: 4,
+      routeContinuationsMaximum: 9,
       maximumDiscoveryDepth: Math.max(...distances.values()),
       localPathsExposed: 0,
       sensitivePatternsExposed: 0,
-      newRoutes: 1,
+      newRoutes: 6,
     },
   }, null, 2));
 } catch (error) {

@@ -17,7 +17,7 @@ export const canonicalMethodDefinitions = {
   traceEngineering:
     "Trace Engineering é uma prática investigativa em desenvolvimento composta por capacidades para rastrear operações, localizar decisões, comparar modelos esperados com a execução e produzir explicações verificáveis.",
   traceEngineer:
-    "Trace Engineer é a função investigativa exercida por quem segue operações, payloads, transformações e decisões para compreender e explicar o comportamento de um sistema com base em evidências.",
+    "Trace Engineer é uma função e um perfil investigativo em desenvolvimento que aplica as capacidades de Trace Engineering para compreender e explicar operações com base em evidências.",
   usmt:
     "A USMT é o instrumento utilizado para explicitar o modelo esperado de estados, eventos, transições, regras, invariantes e limites de um sistema.",
   operationalPayloadPath:
@@ -108,6 +108,7 @@ export const methodsContent = [
   },
   {
     id: "reverse-payload-journey",
+    canonicalHref: "/reverse-payload-journey",
     title: "Reverse Payload Journey",
     category: "Instrumento de investigação",
     description: canonicalMethodDefinitions.reversePayloadJourney,
@@ -119,7 +120,7 @@ export const methodsContent = [
     result: "Caminho causal reconstruído em direção à origem.",
     status: "Documentado",
     limits: [
-      "Não possui rota própria nesta sprint.",
+      "Página canônica disponível; publicação não aumenta o nível de evidência.",
       "Uma reconstrução causal exige evidências; a ordem reversa não prova causa por si só.",
     ],
     evidence: "Definição em content/methods.ts e aplicação narrativa no caso HORA.city.",
@@ -134,6 +135,7 @@ export const methodsContent = [
   },
   {
     id: "operational-payload-path",
+    canonicalHref: "/operational-payload-path",
     title: "Operational Payload Path",
     category: "Instrumento de mapping",
     description: canonicalMethodDefinitions.operationalPayloadPath,
@@ -161,6 +163,7 @@ export const methodsContent = [
   },
   {
     id: "track-to-origin",
+    canonicalHref: "/track-to-origin",
     title: "Track to Origin",
     category: "Prática de origem e autoridade",
     description: canonicalMethodDefinitions.trackToOrigin,
@@ -171,13 +174,13 @@ export const methodsContent = [
       "Quando a divergência está delimitada, mas a origem ou a responsabilidade ainda não está sustentada.",
     question: "Onde nasce a decisão e quem possui autoridade sobre ela?",
     result: "Origem e autoridade identificadas com o limite das evidências disponíveis.",
-    status: "Em desenvolvimento",
+    status: "Página canônica disponível",
     limits: [
       "Não garante uma causa única ou definitiva.",
       "A autoridade identificada precisa ser sustentada por fonte e execução observada.",
     ],
     evidence: "Definição autoral e uso narrativo no caso HORA.city.",
-    claimKind: "Em desenvolvimento",
+    claimKind: "Estado documentado",
     relatedSteps: ["detect", "restore"],
     relationship:
       "Aprofunda a divergência localizada e orienta a intervenção causalmente justificada.",

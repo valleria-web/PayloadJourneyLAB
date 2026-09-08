@@ -1,3 +1,4 @@
+import { canonicalMethodDefinitions } from "@/content/methods";
 export type LabDefinitionBlock = string | readonly string[];
 
 export type LabDefinition = {
@@ -261,10 +262,10 @@ export const labDefinitions = [
     id: "trace-engineering",
     title: "Trace Engineering",
     summary:
-      "A Trace Engineering acompanha, reconstrói e verifica uma operação enquanto ela atravessa o sistema.",
+      canonicalMethodDefinitions.traceEngineering,
     homepage: true,
     blocks: [
-      "Trace Engineering é a prática sistemática de tornar operações de software observáveis, reconstruíveis e verificáveis.",
+      canonicalMethodDefinitions.traceEngineering,
       "Ela adopta a perspectiva interna da execução, acompanha uma operação através dos caminhos do sistema e compara o percurso esperado com o percurso realmente executado.",
       "Ela conhece o percurso esperado, observa o percurso executado, correlaciona as diferentes representações e verifica a continuidade causal, semântica e temporal da operação.",
       "Ela combina modelação, identidade de tracing, checkpoints, instrumentação, observação de estados, captura de evidências e análise causal.",

@@ -13,6 +13,11 @@ const sprintRoot = path.join(
 );
 const runRefactorVerifier = process.env.CYCLE_CLOSURE_SKIP_REFACTOR !== "1";
 const canonicalRoutes = [
+  "payload-tracing",
+  "reverse-payload-journey",
+  "operational-payload-path",
+  "track-to-origin",
+  "trace-engineering",
   "",
   "ai-welcome",
   "payload-journey",

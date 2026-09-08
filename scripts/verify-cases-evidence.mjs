@@ -130,6 +130,12 @@ try {
   for (const forbidden of ["case", "case-study", "hora-city", "lablogs"]) {
     assert(!appEntries.includes(forbidden), `Nova rota de caso não autorizada: /${forbidden}`);
   }
+  const dedicatedCase = await fetch(`${origin}/cases/rpj-hora-001`);
+  assert(dedicatedCase.status === 200, "Dedicated founding case page missing");
+  const dedicatedHtml = await dedicatedCase.text();
+  for (const text of ["Lifecycle: Active investigation", "Documentary Evidence association", "Runtime confirmation is not publicly established", "founder-owned internal reference investigation"]) {
+    assert(dedicatedHtml.includes(text), `Dedicated case boundary missing: ${text}`);
+  }
 
   const serverFiles = [
     "components/sections/CasesPageSections.tsx",
@@ -155,7 +161,7 @@ try {
       sequentialHeadings: true,
       localPathsExposed: 0,
       sensitivePatternsExposed: 0,
-      newCaseRoutes: 0,
+      newCaseRoutes: 1,
       newClientComponents: 0,
       applicationSeparatedFromEfficacy: true,
       externalEvidenceClaimed: false,
