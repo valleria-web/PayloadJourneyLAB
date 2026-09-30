@@ -14,7 +14,7 @@ import type {
 } from "@/types/content";
 import { siteConfig } from "@/config/site";
 
-const udemyCouponCode = "SIGA-O-FLOW";
+const udemyCouponCode = "LAB-CUPOM";
 const udemyCourseWithCouponUrl =
   `https://www.udemy.com/course/payload-journey-lab-siga-o-flow-entenda-o-sistema/?couponCode=${udemyCouponCode}`;
 
@@ -54,11 +54,45 @@ export const siteLinks = {
   },
   linkedin: {
     personal: null,
+    // Reserved for the confirmed official LinkedIn Page URL; never render a placeholder.
     institutional: null,
   },
   contact: null,
   email: null,
 } as const satisfies SiteLinks;
+
+export const homeStartContent = {
+  title: "Comece aqui",
+  subtitle: "Escolha a melhor porta de entrada para conhecer o Payload Journey LAB.",
+  description:
+    "O Payload Journey LAB é um laboratório independente de formação e investigação aplicada em engenharia de software, criado por Valéria dos Santos Reiser para ajudar estudantes e desenvolvedores a recuperar visão estrutural sobre sistemas complexos.",
+  options: [
+    {
+      label: "Entender a visão do LAB",
+      description: "Conheça a missão, a origem e a autoria do Payload Journey LAB.",
+      href: "/lab",
+      external: false,
+    },
+    {
+      label: "Conhecer o curso beta na Udemy",
+      description: "Comece pela formação introdutória e aprenda a seguir o payload através das camadas.",
+      href: siteLinks.udemy.courseWithCoupon,
+      external: true,
+    },
+    {
+      label: "Acompanhar o LabLog no YouTube",
+      description: "Veja o método em movimento nos episódios e investigações do LAB.",
+      href: siteLinks.youtube.canonical,
+      external: true,
+    },
+    {
+      label: "Conhecer o caso HORA.city",
+      description: "Explore o study case fundador e a investigação aplicada do Reverse Payload Journey.",
+      href: "/cases",
+      external: false,
+    },
+  ],
+} as const;
 
 export const campaignConfig = {
   id: "udemy-beta",
