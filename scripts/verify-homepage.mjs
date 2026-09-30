@@ -147,6 +147,7 @@ try {
     home,
     [
       "inicio",
+      "comece-aqui",
       "why-now",
       "audience-investigation",
       "proposal",
@@ -396,7 +397,7 @@ try {
   const corpus = [...pages.values()].join("\n");
   const normalizedCorpus = corpus.replaceAll("&amp;", "&");
   for (const destination of [
-    "https://www.udemy.com/course/payload-journey-lab-siga-o-flow-entenda-o-sistema/?couponCode=SIGA-O-FLOW",
+    "https://www.udemy.com/course/payload-journey-lab-siga-o-flow-entenda-o-sistema/?couponCode=LAB-CUPOM",
   ]) {
     assert(normalizedCorpus.includes(destination), `Missing preserved external link: ${destination}`);
   }

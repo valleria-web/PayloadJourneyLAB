@@ -13,6 +13,8 @@ last_reviewed: 2026-07-31
 Propagation documentation preserves separate layers of operational evidence:
 
 - [`baselines/2026-07-27/`](baselines/2026-07-27/README.md) — dated baseline result and evidence;
+- [`reports/2026-09-30-reporte-objetivo-homepage.md`](reports/2026-09-30-reporte-objetivo-homepage.md) — homepage assessment and recommendation before implementing “Comece Aqui”;
+- [`implementations/2026-09-30-comece-aqui.md`](implementations/2026-09-30-comece-aqui.md) — compact homepage orientation and LAB-CUPOM campaign update;
 - [`implementations/ai-welcome/`](implementations/ai-welcome/) — implementation records;
 - [`tasks/ai-welcome/`](tasks/ai-welcome/) — task specifications;
 - [`tasks/propagation-baseline/`](tasks/propagation-baseline/) — original baseline task and execution plan.

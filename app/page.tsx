@@ -1,5 +1,6 @@
 import { BetaCtaSection } from "@/components/sections/BetaCtaSection";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { HomeStartSection } from "@/components/sections/HomeStartSection";
 import { HomeMethodOverviewSection } from "@/components/sections/HomeMethodOverviewSection";
 import { HomeLabConstructionSection } from "@/components/sections/HomeLabConstructionSection";
 import {
@@ -30,6 +31,7 @@ export default function Home() {
       <SiteHeader currentPath="/" />
       <main>
         <HeroSection />
+        <HomeStartSection />
         <HomeWhyNowSection />
         <HomeLabConstructionSection />
         <HomeProposalSection />
